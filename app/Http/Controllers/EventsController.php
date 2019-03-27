@@ -14,7 +14,17 @@ class EventsController extends Controller
      */
     public function index()
     {
-        //
+      {
+         // $events = Events::all();
+         $events = Events::with('users')->get();
+
+        return response()->json($albums, 200);
+     }
+      /**
+       * Show the form for creating a new resource.
+       *
+       * @return \Illuminate\Http\Response
+       */
     }
 
     /**
@@ -44,9 +54,11 @@ class EventsController extends Controller
      * @param  \App\Events  $events
      * @return \Illuminate\Http\Response
      */
-    public function show(Events $events)
+    public function show($id)  // Jam : j'ai changé 'Events $events' dans la parenthèse en $id
     {
-        //
+      $event = Events::where('id', '=', $id)
+                  ->with('users')
+                  ->first();
     }
 
     /**

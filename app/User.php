@@ -8,6 +8,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+
+    public function events(){
+      return $this->belongsToMany( 'App\Models\Events', 'events_and_users', 'user_id', 'event_id' );
+    }
     use Notifiable;
 
     /**
