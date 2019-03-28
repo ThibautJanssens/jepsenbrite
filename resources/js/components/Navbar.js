@@ -26,14 +26,10 @@ export default class Navbar extends Component {
     <input class="form-control mr-sm-2" type="text" placeholder="Pseudo" />
     <input class="form-control mr-sm-2" type="password" placeholder="Password" />
     <button class="btn btn-secondary my-2 my-sm-0" type="submit">Login</button>
-    <button class="btn btn-secondary my-2 my-sm-0" >Register</button>
+    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Register</button>
   </form>
 </div>
 </nav>
         );
     }
-}
-
-if (document.getElementById('appli')) {
-    ReactDOM.render(<Navbar />, document.getElementById('appli'));
 }

@@ -6,4 +6,4 @@
  */
 
 require('./bootstrap');
-require('./components/Navbar');
+require('./Main');

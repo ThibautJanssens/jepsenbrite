@@ -8,10 +8,19 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-.navbar-laravel {
-  background-color: #fff;
+.navbar {
+  background-color: #000000 !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
-.navbar {
-  background-color: black !important;
+.brandDonut{
+  display:flex;
+  justify-content: space-around;
+  background-color: rgba(0, 0, 0, 0.5);
+  color:white;
+}
+.brandDonut >  h1 {
+    font-size: 5rem;
+}
+body {
+  background-color:#000117;
 }
