@@ -61348,19 +61348,58 @@ function (_Component) {
   _createClass(Example, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row justify-content-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-8"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header"
-      }, "Example Component"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-body"
-      }, "Im an example component!")))));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+        class: "navbar navbar-expand-lg navbar-dark bg-dark"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        class: "navbar-brand",
+        href: "#"
+      }, "Navbar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        class: "navbar-toggler",
+        type: "button",
+        "data-toggle": "collapse",
+        "data-target": "#navbarColor02",
+        "aria-controls": "navbarColor02",
+        "aria-expanded": "false",
+        "aria-label": "Toggle navigation"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        class: "navbar-toggler-icon"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        class: "collapse navbar-collapse",
+        id: "navbarColor02"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        class: "navbar-nav mr-auto"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        class: "nav-item active"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        class: "nav-link",
+        href: "#"
+      }, "Home ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        class: "sr-only"
+      }, "(current)"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        class: "nav-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        class: "nav-link",
+        href: "#"
+      }, "Features")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        class: "nav-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        class: "nav-link",
+        href: "#"
+      }, "Pricing")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        class: "nav-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        class: "nav-link",
+        href: "#"
+      }, "About"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        class: "form-inline my-2 my-lg-0"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        class: "form-control mr-sm-2",
+        type: "text",
+        placeholder: "Search"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        class: "btn btn-secondary my-2 my-sm-0",
+        type: "submit"
+      }, "Search"))));
     }
   }]);
 
