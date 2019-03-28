@@ -16,3 +16,13 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/events', 'EventController@index')->name('events.index');
+
+Route::post('/events', 'EventController@store')->name('events.store');
+
+Route::get('/events/{event}', 'EventController@show')->name('events.show');
+
+Route::put('/events/{event}', 'EventController@update')->name('events.update');
+
+Route::delete('/events/{event}', 'EventController@destroy')->name('events.destroy');

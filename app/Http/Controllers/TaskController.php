@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Events;
+use App\Task;
 use Illuminate\Http\Request;
 
-class EventsController extends Controller
+class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,17 +14,7 @@ class EventsController extends Controller
      */
     public function index()
     {
-      {
-         // $events = Events::all();
-         $events = Events::with('users')->get();
-
-        return response()->json($albums, 200);
-     }
-      /**
-       * Show the form for creating a new resource.
-       *
-       * @return \Illuminate\Http\Response
-       */
+        //
     }
 
     /**
@@ -51,23 +41,21 @@ class EventsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Events  $events
+     * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function show($id)  // Jam : j'ai changé 'Events $events' dans la parenthèse en $id
+    public function show(Task $task)
     {
-      $event = Events::where('id', '=', $id)
-                  ->with('users')
-                  ->first();
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Events  $events
+     * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function edit(Events $events)
+    public function edit(Task $task)
     {
         //
     }
@@ -76,10 +64,10 @@ class EventsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Events  $events
+     * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Events $events)
+    public function update(Request $request, Task $task)
     {
         //
     }
@@ -87,10 +75,10 @@ class EventsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Events  $events
+     * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Events $events)
+    public function destroy(Task $task)
     {
         //
     }
