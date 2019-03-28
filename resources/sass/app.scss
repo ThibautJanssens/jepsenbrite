@@ -8,6 +8,12 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+body {
+  background-color:#000117;
+  color:white !important;
+}
+
+
 .navbar {
   background-color: #000000 !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
@@ -15,24 +21,68 @@
 .navbar-brand {
   font-family: 'Bungee Inline', cursive;
 }
+
+.footIt {
+  position:absolute;
+  width:100%;
+  margin-bottom:0;
+  background-color: #00425C;
+  color:black;
+  text-align:center;
+  font-size:2rem;
+}
+
 .brandDonut{
   display:flex;
-  justify-content: space-around;
+  justify-content:center;
   background-color: rgba(0, 0, 0, 0.5);
   color:white;
 }
 .brandDonut >  h1 {
-    font-size: 5rem;
-    margin-top:1rem;
     font-family: 'Bungee Inline', cursive;
+    font-size: 5rem;
+    margin:2rem;
 }
-body {
-  background-color:#000117;
+.donutImg {
+  max-width: 20%;
+  max-height: 8rem;
 }
-input {
-  border-radius: 0;
+.donutImg {
+  animation: App-logo-spin infinite 13s linear;
+  height: 40vmin;
+  pointer-events: none;
+ filter:drop-shadow(2px 2px 20px white);
 }
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
 .btn {
-  border-radius: 0;
-  margin:0.2rem;
+  border-radius:0;
+  margin: 0.2rem;
+}
+.btn:hover{
+  background-color: black;
+  border-style: solid;
+  border-color: white;
+}
+
+
+.homer {
+  bottom:0;
+  position:fixed;
+  width:8rem;
+  z-index: 1;
+  filter:drop-shadow(2px 2px 20px red);
+}
+.tryIt {
+  max-width: 50rem;
+  text-align: center;
+  margin-left:14rem;
 }
