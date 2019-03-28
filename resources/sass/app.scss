@@ -12,6 +12,9 @@
   background-color: #000000 !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+.navbar-brand {
+  font-family: 'Bungee Inline', cursive;
+}
 .brandDonut{
   display:flex;
   justify-content: space-around;
@@ -20,7 +23,16 @@
 }
 .brandDonut >  h1 {
     font-size: 5rem;
+    margin-top:1rem;
+    font-family: 'Bungee Inline', cursive;
 }
 body {
   background-color:#000117;
+}
+input {
+  border-radius: 0;
+}
+.btn {
+  border-radius: 0;
+  margin:0.2rem;
 }

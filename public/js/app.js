@@ -61223,16 +61223,16 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./resources/js/Main.js":
+/***/ "./resources/js/Home.js":
 /*!******************************!*\
-  !*** ./resources/js/Main.js ***!
+  !*** ./resources/js/Home.js ***!
   \******************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Main; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Home; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
@@ -61262,31 +61262,31 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var Main =
+var Home =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Main, _Component);
+  _inherits(Home, _Component);
 
-  function Main() {
-    _classCallCheck(this, Main);
+  function Home() {
+    _classCallCheck(this, Home);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Main).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(Home).apply(this, arguments));
   }
 
-  _createClass(Main, [{
+  _createClass(Home, [{
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Navbar__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Brand__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
     }
   }]);
 
-  return Main;
+  return Home;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
 
 if (document.getElementById('appli')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Main, null), document.getElementById('appli'));
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Home, null), document.getElementById('appli'));
 }
 
 /***/ }),
@@ -61305,7 +61305,7 @@ if (document.getElementById('appli')) {
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-__webpack_require__(/*! ./Main */ "./resources/js/Main.js");
+__webpack_require__(/*! ./Home */ "./resources/js/Home.js");
 
 /***/ }),
 
@@ -61479,12 +61479,12 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
-        class: "navbar navbar-expand-lg navbar-dark bg-dark"
+        className: "navbar navbar-expand-lg navbar-dark bg-dark"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        class: "navbar-brand",
+        className: "navbar-brand",
         href: "#"
       }, "Do Nuts Event"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        class: "navbar-toggler",
+        className: "navbar-toggler",
         type: "button",
         "data-toggle": "collapse",
         "data-target": "#navbarColor02",
@@ -61492,44 +61492,44 @@ function (_Component) {
         "aria-expanded": "false",
         "aria-label": "Toggle navigation"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        class: "navbar-toggler-icon"
+        className: "navbar-toggler-icon"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        class: "collapse navbar-collapse",
+        className: "collapse navbar-collapse",
         id: "navbarColor02"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        class: "navbar-nav mr-auto"
+        className: "navbar-nav mr-auto"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        class: "nav-item active"
+        className: "nav-item active"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        class: "nav-link",
+        className: "nav-link",
         href: "#"
       }, "Home ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        class: "sr-only"
+        className: "sr-only"
       }, "(current)"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        class: "nav-item"
+        className: "nav-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        class: "nav-link",
+        className: "nav-link",
         href: "#"
       }, "Create Event")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        class: "nav-item"
+        className: "nav-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        class: "nav-link",
+        className: "nav-link",
         href: "#"
       }, "Passed Events"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        class: "form-inline my-2 my-lg-0"
+        className: "form-inline my-2 my-lg-0"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        class: "form-control mr-sm-2",
+        className: "form-control mr-sm-2",
         type: "text",
         placeholder: "Pseudo"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        class: "form-control mr-sm-2",
+        className: "form-control mr-sm-2",
         type: "password",
         placeholder: "Password"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        class: "btn btn-secondary my-2 my-sm-0",
+        className: "btn btn-secondary my-2 my-sm-0",
         type: "submit"
       }, "Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        class: "btn btn-secondary my-2 my-sm-0",
+        className: "btn btn-secondary my-2 my-sm-0",
         type: "submit"
       }, "Register"))));
     }
