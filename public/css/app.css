@@ -10662,16 +10662,59 @@ a.text-dark:focus {
 
 .brandDonut {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
 }
 
 .brandDonut > h1 {
+  font-family: "Bungee Inline", cursive;
   font-size: 5rem;
+  margin: 2rem;
+}
+
+.donutImg {
+  max-width: 20%;
+  max-height: 8rem;
+}
+
+.donutImg {
+  -webkit-animation: App-logo-spin infinite 13s linear;
+          animation: App-logo-spin infinite 13s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@-webkit-keyframes App-logo-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }
 
 body {
   background-color: #000117;
+}
+
+.btn {
+  border-radius: 0;
+  margin: 0.2rem;
 }
 
