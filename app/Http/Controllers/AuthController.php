@@ -7,6 +7,22 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
+
+  public function __construct()
+{
+    $this->middleware('auth:api', ['except' => ['login']]);
+}
+
+public function login(Request $request)
+{
+
+    $credentials = $request->only('name', 'email', 'password');
+    if (! $token = Auth::guard('api')->attempt($credentials)) {
+           return response()->json(['error' => 'Unauthorized'], 401);
+    }
+
+    return $this->respondWithToken($token);
+}
     public function register(Request $request)
     {
         $user = User::create([
@@ -22,9 +38,9 @@ class AuthController extends Controller
 
     public function login()
     {
-        $credentials = request(['email', 'password']);
+        $credentials = request(['name', 'email', 'password']);
 
-        if (! $token = auth()->attempt($credentials)) {
+        if ($token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
