@@ -26,3 +26,6 @@ Route::get('/events/{event}', 'EventController@show')->name('events.show');
 Route::put('/events/{event}', 'EventController@update')->name('events.update');
 
 Route::delete('/events/{event}', 'EventController@destroy')->name('events.destroy');
+
+//Routes à ajouter :
+//
