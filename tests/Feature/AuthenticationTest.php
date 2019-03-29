@@ -6,15 +6,16 @@ use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 
-class AuthenticationTest extends TestCase : void
+class AuthenticationTest extends TestCase
 {
     use DatabaseMigrations;
 
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
 
         $user = new User([
+             'name'     => 'name',
              'email'    => 'test@email.com',
              'password' => '123456'
          ]);
@@ -26,6 +27,7 @@ class AuthenticationTest extends TestCase : void
     public function it_will_register_a_user()
     {
         $response = $this->post('api/register', [
+            'name'     => 'nameTwo',
             'email'    => 'test2@email.com',
             'password' => '123456'
         ]);
@@ -41,6 +43,7 @@ class AuthenticationTest extends TestCase : void
     public function it_will_log_a_user_in()
     {
         $response = $this->post('api/login', [
+            'name'     => 'name',
             'email'    => 'test@email.com',
             'password' => '123456'
         ]);
@@ -56,6 +59,7 @@ class AuthenticationTest extends TestCase : void
     public function it_will_not_log_an_invalid_user_in()
     {
         $response = $this->post('api/login', [
+            'name'     => 'name',
             'email'    => 'test@email.com',
             'password' => 'notlegitpassword'
         ]);
