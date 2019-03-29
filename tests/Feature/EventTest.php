@@ -69,7 +69,6 @@ class EventTest extends TestCase
         ]);
 
         $event = Event::all()->first();
-        \Log::info($event);
 
         $response = $this->get(route('events.show', $event->id));
 
@@ -93,14 +92,14 @@ class EventTest extends TestCase
         $event = Event::all()->first();
 
         $response = $this->put(route('events.update', $event->id), [
-            'event_name' => 'This is a event name'
+            'event_name' => 'This is the updated title'
         ]);
 
         $response->assertStatus(200);
 
         $event = $event->fresh();
 
-        $this->assertEquals($event->title, 'This is the updated title');
+        $this->assertEquals($event['event_name'], 'This is the updated title');
 
         $response->assertJsonStructure([
            'message',
