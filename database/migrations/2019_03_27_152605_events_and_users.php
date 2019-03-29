@@ -13,11 +13,11 @@ class EventsAndUsers extends Migration
      */
     public function up()
     {
-      Schema::create('events_and_users', function( $table ){
+      Schema::create('events_and_users', function (Blueprint $table){
         $table->integer('user_id')->unsigned();
-        $table->foreign('user_id')->references('id')->on('users');
+        $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         $table->integer('event_id')->unsigned();
-        $table->foreign('event_id')->references('id')->on('events');
+        $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
       });    }
 
     /**
@@ -27,6 +27,6 @@ class EventsAndUsers extends Migration
      */
     public function down()
     {
-        //
+      Schema::dropIfExists('events_and_users');
     }
 }

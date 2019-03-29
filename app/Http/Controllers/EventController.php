@@ -74,6 +74,7 @@ class EventController extends Controller
       $event = Event::where('id', '=', $id)
                   ->with('users')
                   ->first();
+      return $event;
     }
 
     /**

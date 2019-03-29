@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
   protected $table = 'events';
+
   public function users(){
-    return $this->belongsToMany( 'App\User', 'events_and_users', 'user_id', 'event_id' );
+
+    return $this->belongsToMany(User::class, 'events_and_users');
   }
   protected $fillable = [
       'event_name',
@@ -17,7 +19,6 @@ class Event extends Model
       'event_description',
       'event_price',
       'event_author'
-
   ];
 
   protected $casts = [
