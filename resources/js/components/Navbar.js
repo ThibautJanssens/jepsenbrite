@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-
+import Create from './Create';
 
 const Navbar = () => (
           <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -15,7 +15,7 @@ const Navbar = () => (
       <Link className='nav-link' to='/'>Home</Link>
       </li>
       <li className="nav-item">
-      <Link className='nav-link' to='/'>Create Event</Link>
+      <Link className='nav-link' to='/Create' component={Create}>Create Event</Link>
       </li>
       <li className="nav-item">
       <Link className='nav-link' to='/'>Passed Event</Link>
@@ -33,4 +33,3 @@ const Navbar = () => (
 )
 
 export default Navbar;
-       

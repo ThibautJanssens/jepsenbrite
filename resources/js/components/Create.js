@@ -11,7 +11,7 @@ export default class Create extends Component {
       this.state = {file: '',imagePreviewUrl: ''};
       this.onChangeImg = this.onChangeImg.bind(this);
       this.onSubmit = this.onSubmit.bind(this);
-  
+
       this.state = {
         character : [],
         name: '',
@@ -20,10 +20,10 @@ export default class Create extends Component {
         description: '',
         file: '',
         imagePreviewUrl: ''
-  
+
       }
     }
-  
+
   onSubmit(data) {
     data.preventDefault();
 
@@ -34,26 +34,26 @@ export default class Create extends Component {
         image: this.state.imagePreviewUrl.substr(this.state.imagePreviewUrl.indexOf(',') + 1)
     };
 
-    
+
     axios.post("https://character-database.becode.xyz/characters/" , obj)
-          .then(this.props.history.push('/'))
-  
+          .then(this.props.push('/'))
+
 
     }
 
     _handleImageChange(e) {
         e.preventDefault();
-    
+
         let reader = new FileReader();
         let file = e.target.files[0];
-    
+
         reader.onloadend = () => {
           this.setState({
             file: file,
             imagePreviewUrl: reader.result
           });
         }
-    
+
         reader.readAsDataURL(file)
       }
 
@@ -65,14 +65,14 @@ export default class Create extends Component {
       onChangeShortDesc(e) {
         this.setState({
           shortDescription: e.target.value
-        })  
+        })
       }
       onChangeDesc(e) {
         this.setState({
           description: e.target.value
         })
       }
-    
+
       onChangeImg(e) {
         this.setState({
           image: e.target.value
@@ -107,9 +107,9 @@ export default class Create extends Component {
               <h1>
                 Add a new super hero
               </h1>
-  
+
               <form className="col-md-6 mx-auto" onSubmit={this.onSubmit}>
-  
+
                 <input className="form-control" type="text" name="name" ref="name" defaultValue={this.state.name} onChange={this.onChangeName}></input>
                 <div className="preview text-center">
                   {$imagePreview}
@@ -119,14 +119,12 @@ export default class Create extends Component {
                     </div>
                     <span className="Error"></span>
                 </div>
-                <input class="form-control" type="text" ref="shortDescription" name="shortDescription" defaultValue={this.state.shortDescription} onChange={this.onChangeShortDesc}></input>
-                <textarea class="form-control" ref="description" name="description" rows="10"  onChange={this.onChangeDesc}>{this.state.description}</textarea>
-                <input type="submit" class="form-control btn btn-primary" value="submit"></input>
+                <input className="form-control" type="text" ref="shortDescription" name="shortDescription" defaultValue={this.state.shortDescription} onChange={this.onChangeShortDesc}></input>
+                <textarea className="form-control" ref="description" name="description" rows="10"  onChange={this.onChangeDesc}>{this.state.description}</textarea>
+                <input type="submit" className="form-control btn btn-primary" value="submit"></input>
               </form>
             </React.Fragment>
           </div>
         )
       }
-    } 
-
-
+    }
