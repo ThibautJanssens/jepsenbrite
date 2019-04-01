@@ -26,7 +26,7 @@ class AuthenticationTest extends TestCase
     /** @test */
     public function it_will_register_a_user()
     {
-        $response = $this->post('api/register', [
+        $response = $this->post('register', [
             'name'     => 'nameTwo',
             'email'    => 'test2@email.com',
             'password' => '123456'
@@ -42,7 +42,7 @@ class AuthenticationTest extends TestCase
     /** @test */
     public function it_will_log_a_user_in()
     {
-        $response = $this->post('api/login', [
+        $response = $this->post('login', [
             'name'     => 'name',
             'email'    => 'test@email.com',
             'password' => '123456'
