@@ -101,11 +101,8 @@ export default class Create extends Component {
           return (
           <div>
             <React.Fragment>
-              <Link to="/">
-                Return to home
-              </Link>
               <h1>
-                Add a new super hero
+                Add a new event
               </h1>
 
               <form className="col-md-6 mx-auto" onSubmit={this.onSubmit}>

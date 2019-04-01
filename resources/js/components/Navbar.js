@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import Create from './Create';
+import Create from '../Create';
 
 const Navbar = () => (
           <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
