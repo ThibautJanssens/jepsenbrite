@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { Route, Switch, HashRouter} from 'react-router-dom';
 import Header from './Header';
 import Create from './Create';
-import character from './character';
+import Passed from './Passed';
 
 
 class App extends Component {
@@ -14,9 +14,9 @@ class App extends Component {
           <div>
             <Header/>
              <Switch>
-               <Route exact path='/Create' component={Create}/>
-               <Route exact path='/character/:id' component={character}/>
-              
+                <Route exact path ='/' component={Home}/>
+               <Route exact path ='/Create/:id' component={Create}/>
+               <Route exact path='/Passed' component={Passed}/>
              </Switch>
           </div>
 
