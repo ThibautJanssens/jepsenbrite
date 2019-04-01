@@ -1,20 +1,12 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import Navbar from './components/Navbar';
-import Brand from './components/Brand';
-import Footer from './components/Footer';
-import routing from './routes.js';
+import Brand from './Brand';
+
 
 export default class Home extends Component {
     render() {
         return (
             <div>
-                <div>
-                    <Navbar />
-                </div>
-                <div>
-                    <Brand />
-                </div>
+                <Brand/>
                 <div className="eventsPassed">
                 <p className='passedEvents'>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In consequat lobortis odio, nec bibendum magna pharetra eget. Donec quam justo, blandit eu turpis sed, vestibulum mollis metus. Pellentesque nec quam sit amet purus sagittis dictum et a nunc. Quisque pulvinar justo sit amet interdum mattis. Vestibulum posuere sed eros at faucibus. In sit amet congue diam. Etiam quis congue dui. Aliquam porttitor ligula in tellus luctus ornare. Proin libero metus, blandit eget dui sit amet, facilisis elementum ex. Pellentesque in ex vitae arcu pharetra maximus quis nec turpis. Aliquam consectetur consequat turpis, vitae blandit est malesuada efficitur. Aliquam condimentum scelerisque ipsum, nec tempor lorem placerat sed. Nulla neque orci, interdum non pulvinar id, aliquet a risus. Fusce a sapien in odio vulputate lobortis.
@@ -44,13 +36,7 @@ export default class Home extends Component {
                         <div className='vrincesse'>
                          <img src='https://4.bp.blogspot.com/-6cdKuzKOcDU/VAN-RUsAIZI/AAAAAAAAAPU/gX2zRU8TVLM/s1600/baron2400.png' className='baron' />
                          </div>
-                <div>
-                <Footer />
-                </div>
+
             </div>
         );
     }}
-
-if (document.getElementById('appli')) {
-    ReactDOM.render(<Home />, document.getElementById('appli'));
-}

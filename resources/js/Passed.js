@@ -7,9 +7,6 @@ export default class Passed extends Component {
     render() {
         return (
             <div>
-                <div>
-                    <Navbar />
-                </div>
                 <div className='eventsPassed'>
 
                     <p className='passedEvents'>
@@ -37,13 +34,6 @@ export default class Passed extends Component {
                 <div>
                     <img src='http://icons.iconarchive.com/icons/jonathan-rey/simpsons/256/Homer-Simpson-02-Donut-icon.png' className='homer' />
                 </div>
-                <div>
-                    <Footer />
-                </div>
             </div>
         );
     }}
-
-if (document.getElementById('appli')) {
-    ReactDOM.render(<Passed />, document.getElementById('appli'));
-}

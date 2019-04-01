@@ -65305,24 +65305,20 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./resources/js/Home.js":
-/*!******************************!*\
-  !*** ./resources/js/Home.js ***!
-  \******************************/
+/***/ "./resources/js/Create.js":
+/*!********************************!*\
+  !*** ./resources/js/Create.js ***!
+  \********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Home; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Create; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_Navbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Navbar */ "./resources/js/components/Navbar.js");
-/* harmony import */ var _components_Brand__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Brand */ "./resources/js/components/Brand.js");
-/* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Footer */ "./resources/js/components/Footer.js");
-/* harmony import */ var _routes_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./routes.js */ "./resources/js/routes.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65333,9 +65329,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -65344,48 +65340,188 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
-
-
-
-var Home =
+var Create =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Home, _Component);
+  _inherits(Create, _Component);
 
-  function Home() {
-    _classCallCheck(this, Home);
+  function Create(props) {
+    var _this;
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Home).apply(this, arguments));
+    _classCallCheck(this, Create);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Create).call(this, props));
+    _this.onChangeName = _this.onChangeName.bind(_assertThisInitialized(_this));
+    _this.onChangeShortDesc = _this.onChangeShortDesc.bind(_assertThisInitialized(_this));
+    _this.onChangeDesc = _this.onChangeDesc.bind(_assertThisInitialized(_this));
+    _this.state = {
+      file: '',
+      imagePreviewUrl: ''
+    };
+    _this.onChangeImg = _this.onChangeImg.bind(_assertThisInitialized(_this));
+    _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
+    _this.state = {
+      character: [],
+      name: '',
+      image: '',
+      shortDescription: '',
+      description: '',
+      file: '',
+      imagePreviewUrl: ''
+    };
+    return _this;
   }
 
-  _createClass(Home, [{
+  _createClass(Create, [{
+    key: "onSubmit",
+    value: function onSubmit(data) {
+      data.preventDefault();
+      var obj = {
+        name: this.state.name,
+        description: this.state.description,
+        shortDescription: this.state.shortDescription,
+        image: this.state.imagePreviewUrl.substr(this.state.imagePreviewUrl.indexOf(',') + 1)
+      };
+      axios.post("https://character-database.becode.xyz/characters/", obj).then(this.props.push('/'));
+    }
+  }, {
+    key: "_handleImageChange",
+    value: function _handleImageChange(e) {
+      var _this2 = this;
+
+      e.preventDefault();
+      var reader = new FileReader();
+      var file = e.target.files[0];
+
+      reader.onloadend = function () {
+        _this2.setState({
+          file: file,
+          imagePreviewUrl: reader.result
+        });
+      };
+
+      reader.readAsDataURL(file);
+    }
+  }, {
+    key: "onChangeName",
+    value: function onChangeName(e) {
+      this.setState({
+        name: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeShortDesc",
+    value: function onChangeShortDesc(e) {
+      this.setState({
+        shortDescription: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeDesc",
+    value: function onChangeDesc(e) {
+      this.setState({
+        description: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeImg",
+    value: function onChangeImg(e) {
+      this.setState({
+        image: e.target.value
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Navbar__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Brand__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "eventsPassed"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "passedEvents"
-      }, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In consequat lobortis odio, nec bibendum magna pharetra eget. Donec quam justo, blandit eu turpis sed, vestibulum mollis metus. Pellentesque nec quam sit amet purus sagittis dictum et a nunc. Quisque pulvinar justo sit amet interdum mattis. Vestibulum posuere sed eros at faucibus. In sit amet congue diam. Etiam quis congue dui. Aliquam porttitor ligula in tellus luctus ornare. Proin libero metus, blandit eget dui sit amet, facilisis elementum ex. Pellentesque in ex vitae arcu pharetra maximus quis nec turpis. Aliquam consectetur consequat turpis, vitae blandit est malesuada efficitur. Aliquam condimentum scelerisque ipsum, nec tempor lorem placerat sed. Nulla neque orci, interdum non pulvinar id, aliquet a risus. Fusce a sapien in odio vulputate lobortis. Nulla quis lacus maximus, fringilla arcu id, pellentesque nunc. Vivamus tincidunt mauris non turpis posuere malesuada. Sed quis quam sed arcu ullamcorper facilisis. Proin dictum mauris a ipsum vehicula feugiat. Fusce odio tortor, venenatis at euismod ac, dapibus non urna. Fusce laoreet consectetur odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec arcu sem, lobortis non justo quis, molestie condimentum ante. Phasellus quis justo risus. Sed in nibh orci. Maecenas pulvinar sit amet enim ut consequat. Quisque eget pharetra nisl. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean ipsum tellus, finibus ut lacus eget, hendrerit ornare odio. Nulla felis turpis, condimentum eu aliquam et, cursus et risus. Maecenas at mattis quam. Aenean quis finibus ipsum. Etiam ornare quam ac neque mollis, a pretium elit convallis. Pellentesque vel eros vel lorem dapibus vestibulum molestie eget justo. Proin consectetur maximus ex, eu sollicitudin erat. Curabitur maximus tincidunt velit, nec dignissim nulla porta sed. Duis feugiat ligula purus, sit amet ultricies dolor viverra at. Phasellus posuere, ante vel rhoncus molestie, est tellus eleifend est, quis scelerisque velit tellus et lectus. Cras nec vestibulum nisl. Suspendisse vel tempor tortor. Proin pretium lacus vitae felis lacinia, non pulvinar ligula sollicitudin. Proin eleifend lorem et malesuada mollis. Suspendisse potenti. Donec porta arcu lorem, nec accumsan ligula placerat euismod. Ut elementum iaculis leo in dignissim. Vestibulum enim diam, ornare id tristique ut, vehicula non magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse potenti. Integer vel molestie nunc. Maecenas et urna sit amet mauris dictum vestibulum nec vel libero. Vestibulum pulvinar lobortis ullamcorper. Etiam pellentesque enim et risus convallis, eget ultricies neque iaculis. Nam at diam sit amet felis pharetra tempor sit amet quis nibh. Ut laoreet enim vel felis tempor mattis. In ullamcorper, dui vel vehicula rutrum, eros nisi placerat mauris, tempus tempus mauris massa vitae quam. Suspendisse lobortis nisi eget egestas dignissim. Proin at ligula diam. Suspendisse at magna et nibh eleifend venenatis. Donec eget velit nec eros bibendum congue non a sem. Vivamus a ipsum at est fermentum lobortis. Nunc ut ex et ante porttitor ultrices. Aliquam ultrices arcu turpis, et feugiat odio semper ut. Etiam malesuada lectus ut leo ornare egestas. Mauris ac massa ipsum. Donec semper, massa vitae suscipit dignissim, orci ante mattis nibh, quis vehicula dui turpis sed lacus. Duis euismod faucibus dictum. Etiam iaculis lorem eget sodales facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In consequat lobortis odio, nec bibendum magna pharetra eget. Donec quam justo, blandit eu turpis sed, vestibulum mollis metus. Pellentesque nec quam sit amet purus sagittis dictum et a nunc. Quisque pulvinar justo sit amet interdum mattis. Vestibulum posuere sed eros at faucibus. In sit amet congue diam. Etiam quis congue dui. Aliquam porttitor ligula in tellus luctus ornare. Proin libero metus, blandit eget dui sit amet, facilisis elementum ex. Pellentesque in ex vitae arcu pharetra maximus quis nec turpis. Aliquam consectetur consequat turpis, vitae blandit est malesuada efficitur. Aliquam condimentum scelerisque ipsum, nec tempor lorem placerat sed. Nulla neque orci, interdum non pulvinar id, aliquet a risus. Fusce a sapien in odio vulputate lobortis. Nulla quis lacus maximus, fringilla arcu id, pellentesque nunc. Vivamus tincidunt mauris non turpis posuere malesuada. Sed quis quam sed arcu ullamcorper facilisis. Proin dictum mauris a ipsum vehicula feugiat. Fusce odio tortor, venenatis at euismod ac, dapibus non urna. Fusce laoreet consectetur odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec arcu sem, lobortis non justo quis, molestie condimentum ante. Phasellus quis justo risus. Sed in nibh orci. Maecenas pulvinar sit amet enim ut consequat. Quisque eget pharetra nisl. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean ipsum tellus, finibus ut lacus eget, hendrerit ornare odio. Nulla felis turpis, condimentum eu aliquam et, cursus et risus. Maecenas at mattis quam. Aenean quis finibus ipsum. Etiam ornare quam ac neque mollis, a pretium elit convallis. Pellentesque vel eros vel lorem dapibus vestibulum molestie eget justo. Proin consectetur maximus ex, eu sollicitudin erat. Curabitur maximus tincidunt velit, nec dignissim nulla porta sed. Duis feugiat ligula purus, sit amet ultricies dolor viverra at. Phasellus posuere, ante vel rhoncus molestie, est tellus eleifend est, quis scelerisque velit tellus et lectus. Cras nec vestibulum nisl. Suspendisse vel tempor tortor. Proin pretium lacus vitae felis lacinia, non pulvinar ligula sollicitudin. Proin eleifend lorem et malesuada mollis. Suspendisse potenti. Donec porta arcu lorem, nec accumsan ligula placerat euismod. Ut elementum iaculis leo in dignissim. Vestibulum enim diam, ornare id tristique ut, vehicula non magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse potenti. Integer vel molestie nunc. Maecenas et urna sit amet mauris dictum vestibulum nec vel libero. Vestibulum pulvinar lobortis ullamcorper. Etiam pellentesque enim et risus convallis, eget ultricies neque iaculis. Nam at diam sit amet felis pharetra tempor sit amet quis nibh. Ut laoreet enim vel felis tempor mattis. In ullamcorper, dui vel vehicula rutrum, eros nisi placerat mauris, tempus tempus mauris massa vitae quam. Suspendisse lobortis nisi eget egestas dignissim. Proin at ligula diam. Suspendisse at magna et nibh eleifend venenatis. Donec eget velit nec eros bibendum congue non a sem. Vivamus a ipsum at est fermentum lobortis. Nunc ut ex et ante porttitor ultrices. Aliquams ultrices arcu turpis, et feugiat odio semper ut. Etiam malesuada lectus ut leo ornare egestas. Mauris ac massa ipsum. Donec semper, massa vitae suscipit dignissim, orci ante mattis nibh, quis vehicula dui turpis sed lacus. Duis euismod faucibus dictum. Etiam iaculis lorem eget sodales facilisis.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "http://icons.iconarchive.com/icons/jonathan-rey/simpsons/256/Homer-Simpson-02-Donut-icon.png",
-        className: "homer"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "vrincesse"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "https://4.bp.blogspot.com/-6cdKuzKOcDU/VAN-RUsAIZI/AAAAAAAAAPU/gX2zRU8TVLM/s1600/baron2400.png",
-        className: "baron"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Footer__WEBPACK_IMPORTED_MODULE_4__["default"], null)));
+      var _this3 = this;
+
+      var imagePreviewUrl = this.state.imagePreviewUrl;
+      var $imagePreview = null;
+
+      if (imagePreviewUrl) {
+        $imagePreview = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "preview-img",
+          ref: "image",
+          src: imagePreviewUrl,
+          width: "100",
+          height: "100"
+        }));
+      } else {
+        var preview;
+
+        if (this.state.super_hero_image) {
+          preview = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            className: "preview-img",
+            ref: "image",
+            src: "data:image/;base64," + this.state.super_hero_image,
+            width: "100",
+            height: "100"
+          });
+        } else {
+          preview = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            className: "preview-img",
+            src: "https://img3.cliparto.com/pic/s/256180/5361912-user-icon-handcuffs-icon.jpg",
+            width: "100",
+            height: "100"
+          });
+        }
+
+        $imagePreview = preview;
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Link, {
+        to: "/"
+      }, "Return to home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Add a new super hero"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "col-md-6 mx-auto",
+        onSubmit: this.onSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-control",
+        type: "text",
+        name: "name",
+        ref: "name",
+        defaultValue: this.state.name,
+        onChange: this.onChangeName
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "preview text-center"
+      }, $imagePreview, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "browse-button"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-pencil-alt"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "browse-input",
+        type: "file",
+        name: "image",
+        id: "UploadedFile",
+        onChange: function onChange(e) {
+          return _this3._handleImageChange(e);
+        }
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "Error"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-control",
+        type: "text",
+        ref: "shortDescription",
+        name: "shortDescription",
+        defaultValue: this.state.shortDescription,
+        onChange: this.onChangeShortDesc
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        className: "form-control",
+        ref: "description",
+        name: "description",
+        rows: "10",
+        onChange: this.onChangeDesc
+      }, this.state.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "submit",
+        className: "form-control btn btn-primary",
+        value: "submit"
+      }))));
     }
   }]);
 
-  return Home;
+  return Create;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
-
-if (document.getElementById('appli')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Home, null), document.getElementById('appli'));
-}
 
 /***/ }),
 
@@ -65403,7 +65539,7 @@ if (document.getElementById('appli')) {
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-__webpack_require__(/*! ./Home */ "./resources/js/Home.js");
+__webpack_require__(/*! ./components/layout */ "./resources/js/components/layout.js");
 
 /***/ }),
 
@@ -65477,8 +65613,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Brand; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65496,7 +65630,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 
 
 
@@ -65546,8 +65679,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Footer; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65565,7 +65696,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 
 
 
@@ -65623,6 +65753,77 @@ function (_Component) {
 
 /***/ }),
 
+/***/ "./resources/js/components/Home.js":
+/*!*****************************************!*\
+  !*** ./resources/js/components/Home.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Home; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Brand__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Brand */ "./resources/js/components/Brand.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var Home =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Home, _Component);
+
+  function Home() {
+    _classCallCheck(this, Home);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Home).apply(this, arguments));
+  }
+
+  _createClass(Home, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Brand__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "eventsPassed"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "passedEvents"
+      }, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In consequat lobortis odio, nec bibendum magna pharetra eget. Donec quam justo, blandit eu turpis sed, vestibulum mollis metus. Pellentesque nec quam sit amet purus sagittis dictum et a nunc. Quisque pulvinar justo sit amet interdum mattis. Vestibulum posuere sed eros at faucibus. In sit amet congue diam. Etiam quis congue dui. Aliquam porttitor ligula in tellus luctus ornare. Proin libero metus, blandit eget dui sit amet, facilisis elementum ex. Pellentesque in ex vitae arcu pharetra maximus quis nec turpis. Aliquam consectetur consequat turpis, vitae blandit est malesuada efficitur. Aliquam condimentum scelerisque ipsum, nec tempor lorem placerat sed. Nulla neque orci, interdum non pulvinar id, aliquet a risus. Fusce a sapien in odio vulputate lobortis. Nulla quis lacus maximus, fringilla arcu id, pellentesque nunc. Vivamus tincidunt mauris non turpis posuere malesuada. Sed quis quam sed arcu ullamcorper facilisis. Proin dictum mauris a ipsum vehicula feugiat. Fusce odio tortor, venenatis at euismod ac, dapibus non urna. Fusce laoreet consectetur odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec arcu sem, lobortis non justo quis, molestie condimentum ante. Phasellus quis justo risus. Sed in nibh orci. Maecenas pulvinar sit amet enim ut consequat. Quisque eget pharetra nisl. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean ipsum tellus, finibus ut lacus eget, hendrerit ornare odio. Nulla felis turpis, condimentum eu aliquam et, cursus et risus. Maecenas at mattis quam. Aenean quis finibus ipsum. Etiam ornare quam ac neque mollis, a pretium elit convallis. Pellentesque vel eros vel lorem dapibus vestibulum molestie eget justo. Proin consectetur maximus ex, eu sollicitudin erat. Curabitur maximus tincidunt velit, nec dignissim nulla porta sed. Duis feugiat ligula purus, sit amet ultricies dolor viverra at. Phasellus posuere, ante vel rhoncus molestie, est tellus eleifend est, quis scelerisque velit tellus et lectus. Cras nec vestibulum nisl. Suspendisse vel tempor tortor. Proin pretium lacus vitae felis lacinia, non pulvinar ligula sollicitudin. Proin eleifend lorem et malesuada mollis. Suspendisse potenti. Donec porta arcu lorem, nec accumsan ligula placerat euismod. Ut elementum iaculis leo in dignissim. Vestibulum enim diam, ornare id tristique ut, vehicula non magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse potenti. Integer vel molestie nunc. Maecenas et urna sit amet mauris dictum vestibulum nec vel libero. Vestibulum pulvinar lobortis ullamcorper. Etiam pellentesque enim et risus convallis, eget ultricies neque iaculis. Nam at diam sit amet felis pharetra tempor sit amet quis nibh. Ut laoreet enim vel felis tempor mattis. In ullamcorper, dui vel vehicula rutrum, eros nisi placerat mauris, tempus tempus mauris massa vitae quam. Suspendisse lobortis nisi eget egestas dignissim. Proin at ligula diam. Suspendisse at magna et nibh eleifend venenatis. Donec eget velit nec eros bibendum congue non a sem. Vivamus a ipsum at est fermentum lobortis. Nunc ut ex et ante porttitor ultrices. Aliquam ultrices arcu turpis, et feugiat odio semper ut. Etiam malesuada lectus ut leo ornare egestas. Mauris ac massa ipsum. Donec semper, massa vitae suscipit dignissim, orci ante mattis nibh, quis vehicula dui turpis sed lacus. Duis euismod faucibus dictum. Etiam iaculis lorem eget sodales facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In consequat lobortis odio, nec bibendum magna pharetra eget. Donec quam justo, blandit eu turpis sed, vestibulum mollis metus. Pellentesque nec quam sit amet purus sagittis dictum et a nunc. Quisque pulvinar justo sit amet interdum mattis. Vestibulum posuere sed eros at faucibus. In sit amet congue diam. Etiam quis congue dui. Aliquam porttitor ligula in tellus luctus ornare. Proin libero metus, blandit eget dui sit amet, facilisis elementum ex. Pellentesque in ex vitae arcu pharetra maximus quis nec turpis. Aliquam consectetur consequat turpis, vitae blandit est malesuada efficitur. Aliquam condimentum scelerisque ipsum, nec tempor lorem placerat sed. Nulla neque orci, interdum non pulvinar id, aliquet a risus. Fusce a sapien in odio vulputate lobortis. Nulla quis lacus maximus, fringilla arcu id, pellentesque nunc. Vivamus tincidunt mauris non turpis posuere malesuada. Sed quis quam sed arcu ullamcorper facilisis. Proin dictum mauris a ipsum vehicula feugiat. Fusce odio tortor, venenatis at euismod ac, dapibus non urna. Fusce laoreet consectetur odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec arcu sem, lobortis non justo quis, molestie condimentum ante. Phasellus quis justo risus. Sed in nibh orci. Maecenas pulvinar sit amet enim ut consequat. Quisque eget pharetra nisl. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean ipsum tellus, finibus ut lacus eget, hendrerit ornare odio. Nulla felis turpis, condimentum eu aliquam et, cursus et risus. Maecenas at mattis quam. Aenean quis finibus ipsum. Etiam ornare quam ac neque mollis, a pretium elit convallis. Pellentesque vel eros vel lorem dapibus vestibulum molestie eget justo. Proin consectetur maximus ex, eu sollicitudin erat. Curabitur maximus tincidunt velit, nec dignissim nulla porta sed. Duis feugiat ligula purus, sit amet ultricies dolor viverra at. Phasellus posuere, ante vel rhoncus molestie, est tellus eleifend est, quis scelerisque velit tellus et lectus. Cras nec vestibulum nisl. Suspendisse vel tempor tortor. Proin pretium lacus vitae felis lacinia, non pulvinar ligula sollicitudin. Proin eleifend lorem et malesuada mollis. Suspendisse potenti. Donec porta arcu lorem, nec accumsan ligula placerat euismod. Ut elementum iaculis leo in dignissim. Vestibulum enim diam, ornare id tristique ut, vehicula non magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse potenti. Integer vel molestie nunc. Maecenas et urna sit amet mauris dictum vestibulum nec vel libero. Vestibulum pulvinar lobortis ullamcorper. Etiam pellentesque enim et risus convallis, eget ultricies neque iaculis. Nam at diam sit amet felis pharetra tempor sit amet quis nibh. Ut laoreet enim vel felis tempor mattis. In ullamcorper, dui vel vehicula rutrum, eros nisi placerat mauris, tempus tempus mauris massa vitae quam. Suspendisse lobortis nisi eget egestas dignissim. Proin at ligula diam. Suspendisse at magna et nibh eleifend venenatis. Donec eget velit nec eros bibendum congue non a sem. Vivamus a ipsum at est fermentum lobortis. Nunc ut ex et ante porttitor ultrices. Aliquams ultrices arcu turpis, et feugiat odio semper ut. Etiam malesuada lectus ut leo ornare egestas. Mauris ac massa ipsum. Donec semper, massa vitae suscipit dignissim, orci ante mattis nibh, quis vehicula dui turpis sed lacus. Duis euismod faucibus dictum. Etiam iaculis lorem eget sodales facilisis.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "http://icons.iconarchive.com/icons/jonathan-rey/simpsons/256/Homer-Simpson-02-Donut-icon.png",
+        className: "homer"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "vrincesse"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "https://4.bp.blogspot.com/-6cdKuzKOcDU/VAN-RUsAIZI/AAAAAAAAAPU/gX2zRU8TVLM/s1600/baron2400.png",
+        className: "baron"
+      })));
+    }
+  }]);
+
+  return Home;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Navbar.js":
 /*!*******************************************!*\
   !*** ./resources/js/components/Navbar.js ***!
@@ -65632,110 +65833,105 @@ function (_Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Navbar; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+/* harmony import */ var _Create__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Create */ "./resources/js/Create.js");
 
 
 
 
-var Navbar =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Navbar, _Component);
+var Navbar = function Navbar() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+    className: "navbar navbar-expand-lg navbar-dark bg-dark"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "navbar-brand",
+    href: "#"
+  }, "Do Nuts Event"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "navbar-toggler",
+    type: "button",
+    "data-toggle": "collapse",
+    "data-target": "#navbarColor02",
+    "aria-controls": "navbarColor02",
+    "aria-expanded": "false",
+    "aria-label": "Toggle navigation"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "navbar-toggler-icon"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "collapse navbar-collapse",
+    id: "navbarColor02"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "navbar-nav mr-auto"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "nav-item active"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    className: "nav-link",
+    to: "/"
+  }, "Home")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "nav-item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    className: "nav-link",
+    to: "/Create",
+    component: _Create__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }, "Create Event")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "nav-item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    className: "nav-link",
+    to: "/"
+  }, "Passed Event"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    className: "form-inline my-2 my-lg-0"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "form-control mr-sm-2",
+    type: "text",
+    placeholder: "Pseudo"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "form-control mr-sm-2",
+    type: "password",
+    placeholder: "Password"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn btn-secondary my-2 my-sm-0",
+    type: "submit"
+  }, "Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn btn-secondary my-2 my-sm-0",
+    type: "submit"
+  }, "Register"))));
+};
 
-  function Navbar() {
-    _classCallCheck(this, Navbar);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(Navbar).apply(this, arguments));
-  }
-
-  _createClass(Navbar, [{
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
-        className: "navbar navbar-expand-lg navbar-dark bg-dark"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "navbar-brand"
-      }, "Do Nuts Event"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "navbar-toggler",
-        type: "button",
-        "data-toggle": "collapse",
-        "data-target": "#navbarColor02",
-        "aria-controls": "navbarColor02",
-        "aria-expanded": "false",
-        "aria-label": "Toggle navigation"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "navbar-toggler-icon"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "collapse navbar-collapse",
-        id: "navbarColor02"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Router"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "navbar-nav mr-auto"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "nav-item active"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        className: "nav-link",
-        to: '/'
-      }, "Home")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "nav-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        className: "nav-link",
-        to: '/Create'
-      }, "Create Event")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "nav-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        className: "nav-link",
-        to: '/Passed'
-      }, "Passed Event")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "form-inline my-2 my-lg-0"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "form-control mr-sm-2",
-        type: "text",
-        placeholder: "Pseudo"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "form-control mr-sm-2",
-        type: "password",
-        placeholder: "Password"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-secondary my-2 my-sm-0",
-        type: "submit"
-      }, "Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-secondary my-2 my-sm-0",
-        type: "submit"
-      }, "Register"))));
-    }
-  }]);
-
-  return Navbar;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-
+/* harmony default export */ __webpack_exports__["default"] = (Navbar);
 
 /***/ }),
 
-/***/ "./resources/js/routes.js":
-/*!********************************!*\
-  !*** ./resources/js/routes.js ***!
-  \********************************/
+/***/ "./resources/js/components/layout.js":
+/*!*******************************************!*\
+  !*** ./resources/js/components/layout.js ***!
+  \*******************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _Navbar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Navbar */ "./resources/js/components/Navbar.js");
+/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./routes */ "./resources/js/components/routes.js");
+/* harmony import */ var _Footer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Footer */ "./resources/js/components/Footer.js");
+
+
+
+
+
+
+react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Navbar__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_routes__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Footer__WEBPACK_IMPORTED_MODULE_5__["default"], null)), document.getElementById('appli'));
+
+/***/ }),
+
+/***/ "./resources/js/components/routes.js":
+/*!*******************************************!*\
+  !*** ./resources/js/components/routes.js ***!
+  \*******************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -65744,61 +65940,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+/* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Home */ "./resources/js/components/Home.js");
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+ // import Create from './Create';
+// import Passed from './Passed';
 
 
 
+var Routes = function Routes() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/",
+    component: _Home__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }));
+};
 
-var routing =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(routing, _Component);
-
-  function routing() {
-    _classCallCheck(this, routing);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(routing).apply(this, arguments));
-  }
-
-  _createClass(routing, [{
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["HashRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-        exact: true,
-        path: "/",
-        component: Home
-      }), "//   ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-        exact: true,
-        path: "/Create/:id",
-        component: Create
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-        exact: true,
-        path: "/Passed",
-        component: Passed
-      }))));
-    }
-  }]);
-
-  return routing;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-/* harmony default export */ __webpack_exports__["default"] = (routing);
+/* harmony default export */ __webpack_exports__["default"] = (Routes);
 
 /***/ }),
 
