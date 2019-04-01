@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
 
 export default class Create extends Component {
     constructor(props) {
@@ -128,6 +129,4 @@ export default class Create extends Component {
       }
     } 
 
-if (document.getElementById('appli')) {
-    ReactDOM.render(<Create />, document.getElementById('appli'));
-}
+

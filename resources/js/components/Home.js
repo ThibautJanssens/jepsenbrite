@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-
+import Brand from './Brand'
 
 
 export default class Home extends Component {
     render() {
         return (
             <div>
-                
+                <Brand/>
                 <div className="eventsPassed">
                 <p className='passedEvents'>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In consequat lobortis odio, nec bibendum magna pharetra eget. Donec quam justo, blandit eu turpis sed, vestibulum mollis metus. Pellentesque nec quam sit amet purus sagittis dictum et a nunc. Quisque pulvinar justo sit amet interdum mattis. Vestibulum posuere sed eros at faucibus. In sit amet congue diam. Etiam quis congue dui. Aliquam porttitor ligula in tellus luctus ornare. Proin libero metus, blandit eget dui sit amet, facilisis elementum ex. Pellentesque in ex vitae arcu pharetra maximus quis nec turpis. Aliquam consectetur consequat turpis, vitae blandit est malesuada efficitur. Aliquam condimentum scelerisque ipsum, nec tempor lorem placerat sed. Nulla neque orci, interdum non pulvinar id, aliquet a risus. Fusce a sapien in odio vulputate lobortis.
