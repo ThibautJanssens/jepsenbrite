@@ -35,7 +35,7 @@ export default class Create extends Component {
 
 
     axios.post("https://character-database.becode.xyz/characters/" , obj)
-          .then(this.props.push('/'))
+          .then(this.props.history.push('/'))
 
 
     }
