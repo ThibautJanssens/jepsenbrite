@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
+
 export default class Navbar extends Component {
     render() {
         return (
@@ -16,7 +17,7 @@ export default class Navbar extends Component {
       <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
     </li>
     <li className="nav-item">
-      <a className="nav-link" href="#">Create Event</a>
+      <a className="nav-link" href="/Create">Create Event</a>
     </li>
     <li className="nav-item">
       <a className="nav-link" href="#">Passed Events</a>
