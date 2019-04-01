@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\User;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
+
+  public function __construct()
+{
+    $this->middleware('auth:api', ['except' => ['login', 'register']]);
+}
+
     public function register(Request $request)
     {
         $user = User::create([
@@ -22,7 +29,7 @@ class AuthController extends Controller
 
     public function login()
     {
-        $credentials = request(['email', 'password']);
+        $credentials = request(['name', 'email', 'password']);
 
         if (! $token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);

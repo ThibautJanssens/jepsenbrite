@@ -28,6 +28,10 @@ Route::put('/events/{event}', 'EventController@update')->name('events.update');
 
 Route::delete('/events/{event}', 'EventController@destroy')->name('events.destroy');
 
-// });
-Route::post('/register', 'AuthController@register');
-Route::post('/login', 'AuthController@login');
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+Route::post('/register', 'AuthController@register')->name('register');
+Route::post('/login', 'AuthController@login')->name('login');
+Route::post('/logout', 'AuthController@logout')->name('logout');
