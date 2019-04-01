@@ -10663,6 +10663,8 @@ body {
 .navbar {
   background-color: #000000 !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  -webkit-filter: drop-shadow(3px 3px 10px #210633);
+          filter: drop-shadow(3px 3px 10px #210633);
 }
 
 .navbar-brand {
@@ -10673,10 +10675,33 @@ body {
   position: absolute;
   width: 100%;
   margin-bottom: 0;
-  background-color: #00425C;
-  color: black;
+  background-color: #03020D;
+  color: darkgrey;
   text-align: center;
   font-size: 2rem;
+}
+
+.gitAccount {
+  font-size: 1rem;
+  list-style-type: none;
+  margin: 1rem;
+}
+
+.gitList {
+  display: flex;
+  justify-content: space-around;
+  -webkit-filter: drop-shadow(7px 7px 2px black);
+          filter: drop-shadow(7px 7px 2px black);
+}
+
+@media screen and (max-width: 500px) {
+  .gitAccount {
+    margin: 0;
+  }
+
+  .passedEvents {
+    padding: 0;
+  }
 }
 
 .brandDonut {
@@ -10739,6 +10764,12 @@ body {
   background-color: black;
   border-style: solid;
   border-color: white;
+  -webkit-filter: drop-shadow(0px 0px 5px white);
+          filter: drop-shadow(0px 0px 5px white);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 .homer {
@@ -10746,13 +10777,65 @@ body {
   position: fixed;
   width: 8rem;
   z-index: 1;
-  -webkit-filter: drop-shadow(2px 2px 20px red);
-          filter: drop-shadow(2px 2px 20px red);
+  -webkit-filter: drop-shadow(7px 7px 2px black);
+          filter: drop-shadow(7px 7px 2px black);
+  -webkit-animation: pulse 10s infinite;
+          animation: pulse 10s infinite;
+}
+
+@-webkit-keyframes pulse {
+  from {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.25;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  from {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.25;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .tryIt {
   max-width: 50rem;
   text-align: center;
   margin-left: 14rem;
+}
+
+.passedEvents {
+  max-width: 50rem;
+  margin: auto;
+  background-color: rgba(11, 52, 99, 0.3);
+  padding: 3rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  border-style: solid;
+  border-width: 10px;
+  border-color: rgba(11, 52, 99, 0.4);
+  -webkit-filter: drop-shadow(7px 7px 2px black);
+          filter: drop-shadow(7px 7px 2px black);
+}
+
+.eventsPassed {
+  text-align: center;
+}
+
+input {
+  background-color: red;
 }
 
