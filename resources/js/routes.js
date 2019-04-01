@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
-import { Route, Switch, HashRouter} from 'react-dom';
-import Create from './Create';
-import Home from './Home';
+import { Route, Switch, HashRouter, Link} from 'react-router-dom';
 
-class App extends Component {
-render() {
-return (
-<HashRouter>
-<div>
-<Switch>
-<Route exact path='/Create' component={Create}/>
 
-         </Switch>
-      </div>
+class routing extends Component {
+    render() {
+      return (
+        <HashRouter>
+          <div>
+             <Switch>
+                <Route exact path ='/' component={Home}/>
+            //   <Route exact path ='/Create/:id' component={Create}/>
+               <Route exact path='/Passed' component={Passed}/>
+             </Switch>
+          </div>
 
-    </HashRouter>
-  )
+        </HashRouter>
+      )
+    }
 }
 
-}
-
-export default App;
+export default routing;

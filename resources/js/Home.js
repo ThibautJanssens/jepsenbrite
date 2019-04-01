@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Navbar from './components/Navbar';
 import Brand from './components/Brand';
 import Footer from './components/Footer';
-import App from './routes.js';
+import routing from './routes.js';
 
 export default class Home extends Component {
     render() {
@@ -13,7 +13,7 @@ export default class Home extends Component {
                     <Navbar />
                 </div>
                 <div>
-                    <Brand/>
+                    <Brand />
                 </div>
                 <div className="eventsPassed">
                 <p className='passedEvents'>
