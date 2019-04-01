@@ -6,4 +6,4 @@
  */
 
 require('./bootstrap');
-require('./Home');
+require('./components/layout');

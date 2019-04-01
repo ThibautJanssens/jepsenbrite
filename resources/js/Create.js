@@ -85,14 +85,14 @@ export default class Create extends Component {
         if (imagePreviewUrl) {
             $imagePreview = (<React.Fragment>
               {/* "data:image;base64," */}
-                <img class="preview-img" ref="image" src={imagePreviewUrl} width="100" height="100" />
+                <img className="preview-img" ref="image" src={imagePreviewUrl} width="100" height="100" />
               </React.Fragment>);
           } else {
             let preview;
             if (this.state.super_hero_image){
-              preview = <img class="preview-img" ref="image" src={"data:image/;base64,"+this.state.super_hero_image} width="100" height="100" />
+              preview = <img className="preview-img" ref="image" src={"data:image/;base64,"+this.state.super_hero_image} width="100" height="100" />
             } else{
-              preview = <img class="preview-img" src="https://img3.cliparto.com/pic/s/256180/5361912-user-icon-handcuffs-icon.jpg" width="100" height="100" />
+              preview = <img className="preview-img" src="https://img3.cliparto.com/pic/s/256180/5361912-user-icon-handcuffs-icon.jpg" width="100" height="100" />
             }
             $imagePreview = (
                 preview);
@@ -107,16 +107,16 @@ export default class Create extends Component {
                 Add a new super hero
               </h1>
   
-              <form class="col-md-6 mx-auto" onSubmit={this.onSubmit}>
+              <form className="col-md-6 mx-auto" onSubmit={this.onSubmit}>
   
-                <input class="form-control" type="text" name="name" ref="name" defaultValue={this.state.name} onChange={this.onChangeName}></input>
-                <div class="preview text-center">
+                <input className="form-control" type="text" name="name" ref="name" defaultValue={this.state.name} onChange={this.onChangeName}></input>
+                <div className="preview text-center">
                   {$imagePreview}
-                    <div class="browse-button">
-                        <i class="fa fa-pencil-alt"></i>
-                        <input class="browse-input" type="file" name="image" id="UploadedFile" onChange={(e)=>this._handleImageChange(e)} />
+                    <div className="browse-button">
+                        <i className="fa fa-pencil-alt"></i>
+                        <input className="browse-input" type="file" name="image" id="UploadedFile" onChange={(e)=>this._handleImageChange(e)} />
                     </div>
-                    <span class="Error"></span>
+                    <span className="Error"></span>
                 </div>
                 <input class="form-control" type="text" ref="shortDescription" name="shortDescription" defaultValue={this.state.shortDescription} onChange={this.onChangeShortDesc}></input>
                 <textarea class="form-control" ref="description" name="description" rows="10"  onChange={this.onChangeDesc}>{this.state.description}</textarea>
