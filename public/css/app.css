@@ -10663,8 +10663,8 @@ body {
 .navbar {
   background-color: #000000 !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-  -webkit-filter: drop-shadow(3px 3px 10px #210633);
-          filter: drop-shadow(3px 3px 10px #210633);
+  -webkit-filter: drop-shadow(3px 3px 10px black);
+          filter: drop-shadow(3px 3px 10px black);
 }
 
 .navbar-brand {
@@ -10685,6 +10685,36 @@ body {
   font-size: 1rem;
   list-style-type: none;
   margin: 1rem;
+  -webkit-animation: git-logo-spin infinite 5s linear;
+          animation: git-logo-spin infinite 5s linear;
+}
+
+.gitAccount > a {
+  color: inherit;
+}
+
+@-webkit-keyframes git-logo-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+  }
+}
+
+@keyframes git-logo-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+  }
 }
 
 .gitList {
@@ -10701,6 +10731,10 @@ body {
 
   .passedEvents {
     padding: 0;
+  }
+
+  .donutImg {
+    display: none;
   }
 }
 
@@ -10729,6 +10763,7 @@ body {
   pointer-events: none;
   -webkit-filter: drop-shadow(2px 2px 20px white);
           filter: drop-shadow(2px 2px 20px white);
+  opacity: 0.9;
 }
 
 @-webkit-keyframes App-logo-spin {
@@ -10755,6 +10790,20 @@ body {
   }
 }
 
+.baron {
+  position: fixed;
+  opacity: 0;
+  width: 10%;
+  z-index: 1;
+  bottom: 103px;
+  margin-left: 100px;
+}
+
+.baron:hover {
+  width: 10%;
+  opacity: 1;
+}
+
 .btn {
   border-radius: 0;
   margin: 0.2rem;
@@ -10779,8 +10828,6 @@ html {
   z-index: 1;
   -webkit-filter: drop-shadow(7px 7px 2px black);
           filter: drop-shadow(7px 7px 2px black);
-  -webkit-animation: pulse 10s infinite;
-          animation: pulse 10s infinite;
 }
 
 @-webkit-keyframes pulse {
@@ -10815,6 +10862,24 @@ html {
   max-width: 50rem;
   text-align: center;
   margin-left: 14rem;
+}
+
+.doing,
+.eventsSpin {
+  border-bottom-style: solid;
+  border-width: 2px;
+}
+
+@media screen and (max-width: 650px) {
+  .brandDonut > h1 {
+    font-size: 3rem;
+  }
+}
+
+@media screen and (max-width: 940px) {
+  .homer {
+    display: none;
+  }
 }
 
 .passedEvents {

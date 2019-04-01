@@ -11,7 +11,6 @@
 body {
   background-color:#000117;
   color:white !important;
-
  //animation: body-logo-spin infinite 10s linear;
 }
 // @keyframes body-logo-spin {
@@ -27,7 +26,7 @@ body {
 .navbar {
   background-color: #000000 !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-  filter:drop-shadow(3px 3px 10px #210633);
+  filter:drop-shadow(3px 3px 10px black);
 }
 .navbar-brand {
   font-family: 'Bungee Inline', cursive;
@@ -46,6 +45,20 @@ body {
   font-size: 1rem;
   list-style-type: none;
   margin:1rem;
+  animation: git-logo-spin infinite 5s linear;
+}
+.gitAccount>a{
+  color:inherit;
+}
+
+
+@keyframes git-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
 }
 .gitList {
   display: flex;
@@ -58,6 +71,9 @@ filter: drop-shadow(7px 7px 2px black);
   }
   .passedEvents{
     padding:0;
+  }
+  .donutImg{
+    display:none;
   }
 }
 
@@ -81,6 +97,7 @@ filter: drop-shadow(7px 7px 2px black);
   height: 40vmin;
   pointer-events: none;
  filter:drop-shadow(2px 2px 20px white);
+ opacity:0.9;
 }
 @keyframes App-logo-spin {
   from {
@@ -90,8 +107,34 @@ filter: drop-shadow(7px 7px 2px black);
     transform: rotate(360deg);
   }
 }
+.baron {
+position:fixed;
+  opacity:0;
+  width:10%;
+  z-index: 1;
+bottom:103px;
+  margin-left:100px;
+}
 
-
+.baron:hover{
+  width:10%;
+  opacity:1;
+  // animation : pulse 1s infinite;
+  // @keyframes pulse {
+  //     from {
+  //         opacity   : 1;
+  //     //      transform: rotate(0deg);
+  //     }
+  //     50% {
+  //         opacity   : 0.15;
+  //   //      transform: rotate(360deg);
+  //     }
+  //     to {
+  //         opacity   : 1;
+  //   //      transform: rotate(0deg);
+  //     }
+  // }
+}
 .btn {
   border-radius:0;
   margin: 0.2rem;
@@ -112,8 +155,8 @@ html {
   width:8rem;
   z-index: 1;
   filter: drop-shadow(7px 7px 2px black);
-  //animation: body-logo-spin infinite 0.01s linear;
-  animation : pulse 10s infinite;
+ //animation: body-logo-spin infinite 0.01s linear;
+//  animation : pulse 10s infinite;
 }
 @keyframes pulse {
     from {
@@ -143,7 +186,20 @@ html {
   text-align: center;
   margin-left:14rem;
 }
-
+.doing, .eventsSpin{
+  border-bottom-style: solid;
+  border-width: 2px;
+}
+@media screen and (max-width:650px){
+  .brandDonut >  h1 {
+    font-size: 3rem;
+  }
+}
+@media screen and (max-width:940px){
+.homer{
+  display: none;
+}
+}
 
 .passedEvents{
   max-width:50rem;
