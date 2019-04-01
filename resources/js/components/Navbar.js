@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import {Link} from 'react-router-dom';
 
 export default class Navbar extends Component {
     render() {
@@ -11,17 +12,19 @@ export default class Navbar extends Component {
 </button>
 
 <div className="collapse navbar-collapse" id="navbarColor02">
+<Router>
   <ul className="navbar-nav mr-auto">
     <li className="nav-item active">
-      <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+      <Link  className='nav-link' to='/'>Home </Link>
     </li>
     <li className="nav-item">
-      <a className="nav-link" href="#">Create Event</a>
+      <Link  className='nav-link' to='/Create' >Create Event</Link>
     </li>
     <li className="nav-item">
-      <a className="nav-link" href="#">Passed Events</a>
+      <Link  className='nav-link' to='/Passed'>Passed Events</Link>
     </li>
   </ul>
+  </Router>
   <form className="form-inline my-2 my-lg-0">
     <input className="form-control mr-sm-2" type="text" placeholder="Pseudo" />
     <input className="form-control mr-sm-2" type="password" placeholder="Password" />

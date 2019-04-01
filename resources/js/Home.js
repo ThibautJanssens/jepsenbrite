@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Navbar from './components/Navbar';
 import Brand from './components/Brand';
 import Footer from './components/Footer';
+import App from './routes.js';
 
 export default class Home extends Component {
     render() {
