@@ -13,11 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-// Route::middleware('auth:api')->group(function () {
-
-Route::post('/logout', 'AuthController@logout');
-
-
 Route::get('/events', 'EventController@index')->name('events.index');
 
 Route::post('/events', 'EventController@store')->name('events.store');
