@@ -14,9 +14,9 @@ export default class Footer extends Component {
                           <li className='gitAccount'><a href='https://github.com/LaraLcq?tab=repositories' target='blank'>Lara</a></li>
                           <li className='gitAccount'><a href='https://github.com/VadimRadermacher?tab=repositories' target='blank'>Vadim</a></li>
                       </ul>
+
                   </div>
               </footer>
-
         );
     }
 }
