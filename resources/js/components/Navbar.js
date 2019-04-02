@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Create from '../Create';
+import Passed from '../Passed';
 
 const Navbar = () => (
           <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -15,10 +16,10 @@ const Navbar = () => (
       <Link className='nav-link' to='/'>Home</Link>
       </li>
       <li className="nav-item">
-      <Link className='nav-link' to='/Create' component={Create}>Create Event</Link>
+      <Link className='nav-link' to='/Passed' component={Passed}>Passed Events</Link>
       </li>
       <li className="nav-item">
-      <Link className='nav-link' to='/'>Passed Event</Link>
+      <Link className='nav-link' to='/Create' component={Create}>Create Event</Link>
       </li>
     </ul>
   <form className="form-inline my-2 my-lg-0">
