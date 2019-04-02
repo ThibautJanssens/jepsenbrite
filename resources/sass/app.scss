@@ -148,7 +148,7 @@ html {
   z-index: 1;
   filter: drop-shadow(7px 7px 2px black);
  //animation: body-logo-spin infinite 0.01s linear;
-//  animation : pulse 10s infinite;
+//animation : pulse 10s infinite;
 }
 @keyframes pulse {
     from {
@@ -222,7 +222,26 @@ html {
 .eventsPassed{
   text-align: center;
 }
-
+.wholeInfos{
+  margin:0;
+  background-color: #0F3357;
+  display: flex;
+  justify-content: space-around;
+}
+.info{
+  display:flex;
+  justify-content: flex-start;
+color:black;
+padding:1rem;
+}
+.infoIcons{
+  max-width:2rem;
+  max-height:2rem;
+}
+.infoTxt{
+  margin-top:0.5rem;
+  margin-left:0.3rem;
+}
 .form-control {
   border-radius: 0px;
 }
