@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Create from '../Create';
+import Register from './Register';
 import Passed from '../Passed';
-
 const Navbar = () => (
           <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <p className="navbar-brand">Do Nuts Event</p>
@@ -16,17 +16,17 @@ const Navbar = () => (
       <Link className='nav-link' to='/'>Home</Link>
       </li>
       <li className="nav-item">
-      <Link className='nav-link' to='/Passed' component={Passed}>Passed Events</Link>
+      <Link className='nav-link' to='/Create' component={Create}>Create Event</Link>
       </li>
       <li className="nav-item">
-      <Link className='nav-link' to='/Create' component={Create}>Create Event</Link>
+      <Link className='nav-link' to='/Passed'>Passed Event</Link>
       </li>
     </ul>
   <form className="form-inline my-2 my-lg-0">
     <input className="form-control mr-sm-2" type="text" placeholder="Pseudo" />
     <input className="form-control mr-sm-2" type="password" placeholder="Password" />
-    <button className="btn btn-secondary my-2 my-sm-0" type="submit">Login</button>
-    <button className="btn btn-secondary my-2 my-sm-0" type="submit">Register</button>
+    <Link className='nav-link' to='/'><button className="btn btn-secondary my-2 my-sm-0" type="submit">Login</button></Link>
+    <Link className='nav-link' to='/Register' component={Register}><button className="btn btn-secondary my-2 my-sm-0" type="submit">Register</button></Link>
   </form>
 </div>
 </nav>

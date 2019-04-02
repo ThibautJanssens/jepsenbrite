@@ -10931,7 +10931,7 @@ html {
 }
 
 .createTitle {
-  width: 30rem;
+  max-width: 30rem;
 }
 
 .form-group {
@@ -10961,6 +10961,16 @@ html {
 
   .brandDonut > h1 {
     font-size: 2rem !important;
+  }
+
+  .btn-sm,
+  .btn-group-sm > .btn {
+    max-width: 8rem !important;
+  }
+
+  .btn-sm > input,
+  .btn-group-sm > .btn > input {
+    max-width: 3rem;
   }
 }
 

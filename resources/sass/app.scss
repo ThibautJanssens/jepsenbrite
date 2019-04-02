@@ -248,8 +248,9 @@ padding:1rem;
 
 
 .createTitle{
-  width:30rem;
+  max-width:30rem;
 }
+
 .form-group {
   max-width:20rem;
   margin:auto;
@@ -273,6 +274,13 @@ padding:1rem;
   }
   .brandDonut>h1{
     font-size:2rem !important;
+  }
+.btn-sm{
+    max-width:8rem !important;
+  }
+  .btn-sm>input{
+  //  opacity:0;
+    max-width:3rem
   }
 }
 
