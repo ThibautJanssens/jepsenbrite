@@ -5,7 +5,7 @@ import Register from './Register';
 import Passed from '../Passed';
 const Navbar = () => (
           <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-            <p className="navbar-brand">Do Nuts Event</p>
+            <Link to='/' className="navbar-brand">Do Nuts Event</Link>
               <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
               </button>
@@ -25,8 +25,8 @@ const Navbar = () => (
   <form className="form-inline my-2 my-lg-0">
     <input className="form-control mr-sm-2" type="text" placeholder="Pseudo" />
     <input className="form-control mr-sm-2" type="password" placeholder="Password" />
-    <Link className='nav-link' to='/'><button className="btn btn-secondary my-2 my-sm-0" type="submit">Login</button></Link>
-    <Link className='nav-link' to='/Register' component={Register}><button className="btn btn-secondary my-2 my-sm-0" type="submit">Register</button></Link>
+  <Link className='btn btn-secondary my-2 my-sm-0' to='/' >Login</Link>
+  <Link className='btn btn-secondary my-2 my-sm-0' to='/Register' component={Register}>Register</Link>
   </form>
 </div>
 </nav>

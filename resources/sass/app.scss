@@ -257,6 +257,7 @@ padding:1rem;
 }
 //MEDIA QUERIES
 @media screen and (max-width:500px){
+
   .gitAccount{
     margin:0;
   }
@@ -277,10 +278,17 @@ padding:1rem;
   }
 .btn-sm{
     max-width:8rem !important;
+    margin-left:0 !important;
   }
   .btn-sm>input{
-  //  opacity:0;
-    max-width:3rem
+    max-width:200px;
+  }
+  .imgCreate>.form-group>label{
+    display:none;
+  }
+  .eventImg{
+    margin-left:0px !important ;
+
   }
 }
 

@@ -10966,11 +10966,20 @@ html {
   .btn-sm,
   .btn-group-sm > .btn {
     max-width: 8rem !important;
+    margin-left: 0 !important;
   }
 
   .btn-sm > input,
   .btn-group-sm > .btn > input {
-    max-width: 3rem;
+    max-width: 200px;
+  }
+
+  .imgCreate > .form-group > label {
+    display: none;
+  }
+
+  .eventImg {
+    margin-left: 0px !important;
   }
 }
 

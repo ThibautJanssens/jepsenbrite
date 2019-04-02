@@ -14,11 +14,12 @@ export default class CreateContent extends Component {
                               <input type="text" className="form-control" id="titleCreate" placeholder="Title" />
                           </div>
                       </form>
-                      <form >
-                          <div>
+                      <form className='imgCreate'>
+                          <div className='form-group'>
+                          <label for="btn">Image</label>
                             <div className="btn btn-primary btn-sm ">
-                              <span>Choose an image</span>
-                              <input type="file" />
+                              <span >Choose an image</span>
+                              <input type='file'/>
                             </div>
                           </div>
                       </form>

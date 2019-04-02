@@ -65674,7 +65674,13 @@ function (_Component) {
         className: "form-control",
         id: "titleCreate",
         placeholder: "Title"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "imgCreate"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        for: "btn"
+      }, "Image"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "btn btn-primary btn-sm "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Choose an image"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "file"
@@ -65991,7 +65997,8 @@ __webpack_require__.r(__webpack_exports__);
 var Navbar = function Navbar() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
     className: "navbar navbar-expand-lg navbar-dark bg-dark"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/",
     className: "navbar-brand"
   }, "Do Nuts Event"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "navbar-toggler",
@@ -66035,19 +66042,13 @@ var Navbar = function Navbar() {
     type: "password",
     placeholder: "Password"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    className: "nav-link",
-    to: "/"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn btn-secondary my-2 my-sm-0",
-    type: "submit"
-  }, "Login")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    className: "nav-link",
+    to: "/"
+  }, "Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    className: "btn btn-secondary my-2 my-sm-0",
     to: "/Register",
     component: _Register__WEBPACK_IMPORTED_MODULE_3__["default"]
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-secondary my-2 my-sm-0",
-    type: "submit"
-  }, "Register")))));
+  }, "Register"))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Navbar);
@@ -66102,7 +66103,9 @@ function (_Component) {
   _createClass(Register, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RegisterContent__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "donutBckg"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RegisterContent__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "http://icons.iconarchive.com/icons/jonathan-rey/simpsons/256/Homer-Simpson-02-Donut-icon.png",
         className: "homer"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
