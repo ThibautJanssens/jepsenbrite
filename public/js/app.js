@@ -60466,7 +60466,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65344,10 +65344,96 @@ module.exports = function(module) {
 /*!********************************!*\
   !*** ./resources/js/Create.js ***!
   \********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/lara/Desktop/becode_projects/jepsenbrite/resources/js/Create.js: Support for the experimental syntax 'classProperties' isn't currently enabled (21:14):\n\n\u001b[0m \u001b[90m 19 | \u001b[39m}\u001b[0m\n\u001b[0m \u001b[90m 20 | \u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 21 | \u001b[39mgetCharacter \u001b[33m=\u001b[39m () \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 22 | \u001b[39m\u001b[33mAxios\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 23 | \u001b[39m\u001b[33m.\u001b[39mget(\u001b[32m'https://character-database.becode.xyz/characters'\u001b[39m)\u001b[0m\n\u001b[0m \u001b[90m 24 | \u001b[39m\u001b[33m.\u001b[39mthen(result \u001b[33m=>\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msetState({\u001b[0m\n\nAdd @babel/plugin-proposal-class-properties (https://git.io/vb4SL) to the 'plugins' section of your Babel config to enable transformation.\n    at Object.raise (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:3851:17)\n    at Object.expectPlugin (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:5170:18)\n    at Object.parseClassProperty (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:8298:12)\n    at Object.pushClassProperty (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:8263:30)\n    at Object.parseClassMemberWithIsStatic (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:8202:14)\n    at Object.parseClassMember (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:8136:10)\n    at withTopicForbiddingContext (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:8091:14)\n    at Object.withTopicForbiddingContext (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:7187:14)\n    at Object.parseClassBody (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:8068:10)\n    at Object.parseClass (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:8042:22)\n    at Object.parseStatementContent (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:7335:21)\n    at Object.parseStatement (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:7293:17)\n    at Object.parseBlockOrModuleBlockBody (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:7879:25)\n    at Object.parseBlockBody (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:7866:10)\n    at Object.parseTopLevel (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:7222:10)\n    at Object.parse (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:8871:17)\n    at parse (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:11133:38)\n    at parser (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/core/lib/transformation/normalize-file.js:170:34)\n    at normalizeFile (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/core/lib/transformation/normalize-file.js:138:11)\n    at runSync (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/core/lib/transformation/index.js:44:43)\n    at runAsync (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/core/lib/transformation/index.js:35:14)\n    at process.nextTick (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/core/lib/transform.js:34:34)\n    at processTicksAndRejections (internal/process/next_tick.js:74:9)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var Create =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Create, _Component);
+
+  function Create(props) {
+    var _this;
+
+    _classCallCheck(this, Create);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Create).call(this, props));
+    _this.getCharacter = _this.getCharacter.bind(_assertThisInitialized(_this));
+    _this.state = {
+      isLoading: true,
+      characters: []
+    };
+    return _this;
+  }
+
+  _createClass(Create, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.getCharacter();
+    }
+  }, {
+    key: "getCharacter",
+    value: function getCharacter(e) {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('https://character-database.becode.xyz/characters').then(function (response) {
+        console.log(response);
+
+        _this2.setState({
+          characters: response.data,
+          isLoading: false
+        });
+      }).catch(function (err) {
+        return console.log(err);
+      });
+      console.log();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$state = this.state,
+          isLoading = _this$state.isLoading,
+          characters = _this$state.characters;
+      if (!isLoading) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "App"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", this.state.characters[0].name, " "));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "loading...");
+    }
+  }]);
+
+  return Create;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (Create);
 
 /***/ }),
 
@@ -65733,7 +65819,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _Create__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Create */ "./resources/js/Create.js");
-/* harmony import */ var _Create__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Create__WEBPACK_IMPORTED_MODULE_2__);
 
 
 
@@ -65741,9 +65826,8 @@ __webpack_require__.r(__webpack_exports__);
 var Navbar = function Navbar() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
     className: "navbar navbar-expand-lg navbar-dark bg-dark"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "navbar-brand",
-    href: "#"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "navbar-brand"
   }, "Do Nuts Event"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "navbar-toggler",
     type: "button",
@@ -65769,7 +65853,7 @@ var Navbar = function Navbar() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "nav-link",
     to: "/Create",
-    component: _Create__WEBPACK_IMPORTED_MODULE_2___default.a
+    component: _Create__WEBPACK_IMPORTED_MODULE_2__["default"]
   }, "Create Event")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "nav-item"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -65837,10 +65921,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Home */ "./resources/js/components/Home.js");
+/* harmony import */ var _Create__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Create */ "./resources/js/Create.js");
+/* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Home */ "./resources/js/components/Home.js");
 
- // import Create from './Create';
-// import Passed from './Passed';
+
+ // import Passed from './Passed';
 
 
 
@@ -65848,7 +65933,11 @@ var Routes = function Routes() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/",
-    component: _Home__WEBPACK_IMPORTED_MODULE_2__["default"]
+    component: _Home__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/Create",
+    component: _Create__WEBPACK_IMPORTED_MODULE_2__["default"]
   }));
 };
 

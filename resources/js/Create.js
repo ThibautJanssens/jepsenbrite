@@ -1,42 +1,47 @@
 import React, { Component } from 'react';
 
-import './App.scss';
 import { Link } from "react-router-dom";
 import Axios from 'axios';
 
 class Create extends Component {
 constructor(props) {
-super(props);
+  super(props);
+  this.getCharacter= this.getCharacter.bind(this);
 
-this.state = {
-  isLoading: true,
-  characters: []
-}
+  this.state = {
+    isLoading: true,
+    characters: []
+  }
 }
 
 componentDidMount() {
-this.getCharacter()
+  this.getCharacter()
 }
 
-getCharacter = () => {
-Axios
-.get('https://character-database.becode.xyz/characters')
-.then(result => this.setState({
-characters: result.data
-}))
-.catch(err => console.log(err))
-}
+getCharacter(e){
+  Axios.get('https://character-database.becode.xyz/characters')
+    .then(response => {
+      console.log(response)
+      
+      this.setState({
+      characters: response.data,
+      isLoading: false
+    })
+  })
+    .catch(err => console.log(err));
+    console.log();
+  }
 
 render() {
-
+ const {isLoading, characters}=this.state;
+ if(!isLoading)
 return (
   <div className="App">
-    <div><Link to={`/Create/${this.state.characters.id}`}><button>Add</button></Link></div>
-    <div className="wholeHeroes">
-    <Create sendData={this.state.characters} />;
-    </div>
+    {/* <div><Link to={`/Create/${this.state.characters.id}`}><button>Add</button></Link></div> */}
+   <p> {this.state.characters[0].name} </p>
   </div>
 );
+return (<p>loading...</p>);
 }
 
 }

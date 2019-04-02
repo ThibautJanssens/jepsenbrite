@@ -4,7 +4,7 @@ import Create from '../Create';
 
 const Navbar = () => (
           <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a className="navbar-brand" href="#">Do Nuts Event</a>
+            <p className="navbar-brand">Do Nuts Event</p>
               <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
               </button>
