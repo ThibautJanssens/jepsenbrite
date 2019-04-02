@@ -1,44 +1,20 @@
 import React, { Component } from 'react';
+import Brand from './components/Brand';
+import CreateContent from './components/CreateContent';
 
-import './App.scss';
-import { Link } from "react-router-dom";
-import Axios from 'axios';
 
-class Create extends Component {
-constructor(props) {
-super(props);
+export default class Create extends Component {
+    render() {
+        return (
+            <div>
+                <CreateContent/>
+                        <div>
+                            <img src='http://icons.iconarchive.com/icons/jonathan-rey/simpsons/256/Homer-Simpson-02-Donut-icon.png' className='homer' />
+                        </div>
+                        <div className='vrincesse'>
+                         <img src='https://4.bp.blogspot.com/-6cdKuzKOcDU/VAN-RUsAIZI/AAAAAAAAAPU/gX2zRU8TVLM/s1600/baron2400.png' className='baron' />
+                         </div>
 
-this.state = {
-  isLoading: true,
-  characters: []
-}
-}
-
-componentDidMount() {
-this.getCharacter()
-}
-
-getCharacter = () => {
-Axios
-.get('https://character-database.becode.xyz/characters')
-.then(result => this.setState({
-characters: result.data
-}))
-.catch(err => console.log(err))
-}
-
-render() {
-
-return (
-  <div className="App">
-    <div><Link to={`/Create/${this.state.characters.id}`}><button>Add</button></Link></div>
-    <div className="wholeHeroes">
-    <Create sendData={this.state.characters} />;
-    </div>
-  </div>
-);
-}
-
-}
-
-export default Create;
+            </div>
+        );
+    }}

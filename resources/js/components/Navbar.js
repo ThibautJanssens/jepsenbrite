@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Create from '../Create';
-import DisplayEvent from './DisplayEvent';
+
 const Navbar = () => (
           <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <a className="navbar-brand" href="#">Do Nuts Event</a>
@@ -13,9 +13,6 @@ const Navbar = () => (
     <ul className="navbar-nav mr-auto">
       <li className="nav-item active">
       <Link className='nav-link' to='/'>Home</Link>
-      </li>
-      <li>
-      <Link className='nav-link' to='/Events' component={DisplayEvent}>Home</Link>
       </li>
       <li className="nav-item">
       <Link className='nav-link' to='/Create' component={Create}>Create Event</Link>
