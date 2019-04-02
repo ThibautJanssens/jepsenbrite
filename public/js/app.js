@@ -65344,220 +65344,10 @@ module.exports = function(module) {
 /*!********************************!*\
   !*** ./resources/js/Create.js ***!
   \********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Create; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-
-var Create =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Create, _Component);
-
-  function Create(props) {
-    var _this;
-
-    _classCallCheck(this, Create);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Create).call(this, props));
-    _this.onChangeName = _this.onChangeName.bind(_assertThisInitialized(_this));
-    _this.onChangeShortDesc = _this.onChangeShortDesc.bind(_assertThisInitialized(_this));
-    _this.onChangeDesc = _this.onChangeDesc.bind(_assertThisInitialized(_this));
-    _this.state = {
-      file: '',
-      imagePreviewUrl: ''
-    };
-    _this.onChangeImg = _this.onChangeImg.bind(_assertThisInitialized(_this));
-    _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
-    _this.state = {
-      character: [],
-      name: '',
-      image: '',
-      shortDescription: '',
-      description: '',
-      file: '',
-      imagePreviewUrl: ''
-    };
-    return _this;
-  }
-
-  _createClass(Create, [{
-    key: "onSubmit",
-    value: function onSubmit(data) {
-      data.preventDefault();
-      var obj = {
-        name: this.state.name,
-        description: this.state.description,
-        shortDescription: this.state.shortDescription,
-        image: this.state.imagePreviewUrl.substr(this.state.imagePreviewUrl.indexOf(',') + 1)
-      };
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("https://character-database.becode.xyz/characters/", obj).then(this.props.push('/'));
-    }
-  }, {
-    key: "_handleImageChange",
-    value: function _handleImageChange(e) {
-      var _this2 = this;
-
-      e.preventDefault();
-      var reader = new FileReader();
-      var file = e.target.files[0];
-
-      reader.onloadend = function () {
-        _this2.setState({
-          file: file,
-          imagePreviewUrl: reader.result
-        });
-      };
-
-      reader.readAsDataURL(file);
-    }
-  }, {
-    key: "onChangeName",
-    value: function onChangeName(e) {
-      this.setState({
-        name: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeShortDesc",
-    value: function onChangeShortDesc(e) {
-      this.setState({
-        shortDescription: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeDesc",
-    value: function onChangeDesc(e) {
-      this.setState({
-        description: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeImg",
-    value: function onChangeImg(e) {
-      this.setState({
-        image: e.target.value
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this3 = this;
-
-      var imagePreviewUrl = this.state.imagePreviewUrl;
-      var $imagePreview = null;
-
-      if (imagePreviewUrl) {
-        $imagePreview = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "preview-img",
-          ref: "image",
-          src: imagePreviewUrl,
-          width: "100",
-          height: "100"
-        }));
-      } else {
-        var preview;
-
-        if (this.state.super_hero_image) {
-          preview = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            className: "preview-img",
-            ref: "image",
-            src: "data:image/;base64," + this.state.super_hero_image,
-            width: "100",
-            height: "100"
-          });
-        } else {
-          preview = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            className: "preview-img",
-            src: "https://img3.cliparto.com/pic/s/256180/5361912-user-icon-handcuffs-icon.jpg",
-            width: "100",
-            height: "100"
-          });
-        }
-
-        $imagePreview = preview;
-      }
-
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Add a new event"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "col-md-6 mx-auto",
-        onSubmit: this.onSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "form-control",
-        type: "text",
-        name: "name",
-        ref: "name",
-        defaultValue: this.state.name,
-        onChange: this.onChangeName
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "preview text-center"
-      }, $imagePreview, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "browse-button"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-pencil-alt"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "browse-input",
-        type: "file",
-        name: "image",
-        id: "UploadedFile",
-        onChange: function onChange(e) {
-          return _this3._handleImageChange(e);
-        }
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "Error"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "form-control",
-        type: "text",
-        ref: "shortDescription",
-        name: "shortDescription",
-        defaultValue: this.state.shortDescription,
-        onChange: this.onChangeShortDesc
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
-        className: "form-control",
-        ref: "description",
-        name: "description",
-        rows: "10",
-        onChange: this.onChangeDesc
-      }, this.state.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "submit",
-        className: "form-control btn btn-primary",
-        value: "submit"
-      }))));
-    }
-  }]);
-
-  return Create;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/lara/Desktop/becode_projects/jepsenbrite/resources/js/Create.js: Support for the experimental syntax 'classProperties' isn't currently enabled (21:14):\n\n\u001b[0m \u001b[90m 19 | \u001b[39m}\u001b[0m\n\u001b[0m \u001b[90m 20 | \u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 21 | \u001b[39mgetCharacter \u001b[33m=\u001b[39m () \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 22 | \u001b[39m\u001b[33mAxios\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 23 | \u001b[39m\u001b[33m.\u001b[39mget(\u001b[32m'https://character-database.becode.xyz/characters'\u001b[39m)\u001b[0m\n\u001b[0m \u001b[90m 24 | \u001b[39m\u001b[33m.\u001b[39mthen(result \u001b[33m=>\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msetState({\u001b[0m\n\nAdd @babel/plugin-proposal-class-properties (https://git.io/vb4SL) to the 'plugins' section of your Babel config to enable transformation.\n    at Object.raise (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:3851:17)\n    at Object.expectPlugin (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:5170:18)\n    at Object.parseClassProperty (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:8298:12)\n    at Object.pushClassProperty (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:8263:30)\n    at Object.parseClassMemberWithIsStatic (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:8202:14)\n    at Object.parseClassMember (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:8136:10)\n    at withTopicForbiddingContext (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:8091:14)\n    at Object.withTopicForbiddingContext (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:7187:14)\n    at Object.parseClassBody (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:8068:10)\n    at Object.parseClass (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:8042:22)\n    at Object.parseStatementContent (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:7335:21)\n    at Object.parseStatement (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:7293:17)\n    at Object.parseBlockOrModuleBlockBody (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:7879:25)\n    at Object.parseBlockBody (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:7866:10)\n    at Object.parseTopLevel (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:7222:10)\n    at Object.parse (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:8871:17)\n    at parse (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/parser/lib/index.js:11133:38)\n    at parser (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/core/lib/transformation/normalize-file.js:170:34)\n    at normalizeFile (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/core/lib/transformation/normalize-file.js:138:11)\n    at runSync (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/core/lib/transformation/index.js:44:43)\n    at runAsync (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/core/lib/transformation/index.js:35:14)\n    at process.nextTick (/Users/lara/Desktop/becode_projects/jepsenbrite/node_modules/@babel/core/lib/transform.js:34:34)\n    at processTicksAndRejections (internal/process/next_tick.js:74:9)");
 
 /***/ }),
 
@@ -65703,6 +65493,76 @@ function (_Component) {
 
 /***/ }),
 
+/***/ "./resources/js/components/EventContent.js":
+/*!*************************************************!*\
+  !*** ./resources/js/components/EventContent.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return EventContent; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var EventContent =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(EventContent, _Component);
+
+  function EventContent() {
+    _classCallCheck(this, EventContent);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(EventContent).apply(this, arguments));
+  }
+
+  _createClass(EventContent, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "eventsPassed"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "passedEvents"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "eventImg"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "eventTitle"
+      }, "Hello Title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "https://besthqwallpapers.com/Uploads/31-12-2017/35784/thumb2-modern-technology-4k-chip-cpu-neon-light.jpg",
+        className: "imgEvent"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "passedEvents2"
+      }, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In consequat lobortis odio, nec bibendum magna pharetra eget. Donec quam justo, blandit eu turpis sed, vestibulum mollis metus. Pellentesque nec quam sit amet purus sagittis dictum et a nunc. Quisque pulvinar justo sit amet interdum mattis. Vestibulum posuere sed eros at faucibus. In sit amet congue diam. Etiam quis congue dui. Aliquam porttitor ligula in tellus luctus ornare. Proin libero metus, blandit eget dui sit amet, facilisis elementum ex. Pellentesque in ex vitae arcu pharetra maximus quis nec turpis. Aliquam consectetur consequat turpis, vitae blandit est malesuada efficitur. Aliquam condimentum scelerisque ipsum, nec tempor lorem placerat sed. Nulla neque orci, interdum non pulvinar id, aliquet a risus. Fusce a sapien in odio vulputate lobortis. Nulla quis lacus maximus, fringilla arcu id, pellentesque nunc. Vivamus tincidunt mauris non turpis posuere malesuada. Sed quis quam sed arcu ullamcorper facilisis. Proin dictum mauris a ipsum vehicula feugiat. Fusce odio tortor, venenatis at euismod ac, dapibus non urna. Fusce laoreet consectetur odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec arcu sem, lobortis non justo quis, molestie condimentum ante. Phasellus quis justo risus. Sed in nibh orci. Maecenas pulvinar sit amet enim ut consequat. Quisque eget pharetra nisl. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean ipsum tellus, finibus ut lacus eget, hendrerit ornare odio. Nulla felis turpis, condimentum eu aliquam et, cursus et risus. Maecenas at mattis quam. Aenean quis finibus ipsum. Etiam ornare quam ac neque mollis, a pretium elit convallis. Pellentesque vel eros vel lorem dapibus vestibulum molestie eget justo. Proin consectetur maximus ex, eu sollicitudin erat. Curabitur maximus tincidunt velit, nec dignissim nulla porta sed. Duis feugiat ligula purus, sit amet ultricies dolor viverra at. Phasellus posuere, ante vel rhoncus molestie, est tellus eleifend est, quis scelerisque velit tellus et lectus. Cras nec vestibulum nisl. Suspendisse vel tempor tortor. Proin pretium lacus vitae felis lacinia, non pulvinar ligula sollicitudin. Proin eleifend lorem et malesuada mollis. Suspendisse potenti. Donec porta arcu lorem, nec accumsan ligula placerat euismod. Ut elementum iaculis leo in dignissim. Vestibulum enim diam, ornare id tristique ut, vehicula non magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse potenti. Integer vel molestie nunc. Maecenas et urna sit amet mauris dictum vestibulum nec vel libero. Vestibulum pulvinar lobortis ullamcorper. Etiam pellentesque enim et risus convallis, eget ultricies neque iaculis. Nam at diam sit amet felis pharetra tempor sit amet quis nibh. Ut laoreet enim vel felis tempor mattis. In ullamcorper, dui vel vehicula rutrum, eros nisi placerat mauris, tempus tempus mauris massa vitae quam. Suspendisse lobortis nisi eget egestas dignissim. Proin at ligula diam. Suspendisse at magna et nibh eleifend venenatis. Donec eget velit nec eros bibendum congue non a sem. Vivamus a ipsum at est fermentum lobortis. Nunc ut ex et ante porttitor ultrices. Aliquam ultrices arcu turpis, et feugiat odio semper ut. Etiam malesuada lectus ut leo ornare egestas. Mauris ac massa ipsum. Donec semper, massa vitae suscipit dignissim, orci ante mattis nibh, quis vehicula dui turpis sed lacus. Duis euismod faucibus dictum. Etiam iaculis lorem eget sodales facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In consequat lobortis odio, nec bibendum magna pharetra eget. Donec quam justo, blandit eu turpis sed, vestibulum mollis metus. Pellentesque nec quam sit amet purus sagittis dictum et a nunc. Quisque pulvinar justo sit amet interdum mattis. Vestibulum posuere sed eros at faucibus. In sit amet congue diam. Etiam quis congue dui. Aliquam porttitor ligula in tellus luctus ornare. Proin libero metus, blandit eget dui sit amet, facilisis elementum ex. Pellentesque in ex vitae arcu pharetra maximus quis nec turpis. Aliquam consectetur consequat turpis, vitae blandit est malesuada efficitur. Aliquam condimentum scelerisque ipsum, nec tempor lorem placerat sed. Nulla neque orci, interdum non pulvinar id, aliquet a risus. Fusce a sapien in odio vulputate lobortis. Nulla quis lacus maximus, fringilla arcu id, pellentesque nunc. Vivamus tincidunt mauris non turpis posuere malesuada. Sed quis quam sed arcu ullamcorper facilisis. Proin dictum mauris a ipsum vehicula feugiat. Fusce odio tortor, venenatis at euismod ac, dapibus non urna. Fusce laoreet consectetur odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec arcu sem, lobortis non justo quis, molestie condimentum ante. Phasellus quis justo risus. Sed in nibh orci. Maecenas pulvinar sit amet enim ut consequat. Quisque eget pharetra nisl. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean ipsum tellus, finibus ut lacus eget, hendrerit ornare odio. Nulla felis turpis, condimentum eu aliquam et, cursus et risus. Maecenas at mattis quam. Aenean quis finibus ipsum. Etiam ornare quam ac neque mollis, a pretium elit convallis. Pellentesque vel eros vel lorem dapibus vestibulum molestie eget justo. Proin consectetur maximus ex, eu sollicitudin erat. Curabitur maximus tincidunt velit, nec dignissim nulla porta sed. Duis feugiat ligula purus, sit amet ultricies dolor viverra at. Phasellus posuere, ante vel rhoncus molestie, est tellus eleifend est, quis scelerisque velit tellus et lectus. Cras nec vestibulum nisl. Suspendisse vel tempor tortor. Proin pretium lacus vitae felis lacinia, non pulvinar ligula sollicitudin. Proin eleifend lorem et malesuada mollis. Suspendisse potenti. Donec porta arcu lorem, nec accumsan ligula placerat euismod. Ut elementum iaculis leo in dignissim. Vestibulum enim diam, ornare id tristique ut, vehicula non magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse potenti. Integer vel molestie nunc. Maecenas et urna sit amet mauris dictum vestibulum nec vel libero. Vestibulum pulvinar lobortis ullamcorper. Etiam pellentesque enim et risus convallis, eget ultricies neque iaculis. Nam at diam sit amet felis pharetra tempor sit amet quis nibh. Ut laoreet enim vel felis tempor mattis. In ullamcorper, dui vel vehicula rutrum, eros nisi placerat mauris, tempus tempus mauris massa vitae quam. Suspendisse lobortis nisi eget egestas dignissim. Proin at ligula diam. Suspendisse at magna et nibh eleifend venenatis. Donec eget velit nec eros bibendum congue non a sem. Vivamus a ipsum at est fermentum lobortis. Nunc ut ex et ante porttitor ultrices. Aliquams ultrices arcu turpis, et feugiat odio semper ut. Etiam malesuada lectus ut leo ornare egestas. Mauris ac massa ipsum. Donec semper, massa vitae suscipit dignissim, orci ante mattis nibh, quis vehicula dui turpis sed lacus. Duis euismod faucibus dictum. Etiam iaculis lorem eget sodales facilisis.")));
+    }
+  }]);
+
+  return EventContent;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Footer.js":
 /*!*******************************************!*\
   !*** ./resources/js/components/Footer.js ***!
@@ -65751,7 +65611,9 @@ function (_Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
         className: "footIt"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Github accounts:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "gitTitle"
+      }, "Github accounts:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "gitList"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "gitAccount"
@@ -65802,6 +65664,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Brand__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Brand */ "./resources/js/components/Brand.js");
+/* harmony import */ var _EventContent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./EventContent */ "./resources/js/components/EventContent.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65823,6 +65686,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var Home =
 /*#__PURE__*/
 function (_Component) {
@@ -65837,11 +65701,7 @@ function (_Component) {
   _createClass(Home, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Brand__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "eventsPassed"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "passedEvents"
-      }, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In consequat lobortis odio, nec bibendum magna pharetra eget. Donec quam justo, blandit eu turpis sed, vestibulum mollis metus. Pellentesque nec quam sit amet purus sagittis dictum et a nunc. Quisque pulvinar justo sit amet interdum mattis. Vestibulum posuere sed eros at faucibus. In sit amet congue diam. Etiam quis congue dui. Aliquam porttitor ligula in tellus luctus ornare. Proin libero metus, blandit eget dui sit amet, facilisis elementum ex. Pellentesque in ex vitae arcu pharetra maximus quis nec turpis. Aliquam consectetur consequat turpis, vitae blandit est malesuada efficitur. Aliquam condimentum scelerisque ipsum, nec tempor lorem placerat sed. Nulla neque orci, interdum non pulvinar id, aliquet a risus. Fusce a sapien in odio vulputate lobortis. Nulla quis lacus maximus, fringilla arcu id, pellentesque nunc. Vivamus tincidunt mauris non turpis posuere malesuada. Sed quis quam sed arcu ullamcorper facilisis. Proin dictum mauris a ipsum vehicula feugiat. Fusce odio tortor, venenatis at euismod ac, dapibus non urna. Fusce laoreet consectetur odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec arcu sem, lobortis non justo quis, molestie condimentum ante. Phasellus quis justo risus. Sed in nibh orci. Maecenas pulvinar sit amet enim ut consequat. Quisque eget pharetra nisl. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean ipsum tellus, finibus ut lacus eget, hendrerit ornare odio. Nulla felis turpis, condimentum eu aliquam et, cursus et risus. Maecenas at mattis quam. Aenean quis finibus ipsum. Etiam ornare quam ac neque mollis, a pretium elit convallis. Pellentesque vel eros vel lorem dapibus vestibulum molestie eget justo. Proin consectetur maximus ex, eu sollicitudin erat. Curabitur maximus tincidunt velit, nec dignissim nulla porta sed. Duis feugiat ligula purus, sit amet ultricies dolor viverra at. Phasellus posuere, ante vel rhoncus molestie, est tellus eleifend est, quis scelerisque velit tellus et lectus. Cras nec vestibulum nisl. Suspendisse vel tempor tortor. Proin pretium lacus vitae felis lacinia, non pulvinar ligula sollicitudin. Proin eleifend lorem et malesuada mollis. Suspendisse potenti. Donec porta arcu lorem, nec accumsan ligula placerat euismod. Ut elementum iaculis leo in dignissim. Vestibulum enim diam, ornare id tristique ut, vehicula non magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse potenti. Integer vel molestie nunc. Maecenas et urna sit amet mauris dictum vestibulum nec vel libero. Vestibulum pulvinar lobortis ullamcorper. Etiam pellentesque enim et risus convallis, eget ultricies neque iaculis. Nam at diam sit amet felis pharetra tempor sit amet quis nibh. Ut laoreet enim vel felis tempor mattis. In ullamcorper, dui vel vehicula rutrum, eros nisi placerat mauris, tempus tempus mauris massa vitae quam. Suspendisse lobortis nisi eget egestas dignissim. Proin at ligula diam. Suspendisse at magna et nibh eleifend venenatis. Donec eget velit nec eros bibendum congue non a sem. Vivamus a ipsum at est fermentum lobortis. Nunc ut ex et ante porttitor ultrices. Aliquam ultrices arcu turpis, et feugiat odio semper ut. Etiam malesuada lectus ut leo ornare egestas. Mauris ac massa ipsum. Donec semper, massa vitae suscipit dignissim, orci ante mattis nibh, quis vehicula dui turpis sed lacus. Duis euismod faucibus dictum. Etiam iaculis lorem eget sodales facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In consequat lobortis odio, nec bibendum magna pharetra eget. Donec quam justo, blandit eu turpis sed, vestibulum mollis metus. Pellentesque nec quam sit amet purus sagittis dictum et a nunc. Quisque pulvinar justo sit amet interdum mattis. Vestibulum posuere sed eros at faucibus. In sit amet congue diam. Etiam quis congue dui. Aliquam porttitor ligula in tellus luctus ornare. Proin libero metus, blandit eget dui sit amet, facilisis elementum ex. Pellentesque in ex vitae arcu pharetra maximus quis nec turpis. Aliquam consectetur consequat turpis, vitae blandit est malesuada efficitur. Aliquam condimentum scelerisque ipsum, nec tempor lorem placerat sed. Nulla neque orci, interdum non pulvinar id, aliquet a risus. Fusce a sapien in odio vulputate lobortis. Nulla quis lacus maximus, fringilla arcu id, pellentesque nunc. Vivamus tincidunt mauris non turpis posuere malesuada. Sed quis quam sed arcu ullamcorper facilisis. Proin dictum mauris a ipsum vehicula feugiat. Fusce odio tortor, venenatis at euismod ac, dapibus non urna. Fusce laoreet consectetur odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec arcu sem, lobortis non justo quis, molestie condimentum ante. Phasellus quis justo risus. Sed in nibh orci. Maecenas pulvinar sit amet enim ut consequat. Quisque eget pharetra nisl. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean ipsum tellus, finibus ut lacus eget, hendrerit ornare odio. Nulla felis turpis, condimentum eu aliquam et, cursus et risus. Maecenas at mattis quam. Aenean quis finibus ipsum. Etiam ornare quam ac neque mollis, a pretium elit convallis. Pellentesque vel eros vel lorem dapibus vestibulum molestie eget justo. Proin consectetur maximus ex, eu sollicitudin erat. Curabitur maximus tincidunt velit, nec dignissim nulla porta sed. Duis feugiat ligula purus, sit amet ultricies dolor viverra at. Phasellus posuere, ante vel rhoncus molestie, est tellus eleifend est, quis scelerisque velit tellus et lectus. Cras nec vestibulum nisl. Suspendisse vel tempor tortor. Proin pretium lacus vitae felis lacinia, non pulvinar ligula sollicitudin. Proin eleifend lorem et malesuada mollis. Suspendisse potenti. Donec porta arcu lorem, nec accumsan ligula placerat euismod. Ut elementum iaculis leo in dignissim. Vestibulum enim diam, ornare id tristique ut, vehicula non magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse potenti. Integer vel molestie nunc. Maecenas et urna sit amet mauris dictum vestibulum nec vel libero. Vestibulum pulvinar lobortis ullamcorper. Etiam pellentesque enim et risus convallis, eget ultricies neque iaculis. Nam at diam sit amet felis pharetra tempor sit amet quis nibh. Ut laoreet enim vel felis tempor mattis. In ullamcorper, dui vel vehicula rutrum, eros nisi placerat mauris, tempus tempus mauris massa vitae quam. Suspendisse lobortis nisi eget egestas dignissim. Proin at ligula diam. Suspendisse at magna et nibh eleifend venenatis. Donec eget velit nec eros bibendum congue non a sem. Vivamus a ipsum at est fermentum lobortis. Nunc ut ex et ante porttitor ultrices. Aliquams ultrices arcu turpis, et feugiat odio semper ut. Etiam malesuada lectus ut leo ornare egestas. Mauris ac massa ipsum. Donec semper, massa vitae suscipit dignissim, orci ante mattis nibh, quis vehicula dui turpis sed lacus. Duis euismod faucibus dictum. Etiam iaculis lorem eget sodales facilisis.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Brand__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_EventContent__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "http://icons.iconarchive.com/icons/jonathan-rey/simpsons/256/Homer-Simpson-02-Donut-icon.png",
         className: "homer"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -65873,6 +65733,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _Create__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Create */ "./resources/js/Create.js");
+/* harmony import */ var _Create__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Create__WEBPACK_IMPORTED_MODULE_2__);
 
 
 
@@ -65908,7 +65769,7 @@ var Navbar = function Navbar() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "nav-link",
     to: "/Create",
-    component: _Create__WEBPACK_IMPORTED_MODULE_2__["default"]
+    component: _Create__WEBPACK_IMPORTED_MODULE_2___default.a
   }, "Create Event")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "nav-item"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {

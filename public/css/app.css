@@ -10693,6 +10693,11 @@ body {
   color: inherit;
 }
 
+.gitAccount > a:hover {
+  color: white;
+  text-decoration: none;
+}
+
 @-webkit-keyframes git-logo-spin {
   from {
     -webkit-transform: rotate(0deg);
@@ -10722,20 +10727,6 @@ body {
   justify-content: space-around;
   -webkit-filter: drop-shadow(7px 7px 2px black);
           filter: drop-shadow(7px 7px 2px black);
-}
-
-@media screen and (max-width: 500px) {
-  .gitAccount {
-    margin: 0;
-  }
-
-  .passedEvents {
-    padding: 0;
-  }
-
-  .donutImg {
-    display: none;
-  }
 }
 
 .brandDonut {
@@ -10870,37 +10861,99 @@ html {
   border-width: 2px;
 }
 
-@media screen and (max-width: 650px) {
-  .brandDonut > h1 {
-    font-size: 3rem;
-  }
-}
-
-@media screen and (max-width: 940px) {
-  .homer {
-    display: none;
-  }
-}
-
 .passedEvents {
-  max-width: 50rem;
+  max-width: 60rem;
   margin: auto;
-  background-color: rgba(11, 52, 99, 0.3);
-  padding: 3rem;
   margin-top: 3rem;
   margin-bottom: 3rem;
+  background-color: rgba(11, 52, 99, 0.3);
   border-style: solid;
   border-width: 10px;
-  border-color: rgba(11, 52, 99, 0.4);
+  border-color: rgba(11, 52, 99, 0.6);
   -webkit-filter: drop-shadow(7px 7px 2px black);
           filter: drop-shadow(7px 7px 2px black);
+}
+
+.passedEvents2 {
+  padding: 3rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.eventTitle {
+  background-color: rgba(0, 0, 0, 0.6);
+  -webkit-filter: drop-shadow(0px 0px 3px black);
+          filter: drop-shadow(0px 0px 3px black);
+}
+
+.imgEvent {
+  width: 100%;
+  max-height: 60%;
+}
+
+.eventImg {
+  padding: 2rem;
+  background-color: #0b3463;
+  -webkit-filter: drop-shadow(0px 0px 5px black);
+          filter: drop-shadow(0px 0px 5px black);
 }
 
 .eventsPassed {
   text-align: center;
 }
 
-input {
-  background-color: red;
+.form-control {
+  border-radius: 0px;
+}
+
+@media screen and (max-width: 500px) {
+  .gitAccount {
+    margin: 0;
+  }
+
+  .passedEvents2 {
+    margin: 0 !important;
+    padding: 0.3rem;
+  }
+
+  .passedEvents {
+    padding: 0rem !important;
+  }
+
+  .donutImg {
+    max-width: 45px !important;
+    max-height: 45px !important;
+    margin-top: 2rem;
+  }
+
+  .brandDonut > h1 {
+    font-size: 2rem !important;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .brandDonut > h1 {
+    font-size: 3rem;
+  }
+
+  .donutImg {
+    max-width: 100px;
+    max-height: 100px;
+  }
+
+  .gitAccount {
+    -webkit-animation: none;
+            animation: none;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .homer {
+    display: none;
+  }
+
+  .baron {
+    display: none;
+  }
 }
 
