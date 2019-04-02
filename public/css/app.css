@@ -10934,6 +10934,12 @@ html {
   max-width: 30rem;
 }
 
+.donutBckg {
+  background-image: url("http://pngimg.com/uploads/donut/donut_PNG98.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .form-group {
   max-width: 20rem;
   margin: auto;

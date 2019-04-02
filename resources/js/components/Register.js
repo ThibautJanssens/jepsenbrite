@@ -5,7 +5,7 @@ import RegisterContent from './RegisterContent';
 export default class Register extends Component {
     render() {
         return (
-            <div className='donutBckg'>
+          <div className='donutBckg'>
                 <RegisterContent/>
                         <div>
                             <img src='http://icons.iconarchive.com/icons/jonathan-rey/simpsons/256/Homer-Simpson-02-Donut-icon.png' className='homer' />
