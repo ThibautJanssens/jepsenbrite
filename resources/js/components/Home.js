@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Brand from './Brand';
 import EventContent from './EventContent';
 
+
 export default class Home extends Component {
     render() {
         return (
@@ -14,6 +15,7 @@ export default class Home extends Component {
                         <div className='vrincesse'>
                          <img src='https://4.bp.blogspot.com/-6cdKuzKOcDU/VAN-RUsAIZI/AAAAAAAAAPU/gX2zRU8TVLM/s1600/baron2400.png' className='baron' />
                          </div>
+                
             </div>
         );
     }}
