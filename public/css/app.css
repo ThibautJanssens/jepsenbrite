@@ -10793,6 +10793,8 @@ body {
 .baron:hover {
   width: 10%;
   opacity: 1;
+  -webkit-filter: drop-shadow(0px 0px 8px white);
+          filter: drop-shadow(0px 0px 8px white);
 }
 
 .btn {
@@ -10937,7 +10939,12 @@ html {
 .donutBckg {
   background-image: url("http://pngimg.com/uploads/donut/donut_PNG98.png");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 26rem;
+  background-position: center;
+}
+
+label {
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .form-group {
