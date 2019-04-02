@@ -6,7 +6,7 @@ export default class Footer extends Component {
         return (
               <footer className='footIt'>
                   <div>
-                      <p>Github accounts:</p>
+                      <p className='gitTitle'>Github accounts:</p>
                       <ul className='gitList'>
                           <li className='gitAccount'><a href='https://github.com/rabujev?tab=repositories' target='blank'>Jamal</a></li>
                           <li className='gitAccount'><a href='https://github.com/PaulineRoppe?tab=repositories' target='blank'>Pauline</a></li>

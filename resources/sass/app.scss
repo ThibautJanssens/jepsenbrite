@@ -50,7 +50,10 @@ body {
 .gitAccount>a{
   color:inherit;
 }
-
+.gitAccount>a:hover{
+  color:white;
+  text-decoration: none;
+}
 
 @keyframes git-logo-spin {
   from {
@@ -64,17 +67,6 @@ body {
   display: flex;
 justify-content: space-around;
 filter: drop-shadow(7px 7px 2px black);
-}
-@media screen and (max-width:500px){
-  .gitAccount{
-    margin:0;
-  }
-  .passedEvents{
-    padding:0;
-  }
-  .donutImg{
-    display:none;
-  }
 }
 
 .brandDonut{
@@ -156,7 +148,7 @@ html {
   z-index: 1;
   filter: drop-shadow(7px 7px 2px black);
  //animation: body-logo-spin infinite 0.01s linear;
-//  animation : pulse 10s infinite;
+//animation : pulse 10s infinite;
 }
 @keyframes pulse {
     from {
@@ -190,35 +182,137 @@ html {
   border-bottom-style: solid;
   border-width: 2px;
 }
-@media screen and (max-width:650px){
-  .brandDonut >  h1 {
-    font-size: 3rem;
-  }
-}
-@media screen and (max-width:940px){
-.homer{
-  display: none;
-}
-}
 
 .passedEvents{
-  max-width:50rem;
+  max-width:60rem;
   //position: relative;
   margin:auto;
-  background-color: rgba(11, 52, 99, 0.3);
-  padding:3rem;
   margin-top:3rem;
   margin-bottom: 3rem;
+  background-color: rgba(11, 52, 99, 0.3);
   border-style: solid;
   border-width: 10px;
-  border-color: rgba(11, 52, 99, 0.4);
+  border-color: rgba(11, 52, 99, 0.6);
   filter: drop-shadow(7px 7px 2px black);
 }
-
+.passedEvents2{
+  padding:3rem;
+  margin-top:1rem;
+  margin-bottom: 1.5rem;
+}
+.eventTitle{
+  // border-style: solid;
+  // border-width: 2px;
+  // border-color:rgba(0, 0, 0, 0.2);
+  background-color:  rgba(0, 0, 0, 0.6);
+  filter: drop-shadow(0px 0px 3px black);
+}
+.imgEvent{
+  width:100%;
+  max-height:60%;
+}
+.eventImg {
+  padding:2rem;
+  background-color: rgba(11, 52, 99, 1);
+  filter:drop-shadow(0px 0px 5px black);
+  // border-bottom-style: solid;
+  // border-bottom-width:10px;
+  // border-bottom-color: rgba(11, 52, 99, 0.6);
+}
 .eventsPassed{
   text-align: center;
 }
+.wholeInfos{
+  margin:0;
+  background-color: #0F3357;
+  display: flex;
+  justify-content: space-around;
+}
+.info{
+  display:flex;
+  justify-content: flex-start;
+color:black;
+padding:1rem;
+}
+.infoIcons{
+  max-width:2rem;
+  max-height:2rem;
+}
+.infoTxt{
+  margin-top:0.5rem;
+  margin-left:0.3rem;
+}
+.form-control {
+  border-radius: 0px;
+}
 
-input {
-  background-color: red;
+
+.createTitle{
+  max-width:30rem;
+}
+.donutBckg{
+  background-image: url('http://pngimg.com/uploads/donut/donut_PNG98.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.form-group {
+  max-width:20rem;
+  margin:auto;
+}
+//MEDIA QUERIES
+@media screen and (max-width:500px){
+
+  .gitAccount{
+    margin:0;
+  }
+  .passedEvents2{
+    margin:0 !important;
+    padding:0.3rem;
+  }
+  .passedEvents{
+    padding:0rem !important;
+  }
+  .donutImg{
+    max-width:45px !important;
+    max-height: 45px !important;
+    margin-top:2rem;
+  }
+  .brandDonut>h1{
+    font-size:2rem !important;
+  }
+.btn-sm{
+    max-width:8rem !important;
+    margin-left:0 !important;
+  }
+  .btn-sm>input{
+    max-width:200px;
+  }
+  .imgCreate>.form-group>label{
+    display:none;
+  }
+  .eventImg{
+    margin-left:0px !important ;
+
+  }
+}
+
+@media screen and (max-width:700px){
+  .brandDonut >  h1 {
+    font-size: 3rem;
+  }
+  .donutImg{
+    max-width:100px;
+    max-height: 100px;
+  }
+  .gitAccount{
+    animation: none;
+  }
+}
+@media screen and (max-width:1100px){
+.homer{
+  display: none;
+}
+.baron{
+  display: none;
+}
 }
