@@ -31,6 +31,9 @@ body {
 .navbar-brand {
   font-family: 'Bungee Inline', cursive;
 }
+.navbar-brand:hover{
+  filter: drop-shadow(0px 0px 4px white);
+}
 
 .footIt {
   position:absolute;
@@ -211,6 +214,7 @@ html {
 .imgEvent{
   width:100%;
   max-height:60%;
+
 }
 .eventImg {
   padding:2rem;
@@ -258,11 +262,22 @@ padding:1rem;
   background-position:center;
 }
 label{
-
+    text-shadow:0 0 2px #000000 ;
 }
 .form-group {
   max-width:20rem;
   margin:auto;
+}
+.imgEvent:hover{
+  cursor:pointer;
+  filter:brightness(1.2);
+}
+.eventTitle:hover{
+  color: rgba(0, 0, 0, 1);
+  background-color: rgba(255, 255, 255, 0.4);
+  cursor:pointer;
+  border-style: none;
+  filter:drop-shadow(0px 0px 4px white);
 }
 //MEDIA QUERIES
 @media screen and (max-width:500px){
