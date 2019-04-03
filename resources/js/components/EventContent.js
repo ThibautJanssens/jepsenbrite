@@ -5,34 +5,35 @@ import Axios from 'axios';
 export default class EventContent extends Component {
   constructor(props) {
     super(props);
-    this.getCharacter= this.getCharacter.bind(this);
+    this.getEvents= this.getEvents.bind(this);
 
     this.state = {
       isLoading: true,
-      characters: []
+      events: []
     }
   }
 
   componentDidMount() {
-    this.getCharacter()
+    this.getEvents()
   }
 
-  getCharacter(e){
-    Axios.get('https://contattafiles.s3.us-west-1.amazonaws.com/tnt14094/YONKorhw80oDx91/V2JepsenBrite.postman_collection.json')
+  getEvents(e){
+    Axios.get('/api/events')
       .then(response => {
         console.log(response)
 
         this.setState({
-        characters: response.data,
+        events: response.data,
         isLoading: false
       })
+      console.log(this);
     })
       .catch(err => console.log(err));
       console.log();
     }
 
   render() {
-   const {isLoading, characters}=this.state;
+   const {isLoading, events}=this.state;
    if(!isLoading)
       return(
           <div className="eventsPassed">
@@ -42,7 +43,7 @@ export default class EventContent extends Component {
                         <img src='https://besthqwallpapers.com/Uploads/31-12-2017/35784/thumb2-modern-technology-4k-chip-cpu-neon-light.jpg' className='imgEvent' />
                     </div>
                     <div className='passedEvents2'>
-                        <p> {this.state.characters[0].name}</p>
+                        <p> {this.state.events[1].event_description}</p>
 
                     </div>
                     <div className='wholeInfos'>

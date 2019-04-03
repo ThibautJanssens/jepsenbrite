@@ -65779,10 +65779,10 @@ function (_Component) {
     _classCallCheck(this, EventContent);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(EventContent).call(this, props));
-    _this.getCharacter = _this.getCharacter.bind(_assertThisInitialized(_this));
+    _this.getEvents = _this.getEvents.bind(_assertThisInitialized(_this));
     _this.state = {
       isLoading: true,
-      characters: []
+      events: []
     };
     return _this;
   }
@@ -65790,20 +65790,22 @@ function (_Component) {
   _createClass(EventContent, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.getCharacter();
+      this.getEvents();
     }
   }, {
-    key: "getCharacter",
-    value: function getCharacter(e) {
+    key: "getEvents",
+    value: function getEvents(e) {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://contattafiles.s3.us-west-1.amazonaws.com/tnt14094/YONKorhw80oDx91/V2JepsenBrite.postman_collection.json').then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/events').then(function (response) {
         console.log(response);
 
         _this2.setState({
-          characters: response.data,
+          events: response.data,
           isLoading: false
         });
+
+        console.log(_this2);
       }).catch(function (err) {
         return console.log(err);
       });
@@ -65814,7 +65816,7 @@ function (_Component) {
     value: function render() {
       var _this$state = this.state,
           isLoading = _this$state.isLoading,
-          characters = _this$state.characters;
+          events = _this$state.events;
       if (!isLoading) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "eventsPassed"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -65828,7 +65830,7 @@ function (_Component) {
         className: "imgEvent"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "passedEvents2"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", this.state.characters[0].name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", this.state.events[1].event_description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "wholeInfos"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "info"
