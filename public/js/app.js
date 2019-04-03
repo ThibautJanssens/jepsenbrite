@@ -65625,6 +65625,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return CreateContent; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65642,6 +65644,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -65742,6 +65745,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return EventContent; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65752,13 +65757,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -65767,16 +65773,49 @@ var EventContent =
 function (_Component) {
   _inherits(EventContent, _Component);
 
-  function EventContent() {
+  function EventContent(props) {
+    var _this;
+
     _classCallCheck(this, EventContent);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(EventContent).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(EventContent).call(this, props));
+    _this.getCharacter = _this.getCharacter.bind(_assertThisInitialized(_this));
+    _this.state = {
+      isLoading: true,
+      characters: []
+    };
+    return _this;
   }
 
   _createClass(EventContent, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.getCharacter();
+    }
+  }, {
+    key: "getCharacter",
+    value: function getCharacter(e) {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://contattafiles.s3.us-west-1.amazonaws.com/tnt14094/YONKorhw80oDx91/V2JepsenBrite.postman_collection.json').then(function (response) {
+        console.log(response);
+
+        _this2.setState({
+          characters: response.data,
+          isLoading: false
+        });
+      }).catch(function (err) {
+        return console.log(err);
+      });
+      console.log();
+    }
+  }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      var _this$state = this.state,
+          isLoading = _this$state.isLoading,
+          characters = _this$state.characters;
+      if (!isLoading) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "eventsPassed"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "passedEvents"
@@ -65789,7 +65828,7 @@ function (_Component) {
         className: "imgEvent"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "passedEvents2"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In consequat lobortis odio, nec bibendum magna pharetra eget. Donec quam justo, blandit eu turpis sed, vestibulum mollis metus. Pellentesque nec quam sit amet purus sagittis dictum et a nunc. Quisque pulvinar justo sit amet interdum mattis. Vestibulum posuere sed eros at faucibus. In sit amet congue diam. Etiam quis congue dui. Aliquam porttitor ligula in tellus luctus ornare. Proin libero metus, blandit eget dui sit amet, facilisis elementum ex. Pellentesque in ex vitae arcu pharetra maximus quis nec turpis. Aliquam consectetur consequat turpis, vitae blandit est malesuada efficitur. Aliquam condimentum scelerisque ipsum, nec tempor lorem placerat sed. Nulla neque orci, interdum non pulvinar id, aliquet a risus. Fusce a sapien in odio vulputate lobortis. Nulla quis lacus maximus, fringilla arcu id, pellentesque nunc. Vivamus tincidunt mauris non turpis posuere malesuada. Sed quis quam sed arcu ullamcorper facilisis. Proin dictum mauris a ipsum vehicula feugiat. Fusce odio tortor, venenatis at euismod ac, dapibus non urna. Fusce laoreet consectetur odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec arcu sem, lobortis non justo quis, molestie condimentum ante. Phasellus quis justo risus. Sed in nibh orci. Maecenas pulvinar sit amet enim ut consequat. Quisque eget pharetra nisl. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean ipsum tellus, finibus ut lacus eget, hendrerit ornare odio. Nulla felis turpis, condimentum eu aliquam et, cursus et risus. Maecenas at mattis quam. Aenean quis finibus ipsum. Etiam ornare quam ac neque mollis, a pretium elit convallis. Pellentesque vel eros vel lorem dapibus vestibulum molestie eget justo. Proin consectetur maximus ex, eu sollicitudin erat. Curabitur maximus tincidunt velit, nec dignissim nulla porta sed. Duis feugiat ligula purus, sit amet ultricies dolor viverra at. Phasellus posuere, ante vel rhoncus molestie, est tellus eleifend est, quis scelerisque velit tellus et lectus. Cras nec vestibulum nisl. Suspendisse vel tempor tortor. Proin pretium lacus vitae felis lacinia, non pulvinar ligula sollicitudin. Proin eleifend lorem et malesuada mollis. Suspendisse potenti. Donec porta arcu lorem, nec accumsan ligula placerat euismod. Ut elementum iaculis leo in dignissim. Vestibulum enim diam, ornare id tristique ut, vehicula non magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse potenti. Integer vel molestie nunc. Maecenas et urna sit amet mauris dictum vestibulum nec vel libero. Vestibulum pulvinar lobortis ullamcorper. Etiam pellentesque enim et risus convallis, eget ultricies neque iaculis. Nam at diam sit amet felis pharetra tempor sit amet quis nibh. Ut laoreet enim vel felis tempor mattis. In ullamcorper, dui vel vehicula rutrum, eros nisi placerat mauris, tempus tempus mauris massa vitae quam. Suspendisse lobortis nisi eget egestas dignissim. Proin at ligula diam. Suspendisse at magna et nibh eleifend venenatis. Donec eget velit nec eros bibendum congue non a sem. Vivamus a ipsum at est fermentum lobortis. Nunc ut ex et ante porttitor ultrices. Aliquam ultrices arcu turpis, et feugiat odio semper ut. Etiam malesuada lectus ut leo ornare egestas. Mauris ac massa ipsum. Donec semper, massa vitae suscipit dignissim, orci ante mattis nibh, quis vehicula dui turpis sed lacus. Duis euismod faucibus dictum. Etiam iaculis lorem eget sodales facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In consequat lobortis odio, nec bibendum magna pharetra eget. Donec quam justo, blandit eu turpis sed, vestibulum mollis metus. Pellentesque nec quam sit amet purus sagittis dictum et a nunc. Quisque pulvinar justo sit amet interdum mattis. Vestibulum posuere sed eros at faucibus. In sit amet congue diam. Etiam quis congue dui. Aliquam porttitor ligula in tellus luctus ornare. Proin libero metus, blandit eget dui sit amet, facilisis elementum ex. Pellentesque in ex vitae arcu pharetra maximus quis nec turpis. Aliquam consectetur consequat turpis, vitae blandit est malesuada efficitur. Aliquam condimentum scelerisque ipsum, nec tempor lorem placerat sed. Nulla neque orci, interdum non pulvinar id, aliquet a risus. Fusce a sapien in odio vulputate lobortis. Nulla quis lacus maximus, fringilla arcu id, pellentesque nunc. Vivamus tincidunt mauris non turpis posuere malesuada. Sed quis quam sed arcu ullamcorper facilisis. Proin dictum mauris a ipsum vehicula feugiat. Fusce odio tortor, venenatis at euismod ac, dapibus non urna. Fusce laoreet consectetur odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec arcu sem, lobortis non justo quis, molestie condimentum ante. Phasellus quis justo risus. Sed in nibh orci. Maecenas pulvinar sit amet enim ut consequat. Quisque eget pharetra nisl. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean ipsum tellus, finibus ut lacus eget, hendrerit ornare odio. Nulla felis turpis, condimentum eu aliquam et, cursus et risus. Maecenas at mattis quam. Aenean quis finibus ipsum. Etiam ornare quam ac neque mollis, a pretium elit convallis. Pellentesque vel eros vel lorem dapibus vestibulum molestie eget justo. Proin consectetur maximus ex, eu sollicitudin erat. Curabitur maximus tincidunt velit, nec dignissim nulla porta sed. Duis feugiat ligula purus, sit amet ultricies dolor viverra at. Phasellus posuere, ante vel rhoncus molestie, est tellus eleifend est, quis scelerisque velit tellus et lectus. Cras nec vestibulum nisl. Suspendisse vel tempor tortor. Proin pretium lacus vitae felis lacinia, non pulvinar ligula sollicitudin. Proin eleifend lorem et malesuada mollis. Suspendisse potenti. Donec porta arcu lorem, nec accumsan ligula placerat euismod. Ut elementum iaculis leo in dignissim. Vestibulum enim diam, ornare id tristique ut, vehicula non magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse potenti. Integer vel molestie nunc. Maecenas et urna sit amet mauris dictum vestibulum nec vel libero. Vestibulum pulvinar lobortis ullamcorper. Etiam pellentesque enim et risus convallis, eget ultricies neque iaculis. Nam at diam sit amet felis pharetra tempor sit amet quis nibh. Ut laoreet enim vel felis tempor mattis. In ullamcorper, dui vel vehicula rutrum, eros nisi placerat mauris, tempus tempus mauris massa vitae quam. Suspendisse lobortis nisi eget egestas dignissim. Proin at ligula diam. Suspendisse at magna et nibh eleifend venenatis. Donec eget velit nec eros bibendum congue non a sem. Vivamus a ipsum at est fermentum lobortis. Nunc ut ex et ante porttitor ultrices. Aliquams ultrices arcu turpis, et feugiat odio semper ut. Etiam malesuada lectus ut leo ornare egestas. Mauris ac massa ipsum. Donec semper, massa vitae suscipit dignissim, orci ante mattis nibh, quis vehicula dui turpis sed lacus. Duis euismod faucibus dictum. Etiam iaculis lorem eget sodales facilisis.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", this.state.characters[0].name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "wholeInfos"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "info"
@@ -65806,6 +65845,7 @@ function (_Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "infoTxt"
       }, "15:30")))));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "loading...");
     }
   }]);
 
