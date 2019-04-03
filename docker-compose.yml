@@ -16,8 +16,8 @@ services:
     volumes:
       - dbvolume:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: becode
-      POSTGRES_PASSWORD: becode
+      POSTGRES_USER: lcantini
+      POSTGRES_PASSWORD: lcantini
       POSTGRES_DB: dbBrite
   adminer:
     image: adminer:4.7
