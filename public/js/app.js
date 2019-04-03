@@ -66066,8 +66066,7 @@ var Navbar = function Navbar() {
     className: "nav-item"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "nav-link",
-    to: "/Create",
-    component: _Create__WEBPACK_IMPORTED_MODULE_2__["default"]
+    to: "/Create"
   }, "Create Event")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "nav-item"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -66178,6 +66177,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return RegisterContent; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66188,13 +66189,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -66203,13 +66205,61 @@ var RegisterContent =
 function (_Component) {
   _inherits(RegisterContent, _Component);
 
-  function RegisterContent() {
+  function RegisterContent(props) {
+    var _this;
+
     _classCallCheck(this, RegisterContent);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(RegisterContent).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(RegisterContent).call(this, props));
+    _this.handleChangeName = _this.handleChangeName.bind(_assertThisInitialized(_this));
+    _this.handleChangeEmail = _this.handleChangeEmail.bind(_assertThisInitialized(_this));
+    _this.handleChangePassword = _this.handleChangePassword.bind(_assertThisInitialized(_this));
+    _this.state = {
+      name: '',
+      email: '',
+      password: ''
+    };
+    return _this;
   }
 
   _createClass(RegisterContent, [{
+    key: "handleChangeName",
+    value: function handleChangeName(event) {
+      this.setState({
+        name: event.target.value
+      });
+    }
+  }, {
+    key: "handleChangeEmail",
+    value: function handleChangeEmail(event) {
+      this.setState({
+        email: event.target.value
+      });
+    }
+  }, {
+    key: "handleChangePassword",
+    value: function handleChangePassword(event) {
+      this.setState({
+        password: event.target.value
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(event) {
+      event.preventDefault();
+      var user = {
+        name: this.state.name,
+        email: this.state.email,
+        password: this.state.password
+      };
+      axios.post("/api/register", {
+        user: user
+      }).then(function (res) {
+        console.log(res);
+        console.log(res.data);
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -66226,7 +66276,9 @@ function (_Component) {
         type: "text",
         className: "form-control",
         id: "psd",
-        placeholder: "Enter pseudo"
+        placeholder: "Enter pseudo",
+        defaultValue: this.state.name,
+        onChange: this.handleChangeName
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
@@ -66235,7 +66287,9 @@ function (_Component) {
         type: "password",
         className: "form-control",
         id: "pswd",
-        placeholder: "Enter password"
+        placeholder: "Enter password",
+        defaultValue: this.state.password,
+        onChange: this.handleChangePassword
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         for: "email"
       }, "Email address"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -66243,7 +66297,9 @@ function (_Component) {
         className: "form-control",
         id: "email",
         "aria-describedby": "emailHelp",
-        placeholder: "Enter email"
+        placeholder: "Enter email",
+        defaultValue: this.state.email,
+        onChange: this.handleChangeEmail
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         className: "btn btn-primary"
