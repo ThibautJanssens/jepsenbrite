@@ -10793,6 +10793,8 @@ body {
 .baron:hover {
   width: 10%;
   opacity: 1;
+  -webkit-filter: drop-shadow(0px 0px 6px white);
+          filter: drop-shadow(0px 0px 6px white);
 }
 
 .btn {
