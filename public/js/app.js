@@ -65715,7 +65715,7 @@ function (_Component) {
         id: "hour"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         for: "where"
-      }, "Where"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "Adress"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         className: "form-control",
         id: "where"
@@ -65825,7 +65825,7 @@ function (_Component) {
         className: "eventImg"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "eventTitle"
-      }, "Hello Title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, this.state.events[1].event_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, "(by ", this.state.events[1].event_author, " )")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "https://besthqwallpapers.com/Uploads/31-12-2017/35784/thumb2-modern-technology-4k-chip-cpu-neon-light.jpg",
         className: "imgEvent"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -65833,20 +65833,45 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", this.state.events[1].event_description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "wholeInfos"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "wholeInfos1"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "infoIcons",
-        src: "https://static.thenounproject.com/png/1565357-200.png"
+        src: "https://www.redfcu.org/Assets/uploads/images/Find%20a%20LocationBranch.png"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "infoTxt"
-      }, "BecodeCentral")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.state.events[1].event_address)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "infoIcons",
-        src: "https://image.flaticon.com/icons/png/512/63/63355.png"
+        src: "http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/calendar-icon.png"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "infoTxt"
-      }, "15:30")))));
+      }, this.state.events[1].event_date)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "info"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "infoIcons",
+        src: "https://stickeroid.com/uploads/pic/full-pngimg/9d06df374b8bab48fc3ba0a7e1a6f4ccd2212d81.png"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "infoTxt"
+      }, "Price: ", this.state.events[1].event_price))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "wholeInfos2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "info"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "infoIcons2",
+        src: "http://pngimages.net/sites/default/files/upload-png-image-77090.png"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "infoTxt"
+      }, "Posted on ", this.state.events[1].created_at)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "info"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "infoIcons2",
+        src: "https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_update-512.png"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "infoTxt"
+      }, "Last update:  ", this.state.events[1].updated_at))))));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "loading...");
     }
   }]);
@@ -66214,6 +66239,7 @@ function (_Component) {
     _this.handleChangeName = _this.handleChangeName.bind(_assertThisInitialized(_this));
     _this.handleChangeEmail = _this.handleChangeEmail.bind(_assertThisInitialized(_this));
     _this.handleChangePassword = _this.handleChangePassword.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.state = {
       name: '',
       email: '',
@@ -66252,7 +66278,7 @@ function (_Component) {
         email: this.state.email,
         password: this.state.password
       };
-      axios.post("/api/register", {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/register", {
         user: user
       }).then(function (res) {
         console.log(res);
@@ -66267,11 +66293,12 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "passedEvents"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Register"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "createForm"
+        className: "createForm",
+        onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        for: "psd"
+        htmlFor: "psd"
       }, "Pseudo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         className: "form-control",
@@ -66282,7 +66309,7 @@ function (_Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        for: "pswd"
+        htmlFor: "pswd"
       }, "Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
         className: "form-control",
@@ -66291,7 +66318,7 @@ function (_Component) {
         defaultValue: this.state.password,
         onChange: this.handleChangePassword
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        for: "email"
+        htmlFor: "email"
       }, "Email address"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "email",
         className: "form-control",

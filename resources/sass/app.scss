@@ -31,6 +31,9 @@ body {
 .navbar-brand {
   font-family: 'Bungee Inline', cursive;
 }
+.navbar-brand:hover{
+  filter: drop-shadow(0px 0px 4px white);
+}
 
 .footIt {
   position:absolute;
@@ -45,24 +48,31 @@ body {
   font-size: 1rem;
   list-style-type: none;
   margin:1rem;
-  animation: git-logo-spin infinite 5s linear;
+  animation: bounce 1.2s ease infinite;
 }
 .gitAccount>a{
   color:inherit;
+}
+
+#psd, #pswd, #email{
+  background:linear-gradient(darkgrey, white);
+}
+i{
+  font-size: 0.8rem;
 }
 .gitAccount>a:hover{
   color:white;
   text-decoration: none;
 }
 
-@keyframes git-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(-360deg);
-  }
-}
+// @keyframes git-logo-spin {
+//   from {
+//     transform: rotate(0deg);
+//   }
+//   to {
+//     transform: rotate(-360deg);
+//   }
+// }
 .gitList {
   display: flex;
 justify-content: space-around;
@@ -110,8 +120,8 @@ bottom:103px;
 
 .baron:hover{
   width:10%;
-  opacity:1;
-  filter:drop-shadow(0px 0px 6px white);
+  //opacity:1;
+  filter:drop-shadow(0px 0px 8px white);
   // animation : pulse 1s infinite;
   // @keyframes pulse {
   //     from {
@@ -141,13 +151,17 @@ bottom:103px;
 html {
   scroll-behavior: smooth;
 }
-
+@keyframes pass {
+  from{transform:translate3d(-100px, 0, 0);}
+  to {transform: translate3d(1375px, 0, 0);}
+}
 .homer {
   bottom:0;
   position:fixed;
   width:8rem;
   z-index: 1;
   filter: drop-shadow(7px 7px 2px black);
+  //animation: pass infinite 5s linear;
  //animation: body-logo-spin infinite 0.01s linear;
 //animation : pulse 10s infinite;
 }
@@ -211,6 +225,7 @@ html {
 .imgEvent{
   width:100%;
   max-height:60%;
+
 }
 .eventImg {
   padding:2rem;
@@ -224,10 +239,14 @@ html {
   text-align: center;
 }
 .wholeInfos{
+  display:flex;
+  flex-direction: column;
+}
+.wholeInfos1, .wholeInfos2{
   margin:0;
   background-color: #0F3357;
   display: flex;
-  justify-content: space-around;
+  justify-content: center
 }
 .info{
   display:flex;
@@ -238,10 +257,25 @@ padding:1rem;
 .infoIcons{
   max-width:2rem;
   max-height:2rem;
+  min-width:2rem;
+  filter:drop-shadow(2px 2px 4px black);
 }
+.infoIcons2{
+  max-width:2rem;
+  max-height:2rem;
+  min-width:2rem;
+}
+
+@keyframes bounce {
+  from { transform: translate3d(0, -2px, 0px);     }
+  50% { transform: translate3d(0, 5px, 0px);}
+  to   { transform: translate3d(0, -2px, 0px); }
+}
+
 .infoTxt{
   margin-top:0.5rem;
   margin-left:0.3rem;
+  max-width:20rem;
 }
 .form-control {
   border-radius: 0px;
@@ -253,12 +287,27 @@ padding:1rem;
 }
 .donutBckg{
   background-image: url('http://pngimg.com/uploads/donut/donut_PNG98.png');
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-repeat:no-repeat;
+  background-size: 26rem;
+  background-position:center;
+}
+label{
+    text-shadow:0 0 2px #000000 ;
 }
 .form-group {
   max-width:20rem;
   margin:auto;
+}
+.imgEvent:hover{
+  cursor:pointer;
+  filter:brightness(1.2);
+}
+.eventTitle:hover{
+  color: rgba(0, 0, 0, 1);
+  background-color: rgba(255, 255, 255, 0.4);
+  cursor:pointer;
+  border-style: none;
+  filter:drop-shadow(0px 0px 4px white);
 }
 //MEDIA QUERIES
 @media screen and (max-width:500px){
@@ -280,6 +329,9 @@ padding:1rem;
   }
   .brandDonut>h1{
     font-size:2rem !important;
+  }
+  .brandDonut{
+    margin:auto;
   }
 .btn-sm{
     max-width:8rem !important;
@@ -307,6 +359,12 @@ padding:1rem;
   }
   .gitAccount{
     animation: none;
+  }
+  .wholeInfos1, .wholeInfos2{
+    flex-direction: column;
+  }
+  .eventTitle{
+    font-size: 1.3rem;
   }
 }
 @media screen and (max-width:1100px){
