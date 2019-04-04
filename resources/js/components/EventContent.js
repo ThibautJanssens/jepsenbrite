@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-
+import {Link} from 'react-router-dom';
 
 export default class EventContent extends Component {
   constructor(props) {
@@ -39,7 +39,7 @@ export default class EventContent extends Component {
           <div className="eventsPassed">
                 <div className='passedEvents'>
                     <div className='eventImg'>
-                        <h1 className='eventTitle'>{this.state.events[1].event_name}<i>(by {this.state.events[1].event_author} )</i></h1>
+                        <Link to={`/Event/${this.state.events[1].id}`}><h1 className='eventTitle'>{this.state.events[1].event_name}</h1></Link><i>(by {this.state.events[1].event_author} )</i>
                         <img src='https://besthqwallpapers.com/Uploads/31-12-2017/35784/thumb2-modern-technology-4k-chip-cpu-neon-light.jpg' className='imgEvent' />
                     </div>
                     <div className='passedEvents2'>
@@ -55,7 +55,7 @@ export default class EventContent extends Component {
                         <img className='infoIcons' src='http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/calendar-icon.png' /><p className='infoTxt'>{this.state.events[1].event_date}</p>
                     </div>
                     <div className='info'>
-                        <img className='infoIcons' src='https://stickeroid.com/uploads/pic/full-pngimg/9d06df374b8bab48fc3ba0a7e1a6f4ccd2212d81.png' /><p className='infoTxt'>Price: {this.state.events[1].event_price}</p>
+                        <img className='infoIcons' src='https://stickeroid.com/uploads/pic/full-pngimg/9d06df374b8bab48fc3ba0a7e1a6f4ccd2212d81.png' /><p className='infoTxt'>Price: {this.state.events[1].event_price}€</p>
                     </div>
                     </div>
                     <div className='wholeInfos2'>

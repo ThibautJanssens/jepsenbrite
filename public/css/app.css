@@ -11031,6 +11031,10 @@ label {
           filter: drop-shadow(0px 0px 4px white);
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 @media screen and (max-width: 500px) {
   .gitAccount {
     margin: 0;
