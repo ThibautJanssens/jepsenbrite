@@ -131,4 +131,54 @@ class EventController extends Controller
              'message' => 'Successfully deleted event!'
          ]);
      }
+
+
+// Jam, 4 avril, inscription et désincription à un Event
+
+  public function eventRegister($event, $user)
+  {
+
+    $event2 = Event::find($event);
+
+    $event2->users()->attach($user);
+
+      return response()->json([
+          'message' => 'Great success! User succefully registered to the event !',
+          'event' => $event2
+      ]);
+  }
+
+  public function eventUnregister($event, $user)
+  {
+
+    $event2 = Event::find($event);
+
+    $event2->users()->detach($user);
+
+      return response()->json([
+          'message' => 'Great success! User succefully unregistered to the event !',
+          'event' => $event2
+      ]);
+  }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// public function show($event, $user)  // Jam : j'ai changé 'Event $events' dans la parenthèse en $id
+// {
+//   $event1 = Event::where('id', '=', $event)
+//               ->with('users')
+//               ->first();
+//   return $event1;
+// }
