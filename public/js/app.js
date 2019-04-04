@@ -67032,7 +67032,8 @@ function (_Component) {
         name: this.state.pseudo,
         email: this.state.email,
         password: this.state.password
-      };
+      }; // const user = event.target.elements.pseudo.value
+
       console.log(user);
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/register", user).then(function (res) {
         console.log(res);
