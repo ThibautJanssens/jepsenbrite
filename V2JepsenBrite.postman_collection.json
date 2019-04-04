@@ -1,0 +1,193 @@
+{
+	"info": {
+		"_postman_id": "fafcacff-b17f-4ed2-a5bc-b874c54f5fb6",
+		"name": "JepsenBrite",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a021493c-1ec4-4df6-b56e-1250316228e4",
+						"exec": [
+							"postman.setEnvironmentVariable(\"token\", JSON.parse(responseBody).access_token);",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"create\",\n\t\"email\": \"aa@aaa.com\",\n\t\"password\": \"kjkl\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8000/api/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a021493c-1ec4-4df6-b56e-1250316228e4",
+						"exec": [
+							"postman.setEnvironmentVariable(\"token\", JSON.parse(responseBody).access_token);",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"name\": \"create\",\n\"email\": \"aa@aaa.com\",\n\"password\": \"kjkl\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8000/api/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a021493c-1ec4-4df6-b56e-1250316228e4",
+						"exec": [
+							"postman.setEnvironmentVariable(\"token\", JSON.parse(responseBody).access_token);",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8000/api/logout",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"logout"
+					],
+					"query": [
+						{
+							"key": "Authorization",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "40451f42-2112-492c-81d8-66174d3fb90c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "0360d796-364d-4387-a970-f360c9cf5bd6",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

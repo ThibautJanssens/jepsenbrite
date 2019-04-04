@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Axios from 'axios';
 
 
 
@@ -34,7 +35,7 @@ export default class CreateContent extends Component {
                                   <input type="date" className="form-control" id="when"  />
                                   <label for="hour">Hour</label>
                                   <input type="time" className="form-control" id="hour"  />
-                                  <label for="where">Where</label>
+                                  <label for="where">Adress</label>
                                   <input type="text" className="form-control" id="where"  />
                               </div>
                               <button type="submit" className="btn btn-primary">Submit</button>
