@@ -8,7 +8,9 @@ export default class Home extends Component {
         return (
             <div>
                 <Brand/>
+
                 <EventContent/>
+            
                         <div>
                             <img src='http://icons.iconarchive.com/icons/jonathan-rey/simpsons/256/Homer-Simpson-02-Donut-icon.png' className='homer' />
                         </div>
