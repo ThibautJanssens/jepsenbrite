@@ -17,6 +17,8 @@ Route::get('/events', 'EventController@index')->name('events.index');
 
 /*Route::middleware('auth:api')*/Route::post('/events', 'EventController@store')->name('events.store');
 
+Route::get('/events/baghdad', 'EventController@testbitttib')->name('events.show');
+
 Route::get('/events/{event}', 'EventController@show')->name('events.show');
 
 Route::middleware('auth:api')->put('/events/{event}', 'EventController@update')->name('events.update');
