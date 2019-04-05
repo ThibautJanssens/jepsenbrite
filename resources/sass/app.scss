@@ -235,7 +235,6 @@ html {
   // border-bottom-width:10px;
   // border-bottom-color: rgba(11, 52, 99, 0.6);
 }
-
 .eventsPassed{
   text-align: center;
 }
@@ -299,7 +298,10 @@ label{
   max-width:20rem;
   margin:auto;
 }
-
+.imgEvent:hover{
+  cursor:pointer;
+  filter:brightness(1.2);
+}
 .eventTitle:hover{
   color: rgba(0, 0, 0, 1);
   background-color: rgba(255, 255, 255, 0.4);

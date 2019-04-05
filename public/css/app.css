@@ -11016,6 +11016,12 @@ label {
   margin: auto;
 }
 
+.imgEvent:hover {
+  cursor: pointer;
+  -webkit-filter: brightness(1.2);
+          filter: brightness(1.2);
+}
+
 .eventTitle:hover {
   color: black;
   background-color: rgba(255, 255, 255, 0.4);
