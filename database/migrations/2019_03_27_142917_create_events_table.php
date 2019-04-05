@@ -17,7 +17,8 @@ Schema::create('events', function (Blueprint $table) {
 $table->bigIncrements('id');
 $table->string('event_name');
 $table->date('event_date');
-$table->string('event_author');
+$table->integer('event_author');
+$table->foreign('event_author')->references('id')->on('users');
 $table->string('event_address');
 $table->text('event_description');
 $table->float('event_price');
