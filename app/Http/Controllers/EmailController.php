@@ -28,7 +28,7 @@ class EmailController extends Controller
     public function sendemail()
     {
       $title = "Registered";
-      $content = "Bienvenue chez les donuts";
+      $content = "Bienvenue dans la famille des donuts, vous serez donuts chocolat";
       $user_email = "Email du destinataire";
       $user_name = "Nom du destinataire";
 
@@ -47,5 +47,9 @@ class EmailController extends Controller
       {
         dd($e->getMessage());
       }
+      if (Mail not_send()
+      {
+        then send();
+      });
     }
 }

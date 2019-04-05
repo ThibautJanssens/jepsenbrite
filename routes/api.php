@@ -33,7 +33,18 @@ Route::post('/login', 'AuthController@login')->name('login');
 
 Route::post('/logout', 'AuthController@logout')->name('logout');
 
-Route::post('/send', 'EmailController@send')->name('send');
+Route::get('user/activation/{token}', 'Auth\RegisterController@userActivation');
+
+//Route::post('/send', 'EmailController@send')->name('send');
+
+//Mail::get('/send', 'EmailController@send')->name('send');
+
+/*Mail::send('emails.send', ['title' => $title, 'content' => $content], function ($message)
+{
+    $message->from(config('mail.from.address'), config('app.name'));
+
+    $message->to('cantinieauxlouis@gmail.com');
+});*/
 
 /*Mail::raw('EVENT_COMING', function($message) {
   $message->subject('Hi there!');
