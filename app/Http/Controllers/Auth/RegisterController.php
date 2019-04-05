@@ -82,9 +82,10 @@ class RegisterController extends Controller
 
          Mail::send('emails.activation', $user, function($message) use ($user){
            $message->to($user['email']);
-           $message->subject('www.hc-kr.com - Activation Code');
+           $message->subject('donuts-event.com - Registration');
          });
-         return redirect()->to('login')->with('success',"We sent activation code. Please check your mail.");
+         return redirect()->to('home')->with('success',"We sent activation code. Please check your mail.");
+         //'login' a été remplacer par 'home'
        }
        return back()->with('errors',$validator->errors());
      }
@@ -94,8 +95,8 @@ class RegisterController extends Controller
        if(!is_null($check)){
          $user = User::find($check->id_user);
          if ($user->is_activated ==1){
-           return redirect()->to('login')->with('success',"user are already actived.");
-
+           return redirect()->to('home')->with('success',"user are already actived.");
+          //'login' a été remplacer par 'home'
          }
          $user->update(['is_activated' => 1]);
          DB::table('user_activations')->where('token',$token)->delete();
