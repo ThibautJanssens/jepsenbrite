@@ -69,8 +69,8 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
-
-    public function register(Request $request) {
+// 1st version
+  /*  public function register(Request $request) {
        $input = $request->all();
        $validator = $this->validator($input);
 
@@ -102,5 +102,22 @@ class RegisterController extends Controller
          return redirect()->to('login')->with('success',"user active successfully.");
        }
        return redirect()->to('login')->with('Warning',"your token is invalid");
+     }*/
+
+     public function register(Request $request)
+     {
+       $this>validator($request->all())->validate();
+       event(new Registered($user = $this->create($request->all())));
+       dispatch(new SendVerifivcationEmail($user));
+       return view('verification');
+     }
+
+     public function verify($token)
+     {
+       $user = User::where('email_token', $token)->first();
+       $user->verified = 1;
+       if($user->save()) {
+         return view ('emailconfirm', ['user'=>$user]);
+       }
      }
 }
