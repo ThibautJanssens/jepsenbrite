@@ -46,7 +46,7 @@ class SpecificEvent extends React.Component {
                       <img className='infoIcons' src='http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/calendar-icon.png' /><p className='infoTxt'>{this.state.events.event_date}</p>
                   </div>
                   <div className='info'>
-                      <img className='infoIcons' src='https://stickeroid.com/uploads/pic/full-pngimg/9d06df374b8bab48fc3ba0a7e1a6f4ccd2212d81.png' /><p className='infoTxt'>Price: {this.state.events.event_price}</p>
+                      <img className='infoIcons' src='https://stickeroid.com/uploads/pic/full-pngimg/9d06df374b8bab48fc3ba0a7e1a6f4ccd2212d81.png' /><p className='infoTxt'>Price: {this.state.events.event_price}€</p>
                   </div>
                   </div>
                   <div className='wholeInfos2'>

@@ -21,6 +21,9 @@ const Navbar = () => (
                   <li className="nav-item">
                   <Link className='nav-link' to='/Passed'>Passed Event</Link>
                   </li>
+                  <li className="nav-item">
+                  <Link className='nav-link' to='/MyEvents'>My Events</Link>
+                  </li>
                 </ul>
               <form className="form-inline my-2 my-lg-0">
                 <input className="form-control mr-sm-2" type="text" placeholder="Pseudo" />

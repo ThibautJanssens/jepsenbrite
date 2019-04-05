@@ -14,7 +14,7 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body>
-        <div id="appli"> Bonjour </div>
+        <div id="appli" > Bonjour </div>
 
         <script src="/js/app.js"></script>
     </body>
