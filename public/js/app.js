@@ -66583,38 +66583,38 @@ function (_Component) {
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
-        htmlFor: "when"
+        htmlFor: "date"
       }, "Date"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
         type: "date",
         className: "form-control",
-        id: "when",
+        id: "date",
         defaultValue: this.state.date,
         onChange: this.handleChangeDate,
         name: "date"
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
-        htmlFor: "where"
+        htmlFor: "address"
       }, "Address"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
         type: "text",
         className: "form-control",
-        id: "where",
+        id: "address",
         defaultValue: this.state.address,
         onChange: this.handleChangeAddress,
         name: "address"
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
-        htmlFor: "where"
+        htmlFor: "price"
       }, "Price"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
         type: "text",
         className: "form-control",
-        id: "where",
+        id: "price",
         defaultValue: this.state.price,
         onChange: this.handleChangePrice,
         name: "price"
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
-        htmlFor: "when"
+        htmlFor: "author"
       }, "Author"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
         type: "text",
         className: "form-control",
-        id: "when",
+        id: "author",
         defaultValue: this.state.author,
         onChange: this.handleChangeAuthor,
         name: "date"
@@ -67118,7 +67118,9 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "https://4.bp.blogspot.com/-7Lq-8DZByAI/VAN_LHMq4XI/AAAAAAAAAPw/V1YAVTuWm9g/s1600/princess2400.png",
         className: "baron"
-      })));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dons"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, " FAITES DES DONS !!! ")));
     }
   }]);
 
@@ -67144,6 +67146,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -67161,6 +67164,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -67270,7 +67274,7 @@ function (_Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         className: "btn btn-primary"
-      }, "Submit"))));
+      }, " Submit"))));
     }
   }]);
 
@@ -67467,6 +67471,93 @@ function (_React$Component) {
 
 /***/ }),
 
+/***/ "./resources/js/components/helpers.js":
+/*!********************************************!*\
+  !*** ./resources/js/components/helpers.js ***!
+  \********************************************/
+/*! exports provided: appRegister, appLogin, appLogout, appAddEvent, appUpdateEvent, appGetEventByID, appGetEvent, appGetPastEvent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "appRegister", function() { return appRegister; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "appLogin", function() { return appLogin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "appLogout", function() { return appLogout; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "appAddEvent", function() { return appAddEvent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "appUpdateEvent", function() { return appUpdateEvent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "appGetEventByID", function() { return appGetEventByID; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "appGetEvent", function() { return appGetEvent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "appGetPastEvent", function() { return appGetPastEvent; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/*API REQUESTS*/
+
+/*Register -POST*/
+
+function appRegister(myJSON) {
+  //console.log(myJSON);
+  axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/register", myJSON).then(function (response) {
+    console.log("registered!!");
+  }).catch(function () {
+    console.log("Email already used");
+  });
+}
+/*Login -POST - user/pw */
+
+function appLogin(myJSON) {
+  axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("api/login", myJSON).then(function (response) {
+    console.log(response.data.access_token);
+  }).catch(function (error) {
+    console.log(error);
+  });
+}
+/*Logout-POST */
+
+function appLogout(myJSON) {
+  axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/logout/", myJSON).then(function (response) {
+    console.log("Loged out");
+  }).catch(function (error) {
+    console.log(error);
+  });
+}
+/*Add Event-POST */
+
+function appAddEvent(myJSON) {
+  axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/event", myJSON);
+}
+/*Update Event-PUT */
+
+function appUpdateEvent(myJSON) {
+  axios__WEBPACK_IMPORTED_MODULE_1___default.a.put("/api/event/1", myJSON);
+}
+/*Get Event by ID-GET */
+
+function appGetEventByID(myJSON) {
+  axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/event/1", myJSON);
+}
+/*Get Event -GET */
+
+/*Get all future events*/
+
+function appGetEvent(eventList) {
+  axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/events").then(function (response) {
+    return eventList.setState({
+      eventList: response.data
+    });
+  });
+}
+/*Get Past Event -GET */
+
+function appGetPastEvent(myJSON) {
+  axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/pastEvent", myJSON);
+} //\API REQUESTS
+
+/***/ }),
+
 /***/ "./resources/js/components/layout.js":
 /*!*******************************************!*\
   !*** ./resources/js/components/layout.js ***!
@@ -67494,6 +67585,140 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 
 /***/ }),
 
+/***/ "./resources/js/components/login.js":
+/*!******************************************!*\
+  !*** ./resources/js/components/login.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Login; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./helpers */ "./resources/js/components/helpers.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var Login =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Login, _Component);
+
+  function Login(props) {
+    var _this;
+
+    _classCallCheck(this, Login);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Login).call(this, props));
+    _this.validateForm = _this.validateForm.bind(_assertThisInitialized(_this));
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.state = {
+      email: "",
+      password: "",
+      redirect: false //isLoggedIn: false,
+      //user: {}
+
+    };
+    return _this;
+  } //\end constructohpr
+
+
+  _createClass(Login, [{
+    key: "validateForm",
+    value: function validateForm() {
+      return this.state.email.length > 0 && this.state.password.length > 0;
+    } //\end fct validateForm
+
+  }, {
+    key: "handleChange",
+    value: function handleChange(event) {
+      this.setState(_defineProperty({}, event.target.id, event.target.value));
+    } //\end fct handleChange
+
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit() {
+      //let myJSON = JSON.stringify(this.state);
+      var myJSON = {
+        "email": this.state.email,
+        "password": this.state.password
+      };
+      event.preventDefault(); //console.log(myJSON);
+
+      Object(_helpers__WEBPACK_IMPORTED_MODULE_3__["appLogin"])(myJSON);
+      this.setState({
+        redirect: true
+      });
+    } //\end fct handleSubmit
+
+  }, {
+    key: "render",
+    value: function render() {
+      var redirect = this.state.redirect;
+
+      if (redirect) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
+          to: "/"
+        });
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "Login"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        autoComplete: "true",
+        id: "email",
+        type: "email",
+        value: this.state.email,
+        onChange: this.handleChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        autoComplete: "false",
+        id: "password",
+        value: this.state.password,
+        onChange: this.handleChange,
+        type: "password"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        disabled: !this.validateForm(),
+        type: "submit"
+      }, "Login")));
+    } //\end render
+
+  }]);
+
+  return Login;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]); //\end class Login
+
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/routes.js":
 /*!*******************************************!*\
   !*** ./resources/js/components/routes.js ***!
@@ -67512,6 +67737,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Home */ "./resources/js/components/Home.js");
 /* harmony import */ var _SpecificEvent__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./SpecificEvent */ "./resources/js/components/SpecificEvent.js");
 /* harmony import */ var _MyEvents__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./MyEvents */ "./resources/js/components/MyEvents.js");
+/* harmony import */ var _login__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./login */ "./resources/js/components/login.js");
+
 
 
 
@@ -67538,6 +67765,10 @@ var Routes = function Routes() {
     exact: true,
     path: "/MyEvents",
     component: _MyEvents__WEBPACK_IMPORTED_MODULE_7__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/Login",
+    component: _login__WEBPACK_IMPORTED_MODULE_8__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/Passed",

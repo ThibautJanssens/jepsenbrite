@@ -91,14 +91,14 @@ export default class CreateContent extends Component {
                                   <textarea type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter description" defaultValue={this.state.description} onChange={this.handleChangeDescription} name='description'/>
                               </div>
                               <div className="form-group">
-                                  <label htmlFor="when">Date</label>
-                                  <input type="date" className="form-control" id="when" defaultValue={this.state.date} onChange={this.handleChangeDate} name='date'  />
-                                  <label htmlFor="where">Address</label>
-                                  <input type="text" className="form-control" id="where"  defaultValue={this.state.address} onChange={this.handleChangeAddress} name='address'/>
-                                  <label htmlFor="where">Price</label>
-                                  <input type="text" className="form-control" id="where"  defaultValue={this.state.price} onChange={this.handleChangePrice} name='price'/>
-                                  <label htmlFor="when">Author</label>
-                                  <input type="text" className="form-control" id="when" defaultValue={this.state.author} onChange={this.handleChangeAuthor} name='date'  />
+                                  <label htmlFor="date">Date</label>
+                                  <input type="date" className="form-control" id="date" defaultValue={this.state.date} onChange={this.handleChangeDate} name='date'  />
+                                  <label htmlFor="address">Address</label>
+                                  <input type="text" className="form-control" id="address"  defaultValue={this.state.address} onChange={this.handleChangeAddress} name='address'/>
+                                  <label htmlFor="price">Price</label>
+                                  <input type="text" className="form-control" id="price"  defaultValue={this.state.price} onChange={this.handleChangePrice} name='price'/>
+                                  <label htmlFor="author">Author</label>
+                                  <input type="text" className="form-control" id="author" defaultValue={this.state.author} onChange={this.handleChangeAuthor} name='date'  />
                               </div>
                               <button type="submit" className="btn btn-primary">Submit</button>
                           </form>

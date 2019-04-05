@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import {Link} from 'react-router-dom';
+import {Redirect} from 'react-router';
 
 export default class RegisterContent extends Component {
     constructor(props) {
@@ -32,6 +33,7 @@ export default class RegisterContent extends Component {
      };
      // const user = event.target.elements.pseudo.value
      console.log(user);
+
      Axios.post(`/api/register`, user)
        .then(res => {
          console.log(res);
@@ -50,7 +52,7 @@ export default class RegisterContent extends Component {
                                   <input type="password" className="form-control" id="pswd"  placeholder='Enter password' defaultValue={this.state.password} onChange={this.handleChangePassword} name='password'/>
                                   <label  htmlFor="email">Email address</label>
                                   <input type="email" className="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" defaultValue={this.state.email} onChange={this.handleChangeEmail} name='email'/>
-                                  <button type="submit" className="btn btn-primary">Submit</button>
+                                <button type="submit" className="btn btn-primary"> Submit</button>
                           </form>
                       </div>
                   </div>
