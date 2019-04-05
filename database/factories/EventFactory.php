@@ -9,7 +9,7 @@ $factory->define(App\Event::class, function (Faker $faker) {
         'event_address' => $faker->text(),
         'event_description' => $faker->text(),
         'event_price' => $faker->randomDigit(),
-        'event_author' => $faker->name()
+        'event_author' => $faker->numberBetween($min = 1, $max = 10)
 
     ];
 });

@@ -159,8 +159,25 @@ class EventController extends Controller
     {
       JWTAuth::setToken("token_string");
       $user_id = JWTAuth::authenticate()->id;     }
+
+      public function myEvents()
+      {
+        {
+            $id = auth('api')->user()->id;
+            $events = Event::where('event_author', '=', $id)->with('users')->get();
+
+          return response()->json($events, 200);
+       }
+        /**
+         * Show the form for creating a new resource.
+         *
+         * @return \Illuminate\Http\Response
+         */
+      }
+
 }
 
+//Jam : 5 avril, fonction pour afficher mes évènements
 
 
 
