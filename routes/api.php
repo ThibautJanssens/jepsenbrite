@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 
 Route::get('/events', 'EventController@index')->name('events.index');
 
-Route::middleware('auth:api')->post('/events', 'EventController@store')->name('events.store');
+/*Route::middleware('auth:api')*/Route::post('/events', 'EventController@store')->name('events.store');
 
 Route::get('/events/{event}', 'EventController@show')->name('events.show');
 

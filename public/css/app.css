@@ -10909,7 +10909,8 @@ html {
 
 .eventImg {
   padding: 2rem;
-  background-color: #0b3463;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://i1.wp.com/cdn.wallpapersafari.com/81/68/h3GA1n.jpg");
+  background-size: cover;
   -webkit-filter: drop-shadow(0px 0px 5px black);
           filter: drop-shadow(0px 0px 5px black);
 }
@@ -11014,12 +11015,6 @@ label {
 .form-group {
   max-width: 20rem;
   margin: auto;
-}
-
-.imgEvent:hover {
-  cursor: pointer;
-  -webkit-filter: brightness(1.2);
-          filter: brightness(1.2);
 }
 
 .eventTitle:hover {

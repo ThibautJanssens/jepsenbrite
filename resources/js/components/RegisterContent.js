@@ -10,9 +10,7 @@ export default class RegisterContent extends Component {
         this.handleChangePassword=this.handleChangePassword.bind(this);
         this.handleSubmit=this.handleSubmit.bind(this);
         this.state = {
-           name: '',
-           email:'',
-           password:''
+          name:'', email:'', password:''
          }
     }
    handleChangeName  (event) {

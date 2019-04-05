@@ -66372,11 +66372,19 @@ function (_Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return CreateContent; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+
+
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -66386,9 +66394,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -66402,81 +66410,223 @@ var CreateContent =
 function (_Component) {
   _inherits(CreateContent, _Component);
 
-  function CreateContent() {
+  function CreateContent(props) {
+    var _this;
+
     _classCallCheck(this, CreateContent);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(CreateContent).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CreateContent).call(this, props));
+    _this.handleChangeTitle = _this.handleChangeTitle.bind(_assertThisInitialized(_this));
+    _this.handleChangeDescription = _this.handleChangeDescription.bind(_assertThisInitialized(_this));
+    _this.handleChangeDate = _this.handleChangeDate.bind(_assertThisInitialized(_this));
+    _this.handleChangeAddress = _this.handleChangeAddress.bind(_assertThisInitialized(_this));
+    _this.handleChangePrice = _this.handleChangePrice.bind(_assertThisInitialized(_this)); //    this.handleChangeHour=this.handleChangeHour.bind(this);
+
+    _this.handleChangeAuthor = _this.handleChangeAuthor.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.state = {
+      event_name: ' ',
+      event_description: ' ',
+      event_address: ' ',
+      event_date: ' ',
+      event_price: ' ',
+      event_author: ' ',
+
+      /*created_at: ' ', updated_at:' ', */
+      events: []
+    };
+    return _this;
   }
 
   _createClass(CreateContent, [{
+    key: "handleChangeTitle",
+    value: function handleChangeTitle(event) {
+      this.setState({
+        title: event.target.value
+      });
+    }
+  }, {
+    key: "handleChangeDescription",
+    value: function handleChangeDescription(event) {
+      this.setState({
+        description: event.target.value
+      });
+    }
+  }, {
+    key: "handleChangeDate",
+    value: function handleChangeDate(event) {
+      this.setState({
+        date: event.target.value
+      });
+    }
+  }, {
+    key: "handleChangeAddress",
+    value: function handleChangeAddress(event) {
+      this.setState({
+        address: event.target.value
+      });
+    }
+  }, {
+    key: "handleChangeAuthor",
+    value: function handleChangeAuthor(event) {
+      this.setState({
+        author: event.target.value
+      });
+    }
+  }, {
+    key: "handleChangePrice",
+    value: function handleChangePrice(event) {
+      this.setState({
+        price: event.target.value
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function () {
+      var _handleSubmit = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(event) {
+        var events, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                event.preventDefault();
+                events = {
+                  event_name: this.state.title,
+                  event_description: this.state.description,
+                  event_date: this.state.date,
+                  event_author: this.state.author,
+                  // hour:this.state.hour,
+                  event_address: this.state.address,
+                  event_price: this.state.price
+                }; // const user = event.target.elements.pseudo.value
+
+                console.log(events);
+                _context.prev = 3;
+                response = axios__WEBPACK_IMPORTED_MODULE_2___default()({
+                  method: "post",
+                  url: "/api/events",
+                  date: events
+                });
+                console.log(response);
+                _context.next = 8;
+                return response;
+
+              case 8:
+                _context.next = 13;
+                break;
+
+              case 10:
+                _context.prev = 10;
+                _context.t0 = _context["catch"](3);
+                console.log(_context.t0.response);
+
+              case 13:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this, [[3, 10]]);
+      }));
+
+      function handleSubmit(_x) {
+        return _handleSubmit.apply(this, arguments);
+      }
+
+      return handleSubmit;
+    }()
+  }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "eventsPassed"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "passedEvents"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "eventImg"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("form", {
+        onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "form-group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        for: "titleCreate"
-      }, "Title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "titleCreate"
+      }, "Title"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
         type: "text",
         className: "form-control",
         id: "titleCreate",
-        placeholder: "Title"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "imgCreate"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        placeholder: "Title",
+        defaultValue: this.state.title,
+        onChange: this.handleChangeTitle,
+        name: "title"
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "form-group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        for: "btn"
-      }, "Image"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "btn"
+      }, "Image"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "btn btn-primary btn-sm "
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Choose an image"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", null, "Choose an image"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
         type: "file"
-      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "createForm"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "form-group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        for: "exampleInputEmail1"
-      }, "Description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "exampleInputEmail1"
+      }, "Description"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("textarea", {
         type: "text",
         className: "form-control",
         id: "exampleInputEmail1",
         "aria-describedby": "emailHelp",
-        placeholder: "Enter description"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        placeholder: "Enter description",
+        defaultValue: this.state.description,
+        onChange: this.handleChangeDescription,
+        name: "description"
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "form-group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        for: "when"
-      }, "Date"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "when"
+      }, "Date"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
         type: "date",
         className: "form-control",
-        id: "when"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        for: "hour"
-      }, "Hour"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "time",
-        className: "form-control",
-        id: "hour"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        for: "where"
-      }, "Adress"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "when",
+        defaultValue: this.state.date,
+        onChange: this.handleChangeDate,
+        name: "date"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "where"
+      }, "Address"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
         type: "text",
         className: "form-control",
-        id: "where"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "where",
+        defaultValue: this.state.address,
+        onChange: this.handleChangeAddress,
+        name: "address"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "where"
+      }, "Price"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        type: "text",
+        className: "form-control",
+        id: "where",
+        defaultValue: this.state.price,
+        onChange: this.handleChangePrice,
+        name: "price"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "when"
+      }, "Author"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        type: "text",
+        className: "form-control",
+        id: "when",
+        defaultValue: this.state.author,
+        onChange: this.handleChangeAuthor,
+        name: "date"
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         type: "submit",
         className: "btn btn-primary"
-      }, "Submit"))));
+      }, "Submit")))));
     }
   }]);
 
   return CreateContent;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+}(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
 
 
 
@@ -66568,63 +66718,37 @@ function (_Component) {
       var _this$state = this.state,
           isLoading = _this$state.isLoading,
           events = _this$state.events;
-      if (!isLoading) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "eventsPassed"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "passedEvents"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "eventImg"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: "/Event/".concat(this.state.events[1].id)
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "eventTitle"
-      }, this.state.events[1].event_name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, "(by ", this.state.events[1].event_author, " )"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "https://besthqwallpapers.com/Uploads/31-12-2017/35784/thumb2-modern-technology-4k-chip-cpu-neon-light.jpg",
-        className: "imgEvent"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "passedEvents2"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", this.state.events[1].event_description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "wholeInfos"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "wholeInfos1"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "info"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "infoIcons",
-        src: "https://www.redfcu.org/Assets/uploads/images/Find%20a%20LocationBranch.png"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "infoTxt"
-      }, this.state.events[1].event_address)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "info"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "infoIcons",
-        src: "http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/calendar-icon.png"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "infoTxt"
-      }, this.state.events[1].event_date)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "info"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "infoIcons",
-        src: "https://stickeroid.com/uploads/pic/full-pngimg/9d06df374b8bab48fc3ba0a7e1a6f4ccd2212d81.png"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "infoTxt"
-      }, "Price: ", this.state.events[1].event_price, "\u20AC"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "wholeInfos2"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "info"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "infoIcons2",
-        src: "http://pngimages.net/sites/default/files/upload-png-image-77090.png"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "infoTxt"
-      }, "Posted on ", this.state.events[1].created_at)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "info"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "infoIcons2",
-        src: "https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_update-512.png"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "infoTxt"
-      }, "Last update:  ", this.state.events[1].updated_at))))));
+      if (!isLoading) return this.state.events.map(function (eventit) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "eventsPassed"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "passedEvents"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "eventImg"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+          to: "/Event/".concat(eventit.id)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          className: "eventTitle"
+        }, eventit.event_name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, "(by ", eventit.event_author, " )")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "wholeInfos"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "wholeInfos1"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "info"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "infoIcons",
+          src: "https://www.redfcu.org/Assets/uploads/images/Find%20a%20LocationBranch.png"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "infoTxt"
+        }, eventit.event_address)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "info"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "infoIcons",
+          src: "http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/calendar-icon.png"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "infoTxt"
+        }, eventit.event_date))))));
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "loading...");
     }
   }]);
@@ -66793,6 +66917,63 @@ function (_Component) {
 
 /***/ }),
 
+/***/ "./resources/js/components/MyEvents.js":
+/*!*********************************************!*\
+  !*** ./resources/js/components/MyEvents.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return MyEvents; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var MyEvents =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(MyEvents, _Component);
+
+  function MyEvents() {
+    _classCallCheck(this, MyEvents);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(MyEvents).apply(this, arguments));
+  }
+
+  _createClass(MyEvents, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Bonjour");
+    }
+  }]);
+
+  return MyEvents;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Navbar.js":
 /*!*******************************************!*\
   !*** ./resources/js/components/Navbar.js ***!
@@ -66850,7 +67031,12 @@ var Navbar = function Navbar() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "nav-link",
     to: "/Passed"
-  }, "Passed Event"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+  }, "Passed Event")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "nav-item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    className: "nav-link",
+    to: "/MyEvents"
+  }, "My Events"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     className: "form-inline my-2 my-lg-0"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     className: "form-control mr-sm-2",
@@ -67249,7 +67435,7 @@ function (_React$Component) {
         src: "https://stickeroid.com/uploads/pic/full-pngimg/9d06df374b8bab48fc3ba0a7e1a6f4ccd2212d81.png"
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
         className: "infoTxt"
-      }, "Price: ", this.state.events.event_price))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, "Price: ", this.state.events.event_price, "\u20AC"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "wholeInfos2"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "info"
@@ -67324,7 +67510,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Passed__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Passed */ "./resources/js/Passed.js");
 /* harmony import */ var _Register__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Register */ "./resources/js/components/Register.js");
 /* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Home */ "./resources/js/components/Home.js");
-/* harmony import */ var _SpecificEvent__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./SpecificEvent */ "./resources/js/components/SpecificEvent.js");
+/* harmony import */ var _SpecificEvent__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./SpecificEvent */ "./resources/js/components/SpecificEvent.js");
+/* harmony import */ var _MyEvents__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./MyEvents */ "./resources/js/components/MyEvents.js");
+
 
 
 
@@ -67345,7 +67533,11 @@ var Routes = function Routes() {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/Event/:id",
-    component: _SpecificEvent__WEBPACK_IMPORTED_MODULE_7__["default"]
+    component: _SpecificEvent__WEBPACK_IMPORTED_MODULE_6__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/MyEvents",
+    component: _MyEvents__WEBPACK_IMPORTED_MODULE_7__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/Passed",
