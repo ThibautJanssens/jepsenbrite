@@ -45,17 +45,11 @@ class EventController extends Controller
      */
      public function store(Request $request)
      {
-         $request->validate([
-             'event_name' => 'required',
-             'event_date' => 'required',
-             'event_address' => 'required',
-             'event_description' => 'required',
-             'event_price' => 'required',
-             'event_author' => 'required'
+        $params = $request->all();
+        $params['event_author'] = auth('api')->user()->id; //Pour récup l'id de l'user loggé
 
-         ]);
 
-         $event = Event::create($request->all());
+         $event = Event::create($params);
 
          return response()->json([
              'message' => 'Great success! New event created',
@@ -161,8 +155,11 @@ class EventController extends Controller
       ]);
   }
 
+  public function testbitttib()
+    {
+      JWTAuth::setToken("token_string");
+      $user_id = JWTAuth::authenticate()->id;     }
 }
-
 
 
 
