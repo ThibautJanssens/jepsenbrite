@@ -99,7 +99,7 @@ filter: drop-shadow(7px 7px 2px black);
   animation: App-logo-spin infinite 13s linear;
   height: 40vmin;
   pointer-events: none;
- filter:drop-shadow(2px 2px 20px white);
+ filter:drop-shadow(2px 2px 20px lightgrey);
  opacity:0.9;
 }
 @keyframes App-logo-spin {
@@ -289,12 +289,9 @@ padding:1rem;
 .form-control {
   border-radius: 0px;
 }
-
-
 .createTitle{
   max-width:30rem;
 }
-
 .dons>button:hover {
   animation: clign2 0.2s infinite linear;
 }
@@ -310,10 +307,6 @@ label{
 .form-group {
   max-width:20rem;
   margin:auto;
-}
-.imgEvent:hover{
-  cursor:pointer;
-  filter:brightness(1.2);
 }
 .eventTitle:hover{
   color: rgba(0, 0, 0, 1);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-
+import {Redirect} from 'react-router-dom';
 
 
 export default class CreateContent extends Component {
@@ -13,7 +13,7 @@ export default class CreateContent extends Component {
       this.handleChangePrice=this.handleChangePrice.bind(this);
       this.handleSubmit=this.handleSubmit.bind(this);
       this.state = {
-         event_name:' ', event_description:' ', event_address:' ', event_date:' ', event_price: ' ', events :[ ]
+         event_name:' ', event_description:' ', event_address:' ', event_date:' ', event_price: ' ', events :[ ], redirect:false
        }
   }
   handleChangeTitle  (event) {
@@ -41,8 +41,9 @@ export default class CreateContent extends Component {
       event_description:this.state.description,
       event_date:this.state.date,
       event_address:this.state.address,
-      event_price:this.state.price
+      event_price:this.state.price,
     };
+    this.setState({ redirect: true });
     // const user = event.target.elements.pseudo.value
     console.log(events);
     try{
@@ -70,6 +71,12 @@ export default class CreateContent extends Component {
 
 
     render(){
+      const { redirect } = this.state;
+
+       if (redirect) {
+         return <Redirect to='/'/>;
+       }
+
       return(
           <div className="eventsPassed">
                 <div className='passedEvents'>

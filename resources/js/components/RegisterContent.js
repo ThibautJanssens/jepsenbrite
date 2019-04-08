@@ -37,7 +37,7 @@ export default class RegisterContent extends Component {
     const { redirect } = this.state;
 
      if (redirect) {
-       return <Redirect to='/'/>;
+       return <Redirect to='/Login'/>;
      }
       return(
           <div className="eventsPassed">

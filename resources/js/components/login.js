@@ -30,52 +30,30 @@ export default class Login extends Component {
       event.preventDefault()
       appLogin(myJSON);
       this.setState({ redirect: true });
+      alert('Welcome ' + this.state.name + '!');
   }
 
   render() {
     const { redirect } = this.state;
 
      if (redirect) {
-       return <Redirect to='/'/>;
+       return <Redirect to='/'/> ;
      }
     return (
-      <div className="Login">
-        <form onSubmit={this.handleSubmit}>
-          <label>Email</label>
-            <input
-              autoComplete="true"
-              id="email"
-              name="email"
-              type="email"
-              value={this.state.email}
-              onChange={this.handleChange}
-            />
-          <label>Pseudo</label>
-            <input
-              autoComplete="false"
-              id="name"
-              name="name"
-              value={this.state.name}
-              onChange={this.handleChange}
-              type="text"
-            />
-            <label>Password</label>
-            <input
-              autoComplete="false"
-              id="password"
-              name="password"
-              value={this.state.password}
-              onChange={this.handleChange}
-              type="password"
-            />
-          <button
-            disabled={!this.validateForm()}
-            type="submit"
-          >
-            Login
-          </button>
-        </form>
-      </div>
+      <div className="eventsPassed">
+            <div className='passedEvents'>
+                <h1>Login</h1>
+                      <form className='form-group'  onSubmit={this.handleSubmit}>
+                              <label>Pseudo</label>
+                              <input type="text" autoComplete="false" className="form-control" id="name" placeholder="Enter pseudo" defaultValue={this.state.name} onChange={this.handleChange} name='name'  />
+                              <label>Password</label>
+                              <input type="password" autoComplete="false" className="form-control" id="password"  placeholder='Enter password' defaultValue={this.state.password} onChange={this.handleChange} name='password'/>
+                              <label>Email address</label>
+                              <input type="email" autoComplete="true" className="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" defaultValue={this.state.email} onChange={this.handleChange} name='email'/>
+                            <button type="submit" className="btn btn-primary" disabled={!this.validateForm()}> Submit</button>
+                      </form>
+                  </div>
+              </div>
     );
   }
 }

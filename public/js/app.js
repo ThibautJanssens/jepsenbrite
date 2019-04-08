@@ -60466,7 +60466,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66401,6 +66401,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -66428,6 +66429,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var CreateContent =
 /*#__PURE__*/
 function (_Component) {
@@ -66451,7 +66453,8 @@ function (_Component) {
       event_address: ' ',
       event_date: ' ',
       event_price: ' ',
-      events: []
+      events: [],
+      redirect: false
     };
     return _this;
   }
@@ -66516,10 +66519,13 @@ function (_Component) {
                   event_date: this.state.date,
                   event_address: this.state.address,
                   event_price: this.state.price
-                }; // const user = event.target.elements.pseudo.value
+                };
+                this.setState({
+                  redirect: true
+                }); // const user = event.target.elements.pseudo.value
 
                 console.log(events);
-                _context.prev = 3;
+                _context.prev = 4;
                 response = axios__WEBPACK_IMPORTED_MODULE_2___default()({
                   method: "post",
                   url: "/api/events",
@@ -66530,24 +66536,24 @@ function (_Component) {
                   data: events
                 });
                 console.log(response);
-                _context.next = 8;
+                _context.next = 9;
                 return response;
 
-              case 8:
-                _context.next = 13;
+              case 9:
+                _context.next = 14;
                 break;
 
-              case 10:
-                _context.prev = 10;
-                _context.t0 = _context["catch"](3);
+              case 11:
+                _context.prev = 11;
+                _context.t0 = _context["catch"](4);
                 console.log(_context.t0.response);
 
-              case 13:
+              case 14:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[3, 10]]);
+        }, _callee, this, [[4, 11]]);
       }));
 
       function handleSubmit(_x) {
@@ -66559,6 +66565,14 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var redirect = this.state.redirect;
+
+      if (redirect) {
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Redirect"], {
+          to: "/"
+        });
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "eventsPassed"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -67051,9 +67065,11 @@ var Navbar = function Navbar() {
     to: "/MyEvents"
   }, "My Events"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "btn btn-secondary my-2 my-sm-0",
+    id: "log",
     to: "/Login"
   }, "Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "btn btn-secondary my-2 my-sm-0",
+    id: "reg",
     to: "/Register"
   }, "Register")));
 };
@@ -67227,7 +67243,7 @@ function (_Component) {
 
       if (redirect) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
-          to: "/"
+          to: "/Login"
         });
       }
 
@@ -67637,6 +67653,7 @@ function (_Component) {
       this.setState({
         redirect: true
       });
+      alert('Welcome ' + this.state.name + '!');
     }
   }, {
     key: "render",
@@ -67650,34 +67667,45 @@ function (_Component) {
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "Login"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "eventsPassed"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "passedEvents"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "form-group",
         onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        autoComplete: "true",
-        id: "email",
-        name: "email",
-        type: "email",
-        value: this.state.email,
-        onChange: this.handleChange
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Pseudo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Pseudo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
         autoComplete: "false",
+        className: "form-control",
         id: "name",
-        name: "name",
-        value: this.state.name,
+        placeholder: "Enter pseudo",
+        defaultValue: this.state.name,
         onChange: this.handleChange,
-        type: "text"
+        name: "name"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "password",
         autoComplete: "false",
+        className: "form-control",
         id: "password",
-        name: "password",
-        value: this.state.password,
+        placeholder: "Enter password",
+        defaultValue: this.state.password,
         onChange: this.handleChange,
-        type: "password"
+        name: "password"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email address"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "email",
+        autoComplete: "true",
+        className: "form-control",
+        id: "email",
+        "aria-describedby": "emailHelp",
+        placeholder: "Enter email",
+        defaultValue: this.state.email,
+        onChange: this.handleChange,
+        name: "email"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        disabled: !this.validateForm(),
-        type: "submit"
-      }, "Login")));
+        type: "submit",
+        className: "btn btn-primary",
+        disabled: !this.validateForm()
+      }, " Submit"))));
     }
   }]);
 
