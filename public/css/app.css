@@ -10779,10 +10779,13 @@ i {
   z-index: 1;
   bottom: 103px;
   margin-left: 100px;
+  -webkit-animation: pass 5s infinite linear;
+          animation: pass 5s infinite linear;
 }
 
 .baron:hover {
   width: 10%;
+  opacity: 1;
   -webkit-filter: drop-shadow(0px 0px 8px white);
           filter: drop-shadow(0px 0px 8px white);
 }
@@ -10811,8 +10814,8 @@ html {
   }
 
   to {
-    -webkit-transform: translate3d(1375px, 0, 0);
-            transform: translate3d(1375px, 0, 0);
+    -webkit-transform: translate3d(1375px, -495px, 0);
+            transform: translate3d(1375px, -495px, 0);
   }
 }
 
@@ -10823,8 +10826,8 @@ html {
   }
 
   to {
-    -webkit-transform: translate3d(1375px, 0, 0);
-            transform: translate3d(1375px, 0, 0);
+    -webkit-transform: translate3d(1375px, -495px, 0);
+            transform: translate3d(1375px, -495px, 0);
   }
 }
 
@@ -10835,6 +10838,8 @@ html {
   z-index: 1;
   -webkit-filter: drop-shadow(7px 7px 2px black);
           filter: drop-shadow(7px 7px 2px black);
+  -webkit-animation: pass infinite 5s linear;
+          animation: pass infinite 5s linear;
 }
 
 @-webkit-keyframes pulse {
@@ -10862,6 +10867,30 @@ html {
 
   to {
     opacity: 1;
+  }
+}
+
+@-webkit-keyframes body-logo-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes body-logo-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
   }
 }
 
@@ -10986,6 +11015,54 @@ html {
   }
 }
 
+@-webkit-keyframes clign {
+  from {
+    background-color: white;
+    color: red;
+  }
+
+  to {
+    background-color: red;
+    color: white;
+  }
+}
+
+@keyframes clign {
+  from {
+    background-color: white;
+    color: red;
+  }
+
+  to {
+    background-color: red;
+    color: white;
+  }
+}
+
+@-webkit-keyframes clign2 {
+  from {
+    background-color: white;
+    color: green;
+  }
+
+  to {
+    background-color: green;
+    color: white;
+  }
+}
+
+@keyframes clign2 {
+  from {
+    background-color: white;
+    color: green;
+  }
+
+  to {
+    background-color: green;
+    color: white;
+  }
+}
+
 .infoTxt {
   margin-top: 0.5rem;
   margin-left: 0.3rem;
@@ -10998,6 +11075,22 @@ html {
 
 .createTitle {
   max-width: 30rem;
+}
+
+.dons > button {
+  margin-left: 31.4rem;
+  -webkit-animation: clign 0.2s infinite linear;
+          animation: clign 0.2s infinite linear;
+  width: 20rem;
+  min-height: 5rem;
+  border-style: none;
+  -webkit-filter: drop-shadow(0px 0px 5px white);
+          filter: drop-shadow(0px 0px 5px white);
+}
+
+.dons > button:hover {
+  -webkit-animation: clign2 0.2s infinite linear;
+          animation: clign2 0.2s infinite linear;
 }
 
 .donutBckg {
