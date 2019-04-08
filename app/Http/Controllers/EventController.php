@@ -45,17 +45,11 @@ class EventController extends Controller
      */
      public function store(Request $request)
      {
-         $request->validate([
-             'event_name' => 'required',
-             'event_date' => 'required',
-             'event_address' => 'required',
-             'event_description' => 'required',
-             'event_price' => 'required',
-             'event_author' => 'required'
+        $params = $request->all();
+        $params['event_author'] = auth('api')->user()->id; //Pour récup l'id de l'user loggé
 
-         ]);
 
-         $event = Event::create($request->all());
+         $event = Event::create($params);
 
          return response()->json([
              'message' => 'Great success! New event created',
@@ -131,4 +125,74 @@ class EventController extends Controller
              'message' => 'Successfully deleted event!'
          ]);
      }
+
+
+// Jam, 4 avril, inscription et désincription à un Event
+
+  public function eventRegister($event, $user)
+  {
+
+    $event2 = Event::find($event);
+
+    $event2->users()->attach($user);
+
+      return response()->json([
+          'message' => 'Great success! User succefully registered to the event !',
+          'event' => $event2
+      ]);
+  }
+
+  public function eventUnregister($event, $user)
+  {
+
+    $event2 = Event::find($event);
+
+    $event2->users()->detach($user);
+
+      return response()->json([
+          'message' => 'Great success! User succefully unregistered to the event !',
+          'event' => $event2
+      ]);
+  }
+
+  public function testbitttib()
+    {
+      JWTAuth::setToken("token_string");
+      $user_id = JWTAuth::authenticate()->id;     }
+
+      public function myEvents()
+      {
+        {
+            $id = auth('api')->user()->id;
+            $events = Event::where('event_author', '=', $id)->with('users')->get();
+
+          return response()->json($events, 200);
+       }
+        /**
+         * Show the form for creating a new resource.
+         *
+         * @return \Illuminate\Http\Response
+         */
+      }
+
 }
+
+//Jam : 5 avril, fonction pour afficher mes évènements
+
+
+
+
+
+
+
+
+
+
+
+// public function show($event, $user)  // Jam : j'ai changé 'Event $events' dans la parenthèse en $id
+// {
+//   $event1 = Event::where('id', '=', $event)
+//               ->with('users')
+//               ->first();
+//   return $event1;
+// }

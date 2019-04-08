@@ -1,6 +1,14 @@
 version: '3.1'
 
 services:
+
+  # La base de données PostgreSQL. Elle est configurée de façon à être joignable sur
+  # localhost:5432 .
+  #
+  # Utilisateur: becode
+  # Mot de passe: becode
+  # Base de données par défault: becode
+
   db:
     image: postgres:11.2
     ports:
@@ -8,8 +16,8 @@ services:
     volumes:
       - dbvolume:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: becode
-      POSTGRES_PASSWORD: becode
+      POSTGRES_USER: lcantini
+      POSTGRES_PASSWORD: lcantini
       POSTGRES_DB: dbBrite
   adminer:
     image: adminer:4.7

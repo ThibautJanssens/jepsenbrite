@@ -12,21 +12,41 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+//---- récupérer les infos courantes de l'utilisateur ----//
+
+Route::middleware('auth.api')->get('/user', function(Request $request) {
+  return $request->user();
+});
+
+//------------- Routes Event -------------//
 
 Route::get('/events', 'EventController@index')->name('events.index');
 
-Route::post('/events', 'EventController@store')->name('events.store');
+Route::middleware('auth:api')->get('/myevents', 'EventController@myEvents')->name('events.myEvents');
+
+Route::middleware('auth:api')->post('/events', 'EventController@store')->name('events.store');
+
+Route::get('/events/baghdad', 'EventController@testbitttib')->name('events.show');
 
 Route::get('/events/{event}', 'EventController@show')->name('events.show');
 
-Route::put('/events/{event}', 'EventController@update')->name('events.update');
+Route::middleware('auth:api')->put('/events/{event}', 'EventController@update')->name('events.update');
 
-Route::delete('/events/{event}', 'EventController@destroy')->name('events.destroy');
+Route::middleware('auth:api')->delete('/events/{event}', 'EventController@destroy')->name('events.destroy');
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+//-----------Route Auth-----------//
 
 Route::post('/register', 'AuthController@register')->name('register');
+
 Route::post('/login', 'AuthController@login')->name('login');
+
 Route::post('/logout', 'AuthController@logout')->name('logout');
+
+//---------------_Route Participation Events -----------------//
+
+Route::middleware('auth:api')->put('/events/register/{event}/{user}', 'EventController@eventRegister')->name('events.register');
+
+Route::middleware('auth:api')->put('/events/unregister/{event}/{user}', 'EventController@eventUnregister')->name('events.unregister');
+
+// Jam, 4 avril, inscription et désincription à un Event
