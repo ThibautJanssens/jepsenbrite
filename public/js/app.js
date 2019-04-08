@@ -60466,7 +60466,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -67152,152 +67152,9 @@ function (_Component) {
   !*** ./resources/js/components/RegisterContent.js ***!
   \****************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return RegisterContent; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./helpers */ "./resources/js/components/helpers.js");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-
-
-
-var RegisterContent =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(RegisterContent, _Component);
-
-  function RegisterContent(props) {
-    var _this;
-
-    _classCallCheck(this, RegisterContent);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(RegisterContent).call(this, props));
-    _this.validateForm = _this.validateForm.bind(_assertThisInitialized(_this));
-    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.state = {
-      name: "",
-      password: "",
-      email: "",
-      redirect: false
-    };
-    return _this;
-  }
-
-  _createClass(RegisterContent, [{
-    key: "validateForm",
-    value: function validateForm() {
-      return this.state.name.length > 0 && this.state.email.length > 0 && this.state.password.length > 0;
-    }
-  }, {
-    key: "handleChange",
-    value: function handleChange(event) {
-      this.setState(_defineProperty({}, event.target.id, event.target.value));
-    }
-  }, {
-    key: "handleSubmit",
-    value: function handleSubmit() {
-      var myJSON = {
-        "name": this.state.name,
-        "email": this.state.email,
-        "password": this.state.password
-      };
-      event.preventDefault();
-      Object(_helpers__WEBPACK_IMPORTED_MODULE_3__["appRegister"])(myJSON);
-      this.setState({
-        redirect: true
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var redirect = this.state.redirect;
-
-      if (redirect) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
-          to: "/Login"
-        });
-      }
-
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "eventsPassed"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "passedEvents"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Register"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "form-group",
-        onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "psd"
-      }, "Pseudo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        className: "form-control",
-        id: "name",
-        placeholder: "Enter pseudo",
-        defaultValue: this.state.name,
-        onChange: this.handleChange,
-        name: "name"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "pswd"
-      }, "Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "password",
-        className: "form-control",
-        id: "password",
-        placeholder: "Enter password",
-        defaultValue: this.state.password,
-        onChange: this.handleChange,
-        name: "password"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "email"
-      }, "Email address"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "email",
-        className: "form-control",
-        id: "email",
-        "aria-describedby": "emailHelp",
-        placeholder: "Enter email",
-        defaultValue: this.state.email,
-        onChange: this.handleChange,
-        name: "email"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "submit",
-        className: "btn btn-primary",
-        disabled: !this.validateForm(),
-        variant: "primary"
-      }, " Submit"))));
-    }
-  }]);
-
-  return RegisterContent;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /home/vadim/Documents/jepsenbrite/resources/js/components/RegisterContent.js: Unexpected token (4:1)\n\n\u001b[0m \u001b[90m 2 | \u001b[39m\u001b[36mimport\u001b[39m \u001b[33mAxios\u001b[39m from \u001b[32m'axios'\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3 | \u001b[39m\u001b[36mimport\u001b[39m {\u001b[33mLink\u001b[39m} from \u001b[32m'react-router-dom'\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 4 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m   | \u001b[39m \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 5 | \u001b[39m\u001b[36mimport\u001b[39m {\u001b[33mRedirect\u001b[39m\u001b[33m,\u001b[39m \u001b[33mRoute\u001b[39m} from \u001b[32m'react-router-dom'\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 6 | \u001b[39m\u001b[36mimport\u001b[39m { appRegister } from \u001b[32m'./helpers'\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 7 | \u001b[39m\u001b[33m===\u001b[39m\u001b[33m===\u001b[39m\u001b[33m=\u001b[39m\u001b[0m\n    at Object.raise (/home/vadim/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:3851:17)\n    at Object.unexpected (/home/vadim/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:5165:16)\n    at Object.jsxParseIdentifier (/home/vadim/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:3350:12)\n    at Object.jsxParseNamespacedName (/home/vadim/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:3360:23)\n    at Object.jsxParseElementName (/home/vadim/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:3371:21)\n    at Object.jsxParseOpeningElementAt (/home/vadim/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:3456:22)\n    at Object.jsxParseElementAt (/home/vadim/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:3489:33)\n    at Object.jsxParseElement (/home/vadim/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:3558:17)\n    at Object.parseExprAtom (/home/vadim/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:3565:19)\n    at Object.parseExprSubscripts (/home/vadim/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:5916:23)\n    at Object.parseMaybeUnary (/home/vadim/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:5896:21)\n    at Object.parseExprOps (/home/vadim/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:5783:23)\n    at Object.parseMaybeConditional (/home/vadim/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:5756:23)\n    at Object.parseMaybeAssign (/home/vadim/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:5703:21)\n    at Object.parseExpression (/home/vadim/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:5651:23)\n    at Object.parseStatementContent (/home/vadim/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:7422:23)\n    at Object.parseStatement (/home/vadim/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:7293:17)\n    at Object.parseBlockOrModuleBlockBody (/home/vadim/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:7879:25)\n    at Object.parseBlockBody (/home/vadim/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:7866:10)\n    at Object.parseTopLevel (/home/vadim/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:7222:10)\n    at Object.parse (/home/vadim/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:8871:17)\n    at parse (/home/vadim/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:11133:38)\n    at parser (/home/vadim/Documents/jepsenbrite/node_modules/@babel/core/lib/transformation/normalize-file.js:170:34)\n    at normalizeFile (/home/vadim/Documents/jepsenbrite/node_modules/@babel/core/lib/transformation/normalize-file.js:138:11)\n    at runSync (/home/vadim/Documents/jepsenbrite/node_modules/@babel/core/lib/transformation/index.js:44:43)\n    at runAsync (/home/vadim/Documents/jepsenbrite/node_modules/@babel/core/lib/transformation/index.js:35:14)\n    at process.nextTick (/home/vadim/Documents/jepsenbrite/node_modules/@babel/core/lib/transform.js:34:34)\n    at _combinedTickCallback (internal/process/next_tick.js:131:7)\n    at process._tickCallback (internal/process/next_tick.js:180:9)");
 
 /***/ }),
 
