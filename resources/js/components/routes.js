@@ -6,7 +6,7 @@ import Create from '../Create';
 import Home from './Home';
 import SpecificEvent from './SpecificEvent';
 import MyEvents from './MyEvents';
-
+import Login from './login';
 const Routes = () => (
 
           <Switch>
@@ -14,6 +14,7 @@ const Routes = () => (
                 <Route exact path ='/Create' component={Create}/>
                 <Route exact path="/Event/:id" component={SpecificEvent} />
                 <Route exact path='/MyEvents' component={MyEvents} />
+                <Route exact path='/Login' component={Login}/>
                 <Route exact path='/Passed' component={Passed}/>
                 <Route exact path='/Register' component={Register} />
           </Switch>

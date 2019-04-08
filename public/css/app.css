@@ -10698,8 +10698,8 @@ body {
   color: inherit;
 }
 
-#psd,
-#pswd,
+#name,
+#password,
 #email {
   background: linear-gradient(darkgrey, white);
 }
@@ -10743,8 +10743,8 @@ i {
           animation: App-logo-spin infinite 13s linear;
   height: 40vmin;
   pointer-events: none;
-  -webkit-filter: drop-shadow(2px 2px 20px white);
-          filter: drop-shadow(2px 2px 20px white);
+  -webkit-filter: drop-shadow(2px 2px 20px lightgrey);
+          filter: drop-shadow(2px 2px 20px lightgrey);
   opacity: 0.9;
 }
 
@@ -10783,6 +10783,7 @@ i {
 
 .baron:hover {
   width: 10%;
+  opacity: 1;
   -webkit-filter: drop-shadow(0px 0px 8px white);
           filter: drop-shadow(0px 0px 8px white);
 }
@@ -10811,8 +10812,8 @@ html {
   }
 
   to {
-    -webkit-transform: translate3d(1375px, 0, 0);
-            transform: translate3d(1375px, 0, 0);
+    -webkit-transform: translate3d(1375px, -495px, 0);
+            transform: translate3d(1375px, -495px, 0);
   }
 }
 
@@ -10823,8 +10824,8 @@ html {
   }
 
   to {
-    -webkit-transform: translate3d(1375px, 0, 0);
-            transform: translate3d(1375px, 0, 0);
+    -webkit-transform: translate3d(1375px, -495px, 0);
+            transform: translate3d(1375px, -495px, 0);
   }
 }
 
@@ -10862,6 +10863,30 @@ html {
 
   to {
     opacity: 1;
+  }
+}
+
+@-webkit-keyframes body-logo-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes body-logo-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
   }
 }
 
@@ -10986,6 +11011,54 @@ html {
   }
 }
 
+@-webkit-keyframes clign {
+  from {
+    background-color: white;
+    color: red;
+  }
+
+  to {
+    background-color: red;
+    color: white;
+  }
+}
+
+@keyframes clign {
+  from {
+    background-color: white;
+    color: red;
+  }
+
+  to {
+    background-color: red;
+    color: white;
+  }
+}
+
+@-webkit-keyframes clign2 {
+  from {
+    background-color: white;
+    color: green;
+  }
+
+  to {
+    background-color: green;
+    color: white;
+  }
+}
+
+@keyframes clign2 {
+  from {
+    background-color: white;
+    color: green;
+  }
+
+  to {
+    background-color: green;
+    color: white;
+  }
+}
+
 .infoTxt {
   margin-top: 0.5rem;
   margin-left: 0.3rem;
@@ -10998,6 +11071,11 @@ html {
 
 .createTitle {
   max-width: 30rem;
+}
+
+.dons > button:hover {
+  -webkit-animation: clign2 0.2s infinite linear;
+          animation: clign2 0.2s infinite linear;
 }
 
 .donutBckg {
@@ -11014,12 +11092,6 @@ label {
 .form-group {
   max-width: 20rem;
   margin: auto;
-}
-
-.imgEvent:hover {
-  cursor: pointer;
-  -webkit-filter: brightness(1.2);
-          filter: brightness(1.2);
 }
 
 .eventTitle:hover {

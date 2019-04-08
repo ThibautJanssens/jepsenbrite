@@ -11,6 +11,7 @@
 body {
   background-color:#000117;
   color:white !important;
+  //filter:drop-shadow(3px 3px 6px white);
  //animation: body-logo-spin infinite 10s linear;
 }
 // @keyframes body-logo-spin {
@@ -54,7 +55,7 @@ body {
   color:inherit;
 }
 
-#psd, #pswd, #email{
+#name, #password, #email{
   background:linear-gradient(darkgrey, white);
 }
 i{
@@ -98,7 +99,7 @@ filter: drop-shadow(7px 7px 2px black);
   animation: App-logo-spin infinite 13s linear;
   height: 40vmin;
   pointer-events: none;
- filter:drop-shadow(2px 2px 20px white);
+ filter:drop-shadow(2px 2px 20px lightgrey);
  opacity:0.9;
 }
 @keyframes App-logo-spin {
@@ -116,11 +117,12 @@ position:fixed;
   z-index: 1;
 bottom:103px;
   margin-left:100px;
+  // animation: pass 5s infinite linear;
 }
 
 .baron:hover{
   width:10%;
-  //opacity:1;
+  opacity:1;
   filter:drop-shadow(0px 0px 8px white);
   // animation : pulse 1s infinite;
   // @keyframes pulse {
@@ -153,7 +155,7 @@ html {
 }
 @keyframes pass {
   from{transform:translate3d(-100px, 0, 0);}
-  to {transform: translate3d(1375px, 0, 0);}
+  to {transform: translate3d(1375px, -495px, 0);}
 }
 .homer {
   bottom:0;
@@ -161,7 +163,7 @@ html {
   width:8rem;
   z-index: 1;
   filter: drop-shadow(7px 7px 2px black);
-  //animation: pass infinite 5s linear;
+  // animation: pass infinite 5s linear;
  //animation: body-logo-spin infinite 0.01s linear;
 //animation : pulse 10s infinite;
 }
@@ -179,14 +181,14 @@ html {
   //      transform: rotate(0deg);
     }
 }
-// @keyframes body-logo-spin {
-//   from {
-//     transform: rotate(0deg);
-//   }
-//   to {
-//     transform: rotate(360deg);
-//   }
-// }
+@keyframes body-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 .tryIt {
   max-width: 50rem;
@@ -271,7 +273,14 @@ padding:1rem;
   50% { transform: translate3d(0, 5px, 0px);}
   to   { transform: translate3d(0, -2px, 0px); }
 }
-
+@keyframes clign {
+  from {background-color:white; color:red}
+  to { background-color: red; color:white}
+}
+@keyframes clign2 {
+  from {background-color:white; color:green}
+  to { background-color: green; color:white}
+}
 .infoTxt{
   margin-top:0.5rem;
   margin-left:0.3rem;
@@ -280,10 +289,11 @@ padding:1rem;
 .form-control {
   border-radius: 0px;
 }
-
-
 .createTitle{
   max-width:30rem;
+}
+.dons>button:hover {
+  animation: clign2 0.2s infinite linear;
 }
 .donutBckg{
   background-image: url('http://pngimg.com/uploads/donut/donut_PNG98.png');
@@ -297,10 +307,6 @@ label{
 .form-group {
   max-width:20rem;
   margin:auto;
-}
-.imgEvent:hover{
-  cursor:pointer;
-  filter:brightness(1.2);
 }
 .eventTitle:hover{
   color: rgba(0, 0, 0, 1);

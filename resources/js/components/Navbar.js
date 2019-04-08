@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import Create from '../Create';
 import Register from './Register';
 import Passed from '../Passed';
+import Login from './login';
 const Navbar = () => (
           <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
               <Link to='/' className="navbar-brand">Do Nuts Event</Link>
@@ -25,12 +26,8 @@ const Navbar = () => (
                   <Link className='nav-link' to='/MyEvents'>My Events</Link>
                   </li>
                 </ul>
-              <form className="form-inline my-2 my-lg-0">
-                <input className="form-control mr-sm-2" type="text" placeholder="Pseudo" />
-                <input className="form-control mr-sm-2" type="password" placeholder="Password" />
-              <Link className='btn btn-secondary my-2 my-sm-0' to='/' >Login</Link>
-              <Link className='btn btn-secondary my-2 my-sm-0' to='/Register' component={Register}>Register</Link>
-              </form>
+              <Link className='btn btn-secondary my-2 my-sm-0' id='log'to='/Login'>Login</Link>
+              <Link className='btn btn-secondary my-2 my-sm-0' id='reg' to='/Register' >Register</Link>
             </div>
         </nav>
 

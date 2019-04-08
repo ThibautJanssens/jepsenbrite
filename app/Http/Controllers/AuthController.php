@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Mail\MailVerify;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -21,6 +23,8 @@ class AuthController extends Controller
              'email'    => $request->email,
              'password' => $request->password,
          ]);
+
+         Mail::to($request->email)->send(new MailVerify($user));
 
         $token = auth()->login($user);
 
