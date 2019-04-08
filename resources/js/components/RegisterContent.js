@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import {Link} from 'react-router-dom';
-import {Redirect} from 'react-router';
+import {Redirect} from 'react-router-dom';
 
 export default class RegisterContent extends Component {
     constructor(props) {
@@ -26,6 +26,7 @@ export default class RegisterContent extends Component {
 
    handleSubmit (event) {
      event.preventDefault();
+          <Redirect to='/'/>
      const user = {
        name: this.state.pseudo,
        email:this.state.email,

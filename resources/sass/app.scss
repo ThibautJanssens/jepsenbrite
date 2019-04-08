@@ -116,7 +116,7 @@ position:fixed;
   z-index: 1;
 bottom:103px;
   margin-left:100px;
-  animation: pass 5s infinite linear;
+  // animation: pass 5s infinite linear;
 }
 
 .baron:hover{
@@ -162,7 +162,7 @@ html {
   width:8rem;
   z-index: 1;
   filter: drop-shadow(7px 7px 2px black);
-  animation: pass infinite 5s linear;
+  // animation: pass infinite 5s linear;
  //animation: body-logo-spin infinite 0.01s linear;
 //animation : pulse 10s infinite;
 }
@@ -293,14 +293,7 @@ padding:1rem;
 .createTitle{
   max-width:30rem;
 }
-.dons>button {
-  margin-left:31.4rem;
-  animation: clign 0.2s infinite linear;
-  width:20rem;
-  min-height:5rem;
-  border-style: none;
-  filter:drop-shadow(0px 0px 5px white);
-}
+
 .dons>button:hover {
   animation: clign2 0.2s infinite linear;
 }
