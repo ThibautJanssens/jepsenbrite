@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-import {Link} from 'react-router-dom';
-<<<<<<< HEAD
-import {Redirect, Route} from 'react-router-dom';
+import {Redirect, Route, Link} from 'react-router-dom';
 import { appRegister } from './helpers';
-=======
-import {Redirect} from 'react-router';
->>>>>>> origin/louis
+
 
 export default class RegisterContent extends Component {
   constructor(props) {
@@ -47,9 +43,9 @@ export default class RegisterContent extends Component {
           <div className="eventsPassed">
                 <div className='passedEvents'>
                     <h1>Register</h1>
-                          <form className='form-group'  onSubmit={this.handleSubmit} action='home' method='GET'>
+                          <form className='form-group'  onSubmit={this.handleSubmit}>
                                   <label htmlFor="psd">Pseudo</label>
-                                  <input type="text" className="form-control" id="name" placeholder="Enter pseudo" defaultValue={this.state.name} onChange={this.handleChange} name='name'  />
+                                  <input type="text" className="form-control" id="name" placeholder="Enter pseudo" defaultValue={this.state.name} onChange={this.handleChange} name='name'/>
                                   <label  htmlFor="pswd">Password</label>
                                   <input type="password" className="form-control" id="password"  placeholder='Enter password' defaultValue={this.state.password} onChange={this.handleChange} name='password'/>
                                   <label  htmlFor="email">Email address</label>
