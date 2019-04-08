@@ -66413,6 +66413,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -66440,6 +66441,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var CreateContent =
 /*#__PURE__*/
 function (_Component) {
@@ -66455,9 +66457,7 @@ function (_Component) {
     _this.handleChangeDescription = _this.handleChangeDescription.bind(_assertThisInitialized(_this));
     _this.handleChangeDate = _this.handleChangeDate.bind(_assertThisInitialized(_this));
     _this.handleChangeAddress = _this.handleChangeAddress.bind(_assertThisInitialized(_this));
-    _this.handleChangePrice = _this.handleChangePrice.bind(_assertThisInitialized(_this)); //    this.handleChangeHour=this.handleChangeHour.bind(this);
-
-    _this.handleChangeAuthor = _this.handleChangeAuthor.bind(_assertThisInitialized(_this));
+    _this.handleChangePrice = _this.handleChangePrice.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.state = {
       event_name: ' ',
@@ -66465,10 +66465,8 @@ function (_Component) {
       event_address: ' ',
       event_date: ' ',
       event_price: ' ',
-      event_author: ' ',
-
-      /*created_at: ' ', updated_at:' ', */
-      events: []
+      events: [],
+      redirect: false
     };
     return _this;
   }
@@ -66531,38 +66529,43 @@ function (_Component) {
                   event_name: this.state.title,
                   event_description: this.state.description,
                   event_date: this.state.date,
-                  event_author: this.state.author,
-                  // hour:this.state.hour,
                   event_address: this.state.address,
                   event_price: this.state.price
-                }; // const user = event.target.elements.pseudo.value
+                };
+                this.setState({
+                  redirect: true
+                }); // const user = event.target.elements.pseudo.value
 
                 console.log(events);
-                _context.prev = 3;
+                _context.prev = 4;
                 response = axios__WEBPACK_IMPORTED_MODULE_2___default()({
                   method: "post",
                   url: "/api/events",
-                  date: events
+                  headers: {
+                    'Content-type': 'application/json',
+                    'Authorization': 'Bearer' + JSON.parse(sessionStorage.getItem("token-storage"))
+                  },
+                  data: events
                 });
                 console.log(response);
-                _context.next = 8;
+                _context.next = 9;
                 return response;
 
-              case 8:
-                _context.next = 13;
+              case 9:
+                _context.next = 14;
                 break;
 
-              case 10:
-                _context.prev = 10;
-                _context.t0 = _context["catch"](3);
+              case 11:
+                _context.prev = 11;
+                _context.t0 = _context["catch"](4);
                 console.log(_context.t0.response);
 
-              case 13:
+              case 14:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[3, 10]]);
+        }, _callee, this, [[4, 11]]);
       }));
 
       function handleSubmit(_x) {
@@ -66574,6 +66577,14 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var redirect = this.state.redirect;
+
+      if (redirect) {
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Redirect"], {
+          to: "/"
+        });
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "eventsPassed"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -66644,15 +66655,6 @@ function (_Component) {
         defaultValue: this.state.price,
         onChange: this.handleChangePrice,
         name: "price"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
-        htmlFor: "author"
-      }, "Author"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
-        type: "text",
-        className: "form-control",
-        id: "author",
-        defaultValue: this.state.author,
-        onChange: this.handleChangeAuthor,
-        name: "date"
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         type: "submit",
         className: "btn btn-primary"
@@ -67024,6 +67026,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Create__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Create */ "./resources/js/Create.js");
 /* harmony import */ var _Register__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Register */ "./resources/js/components/Register.js");
 /* harmony import */ var _Passed__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Passed */ "./resources/js/Passed.js");
+/* harmony import */ var _login__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./login */ "./resources/js/components/login.js");
+
 
 
 
@@ -67071,24 +67075,15 @@ var Navbar = function Navbar() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "nav-link",
     to: "/MyEvents"
-  }, "My Events"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-    className: "form-inline my-2 my-lg-0"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    className: "form-control mr-sm-2",
-    type: "text",
-    placeholder: "Pseudo"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    className: "form-control mr-sm-2",
-    type: "password",
-    placeholder: "Password"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+  }, "My Events"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "btn btn-secondary my-2 my-sm-0",
-    to: "/"
+    id: "log",
+    to: "/Login"
   }, "Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "btn btn-secondary my-2 my-sm-0",
-    to: "/Register",
-    component: _Register__WEBPACK_IMPORTED_MODULE_3__["default"]
-  }, "Register"))));
+    id: "reg",
+    to: "/Register"
+  }, "Register")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Navbar);
@@ -67153,9 +67148,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "https://4.bp.blogspot.com/-7Lq-8DZByAI/VAN_LHMq4XI/AAAAAAAAAPw/V1YAVTuWm9g/s1600/princess2400.png",
         className: "baron"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "dons"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, " FAITES DES DONS !!! ")));
+      })));
     }
   }]);
 
@@ -67171,154 +67164,9 @@ function (_Component) {
   !*** ./resources/js/components/RegisterContent.js ***!
   \****************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return RegisterContent; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-
-
-var RegisterContent =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(RegisterContent, _Component);
-
-  function RegisterContent(props) {
-    var _this;
-
-    _classCallCheck(this, RegisterContent);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(RegisterContent).call(this, props));
-    _this.handleChangeName = _this.handleChangeName.bind(_assertThisInitialized(_this));
-    _this.handleChangeEmail = _this.handleChangeEmail.bind(_assertThisInitialized(_this));
-    _this.handleChangePassword = _this.handleChangePassword.bind(_assertThisInitialized(_this));
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.state = {
-      name: '',
-      email: '',
-      password: ''
-    };
-    return _this;
-  }
-
-  _createClass(RegisterContent, [{
-    key: "handleChangeName",
-    value: function handleChangeName(event) {
-      this.setState({
-        pseudo: event.target.value
-      });
-    }
-  }, {
-    key: "handleChangeEmail",
-    value: function handleChangeEmail(event) {
-      this.setState({
-        email: event.target.value
-      });
-    }
-  }, {
-    key: "handleChangePassword",
-    value: function handleChangePassword(event) {
-      this.setState({
-        password: event.target.value
-      });
-    }
-  }, {
-    key: "handleSubmit",
-    value: function handleSubmit(event) {
-      event.preventDefault();
-      var user = {
-        name: this.state.pseudo,
-        email: this.state.email,
-        password: this.state.password
-      }; // const user = event.target.elements.pseudo.value
-
-      console.log(user);
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/register", user).then(function (res) {
-        console.log(res);
-        console.log(res.data);
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "eventsPassed"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "passedEvents"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Register"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "form-group",
-        onSubmit: this.handleSubmit,
-        action: "home",
-        method: "GET"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "psd"
-      }, "Pseudo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        className: "form-control",
-        id: "psd",
-        placeholder: "Enter pseudo",
-        defaultValue: this.state.pseudo,
-        onChange: this.handleChangeName,
-        name: "pseudo"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "pswd"
-      }, "Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "password",
-        className: "form-control",
-        id: "pswd",
-        placeholder: "Enter password",
-        defaultValue: this.state.password,
-        onChange: this.handleChangePassword,
-        name: "password"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "email"
-      }, "Email address"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "email",
-        className: "form-control",
-        id: "email",
-        "aria-describedby": "emailHelp",
-        placeholder: "Enter email",
-        defaultValue: this.state.email,
-        onChange: this.handleChangeEmail,
-        name: "email"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "submit",
-        className: "btn btn-primary"
-      }, " Submit"))));
-    }
-  }]);
-
-  return RegisterContent;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /home/cantini/Documents/jepsenbrite/resources/js/components/RegisterContent.js: Unexpected token (4:1)\n\n\u001b[0m \u001b[90m 2 | \u001b[39m\u001b[36mimport\u001b[39m \u001b[33mAxios\u001b[39m from \u001b[32m'axios'\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3 | \u001b[39m\u001b[36mimport\u001b[39m {\u001b[33mLink\u001b[39m} from \u001b[32m'react-router-dom'\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 4 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m   | \u001b[39m \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 5 | \u001b[39m\u001b[36mimport\u001b[39m {\u001b[33mRedirect\u001b[39m\u001b[33m,\u001b[39m \u001b[33mRoute\u001b[39m} from \u001b[32m'react-router-dom'\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 6 | \u001b[39m\u001b[36mimport\u001b[39m { appRegister } from \u001b[32m'./helpers'\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 7 | \u001b[39m\u001b[33m===\u001b[39m\u001b[33m===\u001b[39m\u001b[33m=\u001b[39m\u001b[0m\n    at Object.raise (/home/cantini/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:3851:17)\n    at Object.unexpected (/home/cantini/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:5165:16)\n    at Object.jsxParseIdentifier (/home/cantini/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:3350:12)\n    at Object.jsxParseNamespacedName (/home/cantini/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:3360:23)\n    at Object.jsxParseElementName (/home/cantini/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:3371:21)\n    at Object.jsxParseOpeningElementAt (/home/cantini/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:3456:22)\n    at Object.jsxParseElementAt (/home/cantini/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:3489:33)\n    at Object.jsxParseElement (/home/cantini/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:3558:17)\n    at Object.parseExprAtom (/home/cantini/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:3565:19)\n    at Object.parseExprSubscripts (/home/cantini/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:5916:23)\n    at Object.parseMaybeUnary (/home/cantini/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:5896:21)\n    at Object.parseExprOps (/home/cantini/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:5783:23)\n    at Object.parseMaybeConditional (/home/cantini/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:5756:23)\n    at Object.parseMaybeAssign (/home/cantini/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:5703:21)\n    at Object.parseExpression (/home/cantini/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:5651:23)\n    at Object.parseStatementContent (/home/cantini/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:7422:23)\n    at Object.parseStatement (/home/cantini/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:7293:17)\n    at Object.parseBlockOrModuleBlockBody (/home/cantini/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:7879:25)\n    at Object.parseBlockBody (/home/cantini/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:7866:10)\n    at Object.parseTopLevel (/home/cantini/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:7222:10)\n    at Object.parse (/home/cantini/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:8871:17)\n    at parse (/home/cantini/Documents/jepsenbrite/node_modules/@babel/parser/lib/index.js:11133:38)\n    at parser (/home/cantini/Documents/jepsenbrite/node_modules/@babel/core/lib/transformation/normalize-file.js:170:34)\n    at normalizeFile (/home/cantini/Documents/jepsenbrite/node_modules/@babel/core/lib/transformation/normalize-file.js:138:11)\n    at runSync (/home/cantini/Documents/jepsenbrite/node_modules/@babel/core/lib/transformation/index.js:44:43)\n    at runAsync (/home/cantini/Documents/jepsenbrite/node_modules/@babel/core/lib/transformation/index.js:35:14)\n    at process.nextTick (/home/cantini/Documents/jepsenbrite/node_modules/@babel/core/lib/transform.js:34:34)\n    at process._tickCallback (internal/process/next_tick.js:61:11)");
 
 /***/ }),
 
@@ -67512,7 +67360,7 @@ function (_React$Component) {
 /*!********************************************!*\
   !*** ./resources/js/components/helpers.js ***!
   \********************************************/
-/*! exports provided: appRegister, appLogin, appLogout, appAddEvent, appUpdateEvent, appGetEventByID, appGetEvent, appGetPastEvent */
+/*! exports provided: appRegister, appLogin, appLogout, appAddEvent, appUpdateEvent, appGetPastEvent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -67522,8 +67370,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "appLogout", function() { return appLogout; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "appAddEvent", function() { return appAddEvent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "appUpdateEvent", function() { return appUpdateEvent; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "appGetEventByID", function() { return appGetEventByID; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "appGetEvent", function() { return appGetEvent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "appGetPastEvent", function() { return appGetPastEvent; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -67531,29 +67377,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 
 
-/*API REQUESTS*/
-
-/*Register -POST*/
-
 function appRegister(myJSON) {
-  //console.log(myJSON);
   axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/register", myJSON).then(function (response) {
     console.log("registered!!");
   }).catch(function () {
     console.log("Email already used");
   });
 }
-/*Login -POST - user/pw */
-
 function appLogin(myJSON) {
   axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("api/login", myJSON).then(function (response) {
     console.log(response.data.access_token);
+    sessionStorage.setItem('token-storage', JSON.stringify(response.data.access_token));
   }).catch(function (error) {
     console.log(error);
   });
 }
-/*Logout-POST */
-
 function appLogout(myJSON) {
   axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/logout/", myJSON).then(function (response) {
     console.log("Loged out");
@@ -67561,37 +67399,15 @@ function appLogout(myJSON) {
     console.log(error);
   });
 }
-/*Add Event-POST */
-
 function appAddEvent(myJSON) {
   axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/event", myJSON);
 }
-/*Update Event-PUT */
-
 function appUpdateEvent(myJSON) {
   axios__WEBPACK_IMPORTED_MODULE_1___default.a.put("/api/event/1", myJSON);
 }
-/*Get Event by ID-GET */
-
-function appGetEventByID(myJSON) {
-  axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/event/1", myJSON);
-}
-/*Get Event -GET */
-
-/*Get all future events*/
-
-function appGetEvent(eventList) {
-  axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/events").then(function (response) {
-    return eventList.setState({
-      eventList: response.data
-    });
-  });
-}
-/*Get Past Event -GET */
-
 function appGetPastEvent(myJSON) {
   axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/pastEvent", myJSON);
-} //\API REQUESTS
+}
 
 /***/ }),
 
@@ -67676,43 +67492,38 @@ function (_Component) {
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.state = {
       email: "",
+      name: "",
       password: "",
-      redirect: false //isLoggedIn: false,
-      //user: {}
-
+      redirect: false
     };
     return _this;
-  } //\end constructohpr
-
+  }
 
   _createClass(Login, [{
     key: "validateForm",
     value: function validateForm() {
-      return this.state.email.length > 0 && this.state.password.length > 0;
-    } //\end fct validateForm
-
+      return this.state.email.length > 0 && this.state.password.length > 0 && this.state.name.length > 0;
+    }
   }, {
     key: "handleChange",
     value: function handleChange(event) {
       this.setState(_defineProperty({}, event.target.id, event.target.value));
-    } //\end fct handleChange
-
+    }
   }, {
     key: "handleSubmit",
     value: function handleSubmit() {
-      //let myJSON = JSON.stringify(this.state);
       var myJSON = {
         "email": this.state.email,
+        "name": this.state.name,
         "password": this.state.password
       };
-      event.preventDefault(); //console.log(myJSON);
-
+      event.preventDefault();
       Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["appLogin"])(myJSON);
       this.setState({
         redirect: true
       });
-    } //\end fct handleSubmit
-
+      alert('Welcome ' + this.state.name + '!');
+    }
   }, {
     key: "render",
     value: function render() {
@@ -67725,32 +67536,50 @@ function (_Component) {
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "Login"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "eventsPassed"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "passedEvents"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "form-group",
         onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        autoComplete: "true",
-        id: "email",
-        type: "email",
-        value: this.state.email,
-        onChange: this.handleChange
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Pseudo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
         autoComplete: "false",
-        id: "password",
-        value: this.state.password,
+        className: "form-control",
+        id: "name",
+        placeholder: "Enter pseudo",
+        defaultValue: this.state.name,
         onChange: this.handleChange,
-        type: "password"
+        name: "name"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "password",
+        autoComplete: "false",
+        className: "form-control",
+        id: "password",
+        placeholder: "Enter password",
+        defaultValue: this.state.password,
+        onChange: this.handleChange,
+        name: "password"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email address"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "email",
+        autoComplete: "true",
+        className: "form-control",
+        id: "email",
+        "aria-describedby": "emailHelp",
+        placeholder: "Enter email",
+        defaultValue: this.state.email,
+        onChange: this.handleChange,
+        name: "email"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        disabled: !this.validateForm(),
-        type: "submit"
-      }, "Login")));
-    } //\end render
-
+        type: "submit",
+        className: "btn btn-primary",
+        disabled: !this.validateForm()
+      }, " Submit"))));
+    }
   }]);
 
   return Login;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]); //\end class Login
-
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
 

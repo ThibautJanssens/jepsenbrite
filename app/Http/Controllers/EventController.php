@@ -16,7 +16,7 @@ class EventController extends Controller
     {
       {
          // $events = Event::all();
-         $events = Event::with('users')->get();
+         $events = Event::with('users')->orderBy('event_date', 'desc')->get();
 
         return response()->json($events, 200);
      }
@@ -46,7 +46,7 @@ class EventController extends Controller
      public function store(Request $request)
      {
         $params = $request->all();
-        $params['event_author'] = auth('api')->user()->id; //Pour récup l'id de l'user loggé
+        $params['event_author'] = auth('api')->user()->name; //Pour récup le pseudo de l'user loggé
 
 
          $event = Event::create($params);
@@ -67,6 +67,7 @@ class EventController extends Controller
     {
       $event = Event::where('id', '=', $id)
                   ->with('users')
+                  ->orderBy('event_date', 'asc')
                   ->first();
                   ->orderBy('event_date', 'desc');
       return $event;
