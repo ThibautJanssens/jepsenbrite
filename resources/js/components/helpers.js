@@ -16,6 +16,7 @@ export function appLogin(myJSON){
   Axios.post("api/login", myJSON)
     .then(function (response) {
         console.log(response.data.access_token);
+        sessionStorage.setItem('token-storage', JSON.stringify(response.data.access_token))
     })
     .catch(function (error) {
               console.log(error);

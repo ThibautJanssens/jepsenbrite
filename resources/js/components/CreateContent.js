@@ -49,7 +49,11 @@ export default class CreateContent extends Component {
       let response =Axios({
         method :"post",
         url:"/api/events",
-        date: events
+        headers:{
+          'Content-type':'application/json',
+          'Authorization': 'Bearer' + JSON.parse(sessionStorage.getItem("token-storage"))
+        },
+        data: events,
       })
       console.log (response)
       await response

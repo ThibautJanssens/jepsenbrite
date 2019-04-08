@@ -66523,7 +66523,11 @@ function (_Component) {
                 response = axios__WEBPACK_IMPORTED_MODULE_2___default()({
                   method: "post",
                   url: "/api/events",
-                  date: events
+                  headers: {
+                    'Content-type': 'application/json',
+                    'Authorization': 'Bearer' + JSON.parse(sessionStorage.getItem("token-storage"))
+                  },
+                  data: events
                 });
                 console.log(response);
                 _context.next = 8;
@@ -67498,6 +67502,7 @@ function appRegister(myJSON) {
 function appLogin(myJSON) {
   axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("api/login", myJSON).then(function (response) {
     console.log(response.data.access_token);
+    sessionStorage.setItem('token-storage', JSON.stringify(response.data.access_token));
   }).catch(function (error) {
     console.log(error);
   });
