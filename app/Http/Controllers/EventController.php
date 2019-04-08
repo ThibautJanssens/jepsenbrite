@@ -68,6 +68,7 @@ class EventController extends Controller
       $event = Event::where('id', '=', $id)
                   ->with('users')
                   ->first();
+                  ->orderBy('event_date', 'desc');
       return $event;
     }
 
