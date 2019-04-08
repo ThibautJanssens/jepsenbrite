@@ -12,6 +12,13 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+//---- récupérer les infos courantes de l'utilisateur ----//
+
+Route::middleware('auth.api')->get('/user', function(Request $request) {
+  return $request->user();
+});
+
+//------------- Routes Event -------------//
 
 Route::get('/events', 'EventController@index')->name('events.index');
 
@@ -28,33 +35,18 @@ Route::middleware('auth:api')->put('/events/{event}', 'EventController@update')-
 Route::middleware('auth:api')->delete('/events/{event}', 'EventController@destroy')->name('events.destroy');
 
 
+//-----------Route Auth-----------//
+
 Route::post('/register', 'AuthController@register')->name('register');
 
 Route::post('/login', 'AuthController@login')->name('login');
 
 Route::post('/logout', 'AuthController@logout')->name('logout');
 
-
-Route::get('user/activation/{token}', 'Auth\RegisterController@userActivation');
-
-//Route::post('/send', 'EmailController@send')->name('send');
-
-//Mail::get('/send', 'EmailController@send')->name('send');
-
-/*Mail::send('emails.send', ['title' => $title, 'content' => $content], function ($message)
-{
-    $message->from(config('mail.from.address'), config('app.name'));
-
-    $message->to('cantinieauxlouis@gmail.com');
-});*/
-
-/*Mail::raw('EVENT_COMING', function($message) {
-  $message->subject('Hi there!');
-  $message->from(config('mail.from.address'), config('app.name'));
-  $message->to('cantinieauxlouis@gmail.com');
-});*/
-
-// Jam, 4 avril, inscription et désincription à un Event
+//---------------_Route Participation Events -----------------//
 
 Route::middleware('auth:api')->put('/events/register/{event}/{user}', 'EventController@eventRegister')->name('events.register');
+
 Route::middleware('auth:api')->put('/events/unregister/{event}/{user}', 'EventController@eventUnregister')->name('events.unregister');
+
+// Jam, 4 avril, inscription et désincription à un Event
