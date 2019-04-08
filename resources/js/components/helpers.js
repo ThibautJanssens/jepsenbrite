@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import Axios from 'axios';
 
-/*API REQUESTS*/
-/*Register -POST*/
+
 export function appRegister(myJSON){
-  //console.log(myJSON);
-  axios.post("/api/register", myJSON)
+  Axios.post("/api/register", myJSON)
   .then(function (response) {
       console.log("registered!!");
   })
@@ -14,9 +12,8 @@ export function appRegister(myJSON){
   });
 }
 
-/*Login -POST - user/pw */
 export function appLogin(myJSON){
-  axios.post("api/login", myJSON)
+  Axios.post("api/login", myJSON)
     .then(function (response) {
         console.log(response.data.remember_token);
     })
@@ -25,9 +22,8 @@ export function appLogin(myJSON){
     });
 }
 
-/*Logout-POST */
 export function appLogout(myJSON){
-  axios.post("/api/logout/", myJSON)
+  Axios.post("/api/logout/", myJSON)
   .then(function (response) {
       console.log("Loged out");
   })
@@ -36,32 +32,16 @@ export function appLogout(myJSON){
   });
 }
 
-/*Add Event-POST */
+
 export function appAddEvent(myJSON){
-  axios.post("/api/event", myJSON);
+  Axios.post("/api/event", myJSON);
 }
 
-/*Update Event-PUT */
 export function appUpdateEvent(myJSON){
-  axios.put("/api/event/1", myJSON);
+  Axios.put("/api/event/1", myJSON);
 }
 
-/*Get Event by ID-GET */
-export function appGetEventByID(myJSON){
-  axios.get("/api/event/1", myJSON);
-}
 
-/*Get Event -GET */
-/*Get all future events*/
-export function appGetEvent(eventList){
-    axios.get("/api/events")
-      .then (response => eventList.setState({
-        eventList : response.data
-      }))
-}
-
-/*Get Past Event -GET */
 export function appGetPastEvent(myJSON){
-  axios.get("/api/pastEvent", myJSON);
+  Axios.get("/api/pastEvent", myJSON);
 }
-//\API REQUESTS

@@ -26,8 +26,8 @@ const Navbar = () => (
                   <Link className='nav-link' to='/MyEvents'>My Events</Link>
                   </li>
                 </ul>
-              <Link className='btn btn-secondary my-2 my-sm-0' to='/Login' component={Login} >Login</Link>
-              <Link className='btn btn-secondary my-2 my-sm-0' to='/Register' component={Register}>Register</Link>
+              <Link className='btn btn-secondary my-2 my-sm-0' to='/Login'>Login</Link>
+              <Link className='btn btn-secondary my-2 my-sm-0' to='/Register' >Register</Link>
             </div>
         </nav>
 
