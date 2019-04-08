@@ -45,7 +45,7 @@ export default class RegisterContent extends Component {
           <div className="eventsPassed">
                 <div className='passedEvents'>
                     <h1>Register</h1>
-                          <form className='form-group'  onSubmit={this.handleSubmit}>
+                          <form className='form-group'  onSubmit={this.handleSubmit} action='home' method='GET'>
                                   <label htmlFor="psd">Pseudo</label>
                                   <input type="text" className="form-control" id="psd" placeholder="Enter pseudo" defaultValue={this.state.pseudo} onChange={this.handleChangeName} name='pseudo' />
                                   <label  htmlFor="pswd">Password</label>
