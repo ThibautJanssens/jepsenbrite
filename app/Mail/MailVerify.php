@@ -6,21 +6,17 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Mail;
-use App\Mail\EmailVerification;
 
-
-class email extends Mailable implements ShouldQueue
+class MailVerify extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $user;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($user)
     {
         $this->user = $user;
     }
@@ -30,9 +26,8 @@ class email extends Mailable implements ShouldQueue
      *
      * @return $this
      */
-    public function handle()
+    public function build()
     {
-        $email = new EmailVerification($this->user);
-        Mail::to($this->user->email)->($email);
+        return $this->view('email.verify');
     }
 }
