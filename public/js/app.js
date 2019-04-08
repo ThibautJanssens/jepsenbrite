@@ -60443,7 +60443,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66420,9 +66420,7 @@ function (_Component) {
     _this.handleChangeDescription = _this.handleChangeDescription.bind(_assertThisInitialized(_this));
     _this.handleChangeDate = _this.handleChangeDate.bind(_assertThisInitialized(_this));
     _this.handleChangeAddress = _this.handleChangeAddress.bind(_assertThisInitialized(_this));
-    _this.handleChangePrice = _this.handleChangePrice.bind(_assertThisInitialized(_this)); //    this.handleChangeHour=this.handleChangeHour.bind(this);
-
-    _this.handleChangeAuthor = _this.handleChangeAuthor.bind(_assertThisInitialized(_this));
+    _this.handleChangePrice = _this.handleChangePrice.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.state = {
       event_name: ' ',
@@ -66430,9 +66428,6 @@ function (_Component) {
       event_address: ' ',
       event_date: ' ',
       event_price: ' ',
-      event_author: ' ',
-
-      /*created_at: ' ', updated_at:' ', */
       events: []
     };
     return _this;
@@ -66496,8 +66491,6 @@ function (_Component) {
                   event_name: this.state.title,
                   event_description: this.state.description,
                   event_date: this.state.date,
-                  event_author: this.state.author,
-                  // hour:this.state.hour,
                   event_address: this.state.address,
                   event_price: this.state.price
                 }; // const user = event.target.elements.pseudo.value
@@ -66609,15 +66602,6 @@ function (_Component) {
         defaultValue: this.state.price,
         onChange: this.handleChangePrice,
         name: "price"
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
-        htmlFor: "author"
-      }, "Author"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
-        type: "text",
-        className: "form-control",
-        id: "author",
-        defaultValue: this.state.author,
-        onChange: this.handleChangeAuthor,
-        name: "date"
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         type: "submit",
         className: "btn btn-primary"
@@ -66989,6 +66973,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Create__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Create */ "./resources/js/Create.js");
 /* harmony import */ var _Register__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Register */ "./resources/js/components/Register.js");
 /* harmony import */ var _Passed__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Passed */ "./resources/js/Passed.js");
+/* harmony import */ var _login__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./login */ "./resources/js/components/login.js");
+
 
 
 
@@ -67036,24 +67022,15 @@ var Navbar = function Navbar() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "nav-link",
     to: "/MyEvents"
-  }, "My Events"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-    className: "form-inline my-2 my-lg-0"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    className: "form-control mr-sm-2",
-    type: "text",
-    placeholder: "Pseudo"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    className: "form-control mr-sm-2",
-    type: "password",
-    placeholder: "Password"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+  }, "My Events"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "btn btn-secondary my-2 my-sm-0",
-    to: "/"
+    to: "/Login",
+    component: _login__WEBPACK_IMPORTED_MODULE_5__["default"]
   }, "Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "btn btn-secondary my-2 my-sm-0",
     to: "/Register",
     component: _Register__WEBPACK_IMPORTED_MODULE_3__["default"]
-  }, "Register"))));
+  }, "Register")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Navbar);
@@ -67144,7 +67121,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./helpers */ "./resources/js/components/helpers.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -67167,6 +67147,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var RegisterContent =
 /*#__PURE__*/
 function (_Component) {
@@ -67178,61 +67159,53 @@ function (_Component) {
     _classCallCheck(this, RegisterContent);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(RegisterContent).call(this, props));
-    _this.handleChangeName = _this.handleChangeName.bind(_assertThisInitialized(_this));
-    _this.handleChangeEmail = _this.handleChangeEmail.bind(_assertThisInitialized(_this));
-    _this.handleChangePassword = _this.handleChangePassword.bind(_assertThisInitialized(_this));
+    _this.validateForm = _this.validateForm.bind(_assertThisInitialized(_this));
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.state = {
-      name: '',
-      email: '',
-      password: ''
+      name: "",
+      password: "",
+      email: "",
+      redirect: false
     };
     return _this;
   }
 
   _createClass(RegisterContent, [{
-    key: "handleChangeName",
-    value: function handleChangeName(event) {
-      this.setState({
-        pseudo: event.target.value
-      });
+    key: "validateForm",
+    value: function validateForm() {
+      return this.state.name.length > 0 && this.state.email.length > 0 && this.state.password.length > 0;
     }
   }, {
-    key: "handleChangeEmail",
-    value: function handleChangeEmail(event) {
-      this.setState({
-        email: event.target.value
-      });
-    }
-  }, {
-    key: "handleChangePassword",
-    value: function handleChangePassword(event) {
-      this.setState({
-        password: event.target.value
-      });
+    key: "handleChange",
+    value: function handleChange(event) {
+      this.setState(_defineProperty({}, event.target.id, event.target.value));
     }
   }, {
     key: "handleSubmit",
-    value: function handleSubmit(event) {
+    value: function handleSubmit() {
+      var myJSON = {
+        "name": this.state.name,
+        "email": this.state.email,
+        "password": this.state.password
+      };
       event.preventDefault();
-      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
-        to: "/"
-      });
-      var user = {
-        name: this.state.pseudo,
-        email: this.state.email,
-        password: this.state.password
-      }; // const user = event.target.elements.pseudo.value
-
-      console.log(user);
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/register", user).then(function (res) {
-        console.log(res);
-        console.log(res.data);
+      Object(_helpers__WEBPACK_IMPORTED_MODULE_3__["appRegister"])(myJSON);
+      this.setState({
+        redirect: true
       });
     }
   }, {
     key: "render",
     value: function render() {
+      var redirect = this.state.redirect;
+
+      if (redirect) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
+          to: "/"
+        });
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "eventsPassed"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -67245,20 +67218,20 @@ function (_Component) {
       }, "Pseudo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         className: "form-control",
-        id: "psd",
+        id: "name",
         placeholder: "Enter pseudo",
-        defaultValue: this.state.pseudo,
-        onChange: this.handleChangeName,
-        name: "pseudo"
+        defaultValue: this.state.name,
+        onChange: this.handleChange,
+        name: "name"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         htmlFor: "pswd"
       }, "Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
         className: "form-control",
-        id: "pswd",
+        id: "password",
         placeholder: "Enter password",
         defaultValue: this.state.password,
-        onChange: this.handleChangePassword,
+        onChange: this.handleChange,
         name: "password"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         htmlFor: "email"
@@ -67269,11 +67242,13 @@ function (_Component) {
         "aria-describedby": "emailHelp",
         placeholder: "Enter email",
         defaultValue: this.state.email,
-        onChange: this.handleChangeEmail,
+        onChange: this.handleChange,
         name: "email"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
-        className: "btn btn-primary"
+        className: "btn btn-primary",
+        disabled: !this.validateForm(),
+        variant: "primary"
       }, " Submit"))));
     }
   }]);
@@ -67510,7 +67485,7 @@ function appRegister(myJSON) {
 
 function appLogin(myJSON) {
   axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("api/login", myJSON).then(function (response) {
-    console.log(response.data.access_token);
+    console.log(response.data.remember_token);
   }).catch(function (error) {
     console.log(error);
   });
@@ -67639,43 +67614,37 @@ function (_Component) {
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.state = {
       email: "",
+      name: "",
       password: "",
-      redirect: false //isLoggedIn: false,
-      //user: {}
-
+      redirect: false
     };
     return _this;
-  } //\end constructohpr
-
+  }
 
   _createClass(Login, [{
     key: "validateForm",
     value: function validateForm() {
-      return this.state.email.length > 0 && this.state.password.length > 0;
-    } //\end fct validateForm
-
+      return this.state.email.length > 0 && this.state.password.length > 0 && this.state.name.length > 0;
+    }
   }, {
     key: "handleChange",
     value: function handleChange(event) {
       this.setState(_defineProperty({}, event.target.id, event.target.value));
-    } //\end fct handleChange
-
+    }
   }, {
     key: "handleSubmit",
     value: function handleSubmit() {
-      //let myJSON = JSON.stringify(this.state);
       var myJSON = {
         "email": this.state.email,
+        "name": this.state.name,
         "password": this.state.password
       };
-      event.preventDefault(); //console.log(myJSON);
-
+      event.preventDefault();
       Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["appLogin"])(myJSON);
       this.setState({
         redirect: true
       });
-    } //\end fct handleSubmit
-
+    }
   }, {
     key: "render",
     value: function render() {
@@ -67694,12 +67663,21 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         autoComplete: "true",
         id: "email",
+        name: "email",
         type: "email",
         value: this.state.email,
         onChange: this.handleChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Pseudo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        autoComplete: "false",
+        id: "name",
+        name: "name",
+        value: this.state.name,
+        onChange: this.handleChange,
+        type: "text"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         autoComplete: "false",
         id: "password",
+        name: "password",
         value: this.state.password,
         onChange: this.handleChange,
         type: "password"
@@ -67707,13 +67685,11 @@ function (_Component) {
         disabled: !this.validateForm(),
         type: "submit"
       }, "Login")));
-    } //\end render
-
+    }
   }]);
 
   return Login;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]); //\end class Login
-
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
 

@@ -18,7 +18,7 @@ export function appRegister(myJSON){
 export function appLogin(myJSON){
   axios.post("api/login", myJSON)
     .then(function (response) {
-        console.log(response.data.access_token);
+        console.log(response.data.remember_token);
     })
     .catch(function (error) {
               console.log(error);

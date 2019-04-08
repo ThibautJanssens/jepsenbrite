@@ -11,32 +11,26 @@ export default class Login extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       email: "",
+      name:"",
       password: "",
       redirect: false,
-      //isLoggedIn: false,
-      //user: {}
     };
-  }//\end constructohpr
-
+  }
   validateForm() {
-    return this.state.email.length > 0 && this.state.password.length > 0;
-  }//\end fct validateForm
-
+    return this.state.email.length > 0 && this.state.password.length > 0 && this.state.name.length > 0;
+  }
   handleChange(event) {
       this.setState({
         [event.target.id]: event.target.value
       })
-  }//\end fct handleChange
+  }
 
   handleSubmit() {
-      //let myJSON = JSON.stringify(this.state);
-      let myJSON = {"email":this.state.email,"password":this.state.password}
-
+      let myJSON = {"email":this.state.email, "name":this.state.name, "password":this.state.password}
       event.preventDefault()
-      //console.log(myJSON);
       appLogin(myJSON);
       this.setState({ redirect: true });
-  }//\end fct handleSubmit
+  }
 
   render() {
     const { redirect } = this.state;
@@ -51,14 +45,25 @@ export default class Login extends Component {
             <input
               autoComplete="true"
               id="email"
+              name="email"
               type="email"
               value={this.state.email}
               onChange={this.handleChange}
+            />
+          <label>Pseudo</label>
+            <input
+              autoComplete="false"
+              id="name"
+              name="name"
+              value={this.state.name}
+              onChange={this.handleChange}
+              type="text"
             />
             <label>Password</label>
             <input
               autoComplete="false"
               id="password"
+              name="password"
               value={this.state.password}
               onChange={this.handleChange}
               type="password"
@@ -72,5 +77,5 @@ export default class Login extends Component {
         </form>
       </div>
     );
-  }//\end render
-}//\end class Login
+  }
+}

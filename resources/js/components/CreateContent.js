@@ -11,11 +11,9 @@ export default class CreateContent extends Component {
       this.handleChangeDate=this.handleChangeDate.bind(this);
       this.handleChangeAddress=this.handleChangeAddress.bind(this);
       this.handleChangePrice=this.handleChangePrice.bind(this);
-  //    this.handleChangeHour=this.handleChangeHour.bind(this);
-  this.handleChangeAuthor=this.handleChangeAuthor.bind(this);
       this.handleSubmit=this.handleSubmit.bind(this);
       this.state = {
-         event_name:' ', event_description:' ', event_address:' ', event_date:' ', event_price: ' ',  event_author:' ',/*created_at: ' ', updated_at:' ', */events :[ ]
+         event_name:' ', event_description:' ', event_address:' ', event_date:' ', event_price: ' ', events :[ ]
        }
   }
   handleChangeTitle  (event) {
@@ -42,8 +40,6 @@ export default class CreateContent extends Component {
       event_name: this.state.title,
       event_description:this.state.description,
       event_date:this.state.date,
-      event_author:this.state.author,
-      // hour:this.state.hour,
       event_address:this.state.address,
       event_price:this.state.price
     };
@@ -97,8 +93,6 @@ export default class CreateContent extends Component {
                                   <input type="text" className="form-control" id="address"  defaultValue={this.state.address} onChange={this.handleChangeAddress} name='address'/>
                                   <label htmlFor="price">Price</label>
                                   <input type="text" className="form-control" id="price"  defaultValue={this.state.price} onChange={this.handleChangePrice} name='price'/>
-                                  <label htmlFor="author">Author</label>
-                                  <input type="text" className="form-control" id="author" defaultValue={this.state.author} onChange={this.handleChangeAuthor} name='date'  />
                               </div>
                               <button type="submit" className="btn btn-primary">Submit</button>
                           </form>

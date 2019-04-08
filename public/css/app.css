@@ -10698,8 +10698,8 @@ body {
   color: inherit;
 }
 
-#psd,
-#pswd,
+#name,
+#password,
 #email {
   background: linear-gradient(darkgrey, white);
 }
