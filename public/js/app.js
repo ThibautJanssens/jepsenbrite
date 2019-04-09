@@ -67633,7 +67633,6 @@ function (_Component) {
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.state = {
-      email: "",
       name: "",
       password: "",
       redirect: false
@@ -67644,7 +67643,7 @@ function (_Component) {
   _createClass(Login, [{
     key: "validateForm",
     value: function validateForm() {
-      return this.state.email.length > 0 && this.state.password.length > 0 && this.state.name.length > 0;
+      return this.state.password.length > 0 && this.state.name.length > 0;
     }
   }, {
     key: "handleChange",
@@ -67655,7 +67654,6 @@ function (_Component) {
     key: "handleSubmit",
     value: function handleSubmit() {
       var myJSON = {
-        "email": this.state.email,
         "name": this.state.name,
         "password": this.state.password
       };
@@ -67702,16 +67700,6 @@ function (_Component) {
         defaultValue: this.state.password,
         onChange: this.handleChange,
         name: "password"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email address"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "email",
-        autoComplete: "true",
-        className: "form-control",
-        id: "email",
-        "aria-describedby": "emailHelp",
-        placeholder: "Enter email",
-        defaultValue: this.state.email,
-        onChange: this.handleChange,
-        name: "email"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         className: "btn btn-primary",

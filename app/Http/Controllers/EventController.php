@@ -46,8 +46,8 @@ class EventController extends Controller
      public function store(Request $request)
      {
         $params = $request->all();
-        //cahnger le id par name et 
-        $params['event_author'] = auth('api')->user()->id; //Pour récup le pseudo de l'user loggé
+        //changer le id par name et
+        $params['event_author'] = auth('api')->user()->name; //Pour récup le pseudo de l'user loggé
 
 
          $event = Event::create($params);
