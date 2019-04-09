@@ -29,7 +29,7 @@ class SendReminderEmail implements ShouldQueue
      {
          $data = $this->data;
 
-         Mail::send('emails.reminder_html', $data, function($message) use ($data)
+         Mail::send('emails.reminder', $data, function($message) use ($data)
          {
              $message->to($data['email'], $data['name']);
              $message->subject($data['subject']);
