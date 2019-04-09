@@ -12,6 +12,7 @@ body {
   background:url('https://data.whicdn.com/images/128557270/large.jpg');
   background-attachment: fixed;
   color:white !important;
+  min-height:100%;
   //filter:drop-shadow(3px 3px 6px white);
  //animation: body-logo-spin infinite 10s linear;
 }
@@ -84,7 +85,7 @@ filter: drop-shadow(7px 7px 2px black);
 .brandDonut{
   display:flex;
   justify-content:center;
-  background-color: rgba(0, 0, 0, 0.5);
+  background:url('https://2bd7a77e373a9572610f-dba1f64a3f969774cdd587a3528671a8.ssl.cf1.rackcdn.com/medias/52249/select/DonutGIRESIZED.jpg?1501528255');
   color:white;
 }
 .brandDonut >  h1 {
