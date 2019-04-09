@@ -3,6 +3,10 @@ import Axios from 'axios';
 import {Redirect, Route, Link} from 'react-router-dom';
 import { appRegister } from './helpers';
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> bfb7635610f4efb97e8f5aeb56faaaec28a87783
 
 export default class RegisterContent extends Component {
   constructor(props) {
