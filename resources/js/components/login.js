@@ -10,67 +10,47 @@ export default class Login extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
-      email: "",
+      name:"",
       password: "",
       redirect: false,
-      //isLoggedIn: false,
-      //user: {}
     };
-  }//\end constructohpr
-
+  }
   validateForm() {
-    return this.state.email.length > 0 && this.state.password.length > 0;
-  }//\end fct validateForm
-
+    return this.state.password.length > 0 && this.state.name.length > 0;
+  }
   handleChange(event) {
       this.setState({
         [event.target.id]: event.target.value
       })
-  }//\end fct handleChange
+  }
 
   handleSubmit() {
-      //let myJSON = JSON.stringify(this.state);
-      let myJSON = {"email":this.state.email,"password":this.state.password}
-
+      let myJSON = {"name":this.state.name, "password":this.state.password}
       event.preventDefault()
-      //console.log(myJSON);
       appLogin(myJSON);
       this.setState({ redirect: true });
-  }//\end fct handleSubmit
+      alert('Welcome ' + this.state.name + '!');
+  }
 
   render() {
     const { redirect } = this.state;
 
      if (redirect) {
-       return <Redirect to='/'/>;
+       return <Redirect to='/'/> ;
      }
     return (
-      <div className="Login">
-        <form onSubmit={this.handleSubmit}>
-          <label>Email</label>
-            <input
-              autoComplete="true"
-              id="email"
-              type="email"
-              value={this.state.email}
-              onChange={this.handleChange}
-            />
-            <label>Password</label>
-            <input
-              autoComplete="false"
-              id="password"
-              value={this.state.password}
-              onChange={this.handleChange}
-              type="password"
-            />
-          <button
-            disabled={!this.validateForm()}
-            type="submit"
-          >
-            Login
-          </button>
-        </form>
-      </div>
+      <div className="eventsPassed">
+            <div className='passedEvents'>
+                <h1>Login</h1>
+                      <form className='form-group'  onSubmit={this.handleSubmit}>
+                              <label>Pseudo</label>
+                              <input type="text" autoComplete="false" className="form-control" id="name" placeholder="Enter pseudo" defaultValue={this.state.name} onChange={this.handleChange} name='name'  />
+                              <label>Password</label>
+                              <input type="password" autoComplete="false" className="form-control" id="password"  placeholder='Enter password' defaultValue={this.state.password} onChange={this.handleChange} name='password'/>
+                            <button type="submit" className="btn btn-primary" disabled={!this.validateForm()}> Submit</button>
+                      </form>
+                  </div>
+              </div>
     );
-  }//\end render
-}//\end class Login
+  }
+}
