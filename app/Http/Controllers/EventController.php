@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Event;
 use Illuminate\Http\Request;
 
@@ -46,7 +44,7 @@ class EventController extends Controller
      public function store(Request $request)
      {
         $params = $request->all();
-        $params['event_author'] = auth('api')->user()->name; //Pour récup le pseudo de l'user loggé
+        $params['event_author'] = auth('api')->user()->name; //Pour récup le nom de l'user loggé
 
 
          $event = Event::create($params);
@@ -67,7 +65,6 @@ class EventController extends Controller
     {
       $event = Event::where('id', '=', $id)
                   ->with('users')
-                  ->orderBy('event_date', 'asc')
                   ->first();
       return $event;
     }
@@ -159,22 +156,18 @@ class EventController extends Controller
   public function testbitttib()
     {
       JWTAuth::setToken("token_string");
-      $user_id = JWTAuth::authenticate()->id;     }
+      $user_id = JWTAuth::authenticate()->id;
+    }
 
       public function myEvents()
-      {
+
         {
             $id = auth('api')->user()->id;
             $events = Event::where('event_author', '=', $id)->with('users')->get();
 
           return response()->json($events, 200);
        }
-        /**
-         * Show the form for creating a new resource.
-         *
-         * @return \Illuminate\Http\Response
-         */
-      }
+
 
 }
 

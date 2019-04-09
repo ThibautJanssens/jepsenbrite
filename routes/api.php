@@ -35,6 +35,8 @@ Route::middleware('auth:api')->put('/events/{event}', 'EventController@update')-
 Route::middleware('auth:api')->delete('/events/{event}', 'EventController@destroy')->name('events.destroy');
 
 
+
+
 //-----------Route Auth-----------//
 
 Route::post('/register', 'AuthController@register')->name('register');

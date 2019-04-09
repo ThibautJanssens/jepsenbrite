@@ -3,7 +3,6 @@ import Axios from 'axios';
 import {Redirect, Route, Link} from 'react-router-dom';
 import { appRegister } from './helpers';
 
-
 export default class RegisterContent extends Component {
   constructor(props) {
     super(props);
@@ -43,7 +42,7 @@ export default class RegisterContent extends Component {
           <div className="eventsPassed">
                 <div className='passedEvents'>
                     <h1>Register</h1>
-                          <form className='form-group'  onSubmit={this.handleSubmit} action='home' method='GET'>
+                          <form className='form-group'  onSubmit={this.handleSubmit}>
                                   <label htmlFor="psd">Pseudo</label>
                                   <input type="text" className="form-control" id="name" placeholder="Enter pseudo" defaultValue={this.state.name} onChange={this.handleChange} name='name'  />
                                   <label  htmlFor="pswd">Password</label>
