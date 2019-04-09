@@ -19,11 +19,11 @@ class SpecificEvent extends React.Component {
           console.log(response.data),
           this.setState({
           events: response.data
-        })})
-        .catch(err => console.log(err))
-        console.log(this.state.events)
-
-    }
+          })
+      })
+      .catch(err => console.log(err))
+      console.log(this.state.events)
+      }
     render() {
       console.log(this.props)
       return (
@@ -62,14 +62,7 @@ class SpecificEvent extends React.Component {
         </div>
       );
     }
-
   }
 
-
-// Character.propTypes = {
-//   name: PropTypes.string,
-//   shortDescription: PropTypes.string,
-//   isLoading: PropTypes.bool
-// };
 
 export default SpecificEvent;
