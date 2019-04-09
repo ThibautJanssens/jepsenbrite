@@ -26,13 +26,15 @@ Route::middleware('auth:api')->get('/myevents', 'EventController@myEvents')->nam
 
 Route::middleware('auth:api')->post('/events', 'EventController@store')->name('events.store');
 
-Route::get('/events/baghdad', 'EventController@testbitttib')->name('events.show');
+Route::get('/events/baghdad', 'EventController@testbitttib')->name('events.test');
 
 Route::get('/events/{event}', 'EventController@show')->name('events.show');
 
 Route::middleware('auth:api')->put('/events/{event}', 'EventController@update')->name('events.update');
 
 Route::middleware('auth:api')->delete('/events/{event}', 'EventController@destroy')->name('events.destroy');
+
+
 
 
 //-----------Route Auth-----------//

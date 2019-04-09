@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import Create from '../Create';
-import Register from './Register';
-import Passed from '../Passed';
-import Login from './login';
+
+
 const Navbar = () => (
           <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
               <Link to='/' className="navbar-brand">Do Nuts Event</Link>
@@ -23,7 +21,7 @@ const Navbar = () => (
                   <Link className='nav-link' to='/Passed'>Passed Event</Link>
                   </li>
                   <li className="nav-item">
-                  <Link className='nav-link' to='/MyEvents'>My Events</Link>
+                  <Link className='nav-link' to='/Dashboard'>Dashboard</Link>
                   </li>
                 </ul>
               <Link className='btn btn-secondary my-2 my-sm-0' id='log'to='/Login'>Login</Link>

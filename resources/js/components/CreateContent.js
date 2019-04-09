@@ -58,11 +58,6 @@ export default class CreateContent extends Component {
       })
       console.log (response)
       await response
-        // .post(`/api/events`, events)
-        // .then(res => {
-        //   console.log(res);
-        //   console.log(res.data);
-        // })
       }
       catch(e){
         console.log(e.response)
