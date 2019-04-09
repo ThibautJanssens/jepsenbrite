@@ -21,7 +21,7 @@ $table->string('event_author');
 $table->foreign('event_author')->references('name')->on('users');
 $table->string('event_address');
 $table->text('event_description');
-$table->float('event_price');
+$table->double('event_price');
 $table->timestamps();
 });
 }

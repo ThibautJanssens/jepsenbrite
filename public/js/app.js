@@ -67264,13 +67264,7 @@ function (_Component) {
         className: "passedEvents"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Register"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "form-group",
-<<<<<<< HEAD
         onSubmit: this.handleSubmit
-=======
-        onSubmit: this.handleSubmit,
-        action: "home",
-        method: "GET"
->>>>>>> Merge_Front_and_Back
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         htmlFor: "psd"
       }, "Pseudo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
