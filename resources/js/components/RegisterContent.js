@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-import {Link} from 'react-router-dom';
-<<<<<<< HEAD
-import {Redirect, Route} from 'react-router-dom';
+import {Redirect, Route, Link} from 'react-router-dom';
 import { appRegister } from './helpers';
-=======
-import {Redirect} from 'react-router';
->>>>>>> origin/louis
+
 
 export default class RegisterContent extends Component {
   constructor(props) {
