@@ -11,7 +11,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Cheh</title>
         <!-- Styles -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('../../public/css/app.css') }}" rel="stylesheet">
     </head>
     <body>
         <div id="appli" > Bonjour </div>

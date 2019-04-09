@@ -7,7 +7,7 @@ export default class MyEvents extends Component {
         super(props);
         this.getMyEvents=this.getMyEvents.bind(this);
         this.state={
-            myEvents:[],
+            events:[],
             isLoading:true
             }
       }
@@ -17,16 +17,16 @@ export default class MyEvents extends Component {
 
     async getMyEvents(){
       await Axios
-          .get("/api/myEvents" )
+          .get("/api/myevents" )
           .then(response =>{
             console.log(response.data),
             this.setState({
-            myEvents: response.data
+            events: response.data
             })
         })
     }
     render(){
-      return(this.state.myEvents.map(eventit =>
+      return(this.state.events.map(eventit =>
         <div className="eventsPassed">
               <div className='passedEvents'>
                   <div className='eventImg'>
