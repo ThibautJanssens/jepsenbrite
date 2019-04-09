@@ -10656,7 +10656,8 @@ a.text-dark:focus {
 }
 
 body {
-  background-color: #000117;
+  background: url("https://data.whicdn.com/images/128557270/large.jpg");
+  background-attachment: fixed;
   color: white !important;
 }
 
@@ -10743,8 +10744,8 @@ i {
           animation: App-logo-spin infinite 13s linear;
   height: 40vmin;
   pointer-events: none;
-  -webkit-filter: drop-shadow(2px 2px 20px lightgrey);
-          filter: drop-shadow(2px 2px 20px lightgrey);
+  -webkit-filter: drop-shadow(2px 2px 20px black);
+          filter: drop-shadow(2px 2px 20px black);
   opacity: 0.9;
 }
 
@@ -10907,10 +10908,10 @@ html {
   margin: auto;
   margin-top: 3rem;
   margin-bottom: 3rem;
-  background-color: rgba(11, 52, 99, 0.3);
+  background-color: #0b3463;
   border-style: solid;
   border-width: 10px;
-  border-color: rgba(11, 52, 99, 0.6);
+  border-color: rgba(11, 74, 99, 0.6);
   -webkit-filter: drop-shadow(7px 7px 2px black);
           filter: drop-shadow(7px 7px 2px black);
 }
