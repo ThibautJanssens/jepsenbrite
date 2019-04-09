@@ -3,6 +3,11 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use App\User;
+use Illuminate\Bus\Queueable;
+use Illuminate\Mail\Mailable;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class SendReminderEmails extends Command
 {
@@ -37,28 +42,24 @@ class SendReminderEmails extends Command
      */
     public function handle()
     {
-        //
+        // Get the users where they haven't activated or w/e
+        $pending_users = User::where('id', '=', 1)
+            // ->pending() // Sert à quoi???
+            // ->where('created_at', '<=', Carbon::now()->subDays(3))
+            ->get();
+        // dd($pending_users);
+
+        foreach ($pending_users as $user) {
+            $data = [
+                'name' => $user->name,
+                'email' => $user->email,
+                'subject' => 'Subject Here - Reminder',
+                'user_id' => $user->id,
+                // 'token' => $activate_token, // if you need a token or link, just add it and use in the email view
+            ];
+
+            Queue::push(new SendReminderEmails($data));
+        }
     }
     //Jam : th code below is taken from a thread on laracast
-    public function fire()
-{
-    // Get the users where they haven't activated or w/e
-    $pending_users = User::has('emails', '=', 1)
-        ->pending()
-        ->where('created_at', '<=', Carbon::now()->subDays(3))
-        ->get();
-    // dd($pending_users);
-
-    foreach ($pending_users as $user) {
-        $data = [
-            'name' => $user->name,
-            'email' => $user->email,
-            'subject' => 'Subject Here - Reminder',
-            'user_id' => $user->id,
-            'token' => $activate_token, // if you need a token or link, just add it and use in the email view
-        ];
-
-        Queue::push(new SendReminderEmails($data));
-    }
-}
 }

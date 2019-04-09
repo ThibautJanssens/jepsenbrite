@@ -35,7 +35,7 @@ Route::middleware('auth:api')->put('/events/{event}', 'EventController@update')-
 Route::middleware('auth:api')->delete('/events/{event}', 'EventController@destroy')->name('events.destroy');
 
 
-//-----------Route Auth-----------//
+//-----------Routes Auth-----------//
 
 Route::post('/register', 'AuthController@register')->name('register');
 
@@ -43,10 +43,8 @@ Route::post('/login', 'AuthController@login')->name('login');
 
 Route::post('/logout', 'AuthController@logout')->name('logout');
 
-//---------------_Route Participation Events -----------------//
+//---------------_Routes Participation Events -----------------//
 
 Route::middleware('auth:api')->put('/events/register/{event}/{user}', 'EventController@eventRegister')->name('events.register');
 
 Route::middleware('auth:api')->put('/events/unregister/{event}/{user}', 'EventController@eventUnregister')->name('events.unregister');
-
-// Jam, 4 avril, inscription et désincription à un Event
