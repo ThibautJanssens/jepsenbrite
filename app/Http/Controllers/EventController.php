@@ -48,7 +48,7 @@ class EventController extends Controller
         $params = $request->all();
         //changer le id par name et
         $params['event_author'] = auth('api')->user()->name; //Pour récup le pseudo de l'user loggé
-
+          ->
 
          $event = Event::create($params);
 
