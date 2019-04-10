@@ -16,8 +16,10 @@ public function up()
 Schema::create('events', function (Blueprint $table) {
 $table->bigIncrements('id');
 $table->string('event_name');
-$table->dateTime('event_date');
-$table->dateTime('event_date_end');
+$table->date('event_date');
+$table->time('event_time');
+$table->date('event_date_end');
+$table->time('event_time_end');
 $table->string('event_author');
 $table->foreign('event_author')->references('name')->on('users');
 $table->string('event_address');
