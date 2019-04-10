@@ -35,7 +35,10 @@ export default class MyEvents extends Component {
         <div className="eventsPassed">
               <div className='passedEvents'>
                   <div className='eventImg'>
-                      <Link to={`/Event/${eventit.id}`}><h1 className='eventTitle'>{eventit.event_name}</h1></Link><i>(by {eventit.event_author} )</i>
+                      <h1 className='eventTitle'>{eventit.event_name}</h1>
+                  </div>
+                  <div className='passedEvents2'>
+                      <p> {eventit.event_description}</p>
                   </div>
                   <div className='wholeInfos'>
                   <div className='wholeInfos1'>
@@ -45,6 +48,20 @@ export default class MyEvents extends Component {
                   <div className='info'>
                       <img className='infoIcons' src='http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/calendar-icon.png' /><p className='infoTxt'>{eventit.event_date}</p>
                   </div>
+                  <div className='info'>
+                      <img className='infoIcons' src='https://stickeroid.com/uploads/pic/full-pngimg/9d06df374b8bab48fc3ba0a7e1a6f4ccd2212d81.png' /><p className='infoTxt'>Price: {eventit.event_price}€</p>
+                  </div>
+                  </div>
+                  <div className='wholeInfos2'>
+                  <div className='info'>
+                      <img className='infoIcons2' src='http://pngimages.net/sites/default/files/upload-png-image-77090.png' /><p className='infoTxt'>Posted on {eventit.created_at}</p>
+                  </div>
+                  <div className='info'>
+                      <img className='infoIcons2' src='https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_update-512.png' /><p className='infoTxt'>Last update:  {eventit.updated_at}</p>
+                  </div>
+                  </div>
+                  <div>
+                  <Link className='btn btn-secondary my-2 my-sm-0' id='log' to={`/Edit/${eventit.id}`}>Edit</Link>
                   </div>
                   </div>
               </div>

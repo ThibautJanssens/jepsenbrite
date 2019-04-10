@@ -8,6 +8,7 @@ import SpecificEvent from './SpecificEvent';
 import Dashboard from './Dashboard';
 import Login from './login';
 import MyEvents from './myEvents';
+import Edit from './Edit';
 
 const Routes = () => (
 
@@ -17,6 +18,7 @@ const Routes = () => (
                 <Route exact path="/Event/:id" component={SpecificEvent} />
                 <Route exact path='/Dashboard' component={Dashboard} />
                 <Route exact path='/myEvents' component={MyEvents} />
+                <Route exact path='/Edit/:id' component={Edit} />
                 <Route exact path='/Login' component={Login}/>
                 <Route exact path='/Passed' component={Passed}/>
                 <Route exact path='/Register' component={Register} />
