@@ -47,8 +47,8 @@ class Edit extends React.Component {
     console.log(events);
     try{
       let response =Axios({
-        method :"post",
-        url:"/api/events",
+        method :"put",
+        url:"/api/events/" + this.props.match.params.id  ,
         headers:{
           'Content-type':'application/json',
           'Authorization': 'Bearer' + JSON.parse(sessionStorage.getItem("token-storage"))
@@ -92,7 +92,7 @@ class Edit extends React.Component {
                     </div>
                         <div className="form-group">
                             <label htmlFor="exampleInputEmail1">Description</label>
-                            <textarea type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter description" value={this.state.events.event_description} onChange={this.handleChangeDescription} name='description' required/>
+                            <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter description" defaultValue={this.state.events.event_description} onChange={this.handleChangeDescription} name='description' required/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="date">Date</label>
