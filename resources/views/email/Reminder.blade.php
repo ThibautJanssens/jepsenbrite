@@ -1,16 +1,17 @@
 @component('mail::message')
-# Your next event is coming up fast, watch out<br><br>
+# Your next event is coming up fast, don't forget it !<br><br>
 
-## {{ $event->event_name }}<br>
+## {{ $event[0]->event_name }}<br>
 
-### {{ $event->event_address }}<br><br>
+### {{ $event[0]->event_address }}<br><br>
 
 
-(The timezone change wherever you are, so pay attention to it ^^)
+(The timezone changes depending on where you are, so pay attention ^^)
 
 @component('mail::button', ['url' => $eventUrl])
-See the event
+Link to the event
 @endcomponent
 
-ah Ciao Bonsoir!
+Best Regards,<br><br>
+DoNuts Events team
 @endcomponent

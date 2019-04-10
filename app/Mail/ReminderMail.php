@@ -8,12 +8,12 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Event;
 
-class ReminderMail extends Model
+class ReminderMail extends Mailable
 {
     use Queueable, SerializesModels;
 
     public $event;
-    public $eventUrl
+    public $eventUrl;
 
     /**
      * Create a new message instance.
@@ -21,10 +21,10 @@ class ReminderMail extends Model
      * @return void
      */
 
-    public function __construct(Event $event)
+    public function __construct($event)
     {
       $this->event = $event;
-      $this->eventUrl = 'https://jepsen-brite.herokuapp.com/Event/'. $event['id'];
+      $this->eventUrl = 'https://jepsen-brite.herokuapp.com/Event/'. $event[0]['id'];
     }
 
 
@@ -36,6 +36,6 @@ class ReminderMail extends Model
 
      public function build()
      {
-        return $this->markdown('Reminder')->subject('The almighty Reminder: Your next event is coming up fast');
+        return $this->markdown('email.Reminder')->subject('The almighty Reminder: Your next event is coming up fast');
      }
 }

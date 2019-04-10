@@ -18,7 +18,7 @@ class EventsAndUsers extends Migration
         $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         $table->integer('event_id')->unsigned();
         $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
-        $table->boolean('reminder_status')->default(0);
+        $table->boolean('reminder_status')->default(0)->nullable();
         $table->dateTime('reminder_date')->nullable();
       });    }
 

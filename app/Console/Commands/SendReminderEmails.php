@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\User;
+use App\Event;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -66,16 +67,25 @@ class SendReminderEmails extends Command
         //
         //     Queue::push(new SendReminderEmails($data));
         // }
-        // Ci-dessous, code inspiré de celui de Sam
+        // Jam : Ci-dessous, code inspiré de celui de Sam mais refait à ma sauce, merci à lui.
         $users_to_remind = DB::table('events_and_users')->where('reminder_status', 'false')
                            ->where('reminder_date', '>', 'NOW()')->get();
         foreach ($users_to_remind as $users_to_remind) {
-          $event = DB::table('events')->where('id', '=', $users_to_remind['event_id'])
+          $store = $users_to_remind->event_id;
+          $event = Event::where('id', '=', $store)->get();
+          \Log::info($event[0]['id']);
           $mail = new ReminderMail($event);
-          $user = DB::table('users')->where('id', '=', $users_to_remind['user_id']);
-          Mail::to($user['email'])->send($mail);
-          $users_to_remind->update(['reminder_status' => 'true']);
+          $store2 = $users_to_remind->user_id;
+          $user = User::where('id', '=', $store2)->get();
+          \Log::info($user[0]['email']);
+          Mail::to($user[0]['email'])->send($mail);
+          // \Log::info($users_to_remind);
+          // DB::table('events_and_users')->where('reminder_status', 'false')
+          //                    ->where('reminder_date', '>', 'NOW()')->update(['reminder_status' => 'true']);
         }
+        // \Log::info($users_to_remind);
+
+        // $users_to_remind->update(['reminder_status' => 'true']);
 
     }
 
