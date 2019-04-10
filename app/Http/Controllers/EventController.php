@@ -2,7 +2,6 @@
 namespace App\Http\Controllers;
 use App\Event;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
@@ -15,7 +14,7 @@ class EventController extends Controller
     {
       {
          // $events = Event::all();
-         $events = Event::with('users')->orderBy('event_date', 'asc')->get();
+         $events = Event::with('users')->orderBy('event_date', 'desc')->get();
 
         return response()->json($events, 200);
      }
@@ -176,15 +175,14 @@ class EventController extends Controller
       $user_id = JWTAuth::authenticate()->id;
     }
 
-      public function myEvents()
+    public function myEvents()
 
         {
-            $id = auth('api')->user()->id;
+            $id = auth('api')->user()->name;
             $events = Event::where('event_author', '=', $id)->with('users')->get();
-          console.log($events);
+          //console.log($events);
           return response()->json($events, 200);
        }
-
 
 }
 
