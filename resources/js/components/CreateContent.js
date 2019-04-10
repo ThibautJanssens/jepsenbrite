@@ -79,7 +79,7 @@ export default class CreateContent extends Component {
                       <form onSubmit={this.handleSubmit}>
                           <div className="form-group">
                               <label htmlFor="titleCreate">Title</label>
-                              <input type="text" className="form-control" id="titleCreate" placeholder="Title" defaultValue={this.state.title} onChange={this.handleChangeTitle} name='title'/>
+                              <input type="text" className="form-control" id="titleCreate" placeholder="Title" defaultValue={this.state.title} onChange={this.handleChangeTitle} name='title' required/>
                           </div>
                           <div className='form-group'>
                           <label htmlFor="btn">Image</label>
@@ -90,15 +90,15 @@ export default class CreateContent extends Component {
                           </div>
                               <div className="form-group">
                                   <label htmlFor="exampleInputEmail1">Description</label>
-                                  <textarea type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter description" defaultValue={this.state.description} onChange={this.handleChangeDescription} name='description'/>
+                                  <textarea type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter description" defaultValue={this.state.description} onChange={this.handleChangeDescription} name='description' required/>
                               </div>
                               <div className="form-group">
                                   <label htmlFor="date">Date</label>
-                                  <input type="date" className="form-control" id="date" defaultValue={this.state.date} onChange={this.handleChangeDate} name='date'  />
+                                  <input type="date" className="form-control" id="date" defaultValue={this.state.date} onChange={this.handleChangeDate} name='date'  required/>
                                   <label htmlFor="address">Address</label>
-                                  <input type="text" className="form-control" id="address"  defaultValue={this.state.address} onChange={this.handleChangeAddress} name='address'/>
+                                  <input type="text" className="form-control" id="address"  defaultValue={this.state.address} onChange={this.handleChangeAddress} name='address' required/>
                                   <label htmlFor="price">Price</label>
-                                  <input type="text" className="form-control" id="price"  defaultValue={this.state.price} onChange={this.handleChangePrice} name='price'/>
+                                  <input type="text" className="form-control" id="price"  defaultValue={this.state.price} onChange={this.handleChangePrice} name='price' required/>
                               </div>
                               <button type="submit" className="btn btn-primary">Submit</button>
                           </form>

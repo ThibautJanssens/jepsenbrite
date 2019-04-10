@@ -22,11 +22,12 @@ Route::middleware('auth.api')->get('/user', function(Request $request) {
 
 Route::get('/events', 'EventController@index')->name('events.index');
 
+Route::get('/pastEvents', 'EventController@pastEvents')->name('events.past');
+
 Route::middleware('auth:api')->get('/myevents', 'EventController@myEvents')->name('events.myEvents');
 
 Route::middleware('auth:api')->post('/events', 'EventController@store')->name('events.store');
 
-Route::get('/events/baghdad', 'EventController@testbitttib')->name('events.test');
 
 Route::get('/events/{event}', 'EventController@show')->name('events.show');
 
