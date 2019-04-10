@@ -12,7 +12,6 @@ body {
   background:url('https://data.whicdn.com/images/128557270/large.jpg');
   background-attachment: fixed;
   color:white !important;
-  min-height:100%;
   //filter:drop-shadow(3px 3px 6px white);
  //animation: body-logo-spin infinite 10s linear;
 }
@@ -39,9 +38,9 @@ body {
 }
 
 .footIt {
-  position:absolute;
+  position:relative !important;
   width:100%;
-  margin-bottom:0;
+  bottom:-20px !important;
   background-color: #03020D;
   color:darkgrey;
   text-align:center;
@@ -51,6 +50,7 @@ body {
   font-size: 1rem;
   list-style-type: none;
   margin:1rem;
+  margin-bottom:2rem;
   animation: bounce 1.2s ease infinite;
 }
 .gitAccount>a{
@@ -85,7 +85,7 @@ filter: drop-shadow(7px 7px 2px black);
 .brandDonut{
   display:flex;
   justify-content:center;
-  background:url('https://2bd7a77e373a9572610f-dba1f64a3f969774cdd587a3528671a8.ssl.cf1.rackcdn.com/medias/52249/select/DonutGIRESIZED.jpg?1501528255');
+  background-color: rgba(0, 0, 0, 0.5);
   color:white;
 }
 .brandDonut >  h1 {
@@ -207,7 +207,6 @@ html {
   //position: relative;
   margin:auto;
   margin-top:3rem;
-  margin-bottom: 3rem;
   background-color: rgba(11, 52, 99);
   border-style: solid;
   border-width: 10px;
@@ -223,24 +222,28 @@ html {
   // border-style: solid;
   // border-width: 2px;
   // border-color:rgba(0, 0, 0, 0.2);
+  padding:5rem;
+  font-size:5rem;
   background-color:  rgba(0, 0, 0, 0.6);
   filter: drop-shadow(0px 0px 3px black);
 }
 .imgEvent{
   width:100%;
-  max-height:60%;
-
+  max-height:60%
 }
 .eventImg {
   padding:2rem;
   background-color: rgba(11, 52, 99, 1);
   filter:drop-shadow(0px 0px 5px black);
+      min-height:60vh;
   // border-bottom-style: solid;
   // border-bottom-width:10px;
   // border-bottom-color: rgba(11, 52, 99, 0.6);
 }
 .eventsPassed{
   text-align: center;
+  min-height:100vh;
+
 }
 .wholeInfos{
   display:flex;
@@ -297,12 +300,6 @@ padding:1rem;
 .dons>button:hover {
   animation: clign2 0.2s infinite linear;
 }
-.donutBckg{
-  background-image: url('http://pngimg.com/uploads/donut/donut_PNG98.png');
-  background-repeat:no-repeat;
-  background-size: 26rem;
-  background-position:center;
-}
 label{
     text-shadow:0 0 2px #000000 ;
 }
@@ -323,9 +320,7 @@ a:hover{
 //MEDIA QUERIES
 @media screen and (max-width:500px){
 
-  .gitAccount{
-    margin:0;
-  }
+
   .passedEvents2{
     margin:0 !important;
     padding:0.3rem;
