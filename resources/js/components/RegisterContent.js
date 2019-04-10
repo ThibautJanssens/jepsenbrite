@@ -44,7 +44,7 @@ export default class RegisterContent extends Component {
                     <h1>Register</h1>
                           <form className='form-group'  onSubmit={this.handleSubmit}>
                                   <label htmlFor="psd">Pseudo</label>
-                                  <input type="text" className="form-control" id="name" placeholder="Enter pseudo" defaultValue={this.state.name} onChange={this.handleChange} name='name'  />
+                                  <input type="text" className="form-control" id="name" placeholder="Enter pseudo" defaultValue={this.state.name} onChange={this.handleChange} name='name'/>
                                   <label  htmlFor="pswd">Password</label>
                                   <input type="password" className="form-control" id="password"  placeholder='Enter password' defaultValue={this.state.password} onChange={this.handleChange} name='password'/>
                                   <label  htmlFor="email">Email address</label>

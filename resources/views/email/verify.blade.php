@@ -11,5 +11,6 @@
     <p>Ici vous pouvez créer des évenements avec vos amis ou autres et les partager, les améliorer, les supprimer aussi (pas cool)</p>
     <p>enfariner les gens aussi</p>
 
+    <h3>Le mot d'ordre chez nous c'est l'amusement</h3>
   </body>
 </html>

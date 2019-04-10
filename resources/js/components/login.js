@@ -10,14 +10,13 @@ export default class Login extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
-      email: "",
       name:"",
       password: "",
       redirect: false,
     };
   }
   validateForm() {
-    return this.state.email.length > 0 && this.state.password.length > 0 && this.state.name.length > 0;
+    return this.state.password.length > 0 && this.state.name.length > 0;
   }
   handleChange(event) {
       this.setState({
@@ -26,7 +25,7 @@ export default class Login extends Component {
   }
 
   handleSubmit() {
-      let myJSON = {"email":this.state.email, "name":this.state.name, "password":this.state.password}
+      let myJSON = {"name":this.state.name, "password":this.state.password}
       event.preventDefault()
       appLogin(myJSON);
       this.setState({ redirect: true });
