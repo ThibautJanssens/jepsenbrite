@@ -7,9 +7,11 @@ use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
 
-class SendReminderEmails extends Command
+class SendReminderEmails extends Command implements ShouldQueue
 {
     /**
      * The name and signature of the console command.
