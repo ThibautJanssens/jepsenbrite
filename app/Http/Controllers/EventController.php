@@ -170,7 +170,7 @@ class EventController extends Controller
   }
 
   public function testbitttib()
-    {
+  {
       JWTAuth::setToken("token_string");
       $user_id = JWTAuth::authenticate()->id;
     }

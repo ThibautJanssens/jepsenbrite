@@ -36,7 +36,10 @@ export default class Character extends React.Component {
           <h4 className="mb-0">{this.state.characters.name}</h4>
           <span className="text-muted">{this.state.characters.shortDescription}</span>
           <span>{this.state.characters.description}</span>
-          <div className="buttons">
+          <div className="buttons" active>
+            <label class="btn btn-success">
+              <input type="checkbox">Trois
+            </label>
           </div>
         </div>
         </div>

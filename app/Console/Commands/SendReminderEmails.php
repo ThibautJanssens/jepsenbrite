@@ -7,7 +7,6 @@ use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-<<<<<<< HEAD
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -15,9 +14,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 
-=======
-use Illuminate\Contracts\Queue\ShouldQueue;
->>>>>>> louis
 
 class SendReminderEmails extends Command
 {

@@ -24,4 +24,21 @@ class Event extends Model
   protected $casts = [
     'event_date' => 'datetime'
   ];
+
+  /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
+
+    public function creator()
+    {
+        return $this->belongsTo('App\User', 'creator_id');
+    }
+    public function usersregister()
+    {
+
+        return $this->belongsToMany('App\User', 'participations');
+    }
 }
