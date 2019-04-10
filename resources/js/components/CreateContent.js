@@ -94,7 +94,7 @@ export default class CreateContent extends Component {
                                   <input type="text" className="form-control" id="price"  defaultValue={this.state.price} onChange={this.handleChangePrice} name='price' required/>
                               </div>
                               <button type="submit" className="btn btn-primary">Submit</button>
-                          </form>
+                            </form>
                           </div>
                       </div>
                   </div>
