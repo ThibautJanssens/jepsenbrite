@@ -19,10 +19,10 @@ componentDidMount() {
 }
 
 getCharacter(e){
-  Axios.get('https://character-database.becode.xyz/characters')
+  Axios.get('/api/')
     .then(response => {
       console.log(response)
-      
+
       this.setState({
       characters: response.data,
       isLoading: false

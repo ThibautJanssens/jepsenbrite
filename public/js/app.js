@@ -66211,7 +66211,7 @@ function (_Component) {
     value: function getCharacter(e) {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('https://character-database.becode.xyz/characters').then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/').then(function (response) {
         console.log(response);
 
         _this2.setState({
@@ -66592,7 +66592,8 @@ function (_Component) {
         placeholder: "Title",
         defaultValue: this.state.title,
         onChange: this.handleChangeTitle,
-        name: "title"
+        name: "title",
+        required: true
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
@@ -66613,7 +66614,8 @@ function (_Component) {
         placeholder: "Enter description",
         defaultValue: this.state.description,
         onChange: this.handleChangeDescription,
-        name: "description"
+        name: "description",
+        required: true
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
@@ -66624,7 +66626,8 @@ function (_Component) {
         id: "date",
         defaultValue: this.state.date,
         onChange: this.handleChangeDate,
-        name: "date"
+        name: "date",
+        required: true
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
         htmlFor: "address"
       }, "Address"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
@@ -66633,7 +66636,8 @@ function (_Component) {
         id: "address",
         defaultValue: this.state.address,
         onChange: this.handleChangeAddress,
-        name: "address"
+        name: "address",
+        required: true
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
         htmlFor: "price"
       }, "Price"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
@@ -66642,7 +66646,8 @@ function (_Component) {
         id: "price",
         defaultValue: this.state.price,
         onChange: this.handleChangePrice,
-        name: "price"
+        name: "price",
+        required: true
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         type: "submit",
         className: "btn btn-primary"
@@ -67823,7 +67828,14 @@ function (_Component) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/api/myevents").then(function (response) {
+                return axios__WEBPACK_IMPORTED_MODULE_2___default()({
+                  method: "get",
+                  url: "/api/myevents",
+                  headers: {
+                    'Content-type': 'application/json',
+                    'Authorization': 'Bearer' + JSON.parse(sessionStorage.getItem("token-storage"))
+                  }
+                }).then(function (response) {
                   console.log(response.data), _this2.setState({
                     events: response.data
                   });

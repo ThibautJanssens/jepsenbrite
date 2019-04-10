@@ -16,8 +16,13 @@ export default class MyEvents extends Component {
     }
 
     async getMyEvents(){
-      await Axios
-          .get("/api/myevents" )
+      await Axios({
+        method :"get",
+        url:"/api/myevents",
+        headers:{
+          'Content-type':'application/json',
+          'Authorization': 'Bearer' + JSON.parse(sessionStorage.getItem("token-storage"))
+        }})
           .then(response =>{
             console.log(response.data),
             this.setState({
