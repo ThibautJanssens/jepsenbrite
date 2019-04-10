@@ -25,6 +25,22 @@ class EventController extends Controller
        */
     }
 
+    public function pastEvents()
+    {
+      {
+         // $events = Event::all();
+         $events = Event::with('users')->orderBy('event_date', 'asc')->get();
+
+        return response()->json($events, 200);
+     }
+      /**
+       * Show the form for creating a new resource.
+       *
+       * @return \Illuminate\Http\Response
+       */
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -164,7 +180,7 @@ class EventController extends Controller
         {
             $id = auth('api')->user()->id;
             $events = Event::where('event_author', '=', $id)->with('users')->get();
-
+          console.log($events);
           return response()->json($events, 200);
        }
 
