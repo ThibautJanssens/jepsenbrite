@@ -16,7 +16,8 @@ export function appLogin(myJSON){
   Axios.post("api/login", myJSON)
     .then(function (response) {
         console.log(response.data.access_token);
-        sessionStorage.setItem('token-storage', JSON.stringify(response.data.access_token))
+        sessionStorage.setItem('token-storage', JSON.stringify(response.data.access_token));
+        window.location = '/';
     })
     .catch(function (error) {
               console.log(error);
@@ -24,12 +25,24 @@ export function appLogin(myJSON){
 }
 
 export function appLogout(myJSON){
-  Axios.post("/api/logout/", myJSON)
+let response =Axios({
+        method :"post",
+        url:"/api/logout",
+        headers:{
+          'Content-type':'application/json',
+          'Authorization': 'Bearer' + JSON.parse(sessionStorage.getItem("token-storage"))
+        }
+      })
+
   .then(function (response) {
+    sessionStorage.removeItem("token-storage");
+    window.location = '/';
       console.log("Loged out");
   })
   .catch(function (error) {
             console.log(error);
+            sessionStorage.removeItem("token-storage");
+            window.location = '/';
   });
 }
 

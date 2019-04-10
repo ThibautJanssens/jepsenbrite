@@ -9,6 +9,7 @@ import Dashboard from './Dashboard';
 import Login from './login';
 import MyEvents from './myEvents';
 import Edit from './Edit';
+import Logout from './logout';
 
 const Routes = () => (
 
@@ -19,6 +20,7 @@ const Routes = () => (
                 <Route exact path='/Dashboard' component={Dashboard} />
                 <Route exact path='/myEvents' component={MyEvents} />
                 <Route exact path='/Edit/:id' component={Edit} />
+                <Route exact path='/logout' component={Logout}/>
                 <Route exact path='/Login' component={Login}/>
                 <Route exact path='/Passed' component={Passed}/>
                 <Route exact path='/Register' component={Register} />

@@ -31,7 +31,6 @@ class SpecificEvent extends React.Component {
               <div className='passedEvents'>
                   <div className='eventImg'>
                       <h1 className='eventTitle'>{this.state.events.event_name}<i>(by {this.state.events.event_author})</i></h1>
-                      <img src='https://besthqwallpapers.com/Uploads/31-12-2017/35784/thumb2-modern-technology-4k-chip-cpu-neon-light.jpg' className='imgEvent' />
                   </div>
                   <div className='passedEvents2'>
                       <p> {this.state.events.event_description}</p>
