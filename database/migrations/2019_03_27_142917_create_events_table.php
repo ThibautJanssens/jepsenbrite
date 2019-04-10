@@ -17,10 +17,10 @@ Schema::create('events', function (Blueprint $table) {
 $table->bigIncrements('id');
 $table->string('event_name');
 $table->date('event_date');
-$table->time('event_time');
-$table->date('event_date_end');
-$table->time('event_time_end');
-$table->string('event_author');
+$table->time('event_time')->nullable();
+$table->date('event_date_end')->nullable();
+$table->time('event_time_end')->nullable();
+$table->string('event_author')->nullable();
 $table->foreign('event_author')->references('name')->on('users');
 $table->string('event_address');
 $table->text('event_description');
