@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import { appLogin } from './helpers';
 import { Route, Redirect } from 'react-router';
@@ -47,7 +46,9 @@ export default class Login extends Component {
                               <input type="text" autoComplete="false" className="form-control" id="name" placeholder="Enter pseudo" defaultValue={this.state.name} onChange={this.handleChange} name='name'  />
                               <label>Password</label>
                               <input type="password" autoComplete="false" className="form-control" id="password"  placeholder='Enter password' defaultValue={this.state.password} onChange={this.handleChange} name='password'/>
-                            <button type="submit" className="btn btn-primary" disabled={!this.validateForm()}> Submit</button>
+                              <label>Email address</label>
+                              <input type="email" autoComplete="true" className="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" defaultValue={this.state.email} onChange={this.handleChange} name='email'/>
+                              <button type="submit" className="btn btn-primary" disabled={!this.validateForm()}> Login</button>
                       </form>
                   </div>
               </div>

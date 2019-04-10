@@ -10656,7 +10656,8 @@ a.text-dark:focus {
 }
 
 body {
-  background-color: #000117;
+  background: url("https://data.whicdn.com/images/128557270/large.jpg");
+  background-attachment: fixed;
   color: white !important;
 }
 
@@ -10677,9 +10678,9 @@ body {
 }
 
 .footIt {
-  position: absolute;
+  position: relative !important;
   width: 100%;
-  margin-bottom: 0;
+  bottom: -20px !important;
   background-color: #03020D;
   color: darkgrey;
   text-align: center;
@@ -10690,6 +10691,7 @@ body {
   font-size: 1rem;
   list-style-type: none;
   margin: 1rem;
+  margin-bottom: 2rem;
   -webkit-animation: bounce 1.2s ease infinite;
           animation: bounce 1.2s ease infinite;
 }
@@ -10743,8 +10745,8 @@ i {
           animation: App-logo-spin infinite 13s linear;
   height: 40vmin;
   pointer-events: none;
-  -webkit-filter: drop-shadow(2px 2px 20px lightgrey);
-          filter: drop-shadow(2px 2px 20px lightgrey);
+  -webkit-filter: drop-shadow(2px 2px 20px black);
+          filter: drop-shadow(2px 2px 20px black);
   opacity: 0.9;
 }
 
@@ -10906,11 +10908,10 @@ html {
   max-width: 60rem;
   margin: auto;
   margin-top: 3rem;
-  margin-bottom: 3rem;
-  background-color: rgba(11, 52, 99, 0.3);
+  background-color: #0b3463;
   border-style: solid;
   border-width: 10px;
-  border-color: rgba(11, 52, 99, 0.6);
+  border-color: rgba(11, 74, 99, 0.6);
   -webkit-filter: drop-shadow(7px 7px 2px black);
           filter: drop-shadow(7px 7px 2px black);
 }
@@ -10922,6 +10923,8 @@ html {
 }
 
 .eventTitle {
+  padding: 5rem;
+  font-size: 5rem;
   background-color: rgba(0, 0, 0, 0.6);
   -webkit-filter: drop-shadow(0px 0px 3px black);
           filter: drop-shadow(0px 0px 3px black);
@@ -10937,10 +10940,12 @@ html {
   background-color: #0b3463;
   -webkit-filter: drop-shadow(0px 0px 5px black);
           filter: drop-shadow(0px 0px 5px black);
+  min-height: 60vh;
 }
 
 .eventsPassed {
   text-align: center;
+  min-height: 100vh;
 }
 
 .wholeInfos {
@@ -11078,13 +11083,6 @@ html {
           animation: clign2 0.2s infinite linear;
 }
 
-.donutBckg {
-  background-image: url("http://pngimg.com/uploads/donut/donut_PNG98.png");
-  background-repeat: no-repeat;
-  background-size: 26rem;
-  background-position: center;
-}
-
 label {
   text-shadow: 0 0 2px #000000;
 }
@@ -11108,10 +11106,6 @@ a:hover {
 }
 
 @media screen and (max-width: 500px) {
-  .gitAccount {
-    margin: 0;
-  }
-
   .passedEvents2 {
     margin: 0 !important;
     padding: 0.3rem;
