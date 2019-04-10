@@ -66167,6 +66167,7 @@ function (_Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Passed; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
@@ -66205,10 +66206,10 @@ function (_Component) {
     _classCallCheck(this, Passed);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Passed).call(this, props));
-    _this.getCharacter = _this.getCharacter.bind(_assertThisInitialized(_this));
+    _this.getEvents = _this.getEvents.bind(_assertThisInitialized(_this));
     _this.state = {
       isLoading: true,
-      characters: []
+      events: []
     };
     return _this;
   }
@@ -66216,20 +66217,22 @@ function (_Component) {
   _createClass(Passed, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.getCharacter();
+      this.getEvents();
     }
   }, {
-    key: "getCharacter",
-    value: function getCharacter(e) {
+    key: "getEvents",
+    value: function getEvents(e) {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('https://character-database.becode.xyz/characters').then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/api/pastEvents').then(function (response) {
         console.log(response);
 
         _this2.setState({
-          characters: response.data,
+          events: response.data,
           isLoading: false
         });
+
+        console.log(_this2);
       }).catch(function (err) {
         return console.log(err);
       });
@@ -66240,10 +66243,38 @@ function (_Component) {
     value: function render() {
       var _this$state = this.state,
           isLoading = _this$state.isLoading,
-          characters = _this$state.characters;
-      if (!isLoading) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "App"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", this.state.characters[0].name, " "));
+          events = _this$state.events;
+      if (!isLoading) return this.state.events.map(function (eventit) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "eventsPassed"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "passedEvents"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "eventImg"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/Event/".concat(eventit.id)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          className: "eventTitle"
+        }, eventit.event_name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, "(by ", eventit.event_author, " )")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "wholeInfos"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "wholeInfos1"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "info"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "infoIcons",
+          src: "https://www.redfcu.org/Assets/uploads/images/Find%20a%20LocationBranch.png"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "infoTxt"
+        }, eventit.event_address)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "info"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "infoIcons",
+          src: "https://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/calendar-icon.png"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "infoTxt"
+        }, eventit.event_date))))));
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "loading...");
     }
   }]);
@@ -66251,7 +66282,7 @@ function (_Component) {
   return Passed;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Passed);
+
 
 /***/ }),
 
@@ -66604,7 +66635,8 @@ function (_Component) {
         placeholder: "Title",
         defaultValue: this.state.title,
         onChange: this.handleChangeTitle,
-        name: "title"
+        name: "title",
+        required: true
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
@@ -66625,7 +66657,8 @@ function (_Component) {
         placeholder: "Enter description",
         defaultValue: this.state.description,
         onChange: this.handleChangeDescription,
-        name: "description"
+        name: "description",
+        required: true
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
@@ -66636,7 +66669,8 @@ function (_Component) {
         id: "date",
         defaultValue: this.state.date,
         onChange: this.handleChangeDate,
-        name: "date"
+        name: "date",
+        required: true
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
         htmlFor: "address"
       }, "Address"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
@@ -66645,7 +66679,8 @@ function (_Component) {
         id: "address",
         defaultValue: this.state.address,
         onChange: this.handleChangeAddress,
-        name: "address"
+        name: "address",
+        required: true
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
         htmlFor: "price"
       }, "Price"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
@@ -66654,7 +66689,8 @@ function (_Component) {
         id: "price",
         defaultValue: this.state.price,
         onChange: this.handleChangePrice,
-        name: "price"
+        name: "price",
+        required: true
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         type: "submit",
         className: "btn btn-primary"
@@ -67835,7 +67871,14 @@ function (_Component) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/api/myevents").then(function (response) {
+                return axios__WEBPACK_IMPORTED_MODULE_2___default()({
+                  method: "get",
+                  url: "/api/myevents",
+                  headers: {
+                    'Content-type': 'application/json',
+                    'Authorization': 'Bearer' + JSON.parse(sessionStorage.getItem("token-storage"))
+                  }
+                }).then(function (response) {
                   console.log(response.data), _this2.setState({
                     events: response.data
                   });

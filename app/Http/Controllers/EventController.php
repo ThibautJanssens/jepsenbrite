@@ -25,6 +25,22 @@ class EventController extends Controller
        */
     }
 
+    public function pastEvents()
+    {
+      {
+         // $events = Event::all();
+         $events = Event::with('users')->where('event_date', '<','NOW()')->orderBy('event_date', 'desc')->get();
+
+        return response()->json($events, 200);
+     }
+      /**
+       * Show the form for creating a new resource.
+       *
+       * @return \Illuminate\Http\Response
+       */
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -159,15 +175,14 @@ class EventController extends Controller
       $user_id = JWTAuth::authenticate()->id;
     }
 
-      public function myEvents()
+    public function myEvents()
 
         {
-            $id = auth('api')->user()->id;
+            $id = auth('api')->user()->name;
             $events = Event::where('event_author', '=', $id)->with('users')->get();
-
+          //console.log($events);
           return response()->json($events, 200);
        }
-
 
 }
 

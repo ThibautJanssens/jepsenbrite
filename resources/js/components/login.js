@@ -50,7 +50,7 @@ export default class Login extends Component {
                               <input type="password" autoComplete="false" className="form-control" id="password"  placeholder='Enter password' defaultValue={this.state.password} onChange={this.handleChange} name='password'/>
                               <label>Email address</label>
                               <input type="email" autoComplete="true" className="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" defaultValue={this.state.email} onChange={this.handleChange} name='email'/>
-                              <button type="submit" className="btn btn-primary" disabled={!this.validateForm()}> Login</button>
+                            <button type="submit" className="btn btn-primary" disabled={!this.validateForm()}> Login</button>
                       </form>
                   </div>
               </div>
