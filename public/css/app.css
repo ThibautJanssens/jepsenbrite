@@ -10659,7 +10659,6 @@ body {
   background: url("https://data.whicdn.com/images/128557270/large.jpg");
   background-attachment: fixed;
   color: white !important;
-  min-height: 100%;
 }
 
 .navbar {
@@ -10679,9 +10678,9 @@ body {
 }
 
 .footIt {
-  position: absolute;
+  position: relative !important;
   width: 100%;
-  margin-bottom: 0;
+  bottom: -20px !important;
   background-color: #03020D;
   color: darkgrey;
   text-align: center;
@@ -10692,6 +10691,7 @@ body {
   font-size: 1rem;
   list-style-type: none;
   margin: 1rem;
+  margin-bottom: 2rem;
   -webkit-animation: bounce 1.2s ease infinite;
           animation: bounce 1.2s ease infinite;
 }
@@ -10725,7 +10725,7 @@ i {
 .brandDonut {
   display: flex;
   justify-content: center;
-  background: url("https://2bd7a77e373a9572610f-dba1f64a3f969774cdd587a3528671a8.ssl.cf1.rackcdn.com/medias/52249/select/DonutGIRESIZED.jpg?1501528255");
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
 }
 
@@ -10908,7 +10908,6 @@ html {
   max-width: 60rem;
   margin: auto;
   margin-top: 3rem;
-  margin-bottom: 3rem;
   background-color: #0b3463;
   border-style: solid;
   border-width: 10px;
@@ -10924,6 +10923,8 @@ html {
 }
 
 .eventTitle {
+  padding: 5rem;
+  font-size: 5rem;
   background-color: rgba(0, 0, 0, 0.6);
   -webkit-filter: drop-shadow(0px 0px 3px black);
           filter: drop-shadow(0px 0px 3px black);
@@ -10939,10 +10940,12 @@ html {
   background-color: #0b3463;
   -webkit-filter: drop-shadow(0px 0px 5px black);
           filter: drop-shadow(0px 0px 5px black);
+  min-height: 60vh;
 }
 
 .eventsPassed {
   text-align: center;
+  min-height: 100vh;
 }
 
 .wholeInfos {
@@ -11080,13 +11083,6 @@ html {
           animation: clign2 0.2s infinite linear;
 }
 
-.donutBckg {
-  background-image: url("http://pngimg.com/uploads/donut/donut_PNG98.png");
-  background-repeat: no-repeat;
-  background-size: 26rem;
-  background-position: center;
-}
-
 label {
   text-shadow: 0 0 2px #000000;
 }
@@ -11110,10 +11106,6 @@ a:hover {
 }
 
 @media screen and (max-width: 500px) {
-  .gitAccount {
-    margin: 0;
-  }
-
   .passedEvents2 {
     margin: 0 !important;
     padding: 0.3rem;
