@@ -12,7 +12,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
-
+use App\Mail\ReminderMail;
 
 
 class SendReminderEmails extends Command
@@ -70,7 +70,8 @@ class SendReminderEmails extends Command
         $users_to_remind = DB::table('events_and_users')->where('reminder_status', 'false')
                            ->where('reminder_date', '>', 'NOW()')->get();
         foreach ($users_to_remind as $users_to_remind) {
-          $mail = new ReminderMail($users_to_remind['event_id']);
+          $event = DB::table('events')->where('id', '=', $users_to_remind['event_id'])
+          $mail = new ReminderMail($event);
           $user = DB::table('users')->where('id', '=', $users_to_remind['user_id']);
           Mail::to($user['email'])->send($mail);
           $users_to_remind->update(['reminder_status' => 'true']);

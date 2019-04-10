@@ -24,7 +24,7 @@ class ReminderMail extends Model
     public function __construct(Event $event)
     {
       $this->event = $event;
-      $this->eventUrl = 'https://jepsenbrite.herokuapp.com/events/'. $event['id'];
+      $this->eventUrl = 'https://jepsen-brite.herokuapp.com/Event/'. $event['id'];
     }
 
 
