@@ -3,47 +3,62 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import Axios from 'axios';
 
-class Passed extends Component {
-constructor(props) {
-  super(props);
-  this.getCharacter= this.getCharacter.bind(this);
+export default class Passed extends Component {
+  constructor(props) {
+    super(props);
+    this.getEvents= this.getEvents.bind(this);
 
-  this.state = {
-    isLoading: true,
-    characters: []
+    this.state = {
+      isLoading: true,
+      events: []
+    }
   }
-}
 
-componentDidMount() {
-  this.getCharacter()
-}
+  componentDidMount() {
+    this.getEvents()
+  }
 
-getCharacter(e){
-  Axios.get('/api/')
-    .then(response => {
-      console.log(response)
+  getEvents(e){
+    Axios.get('/api/pastEvents')
+      .then(response => {
+        console.log(response)
 
-      this.setState({
-      characters: response.data,
-      isLoading: false
+        this.setState({
+        events: response.data,
+        isLoading: false
+      })
+      console.log(this);
     })
-  })
-    .catch(err => console.log(err));
-    console.log();
-  }
+      .catch(err => console.log(err));
+      console.log();
+    }
 
-render() {
- const {isLoading, characters}=this.state;
- if(!isLoading)
-return (
-  <div className="App">
-    {/* <div><Link to={`/Create/${this.state.characters.id}`}><button>Add</button></Link></div> */}
-   <p> {this.state.characters[0].name} </p>
-  </div>
-);
-return (<p>loading...</p>);
+  render() {
+   const {isLoading, events}=this.state;
+
+   if(!isLoading)
+      return( this.state.events.map(eventit =>
+          <div className="eventsPassed">
+                <div className='passedEvents'>
+                    <div className='eventImg'>
+                        <Link to={`/Event/${eventit.id}`}><h1 className='eventTitle'>{eventit.event_name}</h1></Link><i>(by {eventit.event_author} )</i>
+                    </div>
+                    <div className='wholeInfos'>
+                    <div className='wholeInfos1'>
+                    <div className='info'>
+                        <img className='infoIcons' src='https://www.redfcu.org/Assets/uploads/images/Find%20a%20LocationBranch.png' /><p className='infoTxt'>{eventit.event_address}</p>
+                    </div>
+                    <div className='info'>
+                        <img className='infoIcons' src='https://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/calendar-icon.png' /><p className='infoTxt'>{eventit.event_date}</p>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+          </div>
+        )
+        );
+          return (<p>loading...</p>);
+
+      }
+
 }
-
-}
-
-export default Passed;
