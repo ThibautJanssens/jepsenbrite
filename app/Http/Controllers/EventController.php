@@ -179,9 +179,9 @@ class EventController extends Controller
       public function myEvents()
 
         {
-            $id = auth('api')->user()->id;
+            $id = auth('api')->user()->name;
             $events = Event::where('event_author', '=', $id)->with('users')->get();
-          console.log($events);
+          //console.log($events);
           return response()->json($events, 200);
        }
 
