@@ -154,21 +154,18 @@ class EventController extends Controller
   }
 
   public function testbitttib()
-    {
+  {
       JWTAuth::setToken("token_string");
       $user_id = JWTAuth::authenticate()->id;
-    }
+  }
 
-      public function myEvents()
+  public function myEvents()
+  {
+    $id = auth('api')->user()->id;
+    $events = Event::where('event_author', '=', $id)->with('users')->get();
 
-        {
-            $id = auth('api')->user()->id;
-            $events = Event::where('event_author', '=', $id)->with('users')->get();
-
-          return response()->json($events, 200);
-       }
-
-
+    return response()->json($events, 200);
+  }
 }
 
 //Jam : 5 avril, fonction pour afficher mes évènements
