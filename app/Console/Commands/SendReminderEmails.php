@@ -68,8 +68,10 @@ class SendReminderEmails extends Command
         //     Queue::push(new SendReminderEmails($data));
         // }
         // Jam : Ci-dessous, code inspiré de celui de Sam mais refait à ma sauce, merci à lui.
+        $time = NOW()->addSeconds(7200);
+        \Log::info($time);
         $users_to_remind = DB::table('events_and_users')->where('reminder_status', 'false')
-                           ->where('reminder_date', '>', 'NOW()')->get();
+                           ->where('reminder_date', '>', $time)->get();
         foreach ($users_to_remind as $users_to_remind) {
           $store = $users_to_remind->event_id;
           $event = Event::where('id', '=', $store)->get();
@@ -80,9 +82,10 @@ class SendReminderEmails extends Command
           \Log::info($user[0]['email']);
           Mail::to($user[0]['email'])->send($mail);
           // \Log::info($users_to_remind);
-          // DB::table('events_and_users')->where('reminder_status', 'false')
-          //                    ->where('reminder_date', '>', 'NOW()')->update(['reminder_status' => 'true']);
+          DB::table('events_and_users')->where('reminder_status', 'false')
+                             ->where('reminder_date', '>', 'NOW()')->update(['reminder_status' => 'true']);
         }
+        //ce type raconte sa vie me fait chier putain il est minuit 20, vas dormir ça fait 20 min que j'essaye ed ti
         // \Log::info($users_to_remind);
 
         // $users_to_remind->update(['reminder_status' => 'true']);
