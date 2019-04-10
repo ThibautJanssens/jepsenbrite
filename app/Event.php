@@ -31,12 +31,14 @@ class Event extends Model
      * @var bool
      */
     public $incrementing = false;
-    public function creator(){
+
+    public function creator()
+    {
         return $this->belongsTo('App\User', 'creator_id');
     }
-    public function users()
+    public function usersregister()
     {
-        # code...
+
         return $this->belongsToMany('App\User', 'participations');
     }
 }
