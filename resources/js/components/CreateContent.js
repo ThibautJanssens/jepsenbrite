@@ -81,13 +81,6 @@ export default class CreateContent extends Component {
                               <label htmlFor="titleCreate">Title</label>
                               <input type="text" className="form-control" id="titleCreate" placeholder="Title" defaultValue={this.state.title} onChange={this.handleChangeTitle} name='title' required/>
                           </div>
-                          <div className='form-group'>
-                          <label htmlFor="btn">Image</label>
-                            <div className="btn btn-primary btn-sm ">
-                              <span >Choose an image</span>
-                              <input type='file'/>
-                            </div>
-                          </div>
                               <div className="form-group">
                                   <label htmlFor="exampleInputEmail1">Description</label>
                                   <textarea type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter description" defaultValue={this.state.description} onChange={this.handleChangeDescription} name='description' required/>
@@ -101,7 +94,7 @@ export default class CreateContent extends Component {
                                   <input type="text" className="form-control" id="price"  defaultValue={this.state.price} onChange={this.handleChangePrice} name='price' required/>
                               </div>
                               <button type="submit" className="btn btn-primary">Submit</button>
-                          </form>
+                            </form>
                           </div>
                       </div>
                   </div>
