@@ -1,71 +1,200 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# JepsenBrite
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+The job was to take the [application](https://github.com/PaulineRoppe/jepsenbrite) of another group and while fixing some minor bugs, adding new features. Obviously we had to keep the design of the original owner. You can check the original application on this [link](https://jepsen-brite.herokuapp.com/).
 
-## About Laravel
+The application is still a CRUD Application to manage events online. If you want to know how does it look like check it out [here]()
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Built With
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+* [Laravel](https://laravel.com/docs/5.8) - PHP Framework 
+* [React](https://reactjs.org/docs/getting-started.html) - JS Framework
+* [Postgresql](https://www.postgresql.org/docs/) - Database
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Authors of the modifications
 
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost you and your team's skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+* [**Julien Caramazza**](https://github.com/Jucara) *(Backend)*
+* [**Vincent Chilot**](https://github.com/Raigyo) *(Frontend)*
+* [**Michael Lambrechts**](https://github.com/MichaelLambrechts) *(Frontend)*
+* [**Thibaut Janssens**](https://github.com/ThibautJanssens) *(Full Stack)*
 
 ## License
 
-The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Getting Started
+
+### Prerequisites
+You'll need [composer](https://getcomposer.org/doc/) and [npm](https://www.npmjs.com/get-npm) to download and install all the dependencies.
+
+You need a PostgreSQL database, if you already have one, you can put your credentials in the .env file in the DB_... section.  If you do not have one, you can use [docker](https://www.docker.com/). The docker-compose.yml is given in the root directory.
+
+### Installing
+
+To get a development env running, install all the dependencies with:
+```cmd
+composer install && npm install
+```
+Don't forget to edit your .env file. If you do not have one:
+```cmd
+cp .env.example .env
+``` 
+And modify your credentials.
+Then generate your jwt key and your app key
+```cmd
+php artisan key:generate
+php artisan jwt:secret
+```
+
+If you don't have a PostgreSQL you can start the docker-compose.yml file is included up in the root directory
+```cmd
+docker-compose up
+```
+To start your PHP server use the command (*by default the server will start on localhost:8000*):
+```cmd
+php artisan serve
+```
+You can specify a port by using 
+```cmd
+php artisan serve --port=8080
+```
+Or you can simply run the launchscript.sh with:
+```cmd
+./launchscript.sh
+```
+If it doesn't work, it probably means you have to set the right to execute it.
+```cmd
+sudo chmod +x launchscript.sh
+```
+
+## Deployment
+
+The project is ready to deploy on heroku, just push this repo to your herokuapp repository.
+Add you addon for the database with the following :
+```cmd
+heroku addons:create heroku-postgresql:hobby-dev
+```
+Don't forget to edit the configs with:
+ * APP_ENV  =  production
+ * APP_KEY
+ * APP_URL = your url
+ * DB_CONNECTION = heroku
+ * JWT_SECRET
+ * MAIL_PASSWORD
+ * MAIL_USERNAME
+
+ And finally run in the console of your heroku app:
+ ```cmd
+ php artisan migrate:fresh
+ ```
+to set your database
+
+## Documentation (API)
+
+## Authentication
+
+### POST /register
+
+Only takes a JSON as input.
+```json
+{
+    "name":"yourName",
+    "email":"yourEmail",
+    "password":"yourPassword"
+}
+```
+Return your token.
+
+### POST /login
+Only takes a JSON as input.
+```json
+{
+    "email":"yourEmail",
+    "password":"yourPassword"
+}
+```
+## Event
+
+### Event object
+
+* *id*: The identifier of the event as an integer.
+* *name*: The name of the event.
+* *date_event*: The date of the event.
+* *author*: The identifier of the user that created the event.
+* *description*: A description of the event.
+* *reminder*: A date to know when to send a notification for all the participant at the event.
+* *image_url*: A link to the image that you want for the event.
+
+
+For every route where you have to be logged in, you simply have to add to your request the following header:
+
+```json
+{
+    'Content-Type': "application/json",
+    'Authorization': "Bearer " + "your token"
+}
+```
+
+### GET /events
+
+Returns a complete list of all the events.
+
+### GET /myEvents
+*(must be logged)*
+Returns a complete list of all the events you created.
+
+### GET /myParticipation
+*(must be logged)*
+Returns a complete list of all the events you created.
+
+### GET /pastEvent
+
+Returns a complete list of all the events that are already finished.
+
+### GET /futurEvent
+
+Returns a complete list of all the events that are yet to come.
+
+### GET /event/:id
+
+Returns a event by id.
+
+### PUT /event/:id
+
+*(must be logged and the author of the event)*
+Only takes JSON as input.
+```json
+{
+	"name" : "Name of event",
+	"date_event" : "YYYY-MM-DD HH:MM:SS",
+	"description" : "Your description",
+	"reminder" : "YYYY-MM-DD HH:MM:SS",
+	"image_url": "url"
+}
+```
+Updates a event.
+
+### POST /event
+
+*(must be logged)*
+Only takes JSON as input.
+```json
+{
+	"name" : "Name of event",
+	"date_event" : "YYYY-MM-DD HH:MM:SS",
+	"description" : "Your description",
+	"reminder" : "YYYY-MM-DD HH:MM:SS",
+	"image_url": "url"
+}
+```
+Creates a new event.
+Returns the newly created event id.
+
+### POST /inscription/:id
+*(must be logged)*
+*(Id is the id of the event)*
+Allows the user to subscribe to an event.
+
+### POST unsubscribe/:id
+*(must be logged)*
+*(Id is the id of the event)*
+Allow the user to unsubscribe to an event.
