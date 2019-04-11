@@ -12,42 +12,39 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-//---- récupérer les infos courantes de l'utilisateur ----//
 
-Route::middleware('auth.api')->get('/user', function(Request $request) {
-  return $request->user();
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
 });
 
-//------------- Routes Event -------------//
+// ------ ROUTE AUTH ------
+//register
+Route::post('/register', 'AuthController@register');
+//login
+Route::post('/login', 'AuthController@login');
+//logout
+Route::post('/logout', 'AuthController@logout');
 
-Route::get('/events', 'EventController@index')->name('events.index');
+// ------ ROUTE EVENT ------
+//get pastEvent
+Route::get('/pastEvent', 'EventController@past')->name('event.past');
+//get futurEvent
+Route::get('/futurEvent', 'EventController@futur')->name('event.futur');
+//get events
+Route::get('/events', 'EventController@index')->name('event.all');
+//get event/:id
+Route::get('/event/{id}', 'EventController@show')->name('event.show');
+//get personnal events
+Route::middleware('auth:api')->get('/myEvents', 'EventController@myEvent')->name('event.mine');
+//update event/:id
+Route::middleware('auth:api')->put('/event/{id}', 'EventController@update')->name('event.update');
+//post event
+Route::middleware('auth:api')->post('/event', 'EventController@store')->name('event.create');
 
-Route::get('/pastEvents', 'EventController@pastEvents')->name('events.past');
-
-Route::middleware('auth:api')->get('/myevents', 'EventController@myEvents')->name('events.myEvents');
-
-Route::middleware('auth:api')->post('/events', 'EventController@store')->name('events.store');
-
-
-Route::get('/events/{event}', 'EventController@show')->name('events.show');
-
-Route::middleware('auth:api')->put('/events/{event}', 'EventController@update')->name('events.update');
-
-Route::middleware('auth:api')->delete('/events/{event}', 'EventController@destroy')->name('events.destroy');
-
-
-
-
-//-----------Route Auth-----------//
-
-Route::post('/register', 'AuthController@register')->name('register');
-
-Route::post('/login', 'AuthController@login')->name('login');
-
-Route::post('/logout', 'AuthController@logout')->name('logout');
-
-//---------------_Routes Participation Events -----------------//
-
-Route::middleware('auth:api')->put('/events/register/{event}/{user}', 'EventController@eventRegister')->name('events.register');
-
-Route::middleware('auth:api')->put('/events/unregister/{event}/{user}', 'EventController@eventUnregister')->name('events.unregister');
+//------ ROUTE LIST OF PARTICIPANT ------
+//get my participation to event
+Route::middleware('auth:api')->get('/myParticipation', 'ListOfParticipantController@myParticipation')->name('event.participation');
+//post inscription to event
+Route::middleware('auth:api')->post('/inscription/{id}', 'ListOfParticipantController@store')->name('event.inscription');
+//post remove inscription
+Route::middleware('auth:api')->post('/unsubscribe/{id}', 'ListOfParticipantController@destroy')->name('event.unsub');

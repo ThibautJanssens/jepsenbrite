@@ -1,7 +1,10 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use App\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
@@ -12,43 +15,8 @@ class EventController extends Controller
      */
     public function index()
     {
-      {
-         // $events = Event::all();
-         $events = Event::with('users')->orderBy('event_date', 'asc')->get();
-
-        return response()->json($events, 200);
-     }
-      /**
-       * Show the form for creating a new resource.
-       *
-       * @return \Illuminate\Http\Response
-       */
-    }
-
-    public function pastEvents()
-    {
-      {
-         // $events = Event::all();
-         $events = Event::with('users')->where('event_date', '<','NOW()')->orderBy('event_date', 'desc')->get();
-
-        return response()->json($events, 200);
-     }
-      /**
-       * Show the form for creating a new resource.
-       *
-       * @return \Illuminate\Http\Response
-       */
-    }
-
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $events = Event::all();
+        return response()->json($events);
     }
 
     /**
@@ -57,155 +25,97 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-     public function store(Request $request)
-     {
+    public function store(Request $request)
+    {
         $params = $request->all();
-        $params['event_author'] = auth('api')->user()->name; //Pour récup le nom de l'user loggé
-        $params['event_date'] = $params['event_date'] . ' ' . $params['event_time'] . ':00';
-        \Log::info($params['event_date']);
-
-         $event = Event::create($params);
-
-         return response()->json([
-             'message' => 'Great success! New event created',
-             'event' => $event
-         ]);
-     }
+        $params['author'] = auth('api')->user()->id;
+        $event = Event::create($params);
+        $event['author'] = $event->author()->get()[0];
+        return response()->json([
+            'message' => 'Event created',
+            'event' => $event
+        ]);
+    }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Event  $events
+     * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function show($id)  // Jam : j'ai changé 'Event $events' dans la parenthèse en $id
+    public function show($id)
     {
-      $event = Event::where('id', '=', $id)
-                  ->with('users')
-                  ->first();
-      return $event;
-    }
+        $ret['event'] = DB::table('events')
+            ->join('users','users.id', '=', 'events.author')
+            ->select('users.name as author', 'events.name', 'events.date_event', 'events.description', 'events.image_url', 'events.reminder')
+            ->where('events.id', '=', $id)
+            ->get();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Event  $events
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Event $events)
-    {
-        //
+        $ret['participants'] = DB::table('list_of_participants')
+            ->join('users', 'users.id', '=','list_of_participants.participant')
+            ->select('users.name as username', 'users.id')
+            ->where('list_of_participants.event','=', $id)
+            ->get();
+
+        return $ret;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Event  $events
+     * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-     public function update(Request $request, Event $event)
-     {
-         $request->validate([
-            'event_name' => 'nullable',
-            'event_date' => 'nullable',
-            'event_address' => 'nullable',
-            'event_description' => 'nullable',
-            'event_price' => 'nullable',
-            'event_author' => 'nullable',
-            'event_reminder_date_delay' => 'nullable'
-
-
-
-         ]);
-         $params = $request->all();
-
-         $params['event_date'] = $params['event_date'] . ' ' . $params['event_time'] . ':00';
-         $event->update($params);
-
-         return response()->json([
-             'message' => 'Great success! Event updated',
-             'event' => $event
-         ]);
-     }
+    public function update(Request $request, $id)
+    {
+        DB::update('update events set name = ?, date_event = ?, description = ?, reminder = ?, image_url = ? where id = ?',
+        [$request->name, $request->date_event, $request->description, $request->reminder, $request->image_url, $id]);
+        return response()->json([
+            'message' => 'Event updated'
+        ]);
+    }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Event  $events
+     * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-     public function destroy(Event $event)
-     {
-         $event->delete();
+    public function destroy(Event $event)
+    {
+        $event->delete();
 
-         return response()->json([
-             'message' => 'Successfully deleted event!'
-         ]);
-     }
-
-
-// Jam, 4 avril, inscription et désincription à un Event
-
-  public function eventRegister($event, $user)
-  {
-
-    $event2 = Event::find($event);
-
-    $event2->users()->attach($user);
-
-      return response()->json([
-          'message' => 'Great success! User succefully registered to the event !',
-          'event' => $event2
-      ]);
-  }
-
-  public function eventUnregister($event, $user)
-  {
-
-    $event2 = Event::find($event);
-
-    $event2->users()->detach($user);
-
-      return response()->json([
-          'message' => 'Great success! User succefully unregistered to the event !',
-          'event' => $event2
-      ]);
-  }
-
-  public function testbitttib()
-  {
-      JWTAuth::setToken("token_string");
-      $user_id = JWTAuth::authenticate()->id;
+        return response()->json([
+            'message' => 'Event deleted'
+        ]);
     }
 
-    public function myEvents()
+    public function myEvent(){
+        $events = DB::table('events')
+            ->where('author', auth('api')->user()->id)
+            ->get();;
+        return response()->json($events);
+    }
 
-        {
-            $id = auth('api')->user()->name;
-            $events = Event::where('event_author', '=', $id)->with('users')->get();
-          //console.log($events);
-          return response()->json($events, 200);
-       }
+    public function past(){
+        $events = DB::table('events')
+            ->join('users','users.id', '=', 'events.author')
+            ->select('users.name as author', 'events.id', 'events.name', 'events.date_event', 'events.description', 'events.image_url')
+            ->where('events.date_event', '<','NOW()')
+            ->orderBy('events.date_event', 'desc')
+            ->get();
+        return response()->json($events);
+    }
 
+    public function futur(){
+        $events = DB::table('events')
+            ->join('users','users.id', '=', 'events.author')
+            ->select('users.name as author', 'events.id', 'events.name', 'events.date_event', 'events.description', 'events.image_url')
+            ->where('events.date_event', '>=','NOW()')
+            ->orderBy('events.date_event', 'asc')
+            ->get();
+
+        return response()->json($events);
+    }
 }
-
-//Jam : 5 avril, fonction pour afficher mes évènements
-
-
-
-
-
-
-
-
-
-
-
-// public function show($event, $user)  // Jam : j'ai changé 'Event $events' dans la parenthèse en $id
-// {
-//   $event1 = Event::where('id', '=', $event)
-//               ->with('users')
-//               ->first();
-//   return $event1;
-// }

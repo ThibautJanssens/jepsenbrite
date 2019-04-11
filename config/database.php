@@ -1,5 +1,4 @@
 <?php
-
 return [
 
     /*
@@ -13,7 +12,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'pgsql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -71,6 +70,17 @@ return [
             'prefix_indexes' => true,
             'schema' => 'public',
             'sslmode' => 'prefer',
+        ],
+
+        'heroku' => [
+            'driver'   => 'pgsql',
+            'host'     => parse_url(getenv("DATABASE_URL"))["host"],
+            'database' => substr(parse_url(getenv("DATABASE_URL"))["path"], 1),
+            'username' => parse_url(getenv("DATABASE_URL"))["user"],
+            'password' => parse_url(getenv("DATABASE_URL"))["pass"],
+            'charset'  => 'utf8',
+            'prefix'   => '',
+            'schema'   => 'public',
         ],
 
         'sqlsrv' => [
@@ -132,12 +142,6 @@ return [
             'port' => env('REDIS_PORT', 6379),
             'database' => env('REDIS_CACHE_DB', 1),
         ],
-
-        'driver' => 'redis',
-        'connection' => 'default',
-        'queue' =>  '{default}',
-        'retry_after' => 90,
-        'block_for' => 5,
 
     ],
 

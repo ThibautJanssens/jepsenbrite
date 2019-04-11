@@ -7,9 +7,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable implements JWTSubject, MustVerifyEmail
+class User extends Authenticatable implements JWTSubject
 {
-    use Notifiable;
     public function getJWTIdentifier()
     {
         return $this->getKey();
@@ -19,12 +18,15 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
     {
         return [];
     }
+
     public function setPasswordAttribute($password)
     {
-        if ( !empty($password) ) {
+        if(!empty($password)){
             $this->attributes['password'] = bcrypt($password);
         }
     }
+
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -32,7 +34,7 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'is_activated',
+        'name', 'email', 'password',
     ];
 
     /**
@@ -52,4 +54,8 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function events(){
+        return $this->belongsToMany('App\Event', 'listOfParticipant');
+    }
 }

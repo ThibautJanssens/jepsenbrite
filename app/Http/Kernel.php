@@ -78,13 +78,4 @@ class Kernel extends HttpKernel
         \Illuminate\Routing\Middleware\SubstituteBindings::class,
         \Illuminate\Auth\Middleware\Authorize::class,
     ];
-
-    protected $commands = [
-      App\Console\Command\SendReminderEmails::class,
-    ];
-
-    protected function schedule(Schedule $schedule)
-    {
-      $schedule->command('company:reminder-emails')->everyDay();
-    }
 }

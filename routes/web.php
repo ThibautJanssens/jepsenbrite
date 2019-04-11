@@ -11,10 +11,7 @@
 |
 */
 
-Route::view('/{path?}', 'welcome');
-
-Route::post('/send', 'EmailController@send')->name('send');
-
-Auth::routes(['verify' => true]);
-
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::view('/{path?}', 'app');
