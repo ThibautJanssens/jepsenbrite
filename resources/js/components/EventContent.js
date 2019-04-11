@@ -31,6 +31,56 @@ export default class EventContent extends Component {
       .catch(err => console.log(err));
       console.log();
     }
+    // rajout de Jam pour s'inscrire et se désinscrire d'un évenement
+    async participate(){
+  // let date_reminder = new Date(this.state.begin_time.substring(0,19))
+  // const dateReminder = (begin) => {
+  //   let beginDateTime = this.parseDBDateTime(begin);
+  //   let reminder_date = new Date(beginDateTime - (1000*60*60*24));
+  //   return reminder_date.toISOString();
+  // }
+  // const obj = {
+  //   reminder_date : dateReminder(this.state.begin_time)
+  // }
+  let axiosConfig = {
+    method:'post',
+    url : '/api/events/register/{event}/{user}'+this.props.match.params.id+,
+
+    headers: {'Content-Type': 'application/json', 'Authorization' : 'Bearer '+this.context.state.token },
+    data:
+  };
+  let request = Axios(axiosConfig);
+  let response = await request;
+  // let res = await Axios({
+  //   method:'get',
+  //   url : '/api/events/'+this.props.match.params.id,
+  //   headers: {'Content-Type': 'application/json' }
+  // })
+  this.setState({
+    participation:true,
+    participants: res.data.participants
+  })
+}
+async unparticipate(){
+  let axiosConfig = {
+    method:'delete',
+    url : '/api/events/'+this.props.match.params.id+'/register',
+
+    headers: {'Content-Type': 'application/json', 'Authorization' : 'Bearer '+this.context.state.token },
+  };
+  let request = Axios(axiosConfig);
+  let response = await request;
+  let res = await Axios({
+    method:'get',
+    url : '/api/events/'+this.props.match.params.id,
+    headers: {'Content-Type': 'application/json' }
+  })
+  this.setState({
+    participation:false,
+    participants: res.data.participants
+  })
+}
+
 
   render() {
    const {isLoading, events}=this.state;

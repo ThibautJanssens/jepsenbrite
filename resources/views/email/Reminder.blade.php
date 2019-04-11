@@ -6,7 +6,7 @@
 ### {{ $event[0]->event_address }}<br><br>
 
 
-(The timezone changes depending on where you are, so pay attention ^^)
+Dont' worry, be happy.
 
 @component('mail::button', ['url' => $eventUrl])
 Link to the event

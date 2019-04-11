@@ -74,11 +74,20 @@ class SendReminderEmails extends Command
         $eventsReminderDateNotSetYet = Event::where('reminder_date_status', 'false')->get();
         foreach ($eventsReminderDateNotSetYet as $eventsReminderDateNotSetYet) {
           if ($eventsReminderDateNotSetYet['event_reminder_date_delay'] == '3d') {
+            $store2 = $eventsReminderDateNotSetYet['event_date']->addSeconds(-259200);
+            DB::table('events')->where('reminder_date_status', 'false')->update(['event_reminder_date' => $store2]);
+          }
+          if ($eventsReminderDateNotSetYet['event_reminder_date_delay'] == '3h') {
             $store2 = $eventsReminderDateNotSetYet['event_date']->addSeconds(-10800);
             DB::table('events')->where('reminder_date_status', 'false')->update(['event_reminder_date' => $store2]);
-            DB::table('events')->where('reminder_date_status', 'false')->update(['reminder_date_status' => 'true']);
-          }
         }
+        if ($eventsReminderDateNotSetYet['event_reminder_date_delay'] == '1d') {
+          $store2 = $eventsReminderDateNotSetYet['event_date']->addSeconds(-86400);
+          DB::table('events')->where('reminder_date_status', 'false')->update(['event_reminder_date' => $store2]);
+        }
+      }
+        DB::table('events')->where('reminder_date_status', 'false')->update(['reminder_date_status' => 'true']);
+
         $users_to_remind = DB::table('events_and_users')->where('reminder_status', 'false')->get();
         foreach ($users_to_remind as $users_to_remind) {
           $store = $users_to_remind->event_id;
