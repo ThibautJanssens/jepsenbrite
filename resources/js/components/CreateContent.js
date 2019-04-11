@@ -16,7 +16,7 @@ export default class CreateContent extends Component {
 
       this.handleSubmit=this.handleSubmit.bind(this);
       this.state = {
-         event_name:' ', event_description:' ', event_address:' ', event_date:' ', event_time:'', event_price: ' ', event_reminder_date: '', events :[ ], redirect:false
+         event_name:' ', event_description:' ', event_address:' ', event_date:' ', event_time:'', event_price: ' ', event_reminder_date_delay: '', events :[ ], redirect:false
        }
   }
   handleChangeTitle  (event) {
@@ -53,7 +53,7 @@ export default class CreateContent extends Component {
       event_time:this.state.time,
       event_address:this.state.address,
       event_price:this.state.price,
-      event_reminder_date:this.state.reminder,
+      event_reminder_date_delay:this.state.reminder,
     };
     this.setState({ redirect: true });
     // const user = event.target.elements.pseudo.value
@@ -109,7 +109,7 @@ export default class CreateContent extends Component {
                                   <label htmlFor="Reminder Time">Reminder time</label >
                                   <select onChange={this.handleChangeReminder} id="reminder" defaultValue={this.state.reminder} name="reminder">
                                     <option value="no">No Reminder</option>
-                                    <option value="1h">1 hour before</option>
+                                    <option value="3h">3 hours before</option>
                                     <option value="1d">1 day before</option>
                                     <option value="3d">3 days before</option>
                                  </select>

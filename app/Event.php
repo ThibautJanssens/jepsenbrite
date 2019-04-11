@@ -18,7 +18,8 @@ class Event extends Model
       'event_address',
       'event_description',
       'event_price',
-      'event_author'
+      'event_author',
+      'event_reminder_date_delay'
   ];
 
   protected $casts = [

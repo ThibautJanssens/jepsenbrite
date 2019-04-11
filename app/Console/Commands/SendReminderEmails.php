@@ -68,27 +68,30 @@ class SendReminderEmails extends Command
         //     Queue::push(new SendReminderEmails($data));
         // }
         // Jam : Ci-dessous, code inspiré de celui de Sam mais refait à ma sauce, merci à lui.
-        $time = NOW()->addSeconds(7200);
-        \Log::info($time);
-        $users_to_remind = DB::table('events_and_users')->where('reminder_status', 'false')
-                           ->where('reminder_date', '>', $time)->get();
+        // Jam toujours : putain de bon dieu de merde, qu'est-ce que ce bout de code est immonde. Pour ma défense, pas le temps de chercher l'efficience quand il est 3h30 du mat 5h avant la deadline...
+        $CurrentUTCtime = NOW()->addSeconds(7200);
+        \Log::info($CurrentUTCtime);
+        $eventsReminderDateNotSetYet = Event::where('reminder_date_status', 'false')->get();
+        foreach ($eventsReminderDateNotSetYet as $eventsReminderDateNotSetYet) {
+          if ($eventsReminderDateNotSetYet['event_reminder_date_delay'] == '3d') {
+            $store2 = $eventsReminderDateNotSetYet['event_date']->addSeconds(-10800);
+            DB::table('events')->where('reminder_date_status', 'false')->update(['event_reminder_date' => $store2]);
+            DB::table('events')->where('reminder_date_status', 'false')->update(['reminder_date_status' => 'true']);
+          }
+        }
+        $users_to_remind = DB::table('events_and_users')->where('reminder_status', 'false')->get();
         foreach ($users_to_remind as $users_to_remind) {
           $store = $users_to_remind->event_id;
           $event = Event::where('id', '=', $store)->get();
-          \Log::info($event[0]['id']);
+          $event = $event->where('event_reminder_date', '<', $CurrentUTCtime);
+          \Log::info($event);
           $mail = new ReminderMail($event);
-          $store2 = $users_to_remind->user_id;
-          $user = User::where('id', '=', $store2)->get();
-          \Log::info($user[0]['email']);
+          $store3 = $users_to_remind->user_id;
+          $user = User::where('id', '=', $store3)->get();
           Mail::to($user[0]['email'])->send($mail);
-          // \Log::info($users_to_remind);
           DB::table('events_and_users')->where('reminder_status', 'false')
-                             ->where('reminder_date', '>', 'NOW()')->update(['reminder_status' => 'true']);
+                             ->where('event_id', '=', $event)->where('user_id', '=', $user)->update(['reminder_status' => 'true']);
         }
-        //ce type raconte sa vie me fait chier putain il est minuit 20, vas dormir ça fait 20 min que j'essaye ed ti
-        // \Log::info($users_to_remind);
-
-        // $users_to_remind->update(['reminder_status' => 'true']);
 
     }
 

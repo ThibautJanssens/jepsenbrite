@@ -112,13 +112,16 @@ class EventController extends Controller
             'event_address' => 'nullable',
             'event_description' => 'nullable',
             'event_price' => 'nullable',
-            'event_author' => 'nullable'
+            'event_author' => 'nullable',
+            'event_reminder_date_delay' => 'nullable'
 
 
 
          ]);
+         $params = $request->all();
 
-         $event->update($request->all());
+         $params['event_date'] = $params['event_date'] . ' ' . $params['event_time'] . ':00';
+         $event->update($params);
 
          return response()->json([
              'message' => 'Great success! Event updated',

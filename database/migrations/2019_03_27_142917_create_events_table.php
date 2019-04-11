@@ -22,7 +22,9 @@ $table->foreign('event_author')->references('name')->on('users');
 $table->string('event_address');
 $table->text('event_description');
 $table->double('event_price');
-$table->dateTime('reminder_date')->nullable();
+$table->dateTime('event_reminder_date')->nullable();
+$table->string('event_reminder_date_delay')->nullable();
+$table->boolean('reminder_date_status')->default(0)->nullable();
 $table->timestamps();
 });
 }
