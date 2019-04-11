@@ -9,11 +9,14 @@ export default class CreateContent extends Component {
       this.handleChangeTitle=this.handleChangeTitle.bind(this);
       this.handleChangeDescription=this.handleChangeDescription.bind(this);
       this.handleChangeDate=this.handleChangeDate.bind(this);
+      this.handleChangeTime=this.handleChangeTime.bind(this);
       this.handleChangeAddress=this.handleChangeAddress.bind(this);
       this.handleChangePrice=this.handleChangePrice.bind(this);
+      this.handleChangeReminder=this.handleChangeReminder.bind(this);
+
       this.handleSubmit=this.handleSubmit.bind(this);
       this.state = {
-         event_name:' ', event_description:' ', event_address:' ', event_date:' ', event_price: ' ', events :[ ], redirect:false
+         event_name:' ', event_description:' ', event_address:' ', event_date:' ', event_time:'', event_price: ' ', event_reminder_date: '', events :[ ], redirect:false
        }
   }
   handleChangeTitle  (event) {
@@ -25,6 +28,9 @@ export default class CreateContent extends Component {
   handleChangeDate (event) {
     this.setState({ date: event.target.value });
   }
+  handleChangeTime (event) {
+    this.setState({ time: event.target.value });
+  }
   handleChangeAddress (event) {
     this.setState({ address: event.target.value });
   }
@@ -34,14 +40,20 @@ export default class CreateContent extends Component {
   handleChangePrice (event){
     this.setState({ price:event.target.value });
   }
+  handleChangeReminder (event){
+    this.setState({ reminder:event.target.value });
+  }
+
   async handleSubmit (event) {
     event.preventDefault();
     const events = {
       event_name: this.state.title,
       event_description:this.state.description,
       event_date:this.state.date,
+      event_time:this.state.time,
       event_address:this.state.address,
       event_price:this.state.price,
+      event_reminder_date:this.state.reminder,
     };
     this.setState({ redirect: true });
     // const user = event.target.elements.pseudo.value
@@ -88,10 +100,19 @@ export default class CreateContent extends Component {
                               <div className="form-group">
                                   <label htmlFor="date">Date</label>
                                   <input type="date" className="form-control" id="date" defaultValue={this.state.date} onChange={this.handleChangeDate} name='date'  required/>
+                                  <label htmlFor="time">Time</label>
+                                  <input type="time" className="form-control" id="time" defaultValue={this.state.time} onChange={this.handleChangeTime} name='time'  required/>
                                   <label htmlFor="address">Address</label>
                                   <input type="text" className="form-control" id="address"  defaultValue={this.state.address} onChange={this.handleChangeAddress} name='address' required/>
                                   <label htmlFor="price">Price</label>
                                   <input type="text" className="form-control" id="price"  defaultValue={this.state.price} onChange={this.handleChangePrice} name='price' required/>
+                                  <label htmlFor="Reminder Time">Reminder time</label >
+                                  <select onChange={this.handleChangeReminder} id="reminder" defaultValue={this.state.reminder} name="reminder">
+                                    <option value="no">No Reminder</option>
+                                    <option value="1h">1 hour before</option>
+                                    <option value="1d">1 day before</option>
+                                    <option value="3d">3 days before</option>
+                                 </select>
                               </div>
                               <button type="submit" className="btn btn-primary">Submit</button>
                             </form>

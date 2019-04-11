@@ -60929,7 +60929,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66487,15 +66487,19 @@ function (_Component) {
     _this.handleChangeTitle = _this.handleChangeTitle.bind(_assertThisInitialized(_this));
     _this.handleChangeDescription = _this.handleChangeDescription.bind(_assertThisInitialized(_this));
     _this.handleChangeDate = _this.handleChangeDate.bind(_assertThisInitialized(_this));
+    _this.handleChangeTime = _this.handleChangeTime.bind(_assertThisInitialized(_this));
     _this.handleChangeAddress = _this.handleChangeAddress.bind(_assertThisInitialized(_this));
     _this.handleChangePrice = _this.handleChangePrice.bind(_assertThisInitialized(_this));
+    _this.handleChangeReminder = _this.handleChangeReminder.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.state = {
       event_name: ' ',
       event_description: ' ',
       event_address: ' ',
       event_date: ' ',
+      event_time: '',
       event_price: ' ',
+      event_reminder_date: '',
       events: [],
       redirect: false
     };
@@ -66524,6 +66528,13 @@ function (_Component) {
       });
     }
   }, {
+    key: "handleChangeTime",
+    value: function handleChangeTime(event) {
+      this.setState({
+        time: event.target.value
+      });
+    }
+  }, {
     key: "handleChangeAddress",
     value: function handleChangeAddress(event) {
       this.setState({
@@ -66545,6 +66556,13 @@ function (_Component) {
       });
     }
   }, {
+    key: "handleChangeReminder",
+    value: function handleChangeReminder(event) {
+      this.setState({
+        reminder: event.target.value
+      });
+    }
+  }, {
     key: "handleSubmit",
     value: function () {
       var _handleSubmit = _asyncToGenerator(
@@ -66560,8 +66578,10 @@ function (_Component) {
                   event_name: this.state.title,
                   event_description: this.state.description,
                   event_date: this.state.date,
+                  event_time: this.state.time,
                   event_address: this.state.address,
-                  event_price: this.state.price
+                  event_price: this.state.price,
+                  event_reminder_date: this.state.reminder
                 };
                 this.setState({
                   redirect: true
@@ -66664,6 +66684,16 @@ function (_Component) {
         name: "date",
         required: true
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "time"
+      }, "Time"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        type: "time",
+        className: "form-control",
+        id: "time",
+        defaultValue: this.state.time,
+        onChange: this.handleChangeTime,
+        name: "time",
+        required: true
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
         htmlFor: "address"
       }, "Address"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
         type: "text",
@@ -66683,7 +66713,22 @@ function (_Component) {
         onChange: this.handleChangePrice,
         name: "price",
         required: true
-      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "Reminder Time"
+      }, "Reminder time"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("select", {
+        onChange: this.handleChangeReminder,
+        id: "reminder",
+        defaultValue: this.state.reminder,
+        name: "reminder"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
+        value: "no"
+      }, "No Reminder"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
+        value: "1h"
+      }, "1 hour before"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
+        value: "1d"
+      }, "1 day before"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
+        value: "3d"
+      }, "3 days before"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         type: "submit",
         className: "btn btn-primary"
       }, "Submit")))));

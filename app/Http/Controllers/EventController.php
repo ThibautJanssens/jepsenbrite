@@ -61,7 +61,8 @@ class EventController extends Controller
      {
         $params = $request->all();
         $params['event_author'] = auth('api')->user()->name; //Pour récup le nom de l'user loggé
-
+        $params['event_date'] = $params['event_date'] . ' ' . $params['event_time'] . ':00';
+        \Log::info($params['event_date']);
 
          $event = Event::create($params);
 

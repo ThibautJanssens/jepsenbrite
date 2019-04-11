@@ -16,15 +16,13 @@ public function up()
 Schema::create('events', function (Blueprint $table) {
 $table->bigIncrements('id');
 $table->string('event_name');
-$table->date('event_date');
-$table->time('event_time')->nullable();
-$table->date('event_date_end')->nullable();
-$table->time('event_time_end')->nullable();
+$table->dateTime('event_date');
 $table->string('event_author')->nullable();
 $table->foreign('event_author')->references('name')->on('users');
 $table->string('event_address');
 $table->text('event_description');
 $table->double('event_price');
+$table->dateTime('reminder_date')->nullable();
 $table->timestamps();
 });
 }
