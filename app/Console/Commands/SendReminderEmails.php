@@ -90,7 +90,7 @@ class SendReminderEmails extends Command
           $user = User::where('id', '=', $store3)->get();
           Mail::to($user[0]['email'])->send($mail);
           DB::table('events_and_users')->where('reminder_status', 'false')
-                             ->where('event_id', '=', $event)->where('user_id', '=', $user)->update(['reminder_status' => 'true']);
+                             ->update(['reminder_status' => 'true']);
         }
 
     }
