@@ -60929,7 +60929,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -67191,9 +67191,126 @@ function (_React$Component) {
   !*** ./resources/js/components/EventContent.js ***!
   \*************************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /home/rabujev/Becode/jepsenbrite/resources/js/components/EventContent.js: Unexpected token (47:75)\n\n\u001b[0m \u001b[90m 45 | \u001b[39m  let axiosConfig \u001b[33m=\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 46 | \u001b[39m    method\u001b[33m:\u001b[39m\u001b[32m'post'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 47 | \u001b[39m    url \u001b[33m:\u001b[39m \u001b[32m'/api/events/register/{event}/{user}'\u001b[39m\u001b[33m+\u001b[39m\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mprops\u001b[33m.\u001b[39mmatch\u001b[33m.\u001b[39mparams\u001b[33m.\u001b[39mid\u001b[33m+\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m                                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 48 | \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 49 | \u001b[39m    headers\u001b[33m:\u001b[39m {\u001b[32m'Content-Type'\u001b[39m\u001b[33m:\u001b[39m \u001b[32m'application/json'\u001b[39m\u001b[33m,\u001b[39m \u001b[32m'Authorization'\u001b[39m \u001b[33m:\u001b[39m \u001b[32m'Bearer '\u001b[39m\u001b[33m+\u001b[39m\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mcontext\u001b[33m.\u001b[39mstate\u001b[33m.\u001b[39mtoken }\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 50 | \u001b[39m    data\u001b[33m:\u001b[39m\u001b[0m\n    at Object.raise (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:3851:17)\n    at Object.unexpected (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:5167:16)\n    at Object.parseExprAtom (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:6328:20)\n    at Object.parseExprAtom (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:3570:20)\n    at Object.parseExprSubscripts (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:5914:23)\n    at Object.parseMaybeUnary (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:5894:21)\n    at Object.parseExprOpBaseRightExpr (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:5854:34)\n    at Object.parseExprOpRightExpr (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:5847:21)\n    at Object.parseExprOp (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:5826:27)\n    at Object.parseExprOp (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:5828:21)\n    at Object.parseExprOps (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:5791:17)\n    at Object.parseMaybeConditional (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:5754:23)\n    at Object.parseMaybeAssign (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:5701:21)\n    at Object.parseObjectProperty (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:6768:101)\n    at Object.parseObjPropValue (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:6793:101)\n    at Object.parseObjectMember (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:6717:10)\n    at Object.parseObj (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:6641:25)\n    at Object.parseExprAtom (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:6274:21)\n    at Object.parseExprAtom (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:3570:20)\n    at Object.parseExprSubscripts (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:5914:23)\n    at Object.parseMaybeUnary (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:5894:21)\n    at Object.parseExprOps (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:5781:23)\n    at Object.parseMaybeConditional (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:5754:23)\n    at Object.parseMaybeAssign (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:5701:21)\n    at Object.parseVar (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:7943:26)\n    at Object.parseVarStatement (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:7762:10)\n    at Object.parseStatementContent (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:7358:21)\n    at Object.parseStatement (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:7291:17)\n    at Object.parseBlockOrModuleBlockBody (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:7868:25)\n    at Object.parseBlockBody (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:7855:10)\n    at Object.parseBlock (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:7839:10)\n    at Object.parseFunctionBody (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:6909:24)\n    at Object.parseFunctionBodyAndFinish (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:6879:10)\n    at Object.parseMethod (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:6835:10)\n    at Object.pushClassMethod (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:8264:30)\n    at Object.parseClassMemberWithIsStatic (/home/rabujev/Becode/jepsenbrite/node_modules/@babel/parser/lib/index.js:8208:14)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return EventContent; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var EventContent =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(EventContent, _Component);
+
+  function EventContent(props) {
+    var _this;
+
+    _classCallCheck(this, EventContent);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(EventContent).call(this, props));
+    _this.getEvents = _this.getEvents.bind(_assertThisInitialized(_this));
+    _this.state = {
+      isLoading: true,
+      events: []
+    };
+    return _this;
+  }
+
+  _createClass(EventContent, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.getEvents();
+    }
+  }, {
+    key: "getEvents",
+    value: function getEvents(e) {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/events').then(function (response) {
+        console.log(response);
+
+        _this2.setState({
+          events: response.data,
+          isLoading: false
+        });
+
+        console.log(_this2);
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+      console.log();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$state = this.state,
+          isLoading = _this$state.isLoading,
+          events = _this$state.events;
+      if (!isLoading) return this.state.events.map(function (eventit) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "eventsPassed"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "passedEvents"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "eventImg"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+          to: "/Event/".concat(eventit.id)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          className: "eventTitle"
+        }, eventit.event_name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, "(by ", eventit.event_author, " )")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "wholeInfos"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "wholeInfos1"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "info"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "infoIcons",
+          src: "https://www.redfcu.org/Assets/uploads/images/Find%20a%20LocationBranch.png"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "infoTxt"
+        }, eventit.event_address)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "info"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "infoIcons",
+          src: "https://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/calendar-icon.png"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "infoTxt"
+        }, eventit.event_date))))));
+      });
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "loading...");
+    }
+  }]);
+
+  return EventContent;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
 
 /***/ }),
 
