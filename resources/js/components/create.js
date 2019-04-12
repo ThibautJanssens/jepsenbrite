@@ -27,12 +27,17 @@ export default class Create extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.dateTemplate = this.dateTemplate.bind(this);
+    this.handleOptionChange = this.handleOptionChange.bind(this);
     this.state = {
       name: "",
       description: "",
       image_url: "",
+      video_url: "",
       date_event: today,
       reminder: null,
+      file: "",
+      imagePreviewUrl: "",
+      selectedOption: "video",
       thisDay: today,
       minDate: minDate,
       maxDate: maxDate,
@@ -60,11 +65,50 @@ export default class Create extends Component {
     }
   }//\end fct handleChange
 
+  onChangeImg(e) {
+    e.preventDefault();
+
+    let reader = new FileReader();
+    let file = e.target.files[0];
+    let output = document.getElementById('output');
+
+    //base64 convert
+    reader.onloadend = () => {
+      this.setState({
+        file: file,
+        imagePreviewUrl: reader.result,
+      });
+      //file preview
+      output.src = reader.result
+      this.setState({
+        image_url : this.state.imagePreviewUrl.substr(this.state.imagePreviewUrl.indexOf(',') + 1)
+      });
+    }
+    reader.readAsDataURL(file)
+  }//\end fct onChangeImg
+
+  handleOptionChange(changeEvent) {
+  this.setState({
+    selectedOption: changeEvent.target.value
+  });
+}
+
   /* date conversion + submit*/
   handleSubmit() {
-    let image_url = this.state.image_url;
+    console.log("state check: "+this.state.selectedOption);
+    let image_url = "";
+    let video_url = "";
+    if (this.state.selectedOption === 'image'){
+        image_url = this.state.image_url;
+        video_url = this.state.selectedOption;
+    }
+    if (this.state.selectedOption === 'video'){
+        image_url = this.state.video_url;
+        video_url = this.state.selectedOption;
+    }
     if (image_url === "") {
       image_url = "https://zupimages.net/up/19/15/xpo1.png";
+      video_url = "image";
     }
     let convertedDate = convertDate(this.state.date_event);
     let convertedReminder = "";
@@ -76,10 +120,11 @@ export default class Create extends Component {
     else {
       convertedReminder = "";
     }
-    let myJSON = { "name": this.state.name, "date_event": convertedDate, "description": this.state.description, "reminder": convertedReminder, "image_url": image_url }
-    //console.log(myJSON);
+    let myJSON = { "name": this.state.name, "date_event": convertedDate, "description": this.state.description, "reminder": convertedReminder, "video_url": video_url, "image_url": image_url }
+
+    console.log(myJSON);
     event.preventDefault()
-    appAddEvent(myJSON);
+    //appAddEvent(myJSON);
   }//\end fct handleSubmit
 
   /*used by component calendar*/
@@ -94,24 +139,7 @@ export default class Create extends Component {
     }
   }
 
-  onChangeImg(e) {
-    e.preventDefault();
 
-    let reader = new FileReader();
-    let file = e.target.files[0];
-    let output = document.getElementById('output');
-
-    //base64 convert
-    reader.onloadend = () => {
-      this.setState({
-        file: file,
-        imagePreviewUrl: reader.result
-      });
-      //file preview
-      output.src = reader.result
-    }
-    reader.readAsDataURL(file)
-  }
 
   render() {
     return (
@@ -136,20 +164,48 @@ export default class Create extends Component {
           />
         </Form.Group>
         <div>
-          <label>Add video</label>
-          <input
-            name="image_url"
-            type="url"
-            pattern="^http:\/\/(?:www\.)?youtube.com\/watch\?(?=[^?]*v=\w+)(?:[^\s?]+)?$"
-            placeholder="paste an url"
-            onChange={this.handleChange}
-          />
-        </div>
-        <div>
-            <label>Add picture</label>
+          <label>
+            <input
+            type="radio"
+            name="react-tips"
+            value="video"
+            checked={this.state.selectedOption === "video"}
+            onChange={this.handleOptionChange}
+            className="form-check-input"
+            />
+          Add a video</label>
             <div className="grid-container-img-add">
               <div className="file">
-              <input className="form-control-file" type="file" name="image" id="UploadedFile" onChange={(e)=>this.onChangeImg(e)} /></div>
+                <input
+                className="form-control-file"
+                name="video_url"
+                type="url"
+                placeholder="paste an url"
+                onChange={this.handleChange}
+                />
+              </div>
+            </div>
+          </div>
+        <div>
+          <label>
+            <input
+            type="radio"
+            name="react-tips"
+            value="image"
+            checked={this.state.selectedOption === "image"}
+            onChange={this.handleOptionChange}
+            className="form-check-input"
+            />
+          Add an image</label>
+            <div className="grid-container-img-add">
+              <div className="file">
+                <input
+                className="form-control-file"
+                type="file"
+                name="image"
+                id="UploadedFile"
+                onChange={(e)=>this.onChangeImg(e)} />
+              </div>
               <div className="preview"><img id="output" className="output" alt=""/></div>
             </div>
         </div>

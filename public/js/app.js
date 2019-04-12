@@ -85866,12 +85866,17 @@ function (_Component) {
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.dateTemplate = _this.dateTemplate.bind(_assertThisInitialized(_this));
+    _this.handleOptionChange = _this.handleOptionChange.bind(_assertThisInitialized(_this));
     _this.state = {
       name: "",
       description: "",
       image_url: "",
+      video_url: "",
       date_event: today,
       reminder: null,
+      file: "",
+      imagePreviewUrl: "",
+      selectedOption: "video",
       thisDay: today,
       minDate: minDate,
       maxDate: maxDate,
@@ -85908,15 +85913,62 @@ function (_Component) {
       }
     } //\end fct handleChange
 
+  }, {
+    key: "onChangeImg",
+    value: function onChangeImg(e) {
+      var _this2 = this;
+
+      e.preventDefault();
+      var reader = new FileReader();
+      var file = e.target.files[0];
+      var output = document.getElementById('output'); //base64 convert
+
+      reader.onloadend = function () {
+        _this2.setState({
+          file: file,
+          imagePreviewUrl: reader.result
+        }); //file preview
+
+
+        output.src = reader.result;
+
+        _this2.setState({
+          image_url: _this2.state.imagePreviewUrl.substr(_this2.state.imagePreviewUrl.indexOf(',') + 1)
+        });
+      };
+
+      reader.readAsDataURL(file);
+    } //\end fct onChangeImg
+
+  }, {
+    key: "handleOptionChange",
+    value: function handleOptionChange(changeEvent) {
+      this.setState({
+        selectedOption: changeEvent.target.value
+      });
+    }
     /* date conversion + submit*/
 
   }, {
     key: "handleSubmit",
     value: function handleSubmit() {
-      var image_url = this.state.image_url;
+      console.log("state check: " + this.state.selectedOption);
+      var image_url = "";
+      var video_url = "";
+
+      if (this.state.selectedOption === 'image') {
+        image_url = this.state.image_url;
+        video_url = this.state.selectedOption;
+      }
+
+      if (this.state.selectedOption === 'video') {
+        image_url = this.state.video_url;
+        video_url = this.state.selectedOption;
+      }
 
       if (image_url === "") {
         image_url = "https://zupimages.net/up/19/15/xpo1.png";
+        video_url = "image";
       }
 
       var convertedDate = Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["convertDate"])(this.state.date_event);
@@ -85934,11 +85986,11 @@ function (_Component) {
         "date_event": convertedDate,
         "description": this.state.description,
         "reminder": convertedReminder,
-        "image_url": image_url //console.log(myJSON);
-
+        "video_url": video_url,
+        "image_url": image_url
       };
-      event.preventDefault();
-      Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["appAddEvent"])(myJSON);
+      console.log(myJSON);
+      event.preventDefault(); //appAddEvent(myJSON);
     } //\end fct handleSubmit
 
     /*used by component calendar*/
@@ -85964,28 +86016,6 @@ function (_Component) {
       }
     }
   }, {
-    key: "onChangeImg",
-    value: function onChangeImg(e) {
-      var _this2 = this;
-
-      e.preventDefault();
-      var reader = new FileReader();
-      var file = e.target.files[0];
-      var output = document.getElementById('output'); //base64 convert
-
-      reader.onloadend = function () {
-        _this2.setState({
-          file: file,
-          imagePreviewUrl: reader.result
-        }); //file preview
-
-
-        output.src = reader.result;
-      };
-
-      reader.readAsDataURL(file);
-    }
-  }, {
     key: "render",
     value: function render() {
       var _this3 = this;
@@ -86008,13 +86038,31 @@ function (_Component) {
         as: "textarea",
         rows: "10",
         onChange: this.handleChange
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Add video"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        name: "image_url",
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "radio",
+        name: "react-tips",
+        value: "video",
+        checked: this.state.selectedOption === "video",
+        onChange: this.handleOptionChange,
+        className: "form-check-input"
+      }), "Add a video"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "grid-container-img-add"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "file"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-control-file",
+        name: "video_url",
         type: "url",
-        pattern: "^http:\\/\\/(?:www\\.)?youtube.com\\/watch\\?(?=[^?]*v=\\w+)(?:[^\\s?]+)?$",
         placeholder: "paste an url",
         onChange: this.handleChange
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Add picture"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "radio",
+        name: "react-tips",
+        value: "image",
+        checked: this.state.selectedOption === "image",
+        onChange: this.handleOptionChange,
+        className: "form-check-input"
+      }), "Add an image"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "grid-container-img-add"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "file"
@@ -86219,8 +86267,8 @@ function (_Component) {
           className: "imgDiv border"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "imgDisplay",
-          src: item.image_url,
-          alt: "image event"
+          alt: "image event",
+          src: "data:image/jpeg;base64,".concat(item.image_url)
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "border boxDescription"
         }, item.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {

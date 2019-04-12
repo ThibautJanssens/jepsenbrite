@@ -70,7 +70,8 @@ export default class DisplayAll extends Component {
               <p className="border boxDate shadow">{item.date_event}</p>
                 <h1 className="eventTitle ">{item.name}</h1>
                 <Img className="imgDiv border">
-                    {<img className="imgDisplay" src={item.image_url} alt="image event"/>}
+                    {/*<img className="imgDisplay" src={item.image_url} alt="image event"/>*/}
+                    <img className="imgDisplay" alt="image event" src={`data:image/jpeg;base64,${item.image_url}`}/>
                 </Img>
                 <div className="border boxDescription">
                   {item.description}
