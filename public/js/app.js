@@ -78209,7 +78209,7 @@ var PoseGroup = (function (_super) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -85971,7 +85971,9 @@ function (_Component) {
       }
 
       if (image_url === "") {
-        image_url = "https://zupimages.net/up/19/15/xpo1.png";
+        var reader = new FileReader();
+        var image_default = "https://zupimages.net/up/19/15/xpo1.png";
+        image_url = reader.readAsDataURL(image_default);
         video_url = "image";
       }
 
@@ -85999,9 +86001,8 @@ function (_Component) {
         "city": this.state.city,
         "country": this.state.country
       };
-      console.log(myJSON);
-      event.preventDefault();
-      Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["appAddEvent"])(myJSON);
+      console.log(image_url);
+      event.preventDefault(); //appAddEvent(myJSON);
     } //\end fct handleSubmit
 
     /*used by component calendar*/

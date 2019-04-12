@@ -72,6 +72,7 @@ export default class DisplayAll extends Component {
                 <Img className="imgDiv border">
                     {/*<img className="imgDisplay" src={item.image_url} alt="image event"/>*/}
                     <img className="imgDisplay" alt="image event" src={`data:image/jpeg;base64,${item.image_url}`}/>
+
                 </Img>
                 <div className="border boxDescription">
                   {item.description}
