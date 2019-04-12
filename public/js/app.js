@@ -78209,7 +78209,7 @@ var PoseGroup = (function (_super) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -85870,9 +85870,9 @@ function (_Component) {
     _this.state = {
       name: "",
       description: "",
-      street: "",
-      postal_code: "",
-      city: "",
+      street: "street",
+      postal_code: "4030",
+      city: "city",
       country: "",
       image_url: "",
       video_url: "",
@@ -85984,6 +85984,7 @@ function (_Component) {
       } else {
         convertedReminder = "";
       } //console.log("image_url: "+image_url);
+      //let myJSON = { "name": "name", "date_event": "2019-04-19 15:28:28", "description": "description", "reminder": "2019-03-19 15:28:28", "video_url": "", "image_url": "https://zupimages.net/up/19/15/xpo1.png", "street": "street", "postal_code": "4000", "city": "city", "country": "country"}
 
 
       var myJSON = {
