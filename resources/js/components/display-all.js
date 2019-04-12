@@ -58,6 +58,7 @@ export default class DisplayAll extends Component {
 
   /*rendering content*/
   render() {
+    const position = [this.state.lat, this.state.lng];
     const { eventList } = this.state;
     return (
       <div>

@@ -94,6 +94,25 @@ export default class Create extends Component {
     }
   }
 
+  onChangeImg(e) {
+    e.preventDefault();
+
+    let reader = new FileReader();
+    let file = e.target.files[0];
+    let output = document.getElementById('output');
+
+    //base64 convert
+    reader.onloadend = () => {
+      this.setState({
+        file: file,
+        imagePreviewUrl: reader.result
+      });
+      //file preview
+      output.src = reader.result
+    }
+    reader.readAsDataURL(file)
+  }
+
   render() {
     return (
       <Form onSubmit={this.handleSubmit} className="m-5">
@@ -116,16 +135,24 @@ export default class Create extends Component {
             onChange={this.handleChange}
           />
         </Form.Group>
-        <Form.Group controlId="exampleForm.ControlInput1">
-          <Form.Label>Add an image</Form.Label>
-          <Form.Control
+        <div>
+          <label>Add video</label>
+          <input
             name="image_url"
             type="url"
-            pattern="(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)"
+            pattern="^http:\/\/(?:www\.)?youtube.com\/watch\?(?=[^?]*v=\w+)(?:[^\s?]+)?$"
             placeholder="paste an url"
             onChange={this.handleChange}
           />
-        </Form.Group>
+        </div>
+        <div>
+            <label>Add picture</label>
+            <div className="grid-container-img-add">
+              <div className="file">
+              <input className="form-control-file" type="file" name="image" id="UploadedFile" onChange={(e)=>this.onChangeImg(e)} /></div>
+              <div className="preview"><img id="output" className="output" alt=""/></div>
+            </div>
+        </div>
         <div className="p-col-12 mt-3">
           <p>Date of event:</p>
           <Calendar dateFormat="yy/mm/dd" value={this.state.date_event} onChange={(e) => this.setState({ date_event: e.value })} readOnlyInput={true} minDate={new Date()} showTime={true} timeOnly={false} hourFormat="24" showIcon={true} showSeconds={true} />

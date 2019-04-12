@@ -78209,7 +78209,7 @@ var PoseGroup = (function (_super) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -85964,9 +85964,31 @@ function (_Component) {
       }
     }
   }, {
+    key: "onChangeImg",
+    value: function onChangeImg(e) {
+      var _this2 = this;
+
+      e.preventDefault();
+      var reader = new FileReader();
+      var file = e.target.files[0];
+      var output = document.getElementById('output'); //base64 convert
+
+      reader.onloadend = function () {
+        _this2.setState({
+          file: file,
+          imagePreviewUrl: reader.result
+        }); //file preview
+
+
+        output.src = reader.result;
+      };
+
+      reader.readAsDataURL(file);
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a, {
         onSubmit: this.handleSubmit,
@@ -85986,21 +86008,37 @@ function (_Component) {
         as: "textarea",
         rows: "10",
         onChange: this.handleChange
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Group, {
-        controlId: "exampleForm.ControlInput1"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Label, null, "Add an image"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Control, {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Add video"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         name: "image_url",
         type: "url",
-        pattern: "(http(s?):)([/|.|\\w|\\s|-])*\\.(?:jpg|gif|png)",
+        pattern: "^http:\\/\\/(?:www\\.)?youtube.com\\/watch\\?(?=[^?]*v=\\w+)(?:[^\\s?]+)?$",
         placeholder: "paste an url",
         onChange: this.handleChange
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Add picture"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "grid-container-img-add"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "file"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-control-file",
+        type: "file",
+        name: "image",
+        id: "UploadedFile",
+        onChange: function onChange(e) {
+          return _this3.onChangeImg(e);
+        }
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "preview"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        id: "output",
+        className: "output",
+        alt: ""
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "p-col-12 mt-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Date of event:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(primereact_calendar__WEBPACK_IMPORTED_MODULE_2__["Calendar"], {
         dateFormat: "yy/mm/dd",
         value: this.state.date_event,
         onChange: function onChange(e) {
-          return _this2.setState({
+          return _this3.setState({
             date_event: e.value
           });
         },
@@ -86032,7 +86070,7 @@ function (_Component) {
         dateFormat: "yy/mm/dd",
         value: this.state.reminder,
         onChange: function onChange(e) {
-          return _this2.setState({
+          return _this3.setState({
             reminder: e.value
           });
         },
@@ -86161,6 +86199,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var position = [this.state.lat, this.state.lng];
       var eventList = this.state.eventList;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "mt-5 mb-3 text-center"
