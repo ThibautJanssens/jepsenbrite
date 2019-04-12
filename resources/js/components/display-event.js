@@ -13,7 +13,7 @@ export default class DisplayEvent extends Component {
       name: "",
       eventList: [],
       suscribersList: [],
-      boxSubscribe : false,
+      boxSubscribe: false,
       idEvent: this.props.match.params.id,
 
     }
@@ -22,7 +22,7 @@ export default class DisplayEvent extends Component {
 
   setboxSuscribe(props) {
     this.setState({
-        boxSubscribe: props
+      boxSubscribe: props
     })
   }
 
@@ -30,20 +30,20 @@ export default class DisplayEvent extends Component {
     appGetEventByID(this.props.match.params.id, this);
   }
 
-/*checkbox suscribe/unsuscrib + road to api*/
+  /*checkbox suscribe/unsuscrib + road to api*/
   handleChange(event) {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
-    this.setState({[name]: value});
-      if (target.checked === true){
-        suscribeEvent(this.props.match.params.id);
-        this.setboxSuscribe(true);
-      }
-      else {
-        unsuscribeEvent(this.props.match.params.id);
-        this.setboxSuscribe(false);
-      }
+    this.setState({ [name]: value });
+    if (target.checked === true) {
+      suscribeEvent(this.props.match.params.id);
+      this.setboxSuscribe(true);
+    }
+    else {
+      unsuscribeEvent(this.props.match.params.id);
+      this.setboxSuscribe(false);
+    }
   }//\end fct handleChange
 
   render() {
@@ -54,50 +54,64 @@ export default class DisplayEvent extends Component {
 
     let editButton;
     let suscribeButton;
-      if (sessionStorage.getItem("user-name-storage") === JSON.stringify(authorArticle[0])) {
-        editButton = (
-          <Link variant="light" className="btn btn-light my-2" to={"/edit/"+idRoute} >Edit this event</Link>
-        )
-      }
-      if (sessionStorage.getItem("token-storage") !== null) {
+    if (sessionStorage.getItem("user-name-storage") === JSON.stringify(authorArticle[0])) {
+      editButton = (
+        <Link variant="light" className="btn btn-light my-2" to={"/edit/" + idRoute} >Edit this event</Link>
+      )
+    }
+    if (sessionStorage.getItem("token-storage") !== null) {
       suscribeButton = (
         <div className="form-check">
           <input className="form-check-input"
-          type="checkbox"
-          name="boxSuscribe"
-          checked={this.state.boxSubscribe}
-          onChange={this.handleChange} />
+            type="checkbox"
+            name="boxSuscribe"
+            checked={this.state.boxSubscribe}
+            onChange={this.handleChange} />
           <label className="form-check-label">Suscribe to this event</label>
+        </div>
+      )
+    }
+    return (this.state.eventList.map(item =>
+      <div key={item.id} className="eventsPassed">
+        <div className="passedEvents">
+          <div className='eventImg'>
+            <h1 className='eventTitle'>
+              {item.name}<i>(by {item.author})</i></h1>
           </div>
-        )
-      }
-    return (
-      <div className="m-2 m-sm-5 p-2 p-xl-5">
 
-          <div>
-            {this.state.eventList.map(item =>
-              <div key={item.id} className="w-100  ">
-
-
-                  <h1 className="text-center border-bottom">{item.name}</h1>
-                  <h4 className="boxDate text-center shadow">{item.date_event}</h4>
-                  <div className="imgDivSingle mt-5">
-                <img className="imgDisplaySingle ml-auto mr-auto" src={item.image_url} alt="image event"/>
-                </div>
-                  <div className="mt-5 text-center boxDescriptionSingle shadow">
-                    {item.description}
-                  </div>
-                <p className="boxDate shadow text-center my-3">Added By: {item.author}</p>
-                <div className="p-col-12 mt-3">
-
-                    <div>{ suscribeButton }</div>
-
-                </div>
-                <div>{ editButton }</div>
+          <div className='passedEvents2'>
+            <p> {item.description} </p>
+          </div>
+          <div className='wholeInfos'>
+            <div className='wholeInfos1'>
+              <div className='info'>
+                <img className='infoIcons' src='https://www.redfcu.org/Assets/uploads/images/Find%20a%20LocationBranch.png' /><p className='infoTxt'>!!! ADRESS HERE !!!</p>
               </div>
-            )}
+              <div className='info'>
+                <img className='infoIcons' src='http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/calendar-icon.png' /><p className='infoTxt'>{item.date_event}</p>
+              </div>
+              <div className='info'>
+                <img className='infoIcons' src='https://stickeroid.com/uploads/pic/full-pngimg/9d06df374b8bab48fc3ba0a7e1a6f4ccd2212d81.png' /><p className='infoTxt'>!!! Price: HERE € !!!</p>
+              </div>
+            </div>
+            <div className='wholeInfos2'>
+              <div className='info'>
+                <img className='infoIcons2' src='http://pngimages.net/sites/default/files/upload-png-image-77090.png' /><p className='infoTxt'>Posted on !!!DATE CREATION HERE!!!</p>
+              </div>
+              <div className='info'>
+                <img className='infoIcons2' src='https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_update-512.png' /><p className='infoTxt'>Last update:  !!! DATE UPDATE EVENT HERE !!!</p>
+              </div>
+              <div className="p-col-12 mt-3">
+                {suscribeButton}
+              </div>
+              <div>
+                {editButton}
+              </div>
+            </div>
           </div>
         </div>
+      </div>
     )
+    );
   }
 }

@@ -96,9 +96,13 @@ export default class Create extends Component {
 
   render() {
     return (
-      <Form onSubmit={this.handleSubmit} className="m-5">
+      <div className="eventsPassed">
+      <div className="passedEvents">
+      <div className="eventImg">
+      <form onSubmit={this.handleSubmit} className="eventsPassed">
+      
         <h1>Create new Event</h1>
-        <Form.Group controlId="exampleForm.ControlInput1">
+        <div className="form-group" controlId="exampleForm.ControlInput1">
           <Form.Label>Title</Form.Label>
           <Form.Control
             name="name"
@@ -106,8 +110,8 @@ export default class Create extends Component {
             placeholder="your event title"
             onChange={this.handleChange}
           />
-        </Form.Group>
-        <Form.Group controlId="exampleForm.ControlTextarea1">
+        </div>
+        <div className="form-group" controlId="exampleForm.ControlTextarea1">
           <Form.Label>Description</Form.Label>
           <Form.Control
             name="description"
@@ -115,8 +119,8 @@ export default class Create extends Component {
             as="textarea" rows="10"
             onChange={this.handleChange}
           />
-        </Form.Group>
-        <Form.Group controlId="exampleForm.ControlInput1">
+        </div>
+        <div className="form-group" controlId="exampleForm.ControlInput1">
           <Form.Label>Add an image</Form.Label>
           <Form.Control
             name="image_url"
@@ -125,7 +129,12 @@ export default class Create extends Component {
             placeholder="paste an url"
             onChange={this.handleChange}
           />
-        </Form.Group>
+        </div>
+        <label htmlFor="address">!!! Address !!!</label>
+                <input type="text" className="form-control" id="address" defaultValue="" onChange="" required />
+                <label htmlFor="price">!!! Price !!!</label>
+                <input type="text" className="form-control" id="price" defaultValue="" onChange="" name='price' required />
+
         <div className="p-col-12 mt-3">
           <p>Date of event:</p>
           <Calendar dateFormat="yy/mm/dd" value={this.state.date_event} onChange={(e) => this.setState({ date_event: e.value })} readOnlyInput={true} minDate={new Date()} showTime={true} timeOnly={false} hourFormat="24" showIcon={true} showSeconds={true} />
@@ -146,8 +155,11 @@ export default class Create extends Component {
           </div>
         </div>
 
-        <Button disabled={!this.validateForm()} className="my-3" type="submit">Submit</Button>
-      </Form>
+        <button disabled={!this.validateForm()} className="btn btn-primary" type="submit">Submit</button>
+      </form>
+      </div>
+      </div>
+      </div>
     )
   }
 }

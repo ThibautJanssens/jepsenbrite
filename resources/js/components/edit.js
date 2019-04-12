@@ -112,14 +112,16 @@ export default class DisplayEvent extends Component {
     const authorArticle = this.state.eventList.map(item => item.author);
 
     return (
-      <Form onSubmit={this.handleSubmit} className="m-5">
-      <h1>Update event</h1>
-      <div className="m-2 m-sm-5 p-2 p-xl-5">
+      <div className="eventsPassed">
+        <div className='passedEvents'>
+          <div className='passedEvents2'>
+      <form onSubmit={this.handleSubmit}>
+      <div className="form-group">
           <div>
             {this.state.eventList.map(item =>
               <div key={item.id} className="w-100  ">
-              <Form.Group controlId="exampleForm.ControlInput1">
-              <Form.Label>Title</Form.Label>
+              <div class="form-group" controlId="exampleForm.ControlInput1">
+              <div class="form-label">Title</div>
                   <Form.Control
                     name="name"
                     type="text"
@@ -127,7 +129,7 @@ export default class DisplayEvent extends Component {
                     placeholder="your event title"
                     onChange={this.handleChange}
                   />
-                </Form.Group>
+                </div>
                 <Form.Group controlId="exampleForm.ControlTextarea1">
                   <Form.Label>Description</Form.Label>
                   <Form.Control
@@ -196,7 +198,10 @@ export default class DisplayEvent extends Component {
 
         <Button disabled={!this.validateForm()} className="my-3" type="submit">Submit</Button>
         </div>
-        </Form>
+        </form>
+        </div>
+        </div>
+        </div>
 
     )
   }

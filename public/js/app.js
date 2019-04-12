@@ -77469,7 +77469,7 @@ var PoseGroup = (function (_super) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -85129,7 +85129,7 @@ var RouteContainer = react_pose__WEBPACK_IMPORTED_MODULE_15__["default"].div({
     beforeChildren: true
   },
   exit: {
-    y: 100,
+    x: 10,
     opacity: 0
   }
 });
@@ -85527,10 +85527,14 @@ function (_Component) {
         });
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a, {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "eventsPassed"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "passedEvents"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Register"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a, {
         className: "m-5",
         onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Register"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Group, {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Group, {
         controlId: "exampleForm.ControlInput1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Label, null, "Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Control, {
         name: "name",
@@ -85561,7 +85565,7 @@ function (_Component) {
         disabled: !this.validateForm(),
         variant: "primary",
         type: "submit"
-      }, "Submit"));
+      }, "Submit"))));
     }
   }]);
 
@@ -85748,17 +85752,25 @@ function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a, {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "eventsPassed"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "passedEvents"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "eventImg"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit,
-        className: "m-5"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Create new Event"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Group, {
+        className: "eventsPassed"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Create new Event"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group",
         controlId: "exampleForm.ControlInput1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Label, null, "Title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Control, {
         name: "name",
         type: "text",
         placeholder: "your event title",
         onChange: this.handleChange
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Group, {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group",
         controlId: "exampleForm.ControlTextarea1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Label, null, "Description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Control, {
         name: "description",
@@ -85766,7 +85778,8 @@ function (_Component) {
         as: "textarea",
         rows: "10",
         onChange: this.handleChange
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Group, {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group",
         controlId: "exampleForm.ControlInput1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Label, null, "Add an image"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Control, {
         name: "image_url",
@@ -85774,7 +85787,26 @@ function (_Component) {
         pattern: "(http(s?):)([/|.|\\w|\\s|-])*\\.(?:jpg|gif|png)",
         placeholder: "paste an url",
         onChange: this.handleChange
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "address"
+      }, "!!! Address !!!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "form-control",
+        id: "address",
+        defaultValue: "",
+        onChange: "",
+        required: true
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "price"
+      }, "!!! Price !!!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "form-control",
+        id: "price",
+        defaultValue: "",
+        onChange: "",
+        name: "price",
+        required: true
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "p-col-12 mt-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Date of event:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(primereact_calendar__WEBPACK_IMPORTED_MODULE_2__["Calendar"], {
         dateFormat: "yy/mm/dd",
@@ -85824,11 +85856,11 @@ function (_Component) {
         hourFormat: "24",
         showIcon: true,
         showSeconds: true
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         disabled: !this.validateForm(),
-        className: "my-3",
+        className: "btn btn-primary",
         type: "submit"
-      }, "Submit"));
+      }, "Submit")))));
     }
   }]);
 
@@ -85942,34 +85974,47 @@ function (_Component) {
     key: "render",
     value: function render() {
       var eventList = this.state.eventList;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "mt-5 mb-3 text-center"
-      }, "Future Events"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "d-flex flex-wrap futureEventsList"
-      }, this.state.eventList.map(function (item) {
+      return this.state.eventList.map(function (item) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: item.id,
-          className: "color3 col-xs-12 col-md-6 col-xl-4 text-center d-flex flex-column"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Box, {
-          className: "border eventBox w-100 bg-secondary text-light my-3 p-3 eventBox flex-grow-1"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "border boxDate shadow"
-        }, item.date_event), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-          className: "eventTitle "
-        }, item.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Img, {
-          className: "imgDiv border"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "imgDisplay",
-          src: item.image_url,
-          alt: "image event"
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "border boxDescription"
-        }, item.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-          variant: "light",
-          className: "btn btn-light my-2 shadow",
+          className: "eventsPassed"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "passedEvents"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "eventImg"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
           to: "/display-event/" + item.id
-        }, "More informations"))));
-      })));
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          className: "eventTitle"
+        }, item.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, "!!! AUTHOR HERE !!!")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "wholeInfos"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "wholeInfos1"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "info"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "infoIcons",
+          src: "https://www.redfcu.org/Assets/uploads/images/Find%20a%20LocationBranch.png"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "infoTxt"
+        }, "!!! ADRESS HERE !!!")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "info"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "infoIcons",
+          src: "https://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/calendar-icon.png"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "infoTxt"
+        }, item.date_event))))));
+      } // <p className="border boxDate shadow">{item.date_event}</p>
+      // <h1 className="eventTitle ">{item.name}</h1>
+      // <Img className="imgDiv border">
+      //   {<img className="imgDisplay" src={item.image_url} alt="image event" />}
+      // </Img>
+      // <div className="border boxDescription">
+      //   {item.description}
+      // </div>
+      // <p>
+      );
     }
   }]);
 
@@ -86110,30 +86155,63 @@ function (_Component) {
         }, "Suscribe to this event"));
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "m-2 m-sm-5 p-2 p-xl-5"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.eventList.map(function (item) {
+      return this.state.eventList.map(function (item) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: item.id,
-          className: "w-100  "
+          className: "eventsPassed"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "passedEvents"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "eventImg"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-          className: "text-center border-bottom"
-        }, item.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
-          className: "boxDate text-center shadow"
-        }, item.date_event), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "imgDivSingle mt-5"
+          className: "eventTitle"
+        }, item.name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, "(by ", item.author, ")"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "passedEvents2"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", item.description, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "wholeInfos"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "wholeInfos1"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "info"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "imgDisplaySingle ml-auto mr-auto",
-          src: item.image_url,
-          alt: "image event"
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "mt-5 text-center boxDescriptionSingle shadow"
-        }, item.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "boxDate shadow text-center my-3"
-        }, "Added By: ", item.author), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "infoIcons",
+          src: "https://www.redfcu.org/Assets/uploads/images/Find%20a%20LocationBranch.png"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "infoTxt"
+        }, "!!! ADRESS HERE !!!")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "info"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "infoIcons",
+          src: "http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/calendar-icon.png"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "infoTxt"
+        }, item.date_event)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "info"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "infoIcons",
+          src: "https://stickeroid.com/uploads/pic/full-pngimg/9d06df374b8bab48fc3ba0a7e1a6f4ccd2212d81.png"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "infoTxt"
+        }, "!!! Price: HERE \u20AC !!!"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "wholeInfos2"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "info"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "infoIcons2",
+          src: "http://pngimages.net/sites/default/files/upload-png-image-77090.png"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "infoTxt"
+        }, "Posted on !!!DATE CREATION HERE!!!")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "info"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "infoIcons2",
+          src: "https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_update-512.png"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "infoTxt"
+        }, "Last update:  !!! DATE UPDATE EVENT HERE !!!")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "p-col-12 mt-3"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, suscribeButton)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, editButton));
-      })));
+        }, suscribeButton), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, editButton)))));
+      });
     }
   }]);
 
@@ -86451,18 +86529,26 @@ function (_Component) {
       var authorArticle = this.state.eventList.map(function (item) {
         return item.author;
       });
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a, {
-        onSubmit: this.handleSubmit,
-        className: "m-5"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Update event"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "m-2 m-sm-5 p-2 p-xl-5"
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "eventsPassed"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "passedEvents"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "passedEvents2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.eventList.map(function (item) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: item.id,
           className: "w-100  "
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Group, {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          class: "form-group",
           controlId: "exampleForm.ControlInput1"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Label, null, "Title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Control, {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          class: "form-label"
+        }, "Title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Control, {
           name: "name",
           type: "text",
           value: _this2.state.name,
@@ -86539,7 +86625,7 @@ function (_Component) {
         disabled: !this.validateForm(),
         className: "my-3",
         type: "submit"
-      }, "Submit")));
+      }, "Submit"))))));
     }
   }]);
 
@@ -87138,7 +87224,9 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "Login m-5"
+        className: "eventsPassed"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "passedEvents"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a, {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Group, {
@@ -87162,7 +87250,7 @@ function (_Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_3___default.a, {
         disabled: !this.validateForm(),
         type: "submit"
-      }, "Submit")));
+      }, "Submit"))));
     } //\end render
 
   }]);
@@ -87329,34 +87417,38 @@ function (_Component) {
     key: "render",
     value: function render() {
       var eventList = this.state.eventList;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "mt-2 ml-2"
-      }, "My Events : "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "d-flex flex-wrap futureEventsList"
-      }, this.state.eventList.map(function (item) {
+      return this.state.eventList.map(function (item) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: item.id,
-          className: "color3 col-xs-12 col-md-6 col-xl-4 text-center d-flex flex-column"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Box, {
-          className: "border eventBox w-100 bg-secondary text-light my-3 p-3 eventBox"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "border boxDate"
-        }, item.date_event), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "imgDiv border"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "imgDisplay",
-          src: item.image_url,
-          alt: "image event"
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-          className: "eventTitle "
-        }, item.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "border boxDescription"
-        }, item.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Link"], {
-          variant: "light",
-          className: "btn btn-light my-2 shadow",
+          className: "eventsPassed"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "passedEvents"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "eventImg"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Link"], {
           to: "/display-event/" + item.id
-        }, "More informations"))));
-      })));
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          className: "eventTitle"
+        }, item.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, "!!! AUTHOR HERE !!!")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "wholeInfos"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "wholeInfos1"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "info"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "infoIcons",
+          src: "https://www.redfcu.org/Assets/uploads/images/Find%20a%20LocationBranch.png"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "infoTxt"
+        }, "!!! ADRESS HERE !!!")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "info"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "infoIcons",
+          src: "https://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/calendar-icon.png"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "infoTxt"
+        }, item.date_event))))));
+      });
     }
   }]);
 
@@ -87461,34 +87553,38 @@ function (_Component) {
     key: "render",
     value: function render() {
       var eventList = this.state.eventList;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "mt-2 ml-2"
-      }, "My Participations : "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "d-flex flex-wrap futureEventsList"
-      }, this.state.eventList.map(function (item) {
+      return this.state.eventList.map(function (item) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: item.id,
-          className: "color3 col-xs-12 col-md-6 col-xl-4 text-center d-flex flex-column"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Box, {
-          className: "border eventBox w-100 bg-secondary text-light my-3 p-3 eventBox"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "border boxDate"
-        }, item.date_event), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "imgDiv border"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "imgDisplay",
-          src: item.image_url,
-          alt: "image event"
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-          className: "eventTitle "
-        }, item.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "border boxDescription"
-        }, item.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Link"], {
-          variant: "light",
-          className: "btn btn-light my-2 shadow",
+          className: "eventsPassed"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "passedEvents"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "eventImg"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Link"], {
           to: "/display-event/" + item.id
-        }, "More informations"))));
-      })));
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          className: "eventTitle"
+        }, item.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, "!!! AUTHOR HERE !!!")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "wholeInfos"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "wholeInfos1"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "info"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "infoIcons",
+          src: "https://www.redfcu.org/Assets/uploads/images/Find%20a%20LocationBranch.png"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "infoTxt"
+        }, "!!! ADRESS HERE !!!")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "info"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "infoIcons",
+          src: "https://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/calendar-icon.png"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "infoTxt"
+        }, item.date_event))))));
+      });
     }
   }]);
 
