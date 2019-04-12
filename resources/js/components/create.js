@@ -31,6 +31,10 @@ export default class Create extends Component {
     this.state = {
       name: "",
       description: "",
+      street: "",
+      postal_code: "",
+      city: "",
+      country: "",
       image_url: "",
       video_url: "",
       date_event: today,
@@ -120,11 +124,11 @@ export default class Create extends Component {
     else {
       convertedReminder = "";
     }
-    let myJSON = { "name": this.state.name, "date_event": convertedDate, "description": this.state.description, "reminder": convertedReminder, "video_url": video_url, "image_url": image_url }
-
+    //console.log("image_url: "+image_url);
+    let myJSON = { "name": this.state.name, "date_event": convertedDate, "description": this.state.description, "reminder": convertedReminder, "video_url": video_url, "image_url": image_url, "street": this.state.street, "postal_code": this.state.postal_code, "city": this.state.city, "country": this.state.country}
     console.log(myJSON);
     event.preventDefault()
-    //appAddEvent(myJSON);
+    appAddEvent(myJSON);
   }//\end fct handleSubmit
 
   /*used by component calendar*/

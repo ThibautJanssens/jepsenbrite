@@ -85345,7 +85345,7 @@ function (_Component) {
   _createClass(Index, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_navbar__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["HashRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_navbar__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "body-fullvh"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Routes__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_footer__WEBPACK_IMPORTED_MODULE_5__["default"], null))));
     }
@@ -85870,6 +85870,10 @@ function (_Component) {
     _this.state = {
       name: "",
       description: "",
+      street: "",
+      postal_code: "",
+      city: "",
+      country: "",
       image_url: "",
       video_url: "",
       date_event: today,
@@ -85979,7 +85983,8 @@ function (_Component) {
         convertedReminder = Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["convertDate"])(this.state.reminder);
       } else {
         convertedReminder = "";
-      }
+      } //console.log("image_url: "+image_url);
+
 
       var myJSON = {
         "name": this.state.name,
@@ -85987,10 +85992,15 @@ function (_Component) {
         "description": this.state.description,
         "reminder": convertedReminder,
         "video_url": video_url,
-        "image_url": image_url
+        "image_url": image_url,
+        "street": this.state.street,
+        "postal_code": this.state.postal_code,
+        "city": this.state.city,
+        "country": this.state.country
       };
       console.log(myJSON);
-      event.preventDefault(); //appAddEvent(myJSON);
+      event.preventDefault();
+      Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["appAddEvent"])(myJSON);
     } //\end fct handleSubmit
 
     /*used by component calendar*/
