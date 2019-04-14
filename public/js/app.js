@@ -85956,24 +85956,29 @@ function (_Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit() {
-      console.log("state check: " + this.state.selectedOption);
+      //console.log("state check: "+this.state.selectedOption);
       var image_url = "";
       var video_url = "";
 
-      if (this.state.selectedOption === 'image') {
+      if (this.state.selectedOption === 'image' && this.state.image_url !== "") {
+        console.log("image");
         image_url = this.state.image_url;
+        image_url = "data:image/jpeg;base64," + this.state.image_url;
+        video_url = this.state.selectedOption;
+        console.log(image_url);
+      }
+
+      if (this.state.selectedOption === 'video' && this.state.video_url !== "") {
+        console.log("video"); //format: https://www.youtube.com/watch?v=fjlFRo3yW5g
+
+        image_url = this.state.video_url.substr(this.state.video_url.indexOf('=') + 1);
         video_url = this.state.selectedOption;
       }
 
-      if (this.state.selectedOption === 'video') {
-        image_url = this.state.video_url;
-        video_url = this.state.selectedOption;
-      }
+      if (this.state.selectedOption === 'image' && this.state.image_url == "" || this.state.selectedOption === 'video' && this.state.video_url == "") {
+        console.log("default"); //let image_default = "https://zupimages.net/up/19/15/xpo1.png";
 
-      if (image_url === "") {
-        var reader = new FileReader();
-        var image_default = "https://zupimages.net/up/19/15/xpo1.png";
-        image_url = reader.readAsDataURL(image_default);
+        image_url = "https://zupimages.net/up/19/15/xpo1.png";
         video_url = "image";
       }
 
@@ -86001,7 +86006,7 @@ function (_Component) {
         "city": this.state.city,
         "country": this.state.country
       };
-      console.log(image_url);
+      console.log(myJSON);
       event.preventDefault(); //appAddEvent(myJSON);
     } //\end fct handleSubmit
 
@@ -86277,10 +86282,10 @@ function (_Component) {
           className: "eventTitle "
         }, item.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Img, {
           className: "imgDiv border"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Media type: ", item.video_url), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Url: ", item.image_url), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "imgDisplay",
           alt: "image event",
-          src: "data:image/jpeg;base64,".concat(item.image_url)
+          src: "".concat(item.image_url)
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "border boxDescription"
         }, item.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {

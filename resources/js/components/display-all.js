@@ -70,8 +70,14 @@ export default class DisplayAll extends Component {
               <p className="border boxDate shadow">{item.date_event}</p>
                 <h1 className="eventTitle ">{item.name}</h1>
                 <Img className="imgDiv border">
-                    {/*<img className="imgDisplay" src={item.image_url} alt="image event"/>*/}
-                    <img className="imgDisplay" alt="image event" src={`data:image/jpeg;base64,${item.image_url}`}/>
+
+                    <p>Media type: {item.video_url}</p>
+                    <p>Url: {item.image_url}</p>
+                    {<img className="imgDisplay" alt="image event" src={`${item.image_url}`}/>}
+                    {/*<Img className="imgDiv border">
+                        {(item.video_url === 'image') ?
+                            <img className="imgDisplay" alt="image event" src={`data:image/jpeg;base64,${item.image_url}`}/>:<iframe width="100%" src={`https://www.youtube.com/embed/${item.image_url}`} frameBorder="0"  allowFullScreen/>
+                        */}
 
                 </Img>
                 <div className="border boxDescription">

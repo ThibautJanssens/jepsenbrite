@@ -149,6 +149,7 @@ export function appGetFutureEvent(eventList) {
     .catch(function (error) {
       console.log(error);
     })
+
 }
 
 /*Get Past Event -GET */
