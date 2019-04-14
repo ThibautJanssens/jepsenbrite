@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import Routes from './routes';
 
 export default class Navbar extends Component {
@@ -18,7 +18,7 @@ export default class Navbar extends Component {
     let logButton2;
    if (sessionStorage.getItem("token-storage") !== null) {
      logButton2 = (
-       <Link className="btn btn-secondary my-2 my-sm-0" to='/logout'>Log Out</Link>
+       <Link className="btn btn-secondary my-2 my-sm-0" to='/Logout'>Log Out</Link>
      )
 }
 else if (sessionStorage.getItem("token-storage") === null) {

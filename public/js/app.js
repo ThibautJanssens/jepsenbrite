@@ -86312,7 +86312,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers */ "./resources/js/components/helpers.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _email__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./email */ "./resources/js/components/email.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -86332,6 +86333,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -86406,12 +86408,13 @@ function (_Component) {
       var idRoute = this.state.idEvent;
       var editButton;
       var suscribeButton;
+      var sendMailButton;
 
       if (sessionStorage.getItem("user-name-storage") === JSON.stringify(authorArticle[0])) {
-        editButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        editButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
           variant: "light",
           className: "btn btn-light my-2",
-          to: "/edit/" + idRoute
+          to: "/Edit/" + idRoute
         }, "Edit this event");
       }
 
@@ -86427,6 +86430,11 @@ function (_Component) {
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
           className: "form-check-label"
         }, "Suscribe to this event"));
+        sendMailButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+          variant: "light",
+          className: "btn btn-light my-2",
+          to: "/Email/" + idRoute
+        }, "Share with your friends");
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -86451,7 +86459,7 @@ function (_Component) {
           className: "boxDate shadow text-center my-3"
         }, "Added By: ", item.author), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "p-col-12 mt-3"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, suscribeButton)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, editButton));
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, suscribeButton)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, editButton), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, sendMailButton));
       })));
     }
   }]);
@@ -86587,7 +86595,7 @@ function (_Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return DisplayEvent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Edit; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers */ "./resources/js/components/helpers.js");
@@ -86625,17 +86633,17 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var DisplayEvent =
+var Edit =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(DisplayEvent, _Component);
+  _inherits(Edit, _Component);
 
-  function DisplayEvent(props) {
+  function Edit(props) {
     var _this;
 
-    _classCallCheck(this, DisplayEvent);
+    _classCallCheck(this, Edit);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(DisplayEvent).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Edit).call(this, props));
     var today = new Date();
     var month = today.getMonth();
     var year = today.getFullYear();
@@ -86674,7 +86682,7 @@ function (_Component) {
   } //\constructor
 
 
-  _createClass(DisplayEvent, [{
+  _createClass(Edit, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["appGetEventByIDEdit"])(this.props.match.params.id, this);
@@ -86862,8 +86870,169 @@ function (_Component) {
     }
   }]);
 
-  return DisplayEvent;
+  return Edit;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/email.js":
+/*!******************************************!*\
+  !*** ./resources/js/components/email.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Email; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var Email =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Email, _Component);
+
+  function Email(props) {
+    var _this;
+
+    _classCallCheck(this, Email);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Email).call(this, props));
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.addMail = _this.addMail.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.state = {
+      email: [{
+        name: ""
+      }],
+      from: "",
+      eventName: ""
+    };
+    return _this;
+  }
+
+  _createClass(Email, [{
+    key: "handleChange",
+    value: function handleChange(event) {
+      var _this2 = this;
+
+      if (["name"].includes(event.target.className)) {
+        var email = _toConsumableArray(this.state.email);
+
+        email[event.target.dataset.id][event.target.className] = event.target.value.toUpperCase();
+        this.setState({
+          email: email
+        }, function () {
+          return console.log(_this2.state.email);
+        });
+      } else {
+        this.setState(_defineProperty({}, e.target.name, e.target.value.toUpperCase()));
+      }
+    }
+  }, {
+    key: "addMail",
+    value: function addMail(event) {
+      this.setState(function (prevState) {
+        return {
+          email: [].concat(_toConsumableArray(prevState.email), [{
+            name: ""
+          }])
+        };
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(event) {
+      event.preventDefault();
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      console.log("email form");
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$state = this.state,
+          from = _this$state.from,
+          eventName = _this$state.eventName,
+          email = _this$state.email;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleSubmit,
+        onChange: this.handleChange
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Share with you friends"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "name"
+      }, "From"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        name: "from",
+        id: "from",
+        value: from
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "eventName"
+      }, "Event Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        name: "eventName",
+        id: "eventName",
+        value: eventName
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.addMail
+      }, "Add new recipient"), email.map(function (val, idx) {
+        var mailId = "mail-".concat(idx);
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: idx
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+          htmlFor: mailId
+        }, "mail #".concat(idx + 1)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "text",
+          name: mailId,
+          "data-id": idx,
+          id: mailId,
+          value: email[idx].name,
+          className: "name"
+        }));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "submit",
+        value: "Submit"
+      }));
+    } //\render
+
+  }]);
+
+  return Email;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]); //\class
+
 
 
 

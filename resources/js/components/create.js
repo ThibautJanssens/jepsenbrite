@@ -1,10 +1,9 @@
-import React, { Component } from 'react'
-import Form from 'react-bootstrap/Form'
+import React, { Component } from 'react';
+import Form from 'react-bootstrap/Form';
 import { Calendar } from 'primereact/calendar';
 import Button from 'react-bootstrap/Button';
 import { appAddEvent } from './helpers';
 import { convertDate } from './helpers';
-
 
 export default class Create extends Component {
   constructor(props) {

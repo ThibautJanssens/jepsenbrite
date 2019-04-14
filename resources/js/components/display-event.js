@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { appGetEventByID } from './helpers';
 import { suscribeEvent } from './helpers';
 import { unsuscribeEvent } from './helpers';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import Email from './email';
+import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 export default class DisplayEvent extends Component {
 
@@ -54,9 +55,10 @@ export default class DisplayEvent extends Component {
 
     let editButton;
     let suscribeButton;
+    let sendMailButton;
       if (sessionStorage.getItem("user-name-storage") === JSON.stringify(authorArticle[0])) {
         editButton = (
-          <Link variant="light" className="btn btn-light my-2" to={"/edit/"+idRoute} >Edit this event</Link>
+          <Link variant="light" className="btn btn-light my-2" to={"/Edit/"+idRoute} >Edit this event</Link>
         )
       }
       if (sessionStorage.getItem("token-storage") !== null) {
@@ -69,6 +71,9 @@ export default class DisplayEvent extends Component {
           onChange={this.handleChange} />
           <label className="form-check-label">Suscribe to this event</label>
           </div>
+        )
+        sendMailButton = (
+          <Link variant="light" className="btn btn-light my-2" to={"/Email/"+idRoute} >Share with your friends</Link>
         )
       }
     return (
@@ -94,6 +99,7 @@ export default class DisplayEvent extends Component {
 
                 </div>
                 <div>{ editButton }</div>
+                <div>{ sendMailButton }</div>
               </div>
             )}
           </div>

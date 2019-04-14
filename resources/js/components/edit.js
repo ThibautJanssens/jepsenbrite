@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import { Calendar } from 'primereact/calendar';
 import Button from 'react-bootstrap/Button';
 
-export default class DisplayEvent extends Component {
+export default class Edit extends Component {
 
   constructor(props) {
     super(props);
