@@ -47,7 +47,7 @@ class EventController extends Controller
     {
         $ret['event'] = DB::table('events')
             ->join('users','users.id', '=', 'events.author')
-            ->select('users.name as author', 'events.name', 'events.date_event', 'events.description', 'events.image_url', 'events.reminder')
+            ->select('users.name as author', 'events.name', 'events.date_event', 'events.description', 'events.image_url', 'events.reminder, events.media_type')
             ->where('events.id', '=', $id)
             ->get();
 
@@ -69,8 +69,8 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        DB::update('update events set name = ?, date_event = ?, description = ?, reminder = ?, image_url = ? where id = ?',
-        [$request->name, $request->date_event, $request->description, $request->reminder, $request->image_url, $id]);
+        DB::update('update events set name = ?, date_event = ?, description = ?, reminder = ?, image_url = ?, events.media_type = ? where id = ?',
+        [$request->name, $request->date_event, $request->description, $request->reminder, $request->image_url, $request->media_type, $id]);
         return response()->json([
             'message' => 'Event updated'
         ]);
@@ -101,7 +101,7 @@ class EventController extends Controller
     public function past(){
         $events = DB::table('events')
             ->join('users','users.id', '=', 'events.author')
-            ->select('users.name as author', 'events.id', 'events.name', 'events.date_event', 'events.description', 'events.image_url')
+            ->select('users.name as author', 'events.id', 'events.name', 'events.date_event', 'events.description', 'events.image_url', 'events.media_type')
             ->where('events.date_event', '<','NOW()')
             ->orderBy('events.date_event', 'desc')
             ->get();
@@ -111,7 +111,7 @@ class EventController extends Controller
     public function futur(){
         $events = DB::table('events')
             ->join('users','users.id', '=', 'events.author')
-            ->select('users.name as author', 'events.id', 'events.name', 'events.date_event', 'events.description', 'events.image_url')
+            ->select('users.name as author', 'events.id', 'events.name', 'events.date_event', 'events.description', 'events.image_url', 'events.media_type')
             ->where('events.date_event', '>=','NOW()')
             ->orderBy('events.date_event', 'asc')
             ->get();

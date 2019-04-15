@@ -13,7 +13,12 @@ class Event extends Model
         'author',
         'description',
         'reminder',
-        'image_url'
+        'street',
+        'postal_code',
+        'country',
+        'city',
+        'image_url',
+        'video_url'
     ];
 
     public function author(){
