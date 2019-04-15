@@ -16,7 +16,7 @@ export default class DisplayEvent extends Component {
       suscribersList: [],
       boxSubscribe : false,
       idEvent: this.props.match.params.id,
-
+      nameEvent: "",
     }
 
   }//\constructor
@@ -29,6 +29,11 @@ export default class DisplayEvent extends Component {
 
   componentDidMount() {
     appGetEventByID(this.props.match.params.id, this);
+    const { nameEvent } = this.props.location.state;
+    //console.log("nameEvent disp-ev:"+nameEvent);
+    this.setState({
+        nameEvent: nameEvent,
+    })
   }
 
 /*checkbox suscribe/unsuscrib + road to api*/
@@ -48,6 +53,7 @@ export default class DisplayEvent extends Component {
   }//\end fct handleChange
 
   render() {
+
     const { eventList } = this.state;
     const authorArticle = this.state.eventList.map(item => item.author);
     const authorId = this.state.eventList.map(item => item.id);
@@ -55,7 +61,6 @@ export default class DisplayEvent extends Component {
 
     let editButton;
     let suscribeButton;
-    let sendMailButton;
       if (sessionStorage.getItem("user-name-storage") === JSON.stringify(authorArticle[0])) {
         editButton = (
           <Link variant="light" className="btn btn-light my-2" to={"/Edit/"+idRoute} >Edit this event</Link>
@@ -72,34 +77,35 @@ export default class DisplayEvent extends Component {
           <label className="form-check-label">Suscribe to this event</label>
           </div>
         )
-        sendMailButton = (
-          <Link variant="light" className="btn btn-light my-2" to={"/Email/"+idRoute} >Share with your friends</Link>
-        )
       }
     return (
       <div className="m-2 m-sm-5 p-2 p-xl-5">
-
           <div>
             {this.state.eventList.map(item =>
               <div key={item.id} className="w-100  ">
-
-
                   <h1 className="text-center border-bottom">{item.name}</h1>
                   <h4 className="boxDate text-center shadow">{item.date_event}</h4>
                   <div className="imgDivSingle mt-5">
-                <img className="imgDisplaySingle ml-auto mr-auto" src={item.image_url} alt="image event"/>
-                </div>
-                  <div className="mt-5 text-center boxDescriptionSingle shadow">
-                    {item.description}
+                    <img className="imgDisplaySingle ml-auto mr-auto" src={item.image_url} alt="image event"/>
                   </div>
-                <p className="boxDate shadow text-center my-3">Added By: {item.author}</p>
-                <div className="p-col-12 mt-3">
-
-                    <div>{ suscribeButton }</div>
-
-                </div>
-                <div>{ editButton }</div>
-                <div>{ sendMailButton }</div>
+                  <div className="mt-5 text-center boxDescriptionSingle shadow">
+                    Description: {item.description}
+                  </div>
+                  <div className="mt-5 text-center boxDescriptionSingle shadow">
+                    Added By: {item.author}
+                  </div>
+                  <div className="mt-5 text-center boxDescriptionSingle shadow">
+                    List of suscribers:
+                  </div>
+                  <div className="mt-5 text-center boxDescriptionSingle shadow">
+                    Suscribe: { suscribeButton }
+                  </div>
+                  <div className="mt-5 text-center boxDescriptionSingle shadow">
+                    Share the event with your friends: <Email idEvent={this.state.idEvent} nameEvent={this.state.nameEvent}/>
+                  </div>
+                  <div>
+                    { editButton }
+                  </div>
               </div>
             )}
           </div>

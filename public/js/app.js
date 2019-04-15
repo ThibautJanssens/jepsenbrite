@@ -86247,7 +86247,8 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(DisplayAll).call(this, props));
     _this.state = {
-      eventList: []
+      eventList: [],
+      nameEvent: ""
     }; //\state
 
     return _this;
@@ -86257,10 +86258,9 @@ function (_Component) {
   _createClass(DisplayAll, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      //console.log(this);
-      Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["appGetFutureEvent"])(this);
-      console.log("token-storage: " + JSON.parse(sessionStorage.getItem("token-storage"))); //console.log("user-id-storage: "+JSON.parse(sessionStorage.getItem("user-id-storage")));
-      //console.log("user-name-storage: "+JSON.parse(sessionStorage.getItem("user-name-storage")));
+      Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["appGetFutureEvent"])(this); // console.log("token-storage: "+JSON.parse(sessionStorage.getItem("token-storage")));
+      // console.log("user-id-storage: "+sessionStorage.getItem("user-id-storage"));
+      // console.log("user-name-storage: "+sessionStorage.getItem("user-name-storage"));
     }
     /*rendering content*/
 
@@ -86285,7 +86285,7 @@ function (_Component) {
           className: "eventTitle "
         }, item.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Img, {
           className: "imgDiv border"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Media type: ", item.media_type), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Url: ", item.image_url), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Img, {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Img, {
           className: "imgDiv border"
         }, item.media_type === 'image' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "imgDisplay",
@@ -86301,7 +86301,12 @@ function (_Component) {
         }, item.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
           variant: "light",
           className: "btn btn-light my-2 shadow",
-          to: "/display-event/" + item.id
+          to: {
+            pathname: "/display-event/" + item.id,
+            state: {
+              nameEvent: item.name
+            }
+          }
         }, "More informations"))));
       })));
     }
@@ -86373,7 +86378,8 @@ function (_Component) {
       eventList: [],
       suscribersList: [],
       boxSubscribe: false,
-      idEvent: _this.props.match.params.id
+      idEvent: _this.props.match.params.id,
+      nameEvent: ""
     };
     return _this;
   } //\constructor
@@ -86390,6 +86396,11 @@ function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["appGetEventByID"])(this.props.match.params.id, this);
+      var nameEvent = this.props.location.state.nameEvent; //console.log("nameEvent disp-ev:"+nameEvent);
+
+      this.setState({
+        nameEvent: nameEvent
+      });
     }
     /*checkbox suscribe/unsuscrib + road to api*/
 
@@ -86413,6 +86424,8 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var eventList = this.state.eventList;
       var authorArticle = this.state.eventList.map(function (item) {
         return item.author;
@@ -86423,7 +86436,6 @@ function (_Component) {
       var idRoute = this.state.idEvent;
       var editButton;
       var suscribeButton;
-      var sendMailButton;
 
       if (sessionStorage.getItem("user-name-storage") === JSON.stringify(authorArticle[0])) {
         editButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
@@ -86445,11 +86457,6 @@ function (_Component) {
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
           className: "form-check-label"
         }, "Suscribe to this event"));
-        sendMailButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-          variant: "light",
-          className: "btn btn-light my-2",
-          to: "/Email/" + idRoute
-        }, "Share with your friends");
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -86470,11 +86477,18 @@ function (_Component) {
           alt: "image event"
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "mt-5 text-center boxDescriptionSingle shadow"
-        }, item.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "boxDate shadow text-center my-3"
+        }, "Description: ", item.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "mt-5 text-center boxDescriptionSingle shadow"
         }, "Added By: ", item.author), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "p-col-12 mt-3"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, suscribeButton)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, editButton), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, sendMailButton));
+          className: "mt-5 text-center boxDescriptionSingle shadow"
+        }, "List of suscribers:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "mt-5 text-center boxDescriptionSingle shadow"
+        }, "Suscribe: ", suscribeButton), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "mt-5 text-center boxDescriptionSingle shadow"
+        }, "Share the event with your friends: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_email__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          idEvent: _this2.state.idEvent,
+          nameEvent: _this2.state.nameEvent
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, editButton));
       })));
     }
   }]);
@@ -86904,6 +86918,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Email; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers */ "./resources/js/components/helpers.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -86934,6 +86949,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var Email =
 /*#__PURE__*/
 function (_Component) {
@@ -86950,7 +86966,7 @@ function (_Component) {
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.state = {
       email: [{
-        name: ""
+        toMail: ""
       }],
       from: "",
       eventName: ""
@@ -86963,17 +86979,17 @@ function (_Component) {
     value: function handleChange(event) {
       var _this2 = this;
 
-      if (["name"].includes(event.target.className)) {
+      if (["toMail"].includes(event.target.className)) {
         var email = _toConsumableArray(this.state.email);
 
-        email[event.target.dataset.id][event.target.className] = event.target.value.toUpperCase();
+        email[event.target.dataset.id][event.target.className] = event.target.value.toLowerCase();
         this.setState({
           email: email
         }, function () {
           return console.log(_this2.state.email);
         });
       } else {
-        this.setState(_defineProperty({}, e.target.name, e.target.value.toUpperCase()));
+        this.setState(_defineProperty({}, e.target.toMail, e.target.value.toLowerCase()));
       }
     }
   }, {
@@ -86982,7 +86998,7 @@ function (_Component) {
       this.setState(function (prevState) {
         return {
           email: [].concat(_toConsumableArray(prevState.email), [{
-            name: ""
+            toMail: ""
           }])
         };
       });
@@ -86990,16 +87006,27 @@ function (_Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(event) {
-      event.preventDefault();
-    }
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      console.log("email form");
+      event.preventDefault(); //console.log("To send: "+JSON.stringify(this.state.email));
+      //console.log("user-id-storage: "+JSON.parse(sessionStorage.getItem("user-id-storage")));
+      //console.log("user-name-storage: "+JSON.parse(sessionStorage.getItem("user-name-storage")));
+
+      var senderId = sessionStorage.getItem("user-id-storage");
+      var senderName = sessionStorage.getItem("user-name-storage"); //console.log(this.props.nameEvent);
+
+      var myJSON = {
+        "eventId": this.props.idEvent,
+        "eventName": this.props.nameEvent,
+        "senderId": senderId,
+        "senderName": senderName,
+        "emailList": JSON.stringify(this.state.email)
+      };
+      console.log(myJSON);
     }
   }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var _this$state = this.state,
           from = _this$state.from,
           eventName = _this$state.eventName,
@@ -87007,21 +87034,7 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit,
         onChange: this.handleChange
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Share with you friends"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "name"
-      }, "From"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        name: "from",
-        id: "from",
-        value: from
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "eventName"
-      }, "Event Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        name: "eventName",
-        id: "eventName",
-        value: eventName
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.addMail
       }, "Add new recipient"), email.map(function (val, idx) {
         var mailId = "mail-".concat(idx);
@@ -87034,8 +87047,9 @@ function (_Component) {
           name: mailId,
           "data-id": idx,
           id: mailId,
-          value: email[idx].name,
-          className: "name"
+          onChange: _this3.handleChange,
+          value: email[idx].toMail,
+          className: "toMail"
         }));
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
@@ -87196,7 +87210,7 @@ function (_Component) {
 /*!********************************************!*\
   !*** ./resources/js/components/helpers.js ***!
   \********************************************/
-/*! exports provided: convertDate, appRegister, appGetUser, appLogin, appLogout, appGetEvent, appGetFutureEvent, appGetPastEvent, appGetMyEvent, appGetMyParticipations, appGetSubscribers, appGetEventByID, appGetCheckbox, appGetEventByIDEdit, appGetContent, appAddEvent, updateEvent, suscribeEvent, unsuscribeEvent */
+/*! exports provided: convertDate, appRegister, appGetUser, appLogin, appLogout, appGetEvent, appGetFutureEvent, appGetPastEvent, appGetMyEvent, appGetMyParticipations, appGetSubscribers, appGetEventByID, appGetCheckbox, appGetEventByIDEdit, appGetContent, appAddEvent, appSendMails, updateEvent, suscribeEvent, unsuscribeEvent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -87217,6 +87231,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "appGetEventByIDEdit", function() { return appGetEventByIDEdit; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "appGetContent", function() { return appGetContent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "appAddEvent", function() { return appAddEvent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "appSendMails", function() { return appSendMails; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateEvent", function() { return updateEvent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "suscribeEvent", function() { return suscribeEvent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unsuscribeEvent", function() { return unsuscribeEvent; });
@@ -87284,8 +87299,8 @@ function appGetUser() {
       'Authorization': "Bearer " + JSON.parse(sessionStorage.getItem("token-storage"))
     }
   }).then(function (response) {
-    sessionStorage.setItem('user-id-storage', JSON.stringify(response.data.id));
-    sessionStorage.setItem('user-name-storage', JSON.stringify(response.data.name));
+    sessionStorage.setItem('user-id-storage', response.data.id);
+    sessionStorage.setItem('user-name-storage', response.data.name);
     window.location = '/';
   })["catch"](function (error) {
     console.log(error);
@@ -87512,6 +87527,38 @@ function appAddEvent(myJSON) {
   }).then(function (response) {
     bootbox__WEBPACK_IMPORTED_MODULE_2___default.a.confirm({
       message: "Thanks for your contribution, your event has been successfully added",
+      buttons: {
+        confirm: {
+          label: 'Continue',
+          className: 'btn-success w-100'
+        },
+        cancel: {
+          label: 'No',
+          className: 'd-none'
+        }
+      },
+      callback: function callback(result) {
+        window.location = '/';
+      }
+    });
+  })["catch"](function (error) {
+    console.log(error);
+  });
+}
+/*Add Event-POST */
+
+function appSendMails(myJSON) {
+  axios__WEBPACK_IMPORTED_MODULE_0___default()({
+    method: 'POST',
+    url: "/api/event",
+    headers: {
+      'Content-Type': "application/json",
+      'Authorization': "Bearer " + JSON.parse(sessionStorage.getItem("token-storage"))
+    },
+    data: JSON.stringify(myJSON)
+  }).then(function (response) {
+    bootbox__WEBPACK_IMPORTED_MODULE_2___default.a.confirm({
+      message: "Thanks for your contribution, your emails has been successfully sent",
       buttons: {
         confirm: {
           label: 'Continue',

@@ -45,15 +45,15 @@ export default class DisplayAll extends Component {
     super(props);
     this.state = {
       eventList: [],
+      nameEvent: "",
     };//\state
   }//\constructor
 
   componentDidMount() {
-    //console.log(this);
     appGetFutureEvent(this);
-    console.log("token-storage: "+JSON.parse(sessionStorage.getItem("token-storage")));
-    //console.log("user-id-storage: "+JSON.parse(sessionStorage.getItem("user-id-storage")));
-    //console.log("user-name-storage: "+JSON.parse(sessionStorage.getItem("user-name-storage")));
+    // console.log("token-storage: "+JSON.parse(sessionStorage.getItem("token-storage")));
+    // console.log("user-id-storage: "+sessionStorage.getItem("user-id-storage"));
+    // console.log("user-name-storage: "+sessionStorage.getItem("user-name-storage"));
   }
 
   /*rendering content*/
@@ -71,9 +71,9 @@ export default class DisplayAll extends Component {
                 <h1 className="eventTitle ">{item.name}</h1>
                 <Img className="imgDiv border">
 
-                    <p>Media type: {item.media_type}</p>
+                    {/*<p>Media type: {item.media_type}</p>
                     <p>Url: {item.image_url}</p>
-                    {/*<img className="imgDisplay" alt="image event" src={`${item.image_url}`}/>*/}
+                    <img className="imgDisplay" alt="image event" src={`${item.image_url}`}/>*/}
                     <Img className="imgDiv border">
                         {
                           (item.media_type === 'image') ? <img className="imgDisplay" alt="image event" src={`${item.image_url}`}/>:<iframe width="100%" src={`https://www.youtube.com/embed/${item.image_url}`} frameBorder="0"  allowFullScreen/>
@@ -84,7 +84,7 @@ export default class DisplayAll extends Component {
                   {item.description}
                 </div>
                 <p>
-                  <Link variant="light" className="btn btn-light my-2 shadow" to={"/display-event/" + item.id} >More informations</Link>
+                  <Link variant="light" className="btn btn-light my-2 shadow" to={{pathname: "/display-event/"+item.id, state: {nameEvent: item.name}}} >More informations</Link>
                 </p>
               </Box>
             </div>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { appSendMails } from './helpers';
 export default class Email extends Component {
 
 constructor(props) {
@@ -8,35 +8,39 @@ constructor(props) {
   this.addMail = this.addMail.bind(this);
   this.handleSubmit= this.handleSubmit.bind(this);
   this.state = {
-    email: [{name:""}],
+    email: [{toMail:""}],
     from: "",
     eventName: "",
   }
 }
 
 handleChange(event) {
-  if (["name"].includes(event.target.className) ) {
+  if (["toMail"].includes(event.target.className) ) {
       let email = [...this.state.email];
-      email[event.target.dataset.id][event.target.className] = event.target.value.toUpperCase();
+      email[event.target.dataset.id][event.target.className] = event.target.value.toLowerCase();
       this.setState({ email }, () => console.log(this.state.email));
     }
     else {
-      this.setState({ [e.target.name]: e.target.value.toUpperCase() });
+      this.setState({ [e.target.toMail]: e.target.value.toLowerCase() });
     }
 }
 
 addMail(event) {
     this.setState((prevState) => ({
-      email: [...prevState.email, {name:""}],
+      email: [...prevState.email, {toMail:""}],
     }));
   }
 
 handleSubmit(event){
   event.preventDefault()
-}
-
-componentDidMount() {
-  console.log("email form");
+  //console.log("To send: "+JSON.stringify(this.state.email));
+  //console.log("user-id-storage: "+JSON.parse(sessionStorage.getItem("user-id-storage")));
+  //console.log("user-name-storage: "+JSON.parse(sessionStorage.getItem("user-name-storage")));
+    let senderId = sessionStorage.getItem("user-id-storage");
+    let senderName = sessionStorage.getItem("user-name-storage");
+    //console.log(this.props.nameEvent);
+    let myJSON = { "eventId": this.props.idEvent, "eventName": this.props.nameEvent,"senderId": senderId, "senderName": senderName, "emailList": JSON.stringify(this.state.email)}
+    console.log(myJSON);
 }
 
 render() {
@@ -46,11 +50,6 @@ render() {
     return (
 
       <form onSubmit={this.handleSubmit} onChange={this.handleChange} >
-        <h1>Share with you friends</h1>
-        <label htmlFor="name">From</label>
-        <input type="text" name="from" id="from" value={from} />
-        <label htmlFor="eventName">Event Name</label>
-        <input type="text" name="eventName" id="eventName" value={eventName} />
         <button onClick={this.addMail}>Add new recipient</button>
         {
           email.map((val, idx)=> {
@@ -63,8 +62,9 @@ render() {
                   name={mailId}
                   data-id={idx}
                   id={mailId}
-                  value={email[idx].name}
-                  className="name"
+                  onChange={this.handleChange}
+                  value={email[idx].toMail}
+                  className="toMail"
                 />
               </div>
             )
