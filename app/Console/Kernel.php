@@ -6,6 +6,8 @@ use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ReminderMail;
+use Illuminate\Support\Facades\DB;
+
 
 
 class Kernel extends ConsoleKernel
@@ -27,24 +29,28 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->call(function () {
+
             $participations = DB::table('events')
                 ->join('list_of_participants', 'list_of_participants.event', 'events.id')
-                ->join('users', 'list_of_participants', 'users.id')
-                ->select('users.email', 'users.name', 'events.name', 'events.date_event')
-                ->where('list_of_participants.reminder_status', 'false', 'AND', 'events.reminder <= NOW()')
+                ->join('users', 'list_of_participants.participant', 'users.id')
+                ->select('users.email', 'users.name AS user', 'events.name as event', 'events.date_event', 'events.id')
+                ->where('list_of_participants.reminder_status', 'false')
+                ->where('events.reminder','<=', 'NOW()')
                 ->get();
 
-            $reminders = $participations->get();
-            foreach ($reminders as $reminder) {
+                DB::table('list_of_participants')
+                ->join('events', 'list_of_participants.event', 'events.id')
+                ->select('list_of_participants.*')
+                ->where('events.reminder','<=', 'NOW()')
+                ->update(['list_of_participants.reminder_status' => 'true']);
+
+            foreach ($participations as $reminder) {
                 $mail = new ReminderMail($reminder);
-                Mail::to($reminder['users']['email'])
-                ->from('doonut@jepsenbrite.com')
-                ->subject('Your event soon.')
+                Mail::to($reminder->email)
+                //->from('doonut@jepsenbrite.com')
+                //->subject($reminder->event)
                 ->send($mail);
             }
-            $participations->update(['list_of_participants.reminder_status' => 'true']);
-        })->everyMinute();
     }
 
     /**

@@ -24,7 +24,7 @@ class ReminderMail extends Mailable
     public function __construct($event)
     {
       $this->event = $event;
-      $this->eventUrl = 'https://jepsen-brite.herokuapp.com/Event/'. $event[0]['id'];
+      $this->eventUrl = 'https://jepsen-brite.herokuapp.com/Event/'. $event->id;
     }
 
 
@@ -36,6 +36,6 @@ class ReminderMail extends Mailable
 
      public function build()
      {
-        return $this->markdown('email.Reminder')->subject('The almighty Reminder: Your next event is coming up fast');
+        return $this->markdown('emails.reminder')->subject('The almighty Reminder: Your next event is coming up fast');
      }
 }

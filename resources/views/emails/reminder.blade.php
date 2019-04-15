@@ -50,19 +50,19 @@
 </head>
 
 <body>
-    <h2>Hello {{$user['name']}} !</h2>
+    <h2>Hello {{$event->user}} !</h2>
     <br />
     <img src="https://zupimages.net/up/19/15/xpo1.png" alt="logo EventDab" width="100px" height="100px">
     <article>
         <p>
-         This is a reminder for an event you're interested to.
+         This is a reminder for an event: {{$event->event}} you're interested to.
         </p>
         <p>
             We'll hope you'll find the best events around you or you'll share your events with the <i>EventDab
                 Community</i> !
         </p>
         <p>See you soon on <b>EventDab!</b></p>
-        <a href="#" class="button">Click here to go back to Event Dab!</a>
+        <a href={{$eventUrl}} class="button">Click here to go back to Event Dab!</a>
     </article>
 </body>
 </html>
