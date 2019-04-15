@@ -1,8 +1,4 @@
 import React, { Component } from 'react'
-import Navbar from 'react-bootstrap/Navbar'
-import Nav from 'react-bootstrap/Nav'
-import Dropdown from 'react-bootstrap/Dropdown'
-import Container from 'react-bootstrap/Container'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
 
@@ -37,7 +33,7 @@ export default class NavbarContent extends Component {
     }
     else if (sessionStorage.getItem("token-storage") === null) {
       userName = (
-        "Please login"
+        "Please login or register"
       )
     }
     let addEventButton;
@@ -80,7 +76,7 @@ export default class NavbarContent extends Component {
               </li>
               {addEventButton}
               <li className="nav-item">
-                <Link className='nav-link' to='/Passed'>Passed Event</Link>
+                <Link className='nav-link' to='/display-past'>Past Events</Link>
               </li>
             </ul>
             {userName}

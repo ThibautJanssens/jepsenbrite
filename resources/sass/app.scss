@@ -9,8 +9,7 @@
 @import '~bootstrap/scss/bootstrap';
 
 body {
-  background:url('https://data.whicdn.com/images/128557270/large.jpg');
-  background-attachment: fixed;
+  background-color: #03020D;
   color:white !important;
   //filter:drop-shadow(3px 3px 6px white);
  //animation: body-logo-spin infinite 10s linear;
@@ -23,6 +22,11 @@ body {
 //     transform: rotate(360deg);
 //   }
 // }
+
+* {
+  margin: 0;
+  padding: 0;
+}
 
 
 .navbar {
@@ -42,7 +46,7 @@ body {
   width:100%;
   bottom:-20px !important;
   background-color: #03020D;
-  color:darkgrey;
+  color:white;
   text-align:center;
   font-size:2rem;
 }
@@ -85,7 +89,7 @@ filter: drop-shadow(7px 7px 2px black);
 .brandDonut{
   display:flex;
   justify-content:center;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #03020D;
   color:white;
 }
 .brandDonut >  h1 {
@@ -320,6 +324,10 @@ a:hover{
 //MEDIA QUERIES
 @media screen and (max-width:500px){
 
+  .gitList{
+    display: flex;
+    flex-direction: column;
+  }
 
   .passedEvents2{
     margin:0 !important;
