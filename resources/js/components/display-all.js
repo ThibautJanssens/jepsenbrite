@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { appGetFutureEvent } from './helpers';
 import posed from 'react-pose';
-import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import { rgba } from 'style-value-types';
 
 const Box = posed.div({
