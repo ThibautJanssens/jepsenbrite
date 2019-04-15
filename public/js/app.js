@@ -85962,8 +85962,8 @@ function (_Component) {
       var media_type = "";
 
       if (this.state.selectedOption === 'image' && this.state.image_url !== "") {
-        console.log("image");
-        image_url = this.state.image_url;
+        console.log("image"); //image_url = this.state.image_url;
+
         image_url = "data:image/jpeg;base64," + this.state.image_url;
         media_type = this.state.selectedOption;
         console.log(image_url);
@@ -86290,7 +86290,7 @@ function (_Component) {
         }, item.media_type === 'image' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "imgDisplay",
           alt: "image event",
-          src: "".concat(item.image_url)
+          src: item.image_url
         }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("iframe", {
           width: "100%",
           src: "https://www.youtube.com/embed/".concat(item.image_url),

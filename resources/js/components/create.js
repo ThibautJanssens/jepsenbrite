@@ -71,11 +71,9 @@ export default class Create extends Component {
 
   onChangeImg(e) {
     e.preventDefault();
-
     let reader = new FileReader();
     let file = e.target.files[0];
     let output = document.getElementById('output');
-
     //base64 convert
     reader.onloadend = () => {
       this.setState({
@@ -104,7 +102,7 @@ export default class Create extends Component {
     let media_type = "";
     if (this.state.selectedOption === 'image' && this.state.image_url !== ""){
     console.log("image");
-        image_url = this.state.image_url;
+        //image_url = this.state.image_url;
         image_url = "data:image/jpeg;base64,"+this.state.image_url;
         media_type = this.state.selectedOption;
         console.log(image_url);

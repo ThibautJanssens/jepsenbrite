@@ -76,7 +76,7 @@ export default class DisplayAll extends Component {
                     <img className="imgDisplay" alt="image event" src={`${item.image_url}`}/>*/}
                     <Img className="imgDiv border">
                         {
-                          (item.media_type === 'image') ? <img className="imgDisplay" alt="image event" src={`${item.image_url}`}/>:<iframe width="100%" src={`https://www.youtube.com/embed/${item.image_url}`} frameBorder="0"  allowFullScreen/>
+                          (item.media_type === 'image') ? <img className="imgDisplay" alt="image event" src={item.image_url}/>:<iframe width="100%" src={`https://www.youtube.com/embed/${item.image_url}`} frameBorder="0"  allowFullScreen/>
                         }
                     </Img>
                 </Img>
