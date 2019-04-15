@@ -18,8 +18,8 @@ class AuthController extends Controller
          ]);
 
         Mail::to($request->email)
-            ->from('doonuts@jepsenbrite.com')
-            ->subject('Inscription confirmation')
+            //->from('doonuts@jepsenbrite.com')
+            //->subject('Inscription confirmation')
             ->send(new WelcomeMail($user));
 
         $token = auth('api')->login($user);

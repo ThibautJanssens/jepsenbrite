@@ -36,6 +36,7 @@ export default class Create extends Component {
       country: "",
       image_url: "",
       video_url: "",
+      price: "10",
       date_event: today,
       reminder: null,
       file: "",
@@ -132,7 +133,7 @@ export default class Create extends Component {
     }
     //console.log("image_url: "+image_url);
     //let myJSON = { "name": "name", "date_event": "2019-04-19 15:28:28", "description": "description", "reminder": "2019-03-19 15:28:28", "video_url": "", "image_url": "https://zupimages.net/up/19/15/xpo1.png", "street": "street", "postal_code": "4000", "city": "city", "country": "country"}
-    let myJSON = { "name": this.state.name, "date_event": convertedDate, "description": this.state.description, "reminder": convertedReminder, "media_type": media_type, "image_url": image_url, "street": this.state.street, "postal_code": this.state.postal_code, "city": this.state.city, "country": this.state.country}
+    let myJSON = { "name": this.state.name, "date_event": convertedDate, "street": this.state.street, "postal_code": this.state.postal_code, "city": this.state.city, "price": this.state.price, "country": this.state.country, "description": this.state.description, "reminder": convertedReminder, "image_url": image_url, "media_type": media_type}
     console.log(myJSON);
     event.preventDefault()
     appAddEvent(myJSON);

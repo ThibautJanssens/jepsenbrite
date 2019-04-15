@@ -85876,6 +85876,7 @@ function (_Component) {
       country: "",
       image_url: "",
       video_url: "",
+      price: "10",
       date_event: today,
       reminder: null,
       file: "",
@@ -85997,14 +85998,15 @@ function (_Component) {
       var myJSON = {
         "name": this.state.name,
         "date_event": convertedDate,
-        "description": this.state.description,
-        "reminder": convertedReminder,
-        "media_type": media_type,
-        "image_url": image_url,
         "street": this.state.street,
         "postal_code": this.state.postal_code,
         "city": this.state.city,
-        "country": this.state.country
+        "price": this.state.price,
+        "country": this.state.country,
+        "description": this.state.description,
+        "reminder": convertedReminder,
+        "image_url": image_url,
+        "media_type": media_type
       };
       console.log(myJSON);
       event.preventDefault();
@@ -86256,8 +86258,8 @@ function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       //console.log(this);
-      Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["appGetFutureEvent"])(this); //console.log("token-storage: "+JSON.parse(sessionStorage.getItem("token-storage")));
-      //console.log("user-id-storage: "+JSON.parse(sessionStorage.getItem("user-id-storage")));
+      Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["appGetFutureEvent"])(this);
+      console.log("token-storage: " + JSON.parse(sessionStorage.getItem("token-storage"))); //console.log("user-id-storage: "+JSON.parse(sessionStorage.getItem("user-id-storage")));
       //console.log("user-name-storage: "+JSON.parse(sessionStorage.getItem("user-name-storage")));
     }
     /*rendering content*/
