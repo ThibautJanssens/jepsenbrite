@@ -9,6 +9,7 @@ $factory->define(App\Event::class, function (Faker $faker) {
         'street' => $faker->sentence(),
         'city' => $faker->sentence(),
         'postal_code' => $faker->sentence(),
+        'price'=> $faker->numberBetween(10,2000),
         'author' =>factory ('App\User')->create()->id
     ];
 });

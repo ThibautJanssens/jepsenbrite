@@ -21,6 +21,7 @@ class CreateEventsTable extends Migration
             $table->string('street');
             $table->string('postal_code');
             $table->string('city');
+            $table->double('price');
             $table->string('country')->nullable();
             $table->integer('author');
             $table->text('description')->nullable();
