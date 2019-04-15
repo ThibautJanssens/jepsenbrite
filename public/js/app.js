@@ -86285,11 +86285,18 @@ function (_Component) {
           className: "eventTitle "
         }, item.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Img, {
           className: "imgDiv border"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Media type: ", item.video_url), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Url: ", item.image_url), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Media type: ", item.media_type), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Url: ", item.image_url), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Img, {
+          className: "imgDiv border"
+        }, item.media_type === 'image' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "imgDisplay",
           alt: "image event",
           src: "".concat(item.image_url)
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("iframe", {
+          width: "100%",
+          src: "https://www.youtube.com/embed/".concat(item.image_url),
+          frameBorder: "0",
+          allowFullScreen: true
+        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "border boxDescription"
         }, item.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
           variant: "light",
