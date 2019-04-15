@@ -8,17 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     protected $fillable = [
-        'name',
-        'date_event',
-        'author',
-        'city',
-        'street',
-        'postal_code',
-        'country',
-        'description',
-        'reminder',
-        'image_url',
-        'video_url'
+      'name',
+      'date_event',
+      'author',
+      'description',
+      'reminder',
+      'street',
+      'postal_code',
+      'country',
+      'city',
+      'image_url',
+      'video_url'
     ];
 
     public function author(){

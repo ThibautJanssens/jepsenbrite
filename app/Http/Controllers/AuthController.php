@@ -17,7 +17,10 @@ class AuthController extends Controller
              'password' => $request->password,
          ]);
 
-        Mail::to($request->email)->send(new WelcomeMail($user));
+        Mail::to($request->email)
+            ->from('doonuts@jepsenbrite.com')
+            ->subject('Inscription confirmation')
+            ->send(new WelcomeMail($user));
 
         $token = auth('api')->login($user);
 
