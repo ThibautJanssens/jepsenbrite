@@ -18,7 +18,7 @@ class Event extends Model
         'country',
         'city',
         'image_url',
-        'video_url'
+        'media_type'
     ];
 
     public function author(){
