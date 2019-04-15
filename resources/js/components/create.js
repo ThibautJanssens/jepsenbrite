@@ -100,25 +100,25 @@ export default class Create extends Component {
   handleSubmit() {
     //console.log("state check: "+this.state.selectedOption);
     let image_url = "";
-    let video_url = "";
+    let media_type = "";
     if (this.state.selectedOption === 'image' && this.state.image_url !== ""){
     console.log("image");
         image_url = this.state.image_url;
         image_url = "data:image/jpeg;base64,"+this.state.image_url;
-        video_url = this.state.selectedOption;
+        media_type = this.state.selectedOption;
         console.log(image_url);
     }
     if (this.state.selectedOption === 'video' && this.state.video_url !== ""){
       console.log("video");
       //format: https://www.youtube.com/watch?v=fjlFRo3yW5g
         image_url = this.state.video_url.substr(this.state.video_url.indexOf('=') + 1);
-        video_url = this.state.selectedOption;
+        media_type = this.state.selectedOption;
     }
     if (this.state.selectedOption === 'image' && this.state.image_url == "" || this.state.selectedOption === 'video' && this.state.video_url == ""){
       console.log("default");
       //let image_default = "https://zupimages.net/up/19/15/xpo1.png";
       image_url = "https://zupimages.net/up/19/15/xpo1.png";
-      video_url = "image";
+      media_type = "image";
     }
     let convertedDate = convertDate(this.state.date_event);
     let convertedReminder = "";
@@ -132,10 +132,10 @@ export default class Create extends Component {
     }
     //console.log("image_url: "+image_url);
     //let myJSON = { "name": "name", "date_event": "2019-04-19 15:28:28", "description": "description", "reminder": "2019-03-19 15:28:28", "video_url": "", "image_url": "https://zupimages.net/up/19/15/xpo1.png", "street": "street", "postal_code": "4000", "city": "city", "country": "country"}
-    let myJSON = { "name": this.state.name, "date_event": convertedDate, "description": this.state.description, "reminder": convertedReminder, "video_url": video_url, "image_url": image_url, "street": this.state.street, "postal_code": this.state.postal_code, "city": this.state.city, "country": this.state.country}
+    let myJSON = { "name": this.state.name, "date_event": convertedDate, "description": this.state.description, "reminder": convertedReminder, "media_type": media_type, "image_url": image_url, "street": this.state.street, "postal_code": this.state.postal_code, "city": this.state.city, "country": this.state.country}
     console.log(myJSON);
     event.preventDefault()
-    //appAddEvent(myJSON);
+    appAddEvent(myJSON);
   }//\end fct handleSubmit
 
   /*used by component calendar*/

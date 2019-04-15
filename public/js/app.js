@@ -85958,13 +85958,13 @@ function (_Component) {
     value: function handleSubmit() {
       //console.log("state check: "+this.state.selectedOption);
       var image_url = "";
-      var video_url = "";
+      var media_type = "";
 
       if (this.state.selectedOption === 'image' && this.state.image_url !== "") {
         console.log("image");
         image_url = this.state.image_url;
         image_url = "data:image/jpeg;base64," + this.state.image_url;
-        video_url = this.state.selectedOption;
+        media_type = this.state.selectedOption;
         console.log(image_url);
       }
 
@@ -85972,14 +85972,14 @@ function (_Component) {
         console.log("video"); //format: https://www.youtube.com/watch?v=fjlFRo3yW5g
 
         image_url = this.state.video_url.substr(this.state.video_url.indexOf('=') + 1);
-        video_url = this.state.selectedOption;
+        media_type = this.state.selectedOption;
       }
 
       if (this.state.selectedOption === 'image' && this.state.image_url == "" || this.state.selectedOption === 'video' && this.state.video_url == "") {
         console.log("default"); //let image_default = "https://zupimages.net/up/19/15/xpo1.png";
 
         image_url = "https://zupimages.net/up/19/15/xpo1.png";
-        video_url = "image";
+        media_type = "image";
       }
 
       var convertedDate = Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["convertDate"])(this.state.date_event);
@@ -85999,7 +85999,7 @@ function (_Component) {
         "date_event": convertedDate,
         "description": this.state.description,
         "reminder": convertedReminder,
-        "video_url": video_url,
+        "media_type": media_type,
         "image_url": image_url,
         "street": this.state.street,
         "postal_code": this.state.postal_code,
@@ -86007,7 +86007,8 @@ function (_Component) {
         "country": this.state.country
       };
       console.log(myJSON);
-      event.preventDefault(); //appAddEvent(myJSON);
+      event.preventDefault();
+      Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["appAddEvent"])(myJSON);
     } //\end fct handleSubmit
 
     /*used by component calendar*/
