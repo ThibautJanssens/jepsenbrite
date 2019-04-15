@@ -26,7 +26,7 @@ class CreateEventsTable extends Migration
             $table->text('description')->nullable();
             $table->dateTime('reminder')->nullable();
             $table->text('image_url')->nullable();
-            $table->text('video_url')->nullable();
+            $table->text('media_type')->nullable();
             $table->foreign('author')->references('id')->on('users');
         });
     }
