@@ -86833,6 +86833,8 @@ function (_Component) {
       video_url: "",
       media_type: "",
       selectedOption: "",
+      file: "",
+      imagePreviewUrl: "",
       price: "",
       date_event: "",
       reminder: "",
@@ -86909,6 +86911,19 @@ function (_Component) {
       this.setState({
         selectedOption: changeEvent.target.value
       });
+
+      if (this.state.selectedOption === 'image') {
+        this.setState({
+          image_url: "",
+          video_url: ""
+        });
+      }
+
+      if (this.state.selectedOption === 'video') {
+        this.setState({
+          video_url: ""
+        });
+      }
     }
     /* date conversion + submit*/
 
@@ -86963,11 +86978,10 @@ function (_Component) {
         "description": this.state.description,
         "reminder": convertedReminder,
         "image_url": image_url,
-        "media_type": media_type //console.log(myJSON);
-
+        "media_type": media_type
       };
-      event.preventDefault();
-      Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["updateEvent"])(this.state.idEvent, myJSON);
+      console.log(myJSON);
+      event.preventDefault(); //updateEvent(this.state.idEvent,myJSON);
     } //\end fct handleSubmit
 
     /*used by component calendar*/
@@ -87081,7 +87095,7 @@ function (_Component) {
           checked: _this3.state.selectedOption === "video",
           onChange: _this3.handleOptionChange,
           className: "form-check-input"
-        }), "Add a video")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }), "Add a video")), _this3.state.selectedOption === "image" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "grid-container-img-add"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "file"
@@ -87100,16 +87114,17 @@ function (_Component) {
           src: "data:image/jpeg;base64,".concat(_this3.state.image_url),
           className: "output",
           alt: ""
-        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "grid-container-img-add"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "file"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           className: "form-control-file",
           name: "video_url",
+          id: "video_url",
           type: "url",
           placeholder: "paste an url",
-          value: "https://www.youtube.com/watch?v=".concat(_this3.state.image_url),
+          value: _this3.state.video_url,
           onChange: _this3.handleChange
         }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "p-col-12 mt-3"
@@ -87789,7 +87804,7 @@ function appGetContent(response, eventList) {
     city: response.data.event[0].city,
     country: response.data.event[0].country,
     price: response.data.event[0].price
-  }, _defineProperty(_eventList$setState, "image_url", response.data.event[0].image_url), _defineProperty(_eventList$setState, "media_type", response.data.event[0].media_type), _defineProperty(_eventList$setState, "selectedOption", response.data.event[0].media_type), _defineProperty(_eventList$setState, "imagePreviewUrl", response.data.event[0].image_url), _eventList$setState));
+  }, _defineProperty(_eventList$setState, "image_url", response.data.event[0].image_url), _defineProperty(_eventList$setState, "file", response.data.event[0].image_url), _defineProperty(_eventList$setState, "imagePreviewUrl", response.data.event[0].image_url), _defineProperty(_eventList$setState, "video_url", "https://www.youtube.com/watch?v=" + response.data.event[0].image_url), _defineProperty(_eventList$setState, "media_type", response.data.event[0].media_type), _defineProperty(_eventList$setState, "selectedOption", response.data.event[0].media_type), _defineProperty(_eventList$setState, "imagePreviewUrl", response.data.event[0].image_url), _eventList$setState));
 }
 /*Add Event-POST */
 

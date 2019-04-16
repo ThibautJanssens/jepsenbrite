@@ -45,6 +45,8 @@ export default class Edit extends Component {
       video_url: "",
       media_type: "",
       selectedOption: "",
+      file: "",
+      imagePreviewUrl: "",
       price: "",
       date_event: "",
       reminder: "",
@@ -56,6 +58,7 @@ export default class Edit extends Component {
     }
 
   }//\constructor
+
 
   componentDidMount() {
     appGetEventByIDEdit(this.props.match.params.id, this);
@@ -103,6 +106,17 @@ export default class Edit extends Component {
     this.setState({
       selectedOption: changeEvent.target.value
     });
+    if (this.state.selectedOption === 'image'){
+      this.setState({
+        image_url: "",
+        video_url: "",
+      });
+    }
+    if (this.state.selectedOption === 'video'){
+      this.setState({
+        video_url: "",
+      });
+    }
   }
 
   /* date conversion + submit*/
@@ -141,9 +155,9 @@ export default class Edit extends Component {
         convertedReminder = "";
       }
       let myJSON = { "name": this.state.name, "date_event": convertedDate, "street": this.state.street, "postal_code": this.state.postal_code, "city": this.state.city, "price": this.state.price, "country": this.state.country, "description": this.state.description, "reminder": convertedReminder, "image_url": image_url, "media_type": media_type}
-      //console.log(myJSON);
+      console.log(myJSON);
       event.preventDefault()
-      updateEvent(this.state.idEvent,myJSON);
+      //updateEvent(this.state.idEvent,myJSON);
     }//\end fct handleSubmit
 
   /*used by component calendar*/
@@ -262,6 +276,7 @@ export default class Edit extends Component {
                         />
                       Add a video</label>
                       </div>
+                    {this.state.selectedOption === "image" ?
                     <div className="grid-container-img-add">
                       <div className="file">
                         <input
@@ -273,18 +288,21 @@ export default class Edit extends Component {
                       </div>
                       <div className="preview"><img id="output" src={`data:image/jpeg;base64,${this.state.image_url}`} className="output" alt=""/></div>
                     </div>
+                    :
                     <div className="grid-container-img-add">
                       <div className="file">
                         <input
                         className="form-control-file"
                         name="video_url"
+                        id="video_url"
                         type="url"
                         placeholder="paste an url"
-                        value={`https://www.youtube.com/watch?v=${this.state.image_url}`}
+                        value={this.state.video_url}
                         onChange={this.handleChange}
                         />
                       </div>
                     </div>
+                    }
                     <div className="p-col-12 mt-3">
                         <p>Date of event:</p>
                         <Calendar
