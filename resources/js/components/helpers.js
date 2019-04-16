@@ -288,6 +288,10 @@ export function appGetContent(response, eventList) {
     city: response.data.event[0].city,
     country: response.data.event[0].country,
     price: response.data.event[0].price,
+    image_url: response.data.event[0].image_url,
+    media_type: response.data.event[0].media_type,
+    selectedOption: response.data.event[0].media_type,
+    imagePreviewUrl: response.data.event[0].image_url,
   })
 }
 

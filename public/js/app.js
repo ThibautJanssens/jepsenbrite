@@ -86816,6 +86816,7 @@ function (_Component) {
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.dateTemplate = _this.dateTemplate.bind(_assertThisInitialized(_this));
+    _this.handleOptionChange = _this.handleOptionChange.bind(_assertThisInitialized(_this));
     _this.input = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
     _this.state = {
       eventList: [],
@@ -86830,6 +86831,8 @@ function (_Component) {
       country: "",
       image_url: "",
       video_url: "",
+      media_type: "",
+      selectedOption: "",
       price: "",
       date_event: "",
       reminder: "",
@@ -86873,17 +86876,70 @@ function (_Component) {
       }
     } //\end fct handleChange
 
+  }, {
+    key: "onChangeImg",
+    value: function onChangeImg(e) {
+      var _this2 = this;
+
+      e.preventDefault();
+      var reader = new FileReader();
+      var file = e.target.files[0];
+      var output = document.getElementById('output'); //base64 convert
+
+      reader.onloadend = function () {
+        _this2.setState({
+          file: file,
+          imagePreviewUrl: reader.result
+        }); //file preview
+
+
+        output.src = reader.result;
+
+        _this2.setState({
+          image_url: _this2.state.imagePreviewUrl.substr(_this2.state.imagePreviewUrl.indexOf(',') + 1)
+        });
+      };
+
+      reader.readAsDataURL(file);
+    } //\end fct onChangeImg
+
+  }, {
+    key: "handleOptionChange",
+    value: function handleOptionChange(changeEvent) {
+      this.setState({
+        selectedOption: changeEvent.target.value
+      });
+    }
     /* date conversion + submit*/
 
   }, {
     key: "handleSubmit",
     value: function handleSubmit() {
       //console.log(JSON.stringify(this.state.image_url));
-      var urlToSend = this.state.image_url;
+      //console.log("state check: "+this.state.selectedOption);
+      var image_url = "";
+      var media_type = "";
 
-      if (urlToSend === "") {
-        //console.log("no img");
-        urlToSend = "logo";
+      if (this.state.selectedOption === 'image' && this.state.image_url !== "") {
+        console.log("image"); //image_url = this.state.image_url;
+
+        image_url = "data:image/jpeg;base64," + this.state.image_url;
+        media_type = this.state.selectedOption;
+        console.log(image_url);
+      }
+
+      if (this.state.selectedOption === 'video' && this.state.video_url !== "") {
+        console.log("video"); //format: https://www.youtube.com/watch?v=fjlFRo3yW5g
+
+        image_url = this.state.video_url.substr(this.state.video_url.indexOf('=') + 1);
+        media_type = this.state.selectedOption;
+      }
+
+      if (this.state.selectedOption === 'image' && this.state.image_url == "" || this.state.selectedOption === 'video' && this.state.video_url == "") {
+        console.log("default"); //let image_default = "https://zupimages.net/up/19/15/xpo1.png";
+
+        image_url = "https://zupimages.net/up/19/15/xpo1.png";
+        media_type = "image";
       }
 
       var convertedDate = Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["convertDate"])(this.state.date_event);
@@ -86899,9 +86955,15 @@ function (_Component) {
       var myJSON = {
         "name": this.state.name,
         "date_event": convertedDate,
+        "street": this.state.street,
+        "postal_code": this.state.postal_code,
+        "city": this.state.city,
+        "price": this.state.price,
+        "country": this.state.country,
         "description": this.state.description,
         "reminder": convertedReminder,
-        "image_url": urlToSend //console.log(myJSON);
+        "image_url": image_url,
+        "media_type": media_type //console.log(myJSON);
 
       };
       event.preventDefault();
@@ -86933,11 +86995,11 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       var eventList = this.state.eventList; //!!!set states in helpers.js / appGetContent()!!!!
 
-      console.log(eventList);
+      console.log("media type:" + this.state.media_type);
       var authorArticle = this.state.eventList.map(function (item) {
         return item.author;
       });
@@ -86955,9 +87017,9 @@ function (_Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Label, null, "Title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Control, {
           name: "name",
           type: "text",
-          value: _this2.state.name,
+          value: _this3.state.name,
           placeholder: "your event title",
-          onChange: _this2.handleChange
+          onChange: _this3.handleChange
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Group, {
           controlId: "exampleForm.ControlTextarea1"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Label, null, "Description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Control, {
@@ -86965,57 +87027,97 @@ function (_Component) {
           placeholder: "your event description",
           as: "textarea",
           rows: "10",
-          value: _this2.state.description,
-          onChange: _this2.handleChange
+          value: _this3.state.description,
+          onChange: _this3.handleChange
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Group, {
           controlId: "exampleForm.ControlInput1"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Label, null, "Adress"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Control, {
           name: "street",
           type: "text",
-          value: _this2.state.street,
-          onChange: _this2.handleChange
+          value: _this3.state.street,
+          placeholder: "street",
+          onChange: _this3.handleChange
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Control, {
           name: "postal_code",
           type: "number",
-          value: _this2.state.postal_code,
+          value: _this3.state.postal_code,
           placeholder: "postal code",
-          onChange: _this2.handleChange
+          onChange: _this3.handleChange
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Control, {
           name: "city",
           type: "text",
-          value: _this2.state.city,
+          value: _this3.state.city,
           placeholder: "city",
-          onChange: _this2.handleChange
+          onChange: _this3.handleChange
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Control, {
           name: "country",
           type: "text",
-          value: _this2.state.country,
+          value: _this3.state.country,
           placeholder: "country",
-          onChange: _this2.handleChange
+          onChange: _this3.handleChange
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Group, {
           controlId: "exampleForm.ControlInput1"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Label, null, "Price"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Control, {
           name: "price",
           type: "number",
-          value: _this2.state.price,
+          value: _this3.state.price,
           placeholder: "set the price of the event",
-          onChange: _this2.handleChange
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Group, {
-          controlId: "exampleForm.ControlInput1"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Label, null, "Add an image"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Control, {
-          name: "image_url",
-          type: "url",
-          value: _this2.state.image_url,
-          pattern: "(http(s?):)([/|.|\\w|\\s|-])*\\.(?:jpg|gif|png)",
-          placeholder: "paste an url",
-          onChange: _this2.handleChange
+          onChange: _this3.handleChange
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "radio",
+          name: "react-tips",
+          id: "radioImage",
+          ref: "radioImage",
+          value: "image",
+          checked: _this3.state.selectedOption === "image",
+          onChange: _this3.handleOptionChange,
+          className: "form-check-input"
+        }), "Add an image")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "radio",
+          name: "react-tips",
+          id: "radioVideo",
+          ref: "radioVideo",
+          value: "video",
+          checked: _this3.state.selectedOption === "video",
+          onChange: _this3.handleOptionChange,
+          className: "form-check-input"
+        }), "Add a video")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "grid-container-img-add"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "file"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          className: "form-control-file",
+          type: "file",
+          name: "image",
+          id: "UploadedFile",
+          onChange: function onChange(e) {
+            return _this3.onChangeImg(e);
+          }
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "preview"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          id: "output",
+          src: "data:image/jpeg;base64,".concat(_this3.state.image_url),
+          className: "output",
+          alt: ""
+        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "grid-container-img-add"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "file"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          className: "form-control-file",
+          name: "video_url",
+          type: "url",
+          placeholder: "paste an url",
+          value: "https://www.youtube.com/watch?v=".concat(_this3.state.image_url),
+          onChange: _this3.handleChange
+        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "p-col-12 mt-3"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Date of event:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(primereact_calendar__WEBPACK_IMPORTED_MODULE_3__["Calendar"], {
           dateFormat: "yy/mm/dd",
-          value: _this2.state.date_event,
+          value: _this3.state.date_event,
           onChange: function onChange(e) {
-            return _this2.setState({
+            return _this3.setState({
               date_event: e.value
             });
           },
@@ -87034,8 +87136,8 @@ function (_Component) {
           className: "form-check-input",
           type: "checkbox",
           name: "boxReminder",
-          checked: _this2.state.boxReminder,
-          onChange: _this2.handleChange
+          checked: _this3.state.boxReminder,
+          onChange: _this3.handleChange
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
           className: "form-check-label"
         }, "Send a reminder to users who suscribed")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -87045,9 +87147,9 @@ function (_Component) {
           name: "calendarDisplay"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(primereact_calendar__WEBPACK_IMPORTED_MODULE_3__["Calendar"], {
           dateFormat: "yy/mm/dd",
-          value: _this2.state.reminder,
+          value: _this3.state.reminder,
           onChange: function onChange(e) {
-            return _this2.setState({
+            return _this3.setState({
               reminder: e.value
             });
           },
@@ -87408,6 +87510,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var date_and_time__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(date_and_time__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var bootbox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bootbox */ "./node_modules/bootbox/dist/bootbox.all.min.js");
 /* harmony import */ var bootbox__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(bootbox__WEBPACK_IMPORTED_MODULE_2__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 /*helpers is used for global functions*/
 
 /*show or hide some parts of components*/
@@ -87653,6 +87757,8 @@ function appGetEventByIDEdit(eventID, eventList) {
 /*function to set states in edit page to have content on inputs*/
 
 function appGetContent(response, eventList) {
+  var _eventList$setState;
+
   //console.log(response.data.event[0].name);
   var event = new Date(response.data.event[0].date_event);
   var eventDate = event.toISOString();
@@ -87672,7 +87778,7 @@ function appGetContent(response, eventList) {
     document.getElementsByName("calendarDisplay")[0].style.display = "none";
   }
 
-  eventList.setState({
+  eventList.setState((_eventList$setState = {
     name: response.data.event[0].name,
     description: response.data.event[0].description,
     image_url: response.data.event[0].image_url,
@@ -87683,7 +87789,7 @@ function appGetContent(response, eventList) {
     city: response.data.event[0].city,
     country: response.data.event[0].country,
     price: response.data.event[0].price
-  });
+  }, _defineProperty(_eventList$setState, "image_url", response.data.event[0].image_url), _defineProperty(_eventList$setState, "media_type", response.data.event[0].media_type), _defineProperty(_eventList$setState, "selectedOption", response.data.event[0].media_type), _defineProperty(_eventList$setState, "imagePreviewUrl", response.data.event[0].image_url), _eventList$setState));
 }
 /*Add Event-POST */
 

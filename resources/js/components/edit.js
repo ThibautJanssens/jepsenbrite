@@ -28,6 +28,7 @@ export default class Edit extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.dateTemplate = this.dateTemplate.bind(this);
+    this.handleOptionChange = this.handleOptionChange.bind(this);
     this.input = React.createRef();
     this.state = {
       eventList: [],
@@ -42,6 +43,8 @@ export default class Edit extends Component {
       country: "",
       image_url: "",
       video_url: "",
+      media_type: "",
+      selectedOption: "",
       price: "",
       date_event: "",
       reminder: "",
@@ -76,13 +79,56 @@ export default class Edit extends Component {
         }
     }//\end fct handleChange
 
+    onChangeImg(e) {
+      e.preventDefault();
+      let reader = new FileReader();
+      let file = e.target.files[0];
+      let output = document.getElementById('output');
+      //base64 convert
+      reader.onloadend = () => {
+        this.setState({
+          file: file,
+          imagePreviewUrl: reader.result,
+        });
+        //file preview
+        output.src = reader.result
+        this.setState({
+          image_url : this.state.imagePreviewUrl.substr(this.state.imagePreviewUrl.indexOf(',') + 1)
+        });
+      }
+      reader.readAsDataURL(file)
+    }//\end fct onChangeImg
+
+    handleOptionChange(changeEvent) {
+    this.setState({
+      selectedOption: changeEvent.target.value
+    });
+  }
+
   /* date conversion + submit*/
     handleSubmit() {
       //console.log(JSON.stringify(this.state.image_url));
-      let urlToSend = this.state.image_url;
-      if (urlToSend === ""){
-        //console.log("no img");
-        urlToSend = "logo";
+      //console.log("state check: "+this.state.selectedOption);
+      let image_url = "";
+      let media_type = "";
+      if (this.state.selectedOption === 'image' && this.state.image_url !== ""){
+      console.log("image");
+          //image_url = this.state.image_url;
+          image_url = "data:image/jpeg;base64,"+this.state.image_url;
+          media_type = this.state.selectedOption;
+          console.log(image_url);
+      }
+      if (this.state.selectedOption === 'video' && this.state.video_url !== ""){
+        console.log("video");
+        //format: https://www.youtube.com/watch?v=fjlFRo3yW5g
+          image_url = this.state.video_url.substr(this.state.video_url.indexOf('=') + 1);
+          media_type = this.state.selectedOption;
+      }
+      if (this.state.selectedOption === 'image' && this.state.image_url == "" || this.state.selectedOption === 'video' && this.state.video_url == ""){
+        console.log("default");
+        //let image_default = "https://zupimages.net/up/19/15/xpo1.png";
+        image_url = "https://zupimages.net/up/19/15/xpo1.png";
+        media_type = "image";
       }
       let convertedDate = convertDate (this.state.date_event);
       let convertedReminder ="";
@@ -94,7 +140,7 @@ export default class Edit extends Component {
       else{
         convertedReminder = "";
       }
-      let myJSON = { "name": this.state.name, "date_event": convertedDate , "description": this.state.description, "reminder": convertedReminder, "image_url": urlToSend}
+      let myJSON = { "name": this.state.name, "date_event": convertedDate, "street": this.state.street, "postal_code": this.state.postal_code, "city": this.state.city, "price": this.state.price, "country": this.state.country, "description": this.state.description, "reminder": convertedReminder, "image_url": image_url, "media_type": media_type}
       //console.log(myJSON);
       event.preventDefault()
       updateEvent(this.state.idEvent,myJSON);
@@ -115,7 +161,9 @@ export default class Edit extends Component {
   render() {
     const { eventList } = this.state;
     //!!!set states in helpers.js / appGetContent()!!!!
-    console.log(eventList);
+    console.log("media type:"+this.state.media_type);
+
+
     const authorArticle = this.state.eventList.map(item => item.author);
 
     return (
@@ -151,6 +199,7 @@ export default class Edit extends Component {
                       name="street"
                       type="text"
                       value={this.state.street}
+                      placeholder="street"
                       onChange={this.handleChange}
                     />
                     <Form.Control
@@ -185,17 +234,57 @@ export default class Edit extends Component {
                         onChange={this.handleChange}
                       />
                     </Form.Group>
-                  <Form.Group controlId="exampleForm.ControlInput1">
-                  <Form.Label>Add an image</Form.Label>
-                      <Form.Control
-                      name="image_url"
-                      type="url"
-                      value={this.state.image_url}
-                      pattern="(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)"
-                      placeholder="paste an url"
-                      onChange={this.handleChange}
-                      />
-                    </Form.Group>
+                    <div>
+                      <label>
+                        <input
+                        type="radio"
+                        name="react-tips"
+                        id="radioImage"
+                        ref="radioImage"
+                        value="image"
+                        checked={this.state.selectedOption === "image"}
+                        onChange={this.handleOptionChange}
+                        className="form-check-input"
+                        />
+                      Add an image</label>
+                    </div>
+                    <div>
+                      <label>
+                        <input
+                        type="radio"
+                        name="react-tips"
+                        id="radioVideo"
+                        ref="radioVideo"
+                        value="video"
+                        checked={this.state.selectedOption === "video"}
+                        onChange={this.handleOptionChange}
+                        className="form-check-input"
+                        />
+                      Add a video</label>
+                      </div>
+                    <div className="grid-container-img-add">
+                      <div className="file">
+                        <input
+                        className="form-control-file"
+                        type="file"
+                        name="image"
+                        id="UploadedFile"
+                        onChange={(e)=>this.onChangeImg(e)} />
+                      </div>
+                      <div className="preview"><img id="output" src={`data:image/jpeg;base64,${this.state.image_url}`} className="output" alt=""/></div>
+                    </div>
+                    <div className="grid-container-img-add">
+                      <div className="file">
+                        <input
+                        className="form-control-file"
+                        name="video_url"
+                        type="url"
+                        placeholder="paste an url"
+                        value={`https://www.youtube.com/watch?v=${this.state.image_url}`}
+                        onChange={this.handleChange}
+                        />
+                      </div>
+                    </div>
                     <div className="p-col-12 mt-3">
                         <p>Date of event:</p>
                         <Calendar
