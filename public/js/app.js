@@ -85345,7 +85345,7 @@ function (_Component) {
   _createClass(Index, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["HashRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_navbar__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_navbar__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "body-fullvh"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Routes__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_footer__WEBPACK_IMPORTED_MODULE_5__["default"], null))));
     }
@@ -86337,6 +86337,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_pose__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-pose */ "./node_modules/react-pose/dist/react-pose.es.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -86428,8 +86436,7 @@ function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["appGetEventByID"])(this.props.match.params.id, this);
-      var nameEvent = this.props.location.state.nameEvent; //console.log("nameEvent disp-ev:"+nameEvent);
-
+      var nameEvent = this.props.location.state.nameEvent;
       this.setState({
         nameEvent: nameEvent
       });
@@ -86446,10 +86453,22 @@ function (_Component) {
 
       if (target.checked === true) {
         Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["suscribeEvent"])(this.props.match.params.id);
-        this.setboxSuscribe(true);
+        this.setboxSuscribe(true); //add suscriber in state
+
+        var valueToAdd = sessionStorage.getItem("user-name-storage"); //const newList = this.setState({suscribersList: valueToAdd});
+
+        var newList = this.setState({
+          suscribersList: [].concat(_toConsumableArray(this.state.suscribersList), [valueToAdd])
+        });
+        console.log("newList: " + newList);
       } else {
         Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["unsuscribeEvent"])(this.props.match.params.id);
-        this.setboxSuscribe(false);
+        this.setboxSuscribe(false); //remove suscriber in state
+
+        var valueToRemove = sessionStorage.getItem("user-name-storage");
+
+        var _newList = this.state.suscribersList.splice(this.state.suscribersList.indexOf(valueToRemove), 1); //console.log("newList: "+newList);
+
       }
     } //\end fct handleChange
 
@@ -86459,6 +86478,7 @@ function (_Component) {
       var _this2 = this;
 
       var eventList = this.state.eventList;
+      var suscribersList = this.state.suscribersList;
       var authorArticle = this.state.eventList.map(function (item) {
         return item.author;
       });
@@ -86469,7 +86489,7 @@ function (_Component) {
       var editButton;
       var suscribeButton;
 
-      if (sessionStorage.getItem("user-name-storage") === JSON.stringify(authorArticle[0])) {
+      if (sessionStorage.getItem("user-name-storage") === authorArticle[0]) {
         editButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
           variant: "light",
           className: "btn btn-light my-2",
@@ -86520,7 +86540,9 @@ function (_Component) {
           className: "mt-5 text-center boxDescriptionSingle shadow"
         }, "Added By: ", item.author), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "mt-5 text-center boxDescriptionSingle shadow"
-        }, "List of suscribers:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, "List of suscribers:", _this2.state.suscribersList.map(function (item) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.username);
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "mt-5 text-center boxDescriptionSingle shadow"
         }, "Suscribe: ", suscribeButton), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "mt-5 text-center boxDescriptionSingle shadow"

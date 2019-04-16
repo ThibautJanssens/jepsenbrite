@@ -66,7 +66,6 @@ export default class DisplayEvent extends Component {
   componentDidMount() {
     appGetEventByID(this.props.match.params.id, this);
     const { nameEvent } = this.props.location.state;
-    //console.log("nameEvent disp-ev:"+nameEvent);
     this.setState({
         nameEvent: nameEvent,
     })
@@ -81,23 +80,33 @@ export default class DisplayEvent extends Component {
       if (target.checked === true){
         suscribeEvent(this.props.match.params.id);
         this.setboxSuscribe(true);
+        //add suscriber in state
+        const valueToAdd = sessionStorage.getItem("user-name-storage");
+        //const newList = this.setState({suscribersList: valueToAdd});
+        const newList = this.setState({ suscribersList: [...this.state.suscribersList, valueToAdd] });
+        console.log("newList: "+newList);
       }
       else {
         unsuscribeEvent(this.props.match.params.id);
         this.setboxSuscribe(false);
+        //remove suscriber in state
+        const valueToRemove = sessionStorage.getItem("user-name-storage");
+        const newList = this.state.suscribersList.splice(this.state.suscribersList.indexOf(valueToRemove ), 1);
+        //console.log("newList: "+newList);
       }
   }//\end fct handleChange
 
   render() {
 
     const { eventList } = this.state;
+    const { suscribersList } = this.state;
     const authorArticle = this.state.eventList.map(item => item.author);
     const authorId = this.state.eventList.map(item => item.id);
     const idRoute = this.state.idEvent;
 
     let editButton;
     let suscribeButton;
-      if (sessionStorage.getItem("user-name-storage") === JSON.stringify(authorArticle[0])) {
+      if (sessionStorage.getItem("user-name-storage") === authorArticle[0]) {
         editButton = (
           <Link variant="light" className="btn btn-light my-2" to={"/Edit/"+idRoute} >Edit this event</Link>
         )
@@ -122,10 +131,6 @@ export default class DisplayEvent extends Component {
                   <h1 className="text-center border-bottom">{item.name}</h1>
                   <h4 className="boxDate text-center shadow">{item.date_event}</h4>
                   <Img className="imgDiv border">
-
-                      {/*<p>Media type: {item.media_type}</p>
-                      <p>Url: {item.image_url}</p>
-                      <img className="imgDisplay" alt="image event" src={`${item.image_url}`}/>*/}
                       <Img className="imgDiv border">
                           {
                             (item.media_type === 'image') ? <img className="imgDisplay" alt="image event" src={item.image_url}/>:<iframe width="100%" src={`https://www.youtube.com/embed/${item.image_url}`} frameBorder="0"  allowFullScreen/>
@@ -140,6 +145,9 @@ export default class DisplayEvent extends Component {
                   </div>
                   <div className="mt-5 text-center boxDescriptionSingle shadow">
                     List of suscribers:
+                    {this.state.suscribersList.map(item =>
+                      <div>{item.username}</div>
+                    )}
                   </div>
                   <div className="mt-5 text-center boxDescriptionSingle shadow">
                     Suscribe: { suscribeButton }
