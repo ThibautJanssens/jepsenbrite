@@ -23,6 +23,23 @@ const Box = posed.div({
   }
 });
 
+const Img = posed.div({
+  hoverable: true,
+  pressable: true,
+  init: {
+    scale: 1,
+    opacity: 1,
+
+  },
+  hover: {
+    scale: 1,
+    opacity: 0.5,
+  },
+  press: {
+    boxShadow: '0px 0px 10px rgba(0,0,0,0.5)'
+  }
+});
+
 export default class MyParticipation extends Component {
   constructor(props) {
     super(props);
@@ -40,28 +57,31 @@ export default class MyParticipation extends Component {
     const { eventList } = this.state;
     return (
       <div>
-        <h1 className="mt-2 ml-2">My Participations : </h1>
+        <h1 className="mt-5 mb-3 text-center">My Participations</h1>
         <div className="d-flex flex-wrap futureEventsList">
           {this.state.eventList.map(item =>
             <div key={item.id} className="color3 col-xs-12 col-md-6 col-xl-4 text-center d-flex flex-column">
-              <Box className="border eventBox w-100 bg-secondary text-light my-3 p-3 eventBox">
-              <p className="border boxDate">{item.date_event}</p>
-              <div className="imgDiv border">
-            <img className="imgDisplay" src={item.image_url} alt="image event"/>
-            </div>
+              <Box className="border eventBox w-100 bg-secondary text-light my-3 p-3 eventBox flex-grow-1">
+              <p className="border boxDate shadow">{item.date_event}</p>
                 <h1 className="eventTitle ">{item.name}</h1>
+                <Img className="imgDiv border">
+                <Img className="imgDiv border">
+                        {
+                          (item.media_type === 'image') ? <img className="imgDisplay" alt="image event" src={item.image_url}/>:<iframe width="100%" src={`https://www.youtube.com/embed/${item.image_url}`} frameBorder="0"  allowFullScreen/>
+                        }
+                    </Img>
+                </Img>
                 <div className="border boxDescription">
                   {item.description}
                 </div>
                 <p>
-                  <Link variant="light" className="btn btn-light my-2 shadow" to={"/display-event/" + item.id} >More informations</Link>
+                  <Link variant="light" className="btn btn-light my-2 shadow" to={{pathname: "/display-event/"+item.id, state: {nameEvent: item.name}}} >More informations</Link>
                 </p>
               </Box>
             </div>
           )}
         </div>
       </div>
-
     )
   }
-}
+  }

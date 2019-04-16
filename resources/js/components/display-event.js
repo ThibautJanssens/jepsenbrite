@@ -4,6 +4,42 @@ import { suscribeEvent } from './helpers';
 import { unsuscribeEvent } from './helpers';
 import Email from './email';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import posed from 'react-pose';
+
+const Box = posed.div({
+  hoverable: true,
+  pressable: true,
+  init: {
+    scale: 1,
+    boxShadow: '0px 0px 0px rgba(0,0,0,0)',
+
+  },
+  hover: {
+    scale: 1,
+    boxShadow: '10px 10px 10px rgba(0,100,0,0.2)',
+
+  },
+  press: {
+    boxShadow: '0px 0px 10px rgba(0,0,0,0.5)'
+  }
+});
+
+const Img = posed.div({
+  hoverable: true,
+  pressable: true,
+  init: {
+    scale: 1,
+    opacity: 1,
+
+  },
+  hover: {
+    scale: 1,
+    opacity: 0.5,
+  },
+  press: {
+    boxShadow: '0px 0px 10px rgba(0,0,0,0.5)'
+  }
+});
 
 export default class DisplayEvent extends Component {
 
@@ -85,9 +121,17 @@ export default class DisplayEvent extends Component {
               <div key={item.id} className="w-100  ">
                   <h1 className="text-center border-bottom">{item.name}</h1>
                   <h4 className="boxDate text-center shadow">{item.date_event}</h4>
-                  <div className="imgDivSingle mt-5">
-                    <img className="imgDisplaySingle ml-auto mr-auto" src={item.image_url} alt="image event"/>
-                  </div>
+                  <Img className="imgDiv border">
+
+                      {/*<p>Media type: {item.media_type}</p>
+                      <p>Url: {item.image_url}</p>
+                      <img className="imgDisplay" alt="image event" src={`${item.image_url}`}/>*/}
+                      <Img className="imgDiv border">
+                          {
+                            (item.media_type === 'image') ? <img className="imgDisplay" alt="image event" src={item.image_url}/>:<iframe width="100%" src={`https://www.youtube.com/embed/${item.image_url}`} frameBorder="0"  allowFullScreen/>
+                          }
+                      </Img>
+                  </Img>
                   <div className="mt-5 text-center boxDescriptionSingle shadow">
                     Description: {item.description}
                   </div>

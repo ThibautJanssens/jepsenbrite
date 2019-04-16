@@ -86334,6 +86334,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers */ "./resources/js/components/helpers.js");
 /* harmony import */ var _email__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./email */ "./resources/js/components/email.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_pose__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-pose */ "./node_modules/react-pose/dist/react-pose.es.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -86360,6 +86361,37 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+var Box = react_pose__WEBPACK_IMPORTED_MODULE_4__["default"].div({
+  hoverable: true,
+  pressable: true,
+  init: {
+    scale: 1,
+    boxShadow: '0px 0px 0px rgba(0,0,0,0)'
+  },
+  hover: {
+    scale: 1,
+    boxShadow: '10px 10px 10px rgba(0,100,0,0.2)'
+  },
+  press: {
+    boxShadow: '0px 0px 10px rgba(0,0,0,0.5)'
+  }
+});
+var Img = react_pose__WEBPACK_IMPORTED_MODULE_4__["default"].div({
+  hoverable: true,
+  pressable: true,
+  init: {
+    scale: 1,
+    opacity: 1
+  },
+  hover: {
+    scale: 1,
+    opacity: 0.5
+  },
+  press: {
+    boxShadow: '0px 0px 10px rgba(0,0,0,0.5)'
+  }
+});
 
 var DisplayEvent =
 /*#__PURE__*/
@@ -86469,13 +86501,20 @@ function (_Component) {
           className: "text-center border-bottom"
         }, item.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
           className: "boxDate text-center shadow"
-        }, item.date_event), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "imgDivSingle mt-5"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "imgDisplaySingle ml-auto mr-auto",
-          src: item.image_url,
-          alt: "image event"
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, item.date_event), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Img, {
+          className: "imgDiv border"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Img, {
+          className: "imgDiv border"
+        }, item.media_type === 'image' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "imgDisplay",
+          alt: "image event",
+          src: item.image_url
+        }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("iframe", {
+          width: "100%",
+          src: "https://www.youtube.com/embed/".concat(item.image_url),
+          frameBorder: "0",
+          allowFullScreen: true
+        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "mt-5 text-center boxDescriptionSingle shadow"
         }, "Description: ", item.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "mt-5 text-center boxDescriptionSingle shadow"
@@ -86550,6 +86589,21 @@ var Box = react_pose__WEBPACK_IMPORTED_MODULE_2__["default"].div({
     boxShadow: '0px 0px 10px rgba(0,0,0,0.5)'
   }
 });
+var Img = react_pose__WEBPACK_IMPORTED_MODULE_2__["default"].div({
+  hoverable: true,
+  pressable: true,
+  init: {
+    scale: 1,
+    opacity: 1
+  },
+  hover: {
+    scale: 1,
+    opacity: 0.5
+  },
+  press: {
+    boxShadow: '0px 0px 10px rgba(0,0,0,0.5)'
+  }
+});
 
 var DisplayPast =
 /*#__PURE__*/
@@ -86593,15 +86647,22 @@ function (_Component) {
           className: "border eventBox w-100 bg-secondary text-light my-3 p-3 eventBox"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "border boxDate"
-        }, item.date_event), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "imgDiv border"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "imgDisplay",
-          src: item.image_url,
-          alt: "image event"
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        }, item.date_event), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
           className: "eventTitle "
-        }, item.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, item.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Img, {
+          className: "imgDiv border"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Img, {
+          className: "imgDiv border"
+        }, item.media_type === 'image' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "imgDisplay",
+          alt: "image event",
+          src: item.image_url
+        }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("iframe", {
+          width: "100%",
+          src: "https://www.youtube.com/embed/".concat(item.image_url),
+          frameBorder: "0",
+          allowFullScreen: true
+        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "border boxDescription"
         }, item.description)));
       })));
@@ -87896,6 +87957,21 @@ var Box = react_pose__WEBPACK_IMPORTED_MODULE_6__["default"].div({
     boxShadow: '0px 0px 10px rgba(0,0,0,0.5)'
   }
 });
+var Img = react_pose__WEBPACK_IMPORTED_MODULE_6__["default"].div({
+  hoverable: true,
+  pressable: true,
+  init: {
+    scale: 1,
+    opacity: 1
+  },
+  hover: {
+    scale: 1,
+    opacity: 0.5
+  },
+  press: {
+    boxShadow: '0px 0px 10px rgba(0,0,0,0.5)'
+  }
+});
 
 var MyEvents =
 /*#__PURE__*/
@@ -87928,31 +88004,43 @@ function (_Component) {
     value: function render() {
       var eventList = this.state.eventList;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "mt-2 ml-2"
-      }, "My Events : "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mt-5 mb-3 text-center"
+      }, "My Events"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "d-flex flex-wrap futureEventsList"
       }, this.state.eventList.map(function (item) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: item.id,
           className: "color3 col-xs-12 col-md-6 col-xl-4 text-center d-flex flex-column"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Box, {
-          className: "border eventBox w-100 bg-secondary text-light my-3 p-3 eventBox"
+          className: "border eventBox w-100 bg-secondary text-light my-3 p-3 eventBox flex-grow-1"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "border boxDate"
-        }, item.date_event), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "imgDiv border"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "imgDisplay",
-          src: item.image_url,
-          alt: "image event"
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          className: "border boxDate shadow"
+        }, item.date_event), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
           className: "eventTitle "
-        }, item.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, item.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Img, {
+          className: "imgDiv border"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Img, {
+          className: "imgDiv border"
+        }, item.media_type === 'image' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "imgDisplay",
+          alt: "image event",
+          src: item.image_url
+        }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("iframe", {
+          width: "100%",
+          src: "https://www.youtube.com/embed/".concat(item.image_url),
+          frameBorder: "0",
+          allowFullScreen: true
+        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "border boxDescription"
         }, item.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Link"], {
           variant: "light",
           className: "btn btn-light my-2 shadow",
-          to: "/display-event/" + item.id
+          to: {
+            pathname: "/display-event/" + item.id,
+            state: {
+              nameEvent: item.name
+            }
+          }
         }, "More informations"))));
       })));
     }
@@ -88028,6 +88116,21 @@ var Box = react_pose__WEBPACK_IMPORTED_MODULE_6__["default"].div({
     boxShadow: '0px 0px 10px rgba(0,0,0,0.5)'
   }
 });
+var Img = react_pose__WEBPACK_IMPORTED_MODULE_6__["default"].div({
+  hoverable: true,
+  pressable: true,
+  init: {
+    scale: 1,
+    opacity: 1
+  },
+  hover: {
+    scale: 1,
+    opacity: 0.5
+  },
+  press: {
+    boxShadow: '0px 0px 10px rgba(0,0,0,0.5)'
+  }
+});
 
 var MyParticipation =
 /*#__PURE__*/
@@ -88060,31 +88163,43 @@ function (_Component) {
     value: function render() {
       var eventList = this.state.eventList;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "mt-2 ml-2"
-      }, "My Participations : "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mt-5 mb-3 text-center"
+      }, "My Participations"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "d-flex flex-wrap futureEventsList"
       }, this.state.eventList.map(function (item) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: item.id,
           className: "color3 col-xs-12 col-md-6 col-xl-4 text-center d-flex flex-column"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Box, {
-          className: "border eventBox w-100 bg-secondary text-light my-3 p-3 eventBox"
+          className: "border eventBox w-100 bg-secondary text-light my-3 p-3 eventBox flex-grow-1"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "border boxDate"
-        }, item.date_event), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "imgDiv border"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "imgDisplay",
-          src: item.image_url,
-          alt: "image event"
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          className: "border boxDate shadow"
+        }, item.date_event), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
           className: "eventTitle "
-        }, item.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, item.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Img, {
+          className: "imgDiv border"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Img, {
+          className: "imgDiv border"
+        }, item.media_type === 'image' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "imgDisplay",
+          alt: "image event",
+          src: item.image_url
+        }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("iframe", {
+          width: "100%",
+          src: "https://www.youtube.com/embed/".concat(item.image_url),
+          frameBorder: "0",
+          allowFullScreen: true
+        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "border boxDescription"
         }, item.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Link"], {
           variant: "light",
           className: "btn btn-light my-2 shadow",
-          to: "/display-event/" + item.id
+          to: {
+            pathname: "/display-event/" + item.id,
+            state: {
+              nameEvent: item.name
+            }
+          }
         }, "More informations"))));
       })));
     }

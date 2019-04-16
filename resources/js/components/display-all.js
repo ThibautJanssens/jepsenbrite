@@ -91,7 +91,6 @@ export default class DisplayAll extends Component {
           )}
         </div>
       </div>
-
     )
   }
 }

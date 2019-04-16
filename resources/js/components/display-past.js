@@ -18,6 +18,23 @@ const Box = posed.div({
   }
 });
 
+const Img = posed.div({
+  hoverable: true,
+  pressable: true,
+  init: {
+    scale: 1,
+    opacity: 1,
+
+  },
+  hover: {
+    scale: 1,
+    opacity: 0.5,
+  },
+  press: {
+    boxShadow: '0px 0px 10px rgba(0,0,0,0.5)'
+  }
+});
+
 export default class DisplayPast extends Component {
   constructor(props) {
     super(props);
@@ -41,10 +58,14 @@ export default class DisplayPast extends Component {
             <div key={item.id} className="color3 col-xs-12 col-md-6 col-xl-4 text-center d-flex flex-column">
               <Box className="border eventBox w-100 bg-secondary text-light my-3 p-3 eventBox">
                 <p className="border boxDate">{item.date_event}</p>
-                <div className="imgDiv border">
-              <img className="imgDisplay" src={item.image_url} alt="image event"/>
-              </div>
                 <h1 className="eventTitle ">{item.name}</h1>
+                <Img className="imgDiv border">
+                    <Img className="imgDiv border">
+                        {
+                          (item.media_type === 'image') ? <img className="imgDisplay" alt="image event" src={item.image_url}/>:<iframe width="100%" src={`https://www.youtube.com/embed/${item.image_url}`} frameBorder="0"  allowFullScreen/>
+                        }
+                    </Img>
+                </Img>
                 <div className="border boxDescription">
                   {item.description}
                 </div>
