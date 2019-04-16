@@ -67,7 +67,14 @@ export default class DisplayPast extends Component {
                     </Img>
                 </Img>
                 <div className="border boxDescription">
-                  {item.description}
+                  <p><strong>Description:</strong></p>
+                  <div>{item.description}</div>
+                </div>
+                <div className="border boxDescription">
+                  <p><strong>Adress:</strong></p>
+                  <div>{item.street}</div>
+                  <div>{item.postal_code}, {item.city}</div>
+                  <div>{item.country}</div>
                 </div>
               </Box>
             </div>

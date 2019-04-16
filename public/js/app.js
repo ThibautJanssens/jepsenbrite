@@ -86707,7 +86707,9 @@ function (_Component) {
           allowFullScreen: true
         }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "border boxDescription"
-        }, item.description)));
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Description:")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "border boxDescription"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Adress:")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.street), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.postal_code, ", ", item.city), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.country))));
       })));
     }
   }]);
@@ -88075,7 +88077,9 @@ function (_Component) {
           allowFullScreen: true
         }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "border boxDescription"
-        }, item.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Link"], {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Description:")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "border boxDescription"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Adress:")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.street), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.postal_code, ", ", item.city), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.country)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Link"], {
           variant: "light",
           className: "btn btn-light my-2 shadow",
           to: {
@@ -88234,7 +88238,9 @@ function (_Component) {
           allowFullScreen: true
         }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "border boxDescription"
-        }, item.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Link"], {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Description:")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "border boxDescription"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Adress:")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.street), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.postal_code, ", ", item.city), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.country)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Link"], {
           variant: "light",
           className: "btn btn-light my-2 shadow",
           to: {

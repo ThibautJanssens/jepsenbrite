@@ -65,10 +65,6 @@ export default class MyEvents extends Component {
               <p className="border boxDate shadow">{item.date_event}</p>
                 <h1 className="eventTitle ">{item.name}</h1>
                 <Img className="imgDiv border">
-
-                    {/*<p>Media type: {item.media_type}</p>
-                    <p>Url: {item.image_url}</p>
-                    <img className="imgDisplay" alt="image event" src={`${item.image_url}`}/>*/}
                     <Img className="imgDiv border">
                         {
                           (item.media_type === 'image') ? <img className="imgDisplay" alt="image event" src={item.image_url}/>:<iframe width="100%" src={`https://www.youtube.com/embed/${item.image_url}`} frameBorder="0"  allowFullScreen/>
@@ -76,7 +72,14 @@ export default class MyEvents extends Component {
                     </Img>
                 </Img>
                 <div className="border boxDescription">
-                  {item.description}
+                  <p><strong>Description:</strong></p>
+                  <div>{item.description}</div>
+                </div>
+                <div className="border boxDescription">
+                  <p><strong>Adress:</strong></p>
+                  <div>{item.street}</div>
+                  <div>{item.postal_code}, {item.city}</div>
+                  <div>{item.country}</div>
                 </div>
                 <p>
                   <Link variant="light" className="btn btn-light my-2 shadow" to={{pathname: "/display-event/"+item.id, state: {nameEvent: item.name}}} >More informations</Link>

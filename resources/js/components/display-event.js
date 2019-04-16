@@ -71,7 +71,6 @@ export default class DisplayEvent extends Component {
     })
   }
 
-
 /*checkbox suscribe/unsuscrib + road to api*/
   handleChange(event) {
     const target = event.target;
