@@ -2,7 +2,7 @@
 
 The job was to take the [application](https://github.com/PaulineRoppe/jepsenbrite) of another group and while fixing some minor bugs, adding new features. Obviously we had to keep the design of the original owner. You can check the original application on this [link](https://jepsen-brite.herokuapp.com/).
 
-The application is still a CRUD Application to manage events online. If you want to know how does it look like check it out [here]()
+The application is still a CRUD Application to manage events online. If you want to know how the new version looks like check it out [here](https://jepsen-brite-v2.herokuapp.com/).
 
 ## Built With
 
@@ -86,7 +86,14 @@ Don't forget to edit the configs with:
  ```cmd
  php artisan migrate:fresh
  ```
-to set your database
+to set your database.
+
+There is a scheduler for email notification when someone is wanting to attend to an event.
+To activate it do not forget to also use :
+```
+heroku ps:scale web=1
+php artisan schedule:daemon
+```
 
 ## Documentation (API)
 
@@ -119,10 +126,16 @@ Only takes a JSON as input.
 * *id*: The identifier of the event as an integer.
 * *name*: The name of the event.
 * *date_event*: The date of the event.
+* *street*: The street where the event is taking place.
+* *postal_code*: The postal codle where the event is taking place.
+* *city*: The city where the event is taking place.
+* *price*: The price to participate to the event.
+* *country*: The country where the event is taking place. (Can be null)
 * *author*: The identifier of the user that created the event.
 * *description*: A description of the event.
 * *reminder*: A date to know when to send a notification for all the participant at the event.
 * *image_url*: A link to the image that you want for the event.
+* *media_type*: Can be one of the two following: video or image.
 
 
 For every route where you have to be logged in, you simply have to add to your request the following header:
