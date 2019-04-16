@@ -85870,9 +85870,9 @@ function (_Component) {
     _this.state = {
       name: "",
       description: "",
-      street: "street",
-      postal_code: "4030",
-      city: "city",
+      street: "",
+      postal_code: "",
+      city: "",
       country: "",
       image_url: "",
       video_url: "",
@@ -85881,7 +85881,7 @@ function (_Component) {
       reminder: null,
       file: "",
       imagePreviewUrl: "",
-      selectedOption: "video",
+      selectedOption: "image",
       thisDay: today,
       minDate: minDate,
       maxDate: maxDate,
@@ -86048,6 +86048,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Label, null, "Title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Control, {
         name: "name",
         type: "text",
+        required: "true",
         placeholder: "your event title",
         onChange: this.handleChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Group, {
@@ -86057,32 +86058,58 @@ function (_Component) {
         placeholder: "your event description",
         as: "textarea",
         rows: "10",
+        required: "true",
+        onChange: this.handleChange
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Group, {
+        controlId: "exampleForm.ControlInput1"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Label, null, "Adress"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Control, {
+        name: "street",
+        type: "text",
+        placeholder: "adress",
+        onChange: this.handleChange
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Group, {
+        controlId: "exampleForm.ControlInput1"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Label, null, "City"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Control, {
+        name: "city",
+        type: "text",
+        required: "true",
+        placeholder: "city",
+        onChange: this.handleChange
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Group, {
+        controlId: "exampleForm.ControlInput1"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Label, null, "Postal Code"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Control, {
+        name: "postal_code",
+        type: "number",
+        required: "true",
+        placeholder: "postal code",
+        onChange: this.handleChange
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Group, {
+        controlId: "exampleForm.ControlInput1"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Label, null, "Country"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Control, {
+        name: "country",
+        type: "text",
+        required: "true",
+        placeholder: "country",
         onChange: this.handleChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "radio",
         name: "react-tips",
-        value: "video",
-        checked: this.state.selectedOption === "video",
-        onChange: this.handleOptionChange,
-        className: "form-check-input"
-      }), "Add a video"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "grid-container-img-add"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "file"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "form-control-file",
-        name: "video_url",
-        type: "url",
-        placeholder: "paste an url",
-        onChange: this.handleChange
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "radio",
-        name: "react-tips",
+        id: "radioImage",
+        ref: "radioImage",
         value: "image",
         checked: this.state.selectedOption === "image",
         onChange: this.handleOptionChange,
         className: "form-check-input"
-      }), "Add an image"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), "Add an image")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "radio",
+        name: "react-tips",
+        id: "radioVideo",
+        ref: "radioVideo",
+        value: "video",
+        checked: this.state.selectedOption === "video",
+        onChange: this.handleOptionChange,
+        className: "form-check-input"
+      }), "Add a video")), this.state.selectedOption === "image" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "grid-container-img-add"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "file"
@@ -86100,7 +86127,17 @@ function (_Component) {
         id: "output",
         className: "output",
         alt: ""
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "grid-container-img-add"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "file"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-control-file",
+        name: "video_url",
+        type: "url",
+        placeholder: "paste an url",
+        onChange: this.handleChange
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "p-col-12 mt-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Date of event:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(primereact_calendar__WEBPACK_IMPORTED_MODULE_2__["Calendar"], {
         dateFormat: "yy/mm/dd",
@@ -86298,7 +86335,9 @@ function (_Component) {
           allowFullScreen: true
         }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "border boxDescription"
-        }, item.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Description:")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "border boxDescription"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Adress:")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.street), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.postal_code, ", ", item.city), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.country)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
           variant: "light",
           className: "btn btn-light my-2 shadow",
           to: {
@@ -86446,20 +86485,11 @@ function (_Component) {
       if (target.checked === true) {
         Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["suscribeEvent"])(this.props.match.params.id);
         this.setboxSuscribe(true);
-        Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["appGetEventByID"])(this.props.match.params.id, this); //add suscriber in state
-
-        /*const valueToAdd = sessionStorage.getItem("user-name-storage");
-        let newList = [...this.state.suscribersList];
-        newList.push({ value: valueToAdd  });
-        this.setState({ newList });*/
+        Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["appGetEventByID"])(this.props.match.params.id, this);
       } else {
         Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["unsuscribeEvent"])(this.props.match.params.id);
         this.setboxSuscribe(false);
-        Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["appGetEventByID"])(this.props.match.params.id, this); //remove suscriber in state
-
-        /*const valueToRemove = sessionStorage.getItem("user-name-storage");
-        const newList = this.state.suscribersList.splice(this.state.suscribersList.indexOf(valueToRemove ), 1);*/
-        //console.log("newList: "+newList);
+        Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["appGetEventByID"])(this.props.match.params.id, this);
       }
     } //\end fct handleChange
 

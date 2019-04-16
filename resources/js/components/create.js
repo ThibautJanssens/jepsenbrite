@@ -30,9 +30,9 @@ export default class Create extends Component {
     this.state = {
       name: "",
       description: "",
-      street: "street",
-      postal_code: "4030",
-      city: "city",
+      street: "",
+      postal_code: "",
+      city: "",
       country: "",
       image_url: "",
       video_url: "",
@@ -41,7 +41,7 @@ export default class Create extends Component {
       reminder: null,
       file: "",
       imagePreviewUrl: "",
-      selectedOption: "video",
+      selectedOption: "image",
       thisDay: today,
       minDate: minDate,
       maxDate: maxDate,
@@ -149,8 +149,6 @@ export default class Create extends Component {
     }
   }
 
-
-
   render() {
     return (
       <Form onSubmit={this.handleSubmit} className="m-5">
@@ -160,6 +158,7 @@ export default class Create extends Component {
           <Form.Control
             name="name"
             type="text"
+            required="true"
             placeholder="your event title"
             onChange={this.handleChange}
           />
@@ -170,6 +169,46 @@ export default class Create extends Component {
             name="description"
             placeholder="your event description"
             as="textarea" rows="10"
+            required="true"
+            onChange={this.handleChange}
+          />
+        </Form.Group>
+        <Form.Group controlId="exampleForm.ControlInput1">
+          <Form.Label>Adress</Form.Label>
+          <Form.Control
+            name="street"
+            type="text"
+            placeholder="adress"
+            onChange={this.handleChange}
+          />
+        </Form.Group>
+        <Form.Group controlId="exampleForm.ControlInput1">
+          <Form.Label>City</Form.Label>
+          <Form.Control
+            name="city"
+            type="text"
+            required="true"
+            placeholder="city"
+            onChange={this.handleChange}
+          />
+        </Form.Group>
+        <Form.Group controlId="exampleForm.ControlInput1">
+          <Form.Label>Postal Code</Form.Label>
+          <Form.Control
+            name="postal_code"
+            type="number"
+            required="true"
+            placeholder="postal code"
+            onChange={this.handleChange}
+          />
+        </Form.Group>
+        <Form.Group controlId="exampleForm.ControlInput1">
+          <Form.Label>Country</Form.Label>
+          <Form.Control
+            name="country"
+            type="text"
+            required="true"
+            placeholder="country"
             onChange={this.handleChange}
           />
         </Form.Group>
@@ -178,50 +217,68 @@ export default class Create extends Component {
             <input
             type="radio"
             name="react-tips"
-            value="video"
-            checked={this.state.selectedOption === "video"}
-            onChange={this.handleOptionChange}
-            className="form-check-input"
-            />
-          Add a video</label>
-            <div className="grid-container-img-add">
-              <div className="file">
-                <input
-                className="form-control-file"
-                name="video_url"
-                type="url"
-                placeholder="paste an url"
-                onChange={this.handleChange}
-                />
-              </div>
-            </div>
-          </div>
-        <div>
-          <label>
-            <input
-            type="radio"
-            name="react-tips"
+            id="radioImage"
+            ref="radioImage"
             value="image"
             checked={this.state.selectedOption === "image"}
             onChange={this.handleOptionChange}
             className="form-check-input"
             />
           Add an image</label>
-            <div className="grid-container-img-add">
-              <div className="file">
-                <input
-                className="form-control-file"
-                type="file"
-                name="image"
-                id="UploadedFile"
-                onChange={(e)=>this.onChangeImg(e)} />
-              </div>
-              <div className="preview"><img id="output" className="output" alt=""/></div>
-            </div>
         </div>
+        <div>
+          <label>
+            <input
+            type="radio"
+            name="react-tips"
+            id="radioVideo"
+            ref="radioVideo"
+            value="video"
+            checked={this.state.selectedOption === "video"}
+            onChange={this.handleOptionChange}
+            className="form-check-input"
+            />
+          Add a video</label>
+          </div>
+
+        {this.state.selectedOption === "image" ?
+        <div className="grid-container-img-add">
+          <div className="file">
+            <input
+            className="form-control-file"
+            type="file"
+            name="image"
+            id="UploadedFile"
+            onChange={(e)=>this.onChangeImg(e)} />
+          </div>
+          <div className="preview"><img id="output" className="output" alt=""/></div>
+        </div>
+        :
+        <div className="grid-container-img-add">
+          <div className="file">
+            <input
+            className="form-control-file"
+            name="video_url"
+            type="url"
+            placeholder="paste an url"
+            onChange={this.handleChange}
+            />
+          </div>
+        </div>
+        }
         <div className="p-col-12 mt-3">
           <p>Date of event:</p>
-          <Calendar dateFormat="yy/mm/dd" value={this.state.date_event} onChange={(e) => this.setState({ date_event: e.value })} readOnlyInput={true} minDate={new Date()} showTime={true} timeOnly={false} hourFormat="24" showIcon={true} showSeconds={true} />
+          <Calendar
+          dateFormat="yy/mm/dd"
+          value={this.state.date_event}
+          onChange={(e) => this.setState({ date_event: e.value })}
+          readOnlyInput={true}
+          minDate={new Date()}
+          showTime={true}
+          timeOnly={false}
+          hourFormat="24"
+          showIcon={true}
+          showSeconds={true} />
         </div>
         <div className="p-col-12 mt-3">
           <div className="form-check">

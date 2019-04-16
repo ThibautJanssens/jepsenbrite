@@ -82,20 +82,11 @@ export default class DisplayEvent extends Component {
         suscribeEvent(this.props.match.params.id);
         this.setboxSuscribe(true);
         appGetEventByID(this.props.match.params.id, this);
-        //add suscriber in state
-        /*const valueToAdd = sessionStorage.getItem("user-name-storage");
-        let newList = [...this.state.suscribersList];
-        newList.push({ value: valueToAdd  });
-        this.setState({ newList });*/
       }
       else {
         unsuscribeEvent(this.props.match.params.id);
         this.setboxSuscribe(false);
         appGetEventByID(this.props.match.params.id, this);
-        //remove suscriber in state
-        /*const valueToRemove = sessionStorage.getItem("user-name-storage");
-        const newList = this.state.suscribersList.splice(this.state.suscribersList.indexOf(valueToRemove ), 1);*/
-        //console.log("newList: "+newList);
       }
   }//\end fct handleChange
 
