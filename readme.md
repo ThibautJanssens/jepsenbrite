@@ -178,10 +178,16 @@ Only takes JSON as input.
 ```json
 {
 	"name" : "Name of event",
-	"date_event" : "YYYY-MM-DD HH:MM:SS",
+    "date_event" : "YYYY-MM-DD HH:MM:SS",
+    "street":"Street somewhere over the rainbow",
+    "postal_code":"5532",
+    "city":"City",
+    "price":"2",
+    "country":"Heaven",
 	"description" : "Your description",
 	"reminder" : "YYYY-MM-DD HH:MM:SS",
-	"image_url": "url"
+    "image_url": "url",
+    "media_type": "video"
 }
 ```
 Updates a event.
@@ -193,10 +199,16 @@ Only takes JSON as input.
 ```json
 {
 	"name" : "Name of event",
-	"date_event" : "YYYY-MM-DD HH:MM:SS",
+    "date_event" : "YYYY-MM-DD HH:MM:SS",
+    "street":"Street somewhere over the rainbow",
+    "postal_code":"5532",
+    "city":"City",
+    "price":"2",
+    "country":"Heaven",
 	"description" : "Your description",
 	"reminder" : "YYYY-MM-DD HH:MM:SS",
-	"image_url": "url"
+    "image_url": "url",
+    "media_type": "video"
 }
 ```
 Creates a new event.
