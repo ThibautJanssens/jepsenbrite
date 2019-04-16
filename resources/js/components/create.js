@@ -212,6 +212,16 @@ export default class Create extends Component {
             onChange={this.handleChange}
           />
         </Form.Group>
+        <Form.Group controlId="exampleForm.ControlInput1">
+          <Form.Label>Price</Form.Label>
+          <Form.Control
+            name="price"
+            type="number"
+            required="true"
+            placeholder="set the price of the event"
+            onChange={this.handleChange}
+          />
+        </Form.Group>
         <div>
           <label>
             <input

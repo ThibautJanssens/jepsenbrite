@@ -283,6 +283,11 @@ export function appGetContent(response, eventList) {
     image_url: response.data.event[0].image_url,
     date_event: eventDate,
     reminder: reminderDate,
+    street: response.data.event[0].street,
+    postal_code: response.data.event[0].postal_code,
+    city: response.data.event[0].city,
+    country: response.data.event[0].country,
+    price: response.data.event[0].price,
   })
 }
 

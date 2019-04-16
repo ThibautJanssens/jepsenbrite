@@ -121,8 +121,8 @@ export default class DisplayEvent extends Component {
           <div>
             {this.state.eventList.map(item =>
               <div key={item.id} className="w-100  ">
-                  <h1 className="text-center border-bottom">{item.name}</h1>
-                  <h4 className="boxDate text-center shadow">{item.date_event}</h4>
+                  <h1 key={item.name} className="text-center border-bottom">{item.name}</h1>
+                  <h4 key={item.date_event} className="boxDate text-center shadow">{item.date_event}</h4>
                   <Img className="imgDiv border">
                       <Img className="imgDiv border">
                           {
@@ -141,6 +141,9 @@ export default class DisplayEvent extends Component {
                     <div>{item.country}</div>
                   </div>
                   <div className="mt-5 text-center boxDescriptionSingle shadow">
+                    <p><strong>Price:</strong> € {item.price}</p>
+                  </div>
+                  <div className="mt-5 text-center boxDescriptionSingle shadow">
                     <p><strong>Added By:</strong></p>
                      <div>{item.author}</div>
                   </div>
@@ -155,7 +158,7 @@ export default class DisplayEvent extends Component {
                     <div>{ suscribeButton }</div>
                   </div>
                   <div className="mt-5 text-center boxDescriptionSingle shadow">
-                    <p><strong>Share the event with your friends:</strong></p> 
+                    <p><strong>Share the event with your friends:</strong></p>
                      <Email idEvent={this.state.idEvent} nameEvent={this.state.nameEvent}/>
                   </div>
                   <div>

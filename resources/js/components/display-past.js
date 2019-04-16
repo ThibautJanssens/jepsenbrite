@@ -76,6 +76,9 @@ export default class DisplayPast extends Component {
                   <div>{item.postal_code}, {item.city}</div>
                   <div>{item.country}</div>
                 </div>
+                <div className="border boxDescription">
+                  <p><strong>Price:</strong> € {item.price}</p>
+                </div>
               </Box>
             </div>
           )}

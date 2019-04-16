@@ -30,7 +30,6 @@ export default class Edit extends Component {
     this.dateTemplate = this.dateTemplate.bind(this);
     this.input = React.createRef();
     this.state = {
-
       eventList: [],
       suscribersList: [],
       boxSubscribe : false,
@@ -42,6 +41,8 @@ export default class Edit extends Component {
       city: "",
       country: "",
       image_url: "",
+      video_url: "",
+      price: "",
       date_event: "",
       reminder: "",
       thisDay: today,
@@ -113,6 +114,8 @@ export default class Edit extends Component {
 
   render() {
     const { eventList } = this.state;
+    //!!!set states in helpers.js / appGetContent()!!!!
+    console.log(eventList);
     const authorArticle = this.state.eventList.map(item => item.author);
 
     return (
@@ -142,12 +145,46 @@ export default class Edit extends Component {
                     onChange={this.handleChange}
                   />
                   </Form.Group>
-                  <div className="border boxDescription">
-                    <p><strong>Adress:</strong></p>
-                    <div>{item.street}</div>
-                    <div>{item.postal_code}, {item.city}</div>
-                    <div>{item.country}</div>
-                  </div>
+                  <Form.Group controlId="exampleForm.ControlInput1">
+                  <Form.Label>Adress</Form.Label>
+                    <Form.Control
+                      name="street"
+                      type="text"
+                      value={this.state.street}
+                      onChange={this.handleChange}
+                    />
+                    <Form.Control
+                      name="postal_code"
+                      type="number"
+                      value={this.state.postal_code}
+                      placeholder="postal code"
+                      onChange={this.handleChange}
+                    />
+                    <Form.Control
+                      name="city"
+                      type="text"
+                      value={this.state.city}
+                      placeholder="city"
+                      onChange={this.handleChange}
+                    />
+                    <Form.Control
+                      name="country"
+                      type="text"
+                      value={this.state.country}
+                      placeholder="country"
+                      onChange={this.handleChange}
+                    />
+                  </Form.Group>
+                  <Form.Group controlId="exampleForm.ControlInput1">
+                  <Form.Label>Price</Form.Label>
+                      <Form.Control
+                        name="price"
+                        type="number"
+                        value={this.state.price}
+                        placeholder="set the price of the event"
+                        onChange={this.handleChange}
+                      />
+                    </Form.Group>
                   <Form.Group controlId="exampleForm.ControlInput1">
                   <Form.Label>Add an image</Form.Label>
                       <Form.Control
@@ -199,15 +236,12 @@ export default class Edit extends Component {
                         />
                       </div>
                     </div>
-
               </div>
             )}
           </div>
-
         <Button disabled={!this.validateForm()} className="my-3" type="submit">Submit</Button>
         </div>
         </Form>
-
     )
   }
 }

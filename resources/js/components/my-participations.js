@@ -81,6 +81,9 @@ export default class MyParticipation extends Component {
                   <div>{item.postal_code}, {item.city}</div>
                   <div>{item.country}</div>
                 </div>
+                <div className="border boxDescription">
+                  <p><strong>Price:</strong> € {item.price}</p>
+                </div>
                 <p>
                   <Link variant="light" className="btn btn-light my-2 shadow" to={{pathname: "/display-event/"+item.id, state: {nameEvent: item.name}}} >More informations</Link>
                 </p>

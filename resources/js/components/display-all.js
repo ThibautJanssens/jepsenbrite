@@ -67,8 +67,8 @@ export default class DisplayAll extends Component {
           {this.state.eventList.map(item =>
             <div key={item.id} className="color3 col-xs-12 col-md-6 col-xl-4 text-center d-flex flex-column">
               <Box className="border eventBox w-100 bg-secondary text-light my-3 p-3 eventBox flex-grow-1">
-              <p className="border boxDate shadow">{item.date_event}</p>
-                <h1 className="eventTitle ">{item.name}</h1>
+              <p key={item.date_event} className="border boxDate shadow">{item.date_event}</p>
+                <h1 key={item.name} className="eventTitle ">{item.name}</h1>
                 <Img className="imgDiv border">
                     <Img className="imgDiv border">
                         {
@@ -85,6 +85,9 @@ export default class DisplayAll extends Component {
                   <div>{item.street}</div>
                   <div>{item.postal_code}, {item.city}</div>
                   <div>{item.country}</div>
+                </div>
+                <div className="border boxDescription">
+                  <p><strong>Price:</strong> € {item.price}</p>
                 </div>
                 <p>
                   <Link variant="light" className="btn btn-light my-2 shadow" to={{pathname: "/display-event/"+item.id, state: {nameEvent: item.name}}} >More informations</Link>
