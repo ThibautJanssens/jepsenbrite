@@ -36,7 +36,7 @@ export default class Create extends Component {
       country: "",
       image_url: "",
       video_url: "",
-      price: "10",
+      price: "",
       date_event: today,
       reminder: null,
       file: "",

@@ -37,6 +37,10 @@ export default class Edit extends Component {
       idEvent: this.props.match.params.id,
       name: "",
       description: "",
+      street: "",
+      postal_code: "",
+      city: "",
+      country: "",
       image_url: "",
       date_event: "",
       reminder: "",
@@ -138,6 +142,12 @@ export default class Edit extends Component {
                     onChange={this.handleChange}
                   />
                   </Form.Group>
+                  <div className="border boxDescription">
+                    <p><strong>Adress:</strong></p>
+                    <div>{item.street}</div>
+                    <div>{item.postal_code}, {item.city}</div>
+                    <div>{item.country}</div>
+                  </div>
                   <Form.Group controlId="exampleForm.ControlInput1">
                   <Form.Label>Add an image</Form.Label>
                       <Form.Control

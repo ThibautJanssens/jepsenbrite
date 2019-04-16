@@ -131,22 +131,32 @@ export default class DisplayEvent extends Component {
                       </Img>
                   </Img>
                   <div className="mt-5 text-center boxDescriptionSingle shadow">
-                    Description: {item.description}
+                    <p><strong>Description:</strong></p>
+                    <div>{item.description}</div>
                   </div>
                   <div className="mt-5 text-center boxDescriptionSingle shadow">
-                    Added By: {item.author}
+                    <p><strong>Adress:</strong></p>
+                    <div>{item.street}</div>
+                    <div>{item.postal_code}, {item.city}</div>
+                    <div>{item.country}</div>
                   </div>
                   <div className="mt-5 text-center boxDescriptionSingle shadow">
-                    List of suscribers:
+                    <p><strong>Added By:</strong></p>
+                     <div>{item.author}</div>
+                  </div>
+                  <div className="mt-5 text-center boxDescriptionSingle shadow">
+                    <p><strong>List of suscribers:</strong></p>
                     {this.state.suscribersList.map(item =>
                       <div>{item.username}</div>
                     )}
                   </div>
                   <div className="mt-5 text-center boxDescriptionSingle shadow">
-                    Suscribe: { suscribeButton }
+                    <p><strong>Suscribe:</strong></p>
+                    <div>{ suscribeButton }</div>
                   </div>
                   <div className="mt-5 text-center boxDescriptionSingle shadow">
-                    Share the event with your friends: <Email idEvent={this.state.idEvent} nameEvent={this.state.nameEvent}/>
+                    <p><strong>Share the event with your friends:</strong></p> 
+                     <Email idEvent={this.state.idEvent} nameEvent={this.state.nameEvent}/>
                   </div>
                   <div>
                     { editButton }
