@@ -78,6 +78,7 @@ export default class DisplayAll extends Component {
             </div>
           </div>
         </div>
+   
           
             // <p className="border boxDate shadow">{item.date_event}</p>
             // <h1 className="eventTitle ">{item.name}</h1>

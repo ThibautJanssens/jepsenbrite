@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Brand from './components/brand';
 import DisplayAll from './components/display-all';
+import MapDisplay from "./components/map"
 
 export default class Home extends Component {
     render() {

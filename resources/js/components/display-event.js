@@ -3,6 +3,10 @@ import { appGetEventByID } from './helpers';
 import { suscribeEvent } from './helpers';
 import { unsuscribeEvent } from './helpers';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import MapD from './map';
+
+
+
 
 export default class DisplayEvent extends Component {
 
@@ -107,6 +111,9 @@ export default class DisplayEvent extends Component {
               <div>
                 {editButton}
               </div>
+              <div id="app">
+              <div><MapD /></div>
+</div>
             </div>
           </div>
         </div>

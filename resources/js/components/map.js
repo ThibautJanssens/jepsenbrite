@@ -1,23 +1,33 @@
-import React from 'react'
-import HEREMap, { Marker, RouteLine } from 'here-maps-react'
- 
-export default class Map extends React.Component {
-    render() {
-      return (
-        <HEREMap
-          appId="my_app_id"
-          appCode="my_app_code"
-          center={{ lat: -12.0464, lng: -77.0428 }}
-          zoom={12}
-        >
-          <Marker lat={-12.1199408} lng={-77.037241} />
-          <Marker lat={-12.1261171} lng={-77.02060549999999} />
-          <RouteLine
-            shape={this.state.shape}
-            strokeColor="#48dad0"
-            lineWidth={4}
-          />
-        </HEREMap>
-      )
-    }
+import React, { Component } from 'react';
+import { render } from 'react-dom'
+import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
+import L from "leaflet"
+
+
+export default class MapD extends React.Component {
+  render() {
+    return (
+      <div className="map" 
+         ref={ ref => this.container = ref } />
+    )
   }
+  
+  componentDidMount() {
+    setTimeout(() => {
+      this.map = L.map(this.container, {
+          center: new L.LatLng(50.6412, 5.5718),
+          zoom: 15,
+          maxZoom: 20,
+          layers: new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
+      }, 100)
+    })
+  }
+  
+  componentWillUnmount() {
+    this.map.remove()
+  }
+}
+
+
+
+
