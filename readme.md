@@ -104,7 +104,7 @@ php artisan schedule:daemon
 Only takes a JSON as input.
 ```json
 {
-    "name":"yourName",
+    "name":"yourName",  
     "email":"yourEmail",
     "password":"yourPassword"
 }
