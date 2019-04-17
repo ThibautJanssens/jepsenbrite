@@ -335,11 +335,11 @@ export function appAddEvent(myJSON) {
 
 
 /*Add Event-POST */
-export function appSendMails(myJSON) {
+export function appSendMails(eventID, myJSON) {
   axios(
     {
       method: 'POST',
-      url: "/api/event",
+      url: "/event/"+eventID+"/invitations",
       headers:
       {
         'Content-Type': "application/json",
