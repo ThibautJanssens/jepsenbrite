@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Mail\InviteMail;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,3 +49,5 @@ Route::middleware('auth:api')->get('/myParticipation', 'ListOfParticipantControl
 Route::middleware('auth:api')->post('/inscription/{id}', 'ListOfParticipantController@store')->name('event.inscription');
 //post remove inscription
 Route::middleware('auth:api')->post('/unsubscribe/{id}', 'ListOfParticipantController@destroy')->name('event.unsub');
+
+Route::middleware('auth:api')->post('/event/{id}/invitations', 'EventController@sendInvitations')->name('event.invite');

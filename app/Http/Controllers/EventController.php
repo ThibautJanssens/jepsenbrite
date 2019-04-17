@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Mail\Invitation;
+use Illuminate\Support\Facades\Mail;
 
 class EventController extends Controller
 {
@@ -118,4 +120,14 @@ class EventController extends Controller
 
         return response()->json($events);
     }
-}
+
+public static function sendInvitations(Request $request) {
+  \Log::info($request->emailList);
+      foreach($request->emailList as $invited){
+        Mail::to($invited)->send(new Invitation($request->eventName,$request->senderName,$request->eventId));
+      }
+      return response()->json([
+        'message' => 'Successfully invited people to your event!'
+      ]);
+    }
+  }
