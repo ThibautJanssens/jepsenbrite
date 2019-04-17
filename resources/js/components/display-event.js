@@ -2,7 +2,44 @@ import React, { Component } from 'react';
 import { appGetEventByID } from './helpers';
 import { suscribeEvent } from './helpers';
 import { unsuscribeEvent } from './helpers';
+import Email from './email';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import posed from 'react-pose';
+
+const Box = posed.div({
+  hoverable: true,
+  pressable: true,
+  init: {
+    scale: 1,
+    boxShadow: '0px 0px 0px rgba(0,0,0,0)',
+
+  },
+  hover: {
+    scale: 1,
+    boxShadow: '10px 10px 10px rgba(0,100,0,0.2)',
+
+  },
+  press: {
+    boxShadow: '0px 0px 10px rgba(0,0,0,0.5)'
+  }
+});
+
+const Img = posed.div({
+  hoverable: true,
+  pressable: true,
+  init: {
+    scale: 1,
+    opacity: 1,
+
+  },
+  hover: {
+    scale: 1,
+    opacity: 0.5,
+  },
+  press: {
+    boxShadow: '0px 0px 10px rgba(0,0,0,0.5)'
+  }
+});
 
 export default class DisplayEvent extends Component {
 
@@ -15,7 +52,7 @@ export default class DisplayEvent extends Component {
       suscribersList: [],
       boxSubscribe : false,
       idEvent: this.props.match.params.id,
-
+      nameEvent: "",
     }
 
   }//\constructor
@@ -28,6 +65,10 @@ export default class DisplayEvent extends Component {
 
   componentDidMount() {
     appGetEventByID(this.props.match.params.id, this);
+    const { nameEvent } = this.props.location.state;
+    this.setState({
+        nameEvent: nameEvent,
+    })
   }
 
 /*checkbox suscribe/unsuscrib + road to api*/
@@ -39,24 +80,28 @@ export default class DisplayEvent extends Component {
       if (target.checked === true){
         suscribeEvent(this.props.match.params.id);
         this.setboxSuscribe(true);
+        appGetEventByID(this.props.match.params.id, this);
       }
       else {
         unsuscribeEvent(this.props.match.params.id);
         this.setboxSuscribe(false);
+        appGetEventByID(this.props.match.params.id, this);
       }
   }//\end fct handleChange
 
   render() {
+
     const { eventList } = this.state;
+    const { suscribersList } = this.state;
     const authorArticle = this.state.eventList.map(item => item.author);
     const authorId = this.state.eventList.map(item => item.id);
     const idRoute = this.state.idEvent;
 
     let editButton;
     let suscribeButton;
-      if (sessionStorage.getItem("user-name-storage") === JSON.stringify(authorArticle[0])) {
+      if (sessionStorage.getItem("user-name-storage") === authorArticle[0]) {
         editButton = (
-          <Link variant="light" className="btn btn-light my-2" to={"/edit/"+idRoute} >Edit this event</Link>
+          <Link variant="light" className="btn btn-light my-2" to={"/Edit/"+idRoute} >Edit this event</Link>
         )
       }
       if (sessionStorage.getItem("token-storage") !== null) {
@@ -73,27 +118,52 @@ export default class DisplayEvent extends Component {
       }
     return (
       <div className="m-2 m-sm-5 p-2 p-xl-5">
-
           <div>
             {this.state.eventList.map(item =>
               <div key={item.id} className="w-100  ">
-
-
-                  <h1 className="text-center border-bottom">{item.name}</h1>
-                  <h4 className="boxDate text-center shadow">{item.date_event}</h4>
-                  <div className="imgDivSingle mt-5">
-                <img className="imgDisplaySingle ml-auto mr-auto" src={item.image_url} alt="image event"/>
-                </div>
+                  <h1 key={item.name} className="text-center border-bottom">{item.name}</h1>
+                  <h4 key={item.date_event} className="boxDate text-center shadow">{item.date_event}</h4>
+                  <Img className="imgDiv border">
+                      <Img className="imgDiv border">
+                          {
+                            (item.media_type === 'image') ? <img className="imgDisplay" alt="image event" src={item.image_url}/>:<iframe width="100%" src={`https://www.youtube.com/embed/${item.image_url}`} frameBorder="0"  allowFullScreen/>
+                          }
+                      </Img>
+                  </Img>
                   <div className="mt-5 text-center boxDescriptionSingle shadow">
-                    {item.description}
+                    <p><strong>Description:</strong></p>
+                    <div>{item.description}</div>
                   </div>
-                <p className="boxDate shadow text-center my-3">Added By: {item.author}</p>
-                <div className="p-col-12 mt-3">
-
+                  <div className="mt-5 text-center boxDescriptionSingle shadow">
+                    <p><strong>Adress:</strong></p>
+                    <div>{item.street}</div>
+                    <div>{item.postal_code}, {item.city}</div>
+                    <div>{item.country}</div>
+                  </div>
+                  <div className="mt-5 text-center boxDescriptionSingle shadow">
+                    <p><strong>Price:</strong> € {item.price}</p>
+                  </div>
+                  <div className="mt-5 text-center boxDescriptionSingle shadow">
+                    <p><strong>Added By:</strong></p>
+                     <div>{item.author}</div>
+                  </div>
+                  <div className="mt-5 text-center boxDescriptionSingle shadow">
+                    <p><strong>List of suscribers:</strong></p>
+                    {this.state.suscribersList.map(item =>
+                      <div>{item.username}</div>
+                    )}
+                  </div>
+                  <div className="mt-5 text-center boxDescriptionSingle shadow">
+                    <p><strong>Suscribe:</strong></p>
                     <div>{ suscribeButton }</div>
-
-                </div>
-                <div>{ editButton }</div>
+                  </div>
+                  <div className="mt-5 text-center boxDescriptionSingle shadow">
+                    <p><strong>Share the event with your friends:</strong></p>
+                     <Email idEvent={this.state.idEvent} nameEvent={this.state.nameEvent}/>
+                  </div>
+                  <div>
+                    { editButton }
+                  </div>
               </div>
             )}
           </div>

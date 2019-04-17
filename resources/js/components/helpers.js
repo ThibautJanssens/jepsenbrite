@@ -62,8 +62,8 @@ export function appGetUser() {
       },
     })
     .then(function (response) {
-      sessionStorage.setItem('user-id-storage', JSON.stringify(response.data.id));
-      sessionStorage.setItem('user-name-storage', JSON.stringify(response.data.name));
+      sessionStorage.setItem('user-id-storage', response.data.id);
+      sessionStorage.setItem('user-name-storage', response.data.name);
       window.location = '/';
     })
     .catch(function (error) {
@@ -149,6 +149,7 @@ export function appGetFutureEvent(eventList) {
     .catch(function (error) {
       console.log(error);
     })
+
 }
 
 /*Get Past Event -GET */
@@ -282,6 +283,18 @@ export function appGetContent(response, eventList) {
     image_url: response.data.event[0].image_url,
     date_event: eventDate,
     reminder: reminderDate,
+    street: response.data.event[0].street,
+    postal_code: response.data.event[0].postal_code,
+    city: response.data.event[0].city,
+    country: response.data.event[0].country,
+    price: response.data.event[0].price,
+    image_url: response.data.event[0].image_url,
+    file: response.data.event[0].image_url,
+    imagePreviewUrl: response.data.event[0].image_url,
+    video_url: "https://www.youtube.com/watch?v="+response.data.event[0].image_url,
+    media_type: response.data.event[0].media_type,
+    selectedOption: response.data.event[0].media_type,
+    imagePreviewUrl: response.data.event[0].image_url,
   })
 }
 
@@ -301,6 +314,43 @@ export function appAddEvent(myJSON) {
     .then(function (response) {
       bootbox.confirm({
         message: "Thanks for your contribution, your event has been successfully added",
+        buttons: {
+          confirm: {
+            label: 'Continue',
+            className: 'btn-success w-100'
+          },
+          cancel: {
+            label: 'No',
+            className: 'd-none'
+          }
+        },
+        callback: function (result) {
+          window.location = '/';
+        }
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+}
+
+
+/*Add Event-POST */
+export function appSendMails(myJSON) {
+  axios(
+    {
+      method: 'POST',
+      url: "/api/event",
+      headers:
+      {
+        'Content-Type': "application/json",
+        'Authorization': "Bearer " + JSON.parse(sessionStorage.getItem("token-storage"))
+      },
+      data: JSON.stringify(myJSON)
+    })
+    .then(function (response) {
+      bootbox.confirm({
+        message: "Thanks for your contribution, your emails has been successfully sent",
         buttons: {
           confirm: {
             label: 'Continue',

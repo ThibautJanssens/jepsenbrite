@@ -16552,3 +16552,18 @@ readers do not read off random characters that represent icons */
   height: auto;
 }
 
+/* preview image */
+
+.file {
+  grid-area: file;
+}
+
+.preview {
+  grid-area: preview;
+  padding-right: 250px;
+}
+
+.output {
+  max-width: 200px;
+}
+

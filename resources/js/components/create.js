@@ -1,10 +1,9 @@
-import React, { Component } from 'react'
-import Form from 'react-bootstrap/Form'
+import React, { Component } from 'react';
+import Form from 'react-bootstrap/Form';
 import { Calendar } from 'primereact/calendar';
 import Button from 'react-bootstrap/Button';
 import { appAddEvent } from './helpers';
 import { convertDate } from './helpers';
-
 
 export default class Create extends Component {
   constructor(props) {
@@ -27,12 +26,22 @@ export default class Create extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.dateTemplate = this.dateTemplate.bind(this);
+    this.handleOptionChange = this.handleOptionChange.bind(this);
     this.state = {
       name: "",
       description: "",
+      street: "",
+      postal_code: "",
+      city: "",
+      country: "",
       image_url: "",
+      video_url: "",
+      price: "",
       date_event: today,
       reminder: null,
+      file: "",
+      imagePreviewUrl: "",
+      selectedOption: "image",
       thisDay: today,
       minDate: minDate,
       maxDate: maxDate,
@@ -60,11 +69,55 @@ export default class Create extends Component {
     }
   }//\end fct handleChange
 
+  onChangeImg(e) {
+    e.preventDefault();
+    let reader = new FileReader();
+    let file = e.target.files[0];
+    let output = document.getElementById('output');
+    //base64 convert
+    reader.onloadend = () => {
+      this.setState({
+        file: file,
+        imagePreviewUrl: reader.result,
+      });
+      //file preview
+      output.src = reader.result
+      this.setState({
+        image_url : this.state.imagePreviewUrl.substr(this.state.imagePreviewUrl.indexOf(',') + 1)
+      });
+    }
+    reader.readAsDataURL(file)
+  }//\end fct onChangeImg
+
+  handleOptionChange(changeEvent) {
+  this.setState({
+    selectedOption: changeEvent.target.value
+  });
+}
+
   /* date conversion + submit*/
   handleSubmit() {
-    let image_url = this.state.image_url;
-    if (image_url === "") {
+    //console.log("state check: "+this.state.selectedOption);
+    let image_url = "";
+    let media_type = "";
+    if (this.state.selectedOption === 'image' && this.state.image_url !== ""){
+    console.log("image");
+        //image_url = this.state.image_url;
+        image_url = "data:image/jpeg;base64,"+this.state.image_url;
+        media_type = this.state.selectedOption;
+        console.log(image_url);
+    }
+    if (this.state.selectedOption === 'video' && this.state.video_url !== ""){
+      console.log("video");
+      //format: https://www.youtube.com/watch?v=fjlFRo3yW5g
+        image_url = this.state.video_url.substr(this.state.video_url.indexOf('=') + 1);
+        media_type = this.state.selectedOption;
+    }
+    if (this.state.selectedOption === 'image' && this.state.image_url == "" || this.state.selectedOption === 'video' && this.state.video_url == ""){
+      console.log("default");
+      //let image_default = "https://zupimages.net/up/19/15/xpo1.png";
       image_url = "https://zupimages.net/up/19/15/xpo1.png";
+      media_type = "image";
     }
     let convertedDate = convertDate(this.state.date_event);
     let convertedReminder = "";
@@ -76,8 +129,10 @@ export default class Create extends Component {
     else {
       convertedReminder = "";
     }
-    let myJSON = { "name": this.state.name, "date_event": convertedDate, "description": this.state.description, "reminder": convertedReminder, "image_url": image_url }
-    //console.log(myJSON);
+    //console.log("image_url: "+image_url);
+    //let myJSON = { "name": "name", "date_event": "2019-04-19 15:28:28", "description": "description", "reminder": "2019-03-19 15:28:28", "video_url": "", "image_url": "https://zupimages.net/up/19/15/xpo1.png", "street": "street", "postal_code": "4000", "city": "city", "country": "country"}
+    let myJSON = { "name": this.state.name, "date_event": convertedDate, "street": this.state.street, "postal_code": this.state.postal_code, "city": this.state.city, "price": this.state.price, "country": this.state.country, "description": this.state.description, "reminder": convertedReminder, "image_url": image_url, "media_type": media_type}
+    console.log(myJSON);
     event.preventDefault()
     appAddEvent(myJSON);
   }//\end fct handleSubmit
@@ -103,6 +158,7 @@ export default class Create extends Component {
           <Form.Control
             name="name"
             type="text"
+            required="true"
             placeholder="your event title"
             onChange={this.handleChange}
           />
@@ -113,22 +169,126 @@ export default class Create extends Component {
             name="description"
             placeholder="your event description"
             as="textarea" rows="10"
+            required="true"
             onChange={this.handleChange}
           />
         </Form.Group>
         <Form.Group controlId="exampleForm.ControlInput1">
-          <Form.Label>Add an image</Form.Label>
+          <Form.Label>Adress</Form.Label>
           <Form.Control
-            name="image_url"
-            type="url"
-            pattern="(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)"
-            placeholder="paste an url"
+            name="street"
+            type="text"
+            placeholder="adress"
             onChange={this.handleChange}
           />
         </Form.Group>
+        <Form.Group controlId="exampleForm.ControlInput1">
+          <Form.Label>City</Form.Label>
+          <Form.Control
+            name="city"
+            type="text"
+            required="true"
+            placeholder="city"
+            onChange={this.handleChange}
+          />
+        </Form.Group>
+        <Form.Group controlId="exampleForm.ControlInput1">
+          <Form.Label>Postal Code</Form.Label>
+          <Form.Control
+            name="postal_code"
+            type="number"
+            required="true"
+            placeholder="postal code"
+            onChange={this.handleChange}
+          />
+        </Form.Group>
+        <Form.Group controlId="exampleForm.ControlInput1">
+          <Form.Label>Country</Form.Label>
+          <Form.Control
+            name="country"
+            type="text"
+            required="true"
+            placeholder="country"
+            onChange={this.handleChange}
+          />
+        </Form.Group>
+        <Form.Group controlId="exampleForm.ControlInput1">
+          <Form.Label>Price</Form.Label>
+          <Form.Control
+            name="price"
+            type="number"
+            required="true"
+            placeholder="set the price of the event"
+            onChange={this.handleChange}
+          />
+        </Form.Group>
+        <div>
+          <label>
+            <input
+            type="radio"
+            name="react-tips"
+            id="radioImage"
+            ref="radioImage"
+            value="image"
+            checked={this.state.selectedOption === "image"}
+            onChange={this.handleOptionChange}
+            className="form-check-input"
+            />
+          Add an image</label>
+        </div>
+        <div>
+          <label>
+            <input
+            type="radio"
+            name="react-tips"
+            id="radioVideo"
+            ref="radioVideo"
+            value="video"
+            checked={this.state.selectedOption === "video"}
+            onChange={this.handleOptionChange}
+            className="form-check-input"
+            />
+          Add a video</label>
+          </div>
+
+        {this.state.selectedOption === "image" ?
+        <div className="grid-container-img-add">
+          <div className="file">
+            <input
+            className="form-control-file"
+            type="file"
+            name="image"
+            id="UploadedFile"
+            onChange={(e)=>this.onChangeImg(e)} />
+          </div>
+          <div className="preview"><img id="output" className="output" alt=""/></div>
+        </div>
+        :
+        <div className="grid-container-img-add">
+          <div className="file">
+            <input
+            className="form-control-file"
+            name="video_url"
+            type="url"
+            placeholder="paste an url"
+            onChange={this.handleChange}
+            />
+          </div>
+        </div>
+        }
         <div className="p-col-12 mt-3">
           <p>Date of event:</p>
-          <Calendar dateFormat="yy/mm/dd" value={this.state.date_event} onChange={(e) => this.setState({ date_event: e.value })} readOnlyInput={true} minDate={new Date()} showTime={true} timeOnly={false} hourFormat="24" showIcon={true} showSeconds={true} />
+          <Calendar
+          dateFormat="yy/mm/dd"
+          value={this.state.date_event}
+          onChange={(e) => this.setState({ date_event: e.value })}
+          readOnlyInput={true}
+          minDate={new Date()}
+          showTime={true}
+          timeOnly={false}
+          hourFormat="24"
+          showIcon={true}
+          showSeconds={true} />
         </div>
         <div className="p-col-12 mt-3">
           <div className="form-check">

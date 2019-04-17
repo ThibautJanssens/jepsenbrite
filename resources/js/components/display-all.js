@@ -45,19 +45,20 @@ export default class DisplayAll extends Component {
     super(props);
     this.state = {
       eventList: [],
+      nameEvent: "",
     };//\state
   }//\constructor
 
   componentDidMount() {
-    //console.log(this);
     appGetFutureEvent(this);
-    //console.log("token-storage: "+JSON.parse(sessionStorage.getItem("token-storage")));
-    //console.log("user-id-storage: "+JSON.parse(sessionStorage.getItem("user-id-storage")));
-    //console.log("user-name-storage: "+JSON.parse(sessionStorage.getItem("user-name-storage")));
+    // console.log("token-storage: "+JSON.parse(sessionStorage.getItem("token-storage")));
+    // console.log("user-id-storage: "+sessionStorage.getItem("user-id-storage"));
+    // console.log("user-name-storage: "+sessionStorage.getItem("user-name-storage"));
   }
 
   /*rendering content*/
   render() {
+    const position = [this.state.lat, this.state.lng];
     const { eventList } = this.state;
     return (
       <div>
@@ -66,23 +67,36 @@ export default class DisplayAll extends Component {
           {this.state.eventList.map(item =>
             <div key={item.id} className="color3 col-xs-12 col-md-6 col-xl-4 text-center d-flex flex-column">
               <Box className="border eventBox w-100 bg-secondary text-light my-3 p-3 eventBox flex-grow-1">
-              <p className="border boxDate shadow">{item.date_event}</p>
-                <h1 className="eventTitle ">{item.name}</h1>
+              <p key={item.date_event} className="border boxDate shadow">{item.date_event}</p>
+                <h1 key={item.name} className="eventTitle ">{item.name}</h1>
                 <Img className="imgDiv border">
-                    {<img className="imgDisplay" src={item.image_url} alt="image event"/>}
+                    <Img className="imgDiv border">
+                        {
+                          (item.media_type === 'image') ? <img className="imgDisplay" alt="image event" src={item.image_url}/>:<iframe width="100%" src={`https://www.youtube.com/embed/${item.image_url}`} frameBorder="0"  allowFullScreen/>
+                        }
+                    </Img>
                 </Img>
                 <div className="border boxDescription">
-                  {item.description}
+                  <p><strong>Description:</strong></p>
+                  <div>{item.description}</div>
+                </div>
+                <div className="border boxDescription">
+                  <p><strong>Adress:</strong></p>
+                  <div>{item.street}</div>
+                  <div>{item.postal_code}, {item.city}</div>
+                  <div>{item.country}</div>
+                </div>
+                <div className="border boxDescription">
+                  <p><strong>Price:</strong> € {item.price}</p>
                 </div>
                 <p>
-                  <Link variant="light" className="btn btn-light my-2 shadow" to={"/display-event/" + item.id} >More informations</Link>
+                  <Link variant="light" className="btn btn-light my-2 shadow" to={{pathname: "/display-event/"+item.id, state: {nameEvent: item.name}}} >More informations</Link>
                 </p>
               </Box>
             </div>
           )}
         </div>
       </div>
-
     )
   }
 }

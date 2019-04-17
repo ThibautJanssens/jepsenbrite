@@ -12,6 +12,7 @@ class Event extends Model
         'date_event',
         'author',
         'description',
+        'price',
         'reminder',
         'street',
         'postal_code',
