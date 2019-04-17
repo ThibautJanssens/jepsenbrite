@@ -223,3 +223,16 @@ Allows the user to subscribe to an event.
 *(must be logged)*
 *(Id is the id of the event)*
 Allow the user to unsubscribe to an event.
+
+### POST /event/:id/invitations
+*(must be logged)*
+Only takes json as input:
+```json
+{
+    "eventId": "1", 
+    "eventName": "Graspop", 
+    "senderId": "5", 
+    "senderName": "Vincent", 
+    "emailList": ["email1","email2"]
+}
+```
