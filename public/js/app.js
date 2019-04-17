@@ -86990,10 +86990,11 @@ function (_Component) {
         "description": this.state.description,
         "reminder": convertedReminder,
         "image_url": image_url,
-        "media_type": media_type //console.log(myJSON);
-
+        "media_type": media_type
       };
-      event.preventDefault(); //updateEvent(this.state.idEvent,myJSON);
+      console.log(myJSON);
+      event.preventDefault();
+      Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["updateEvent"])(this.state.idEvent, myJSON);
     } //\end fct handleSubmit
 
     /*used by component calendar*/
@@ -87300,21 +87301,25 @@ function (_Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(event) {
-      event.preventDefault(); //console.log("To send: "+JSON.stringify(this.state.email));
-      //console.log("user-id-storage: "+JSON.parse(sessionStorage.getItem("user-id-storage")));
-      //console.log("user-name-storage: "+JSON.parse(sessionStorage.getItem("user-name-storage")));
-
+      event.preventDefault();
       var senderId = sessionStorage.getItem("user-id-storage");
-      var senderName = sessionStorage.getItem("user-name-storage"); //console.log(this.props.nameEvent);
+      var senderName = sessionStorage.getItem("user-name-storage");
+      var mailing = [];
+      var obj = this.state.email; //convert  array (email) to a 'single' array (mailList)
 
+      obj.forEach(function (item) {
+        Object.keys(item).forEach(function (key) {
+          mailing.push(item[key]);
+        });
+      });
       var myJSON = {
         "eventId": this.props.idEvent,
         "eventName": this.props.nameEvent,
         "senderId": senderId,
         "senderName": senderName,
-        "emailList": JSON.stringify(this.state.email)
+        "emailList": mailing
       };
-      console.log(myJSON);
+      Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["appSendMails"])(this.props.idEvent, myJSON);
     }
   }, {
     key: "render",
@@ -87850,10 +87855,10 @@ function appAddEvent(myJSON) {
 }
 /*Add Event-POST */
 
-function appSendMails(myJSON) {
+function appSendMails(eventID, myJSON) {
   axios__WEBPACK_IMPORTED_MODULE_0___default()({
     method: 'POST',
-    url: "/api/event",
+    url: "/event/" + eventID + "/invitations",
     headers: {
       'Content-Type': "application/json",
       'Authorization': "Bearer " + JSON.parse(sessionStorage.getItem("token-storage"))

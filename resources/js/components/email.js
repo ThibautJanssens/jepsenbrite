@@ -33,18 +33,21 @@ addMail(event) {
 
 handleSubmit(event){
   event.preventDefault()
-  //console.log("To send: "+JSON.stringify(this.state.email));
-  //console.log("user-id-storage: "+JSON.parse(sessionStorage.getItem("user-id-storage")));
-  //console.log("user-name-storage: "+JSON.parse(sessionStorage.getItem("user-name-storage")));
     let senderId = sessionStorage.getItem("user-id-storage");
     let senderName = sessionStorage.getItem("user-name-storage");
-    //console.log(this.props.nameEvent);
-    let myJSON = { "eventId": this.props.idEvent, "eventName": this.props.nameEvent,"senderId": senderId, "senderName": senderName, "emailList": JSON.stringify(this.state.email)}
-    console.log(myJSON);
+    let mailing = [];
+    let obj = this.state.email;
+    //convert  array (email) to a 'single' array (mailList)
+    obj.forEach(function(item) {
+      Object.keys(item).forEach(function(key) {
+        mailing.push(item[key]);
+      });
+    });
+    let myJSON = { "eventId": this.props.idEvent, "eventName": this.props.nameEvent,"senderId": senderId, "senderName": senderName, "emailList": mailing}
+    appSendMails(this.props.idEvent, myJSON);
 }
 
 render() {
-
     let {from, eventName, email} = this.state;
 
     return (

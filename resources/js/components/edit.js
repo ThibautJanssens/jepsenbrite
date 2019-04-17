@@ -166,9 +166,9 @@ export default class Edit extends Component {
         convertedReminder = "";
       }
       let myJSON = { "name": this.state.name, "date_event": convertedDate, "street": this.state.street, "postal_code": this.state.postal_code, "city": this.state.city, "price": this.state.price, "country": this.state.country, "description": this.state.description, "reminder": convertedReminder, "image_url": image_url, "media_type": media_type}
-      //console.log(myJSON);
+      console.log(myJSON);
       event.preventDefault()
-      //updateEvent(this.state.idEvent,myJSON);
+      updateEvent(this.state.idEvent,myJSON);
     }//\end fct handleSubmit
 
   /*used by component calendar*/
