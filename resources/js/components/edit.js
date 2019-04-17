@@ -286,7 +286,7 @@ export default class Edit extends Component {
                         id="UploadedFile"
                         onChange={(e)=>this.onChangeImg(e)} />
                       </div>
-                      <div className="preview"><img id="output" src={`data:image/jpeg;base64,${this.state.image_url}`} className="output" alt=""/></div>
+                      <div className="preview"><img id="output" src={this.state.image_url} className="output" alt=""/></div>
                     </div>
                     :
                     <div className="grid-container-img-add">

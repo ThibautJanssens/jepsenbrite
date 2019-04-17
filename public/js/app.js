@@ -87111,7 +87111,7 @@ function (_Component) {
           className: "preview"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           id: "output",
-          src: "data:image/jpeg;base64,".concat(_this3.state.image_url),
+          src: _this3.state.image_url,
           className: "output",
           alt: ""
         }))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
