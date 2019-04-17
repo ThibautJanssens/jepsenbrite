@@ -43,9 +43,10 @@ export default class CreateAccount extends Component {
      }
 
     return (
-
+      <div className="eventsPassed">
+      <div className="passedEvents">
+      <h1>Register</h1>
       <Form className="m-5" onSubmit={this.handleSubmit}>
-        <h1>Register</h1>
         <Form.Group controlId="exampleForm.ControlInput1">
           <Form.Label>Name</Form.Label>
           <Form.Control
@@ -86,6 +87,8 @@ export default class CreateAccount extends Component {
           Submit
         </Button>
       </Form>
+      </div>
+      </div>
     )
   }
 }

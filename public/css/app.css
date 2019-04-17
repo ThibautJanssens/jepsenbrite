@@ -10655,6 +10655,7 @@ a.text-dark:focus {
   }
 }
 
+<<<<<<< HEAD
 /*!
  * Font Awesome Free 5.8.1 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
@@ -10667,6 +10668,23 @@ a.text-dark:focus {
   font-display: auto;
   src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.eot?a7b95dbdd87e0c809570affaf366a434);
   src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.eot?a7b95dbdd87e0c809570affaf366a434) format("embedded-opentype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.woff2?5e2f92123d241cabecf0b289b9b08d4a) format("woff2"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.woff?2ef8ba3410dcc71578a880e7064acd7a) format("woff"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.ttf?98b6db59be947f563350d2284fc9ea36) format("truetype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.svg?5bf145531213545e03ff41cd27df7d2b) format("svg");
+=======
+body {
+  background-color: #03020D;
+  color: white !important;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  background-color: #000000 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  -webkit-filter: drop-shadow(3px 3px 10px black);
+          filter: drop-shadow(3px 3px 10px black);
+>>>>>>> origin/michael
 }
 
 .fab {
@@ -10678,13 +10696,16 @@ a.text-dark:focus {
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 
-@font-face {
-  font-family: "Font Awesome 5 Free";
-  font-style: normal;
-  font-weight: 400;
-  font-display: auto;
-  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.eot?dcce4b7fbd5e895561e18af4668265af);
-  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.eot?dcce4b7fbd5e895561e18af4668265af) format("embedded-opentype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.woff2?e6257a726a0cf6ec8c6fec22821c055f) format("woff2"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.woff?427d721b86fc9c68b2e85ad42b69238c) format("woff"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.ttf?65b9977aa23185e8964b36eddbce7a20) format("truetype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.svg?5eb754ab7dbd2fee562360528db4c3c0) format("svg");
+
+.footIt {
+  position: relative !important;
+  width: 100%;
+  bottom: -20px !important;
+  background-color: #03020D;
+  color: white;
+  text-align: center;
+  font-size: 2rem;
+
 }
 
 .far {
@@ -10732,9 +10753,16 @@ a.text-dark:focus {
 }
 
 .fa-lg {
-  font-size: 1.3333333333em;
-  line-height: 0.75em;
-  vertical-align: -0.0667em;
+    font-size: 1.3333333333em;
+    line-height: 0.75em;
+    vertical-align: -0.0667em;
+}
+
+.brandDonut {
+    display: flex;
+    justify-content: center;
+    background-color: #03020D;
+    color: white;
 }
 
 .fa-xs {
@@ -11050,6 +11078,18 @@ readers do not read off random characters that represent icons */
 .fa-american-sign-language-interpreting:before {
   content: "\F2A3";
 }
+
+@media screen and (max-width: 500px) {
+  .gitList {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .passedEvents2 {
+    margin: 0 !important;
+    padding: 0.3rem;
+  }
+
 
 .fa-amilia:before {
   content: "\F36D";
@@ -16560,3 +16600,16 @@ readers do not read off random characters that represent icons */
   max-width: 200px;
 }
 
+#app {
+  display: flex;
+  height: 400px;
+  align-items: center;
+  justify-content: center;
+  background-color: #0F3357;
+}
+
+#app .map {
+  width: 500px;
+  height: 300px;
+  background: white;
+}

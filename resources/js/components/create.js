@@ -151,9 +151,13 @@ export default class Create extends Component {
 
   render() {
     return (
-      <Form onSubmit={this.handleSubmit} className="m-5">
+      <div className="eventsPassed">
+      <div className="passedEvents">
+      <div className="eventImg">
+      <form onSubmit={this.handleSubmit} className="eventsPassed">
+      
         <h1>Create new Event</h1>
-        <Form.Group controlId="exampleForm.ControlInput1">
+        <div className="form-group" controlId="exampleForm.ControlInput1">
           <Form.Label>Title</Form.Label>
           <Form.Control
             name="name"
@@ -162,8 +166,8 @@ export default class Create extends Component {
             placeholder="your event title"
             onChange={this.handleChange}
           />
-        </Form.Group>
-        <Form.Group controlId="exampleForm.ControlTextarea1">
+        </div>
+        <div className="form-group" controlId="exampleForm.ControlTextarea1">
           <Form.Label>Description</Form.Label>
           <Form.Control
             name="description"
@@ -172,9 +176,15 @@ export default class Create extends Component {
             required="true"
             onChange={this.handleChange}
           />
+<<<<<<< HEAD
         </Form.Group>
         <Form.Group controlId="exampleForm.ControlInput1">
           <Form.Label>Adress</Form.Label>
+=======
+        </div>
+        <div className="form-group" controlId="exampleForm.ControlInput1">
+          <Form.Label>Add an image</Form.Label>
+>>>>>>> origin/michael
           <Form.Control
             name="street"
             type="text"
@@ -201,6 +211,7 @@ export default class Create extends Component {
             placeholder="postal code"
             onChange={this.handleChange}
           />
+<<<<<<< HEAD
         </Form.Group>
         <Form.Group controlId="exampleForm.ControlInput1">
           <Form.Label>Country</Form.Label>
@@ -276,6 +287,14 @@ export default class Create extends Component {
           </div>
         </div>
         }
+=======
+        </div>
+        <label htmlFor="address">!!! Address !!!</label>
+                <input type="text" className="form-control" id="address" defaultValue="" onChange="" required />
+                <label htmlFor="price">!!! Price !!!</label>
+                <input type="text" className="form-control" id="price" defaultValue="" onChange="" name='price' required />
+
+>>>>>>> origin/michael
         <div className="p-col-12 mt-3">
           <p>Date of event:</p>
           <Calendar
@@ -306,8 +325,11 @@ export default class Create extends Component {
           </div>
         </div>
 
-        <Button disabled={!this.validateForm()} className="my-3" type="submit">Submit</Button>
-      </Form>
+        <button disabled={!this.validateForm()} className="btn btn-primary" type="submit">Submit</button>
+      </form>
+      </div>
+      </div>
+      </div>
     )
   }
 }

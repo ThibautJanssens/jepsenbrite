@@ -55,6 +55,7 @@ export default class MyEvents extends Component {
   /*rendering content*/
   render() {
     const { eventList } = this.state;
+<<<<<<< HEAD
     return (
       <div>
         <h1 className="mt-5 mb-3 text-center">My Events</h1>
@@ -93,5 +94,29 @@ export default class MyEvents extends Component {
         </div>
       </div>
     )
+=======
+      return (this.state.eventList.map(item =>
+        <div key={item.id} className="eventsPassed">
+          <div className="passedEvents">
+            <div className="eventImg">
+              <Link to={"/display-event/" + item.id} ><h1 className="eventTitle">{item.name}</h1></Link>
+              <i>!!! AUTHOR HERE !!!</i>
+            </div>
+            <div className='wholeInfos'>
+                <div className='wholeInfos1'>
+                  <div className='info'>
+                    <img className='infoIcons' src='https://www.redfcu.org/Assets/uploads/images/Find%20a%20LocationBranch.png' /><p className='infoTxt'>!!! ADRESS HERE !!!</p>
+                    </div>
+                    <div className='info'>
+                    <img className='infoIcons' src='https://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/calendar-icon.png' /><p className='infoTxt'>{item.date_event}</p>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+            
+
+    ))
+>>>>>>> origin/michael
   }
 }

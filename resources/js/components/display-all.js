@@ -60,6 +60,7 @@ export default class DisplayAll extends Component {
   render() {
     const position = [this.state.lat, this.state.lng];
     const { eventList } = this.state;
+<<<<<<< HEAD
     return (
       <div>
         <h1 className="mt-5 mb-3 text-center">Future Events</h1>
@@ -93,10 +94,44 @@ export default class DisplayAll extends Component {
                   <Link variant="light" className="btn btn-light my-2 shadow" to={{pathname: "/display-event/"+item.id, state: {nameEvent: item.name}}} >More informations</Link>
                 </p>
               </Box>
+=======
+    return (this.state.eventList.map(item =>
+      <div key={item.id} className="eventsPassed">
+        <div className="passedEvents">
+          <div className="eventImg">
+            <Link to={"/display-event/" + item.id} ><h1 className="eventTitle">{item.name}</h1></Link>
+            <i>!!! AUTHOR HERE !!!</i>
+          </div>
+          <div className='wholeInfos'>
+              <div className='wholeInfos1'>
+                <div className='info'>
+                  <img className='infoIcons' src='https://www.redfcu.org/Assets/uploads/images/Find%20a%20LocationBranch.png' /><p className='infoTxt'>!!! ADRESS HERE !!!</p>
+                  </div>
+                  <div className='info'>
+                  <img className='infoIcons' src='https://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/calendar-icon.png' /><p className='infoTxt'>{item.date_event}</p>
+                  </div>
+              </div>
+>>>>>>> origin/michael
             </div>
-          )}
+          </div>
         </div>
+<<<<<<< HEAD
       </div>
+=======
+   
+          
+            // <p className="border boxDate shadow">{item.date_event}</p>
+            // <h1 className="eventTitle ">{item.name}</h1>
+            // <Img className="imgDiv border">
+            //   {<img className="imgDisplay" src={item.image_url} alt="image event" />}
+            // </Img>
+            // <div className="border boxDescription">
+            //   {item.description}
+            // </div>
+            // <p>
+>>>>>>> origin/michael
     )
-  }
+        
+    );
+}
 }

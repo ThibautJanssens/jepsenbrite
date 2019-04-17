@@ -17,17 +17,10 @@ export default class Index extends Component {
             <Router>
                 <div>
                     <NavbarContent />
-                    <div className="body-fullvh">
-                        <Routes />
-                    </div>
-
-                    <div>
-                        <FooterContent />
-                    </div>
+                    <Routes />
+                    <FooterContent />
                 </div>
             </Router>
-
-
         );
     }
 }

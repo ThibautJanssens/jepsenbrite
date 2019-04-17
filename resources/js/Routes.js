@@ -17,7 +17,7 @@ import posed, { PoseGroup } from 'react-pose';
 
 const RouteContainer = posed.div({
   enter: { x:0, opacity: 1, delay: 100, beforeChildren: true },
-  exit: { y:100, opacity: 0 }
+  exit: { x:10, opacity: 0 }
 });
 
 

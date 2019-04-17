@@ -34,7 +34,8 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div className="Login m-5">
+      <div className="eventsPassed">
+      <div className='passedEvents'>
         <Form onSubmit={this.handleSubmit}>
         <h1>Login</h1>
           <Form.Group controlId="formBasicEmail">
@@ -65,7 +66,7 @@ export default class Login extends Component {
             Submit
   </Button>
         </Form>
-      </div>
+      </div></div>
     );
   }//\end render
 }//\end class Login

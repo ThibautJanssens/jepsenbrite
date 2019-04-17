@@ -4,6 +4,7 @@ import { suscribeEvent } from './helpers';
 import { unsuscribeEvent } from './helpers';
 import Email from './email';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+<<<<<<< HEAD
 import posed from 'react-pose';
 
 const Box = posed.div({
@@ -40,6 +41,12 @@ const Img = posed.div({
     boxShadow: '0px 0px 10px rgba(0,0,0,0.5)'
   }
 });
+=======
+import MapD from './map';
+
+
+
+>>>>>>> origin/michael
 
 export default class DisplayEvent extends Component {
 
@@ -50,7 +57,7 @@ export default class DisplayEvent extends Component {
       name: "",
       eventList: [],
       suscribersList: [],
-      boxSubscribe : false,
+      boxSubscribe: false,
       idEvent: this.props.match.params.id,
       nameEvent: "",
     }
@@ -59,7 +66,7 @@ export default class DisplayEvent extends Component {
 
   setboxSuscribe(props) {
     this.setState({
-        boxSubscribe: props
+      boxSubscribe: props
     })
   }
 
@@ -71,11 +78,12 @@ export default class DisplayEvent extends Component {
     })
   }
 
-/*checkbox suscribe/unsuscrib + road to api*/
+  /*checkbox suscribe/unsuscrib + road to api*/
   handleChange(event) {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
+<<<<<<< HEAD
     this.setState({[name]: value});
       if (target.checked === true){
         suscribeEvent(this.props.match.params.id);
@@ -87,6 +95,17 @@ export default class DisplayEvent extends Component {
         this.setboxSuscribe(false);
         appGetEventByID(this.props.match.params.id, this);
       }
+=======
+    this.setState({ [name]: value });
+    if (target.checked === true) {
+      suscribeEvent(this.props.match.params.id);
+      this.setboxSuscribe(true);
+    }
+    else {
+      unsuscribeEvent(this.props.match.params.id);
+      this.setboxSuscribe(false);
+    }
+>>>>>>> origin/michael
   }//\end fct handleChange
 
   render() {
@@ -99,21 +118,40 @@ export default class DisplayEvent extends Component {
 
     let editButton;
     let suscribeButton;
+<<<<<<< HEAD
       if (sessionStorage.getItem("user-name-storage") === authorArticle[0]) {
         editButton = (
           <Link variant="light" className="btn btn-light my-2" to={"/Edit/"+idRoute} >Edit this event</Link>
         )
       }
       if (sessionStorage.getItem("token-storage") !== null) {
+=======
+    if (sessionStorage.getItem("user-name-storage") === JSON.stringify(authorArticle[0])) {
+      editButton = (
+        <Link variant="light" className="btn btn-light my-2" to={"/edit/" + idRoute} >Edit this event</Link>
+      )
+    }
+    if (sessionStorage.getItem("token-storage") !== null) {
+>>>>>>> origin/michael
       suscribeButton = (
         <div className="form-check">
           <input className="form-check-input"
-          type="checkbox"
-          name="boxSuscribe"
-          checked={this.state.boxSubscribe}
-          onChange={this.handleChange} />
+            type="checkbox"
+            name="boxSuscribe"
+            checked={this.state.boxSubscribe}
+            onChange={this.handleChange} />
           <label className="form-check-label">Suscribe to this event</label>
+        </div>
+      )
+    }
+    return (this.state.eventList.map(item =>
+      <div key={item.id} className="eventsPassed">
+        <div className="passedEvents">
+          <div className='eventImg'>
+            <h1 className='eventTitle'>
+              {item.name}<i>(by {item.author})</i></h1>
           </div>
+<<<<<<< HEAD
         )
       }
     return (
@@ -164,10 +202,45 @@ export default class DisplayEvent extends Component {
                   <div>
                     { editButton }
                   </div>
+=======
+
+          <div className='passedEvents2'>
+            <p> {item.description} </p>
+          </div>
+          <div className='wholeInfos'>
+            <div className='wholeInfos1'>
+              <div className='info'>
+                <img className='infoIcons' src='https://www.redfcu.org/Assets/uploads/images/Find%20a%20LocationBranch.png' /><p className='infoTxt'>!!! ADRESS HERE !!!</p>
               </div>
-            )}
+              <div className='info'>
+                <img className='infoIcons' src='http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/calendar-icon.png' /><p className='infoTxt'>{item.date_event}</p>
+              </div>
+              <div className='info'>
+                <img className='infoIcons' src='https://stickeroid.com/uploads/pic/full-pngimg/9d06df374b8bab48fc3ba0a7e1a6f4ccd2212d81.png' /><p className='infoTxt'>!!! Price: HERE € !!!</p>
+              </div>
+            </div>
+            <div className='wholeInfos2'>
+              <div className='info'>
+                <img className='infoIcons2' src='http://pngimages.net/sites/default/files/upload-png-image-77090.png' /><p className='infoTxt'>Posted on !!!DATE CREATION HERE!!!</p>
+              </div>
+              <div className='info'>
+                <img className='infoIcons2' src='https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_update-512.png' /><p className='infoTxt'>Last update:  !!! DATE UPDATE EVENT HERE !!!</p>
+              </div>
+              <div className="p-col-12 mt-3">
+                {suscribeButton}
+              </div>
+              <div>
+                {editButton}
+>>>>>>> origin/michael
+              </div>
+              <div id="app">
+              <div><MapD /></div>
+</div>
+            </div>
           </div>
         </div>
+      </div>
     )
+    );
   }
 }
