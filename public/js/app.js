@@ -86990,10 +86990,11 @@ function (_Component) {
         "description": this.state.description,
         "reminder": convertedReminder,
         "image_url": image_url,
-        "media_type": media_type //console.log(myJSON);
-
+        "media_type": media_type
       };
-      event.preventDefault(); //updateEvent(this.state.idEvent,myJSON);
+      console.log(myJSON);
+      event.preventDefault();
+      Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["updateEvent"])(this.state.idEvent, myJSON);
     } //\end fct handleSubmit
 
     /*used by component calendar*/

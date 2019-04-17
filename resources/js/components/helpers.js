@@ -14,7 +14,6 @@ export function convertDate(arg) {
   return convertedDateStrike;
 }
 
-
 /*API REQUESTS*/
 /*Register -POST*/
 export function appRegister(myJSON) {
