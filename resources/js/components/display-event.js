@@ -4,42 +4,6 @@ import { suscribeEvent } from './helpers';
 import { unsuscribeEvent } from './helpers';
 import Email from './email';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import posed from 'react-pose';
-
-const Box = posed.div({
-  hoverable: true,
-  pressable: true,
-  init: {
-    scale: 1,
-    boxShadow: '0px 0px 0px rgba(0,0,0,0)',
-
-  },
-  hover: {
-    scale: 1,
-    boxShadow: '10px 10px 10px rgba(0,100,0,0.2)',
-
-  },
-  press: {
-    boxShadow: '0px 0px 10px rgba(0,0,0,0.5)'
-  }
-});
-
-const Img = posed.div({
-  hoverable: true,
-  pressable: true,
-  init: {
-    scale: 1,
-    opacity: 1,
-
-  },
-  hover: {
-    scale: 1,
-    opacity: 0.5,
-  },
-  press: {
-    boxShadow: '0px 0px 10px rgba(0,0,0,0.5)'
-  }
-});
 
 export default class DisplayEvent extends Component {
 
@@ -99,75 +63,96 @@ export default class DisplayEvent extends Component {
 
     let editButton;
     let suscribeButton;
+    let shareButton;
+
       if (sessionStorage.getItem("user-name-storage") === authorArticle[0]) {
         editButton = (
           <Link variant="light" className="btn btn-light my-2" to={"/Edit/"+idRoute} >Edit this event</Link>
         )
       }
+
       if (sessionStorage.getItem("token-storage") !== null) {
-      suscribeButton = (
-        <div className="form-check">
-          <input className="form-check-input"
-          type="checkbox"
-          name="boxSuscribe"
-          checked={this.state.boxSubscribe}
-          onChange={this.handleChange} />
-          <label className="form-check-label">Suscribe to this event</label>
+        suscribeButton = (
+          <div className='info'>
+            <input className="form-check-input"
+            type="checkbox"
+            name="boxSuscribe"
+            checked={this.state.boxSubscribe}
+            onChange={this.handleChange} />
+            <label className="form-check-label">Suscribe to this event</label>
           </div>
         )
+
+        shareButton = (
+          <div className='info'>      
+            <p><strong>Share the event with your friends:</strong></p>
+            <Email idEvent={this.state.idEvent} nameEvent={this.state.nameEvent}/>
+          </div> 
+        )
       }
+      
     return (
-      <div className="m-2 m-sm-5 p-2 p-xl-5">
-          <div>
-            {this.state.eventList.map(item =>
-              <div key={item.id} className="w-100  ">
-                  <h1 key={item.name} className="text-center border-bottom">{item.name}</h1>
-                  <h4 key={item.date_event} className="boxDate text-center shadow">{item.date_event}</h4>
-                  <Img className="imgDiv border">
-                      <Img className="imgDiv border">
-                          {
-                            (item.media_type === 'image') ? <img className="imgDisplay" alt="image event" src={item.image_url}/>:<iframe width="100%" src={`https://www.youtube.com/embed/${item.image_url}`} frameBorder="0"  allowFullScreen/>
-                          }
-                      </Img>
-                  </Img>
-                  <div className="mt-5 text-center boxDescriptionSingle shadow">
-                    <p><strong>Description:</strong></p>
-                    <div>{item.description}</div>
+            <div>
+              {this.state.eventList.map(item =>
+                <div key={item.id} className="eventsPassed">
+                  <div className="passedEvents">
+                    <div className='eventImg'>
+                      <h1 className='eventTitle'>
+                        {item.name}<i>(by {item.author})</i>
+                      </h1>                  
                   </div>
-                  <div className="mt-5 text-center boxDescriptionSingle shadow">
-                    <p><strong>Adress:</strong></p>
-                    <div>{item.street}</div>
-                    <div>{item.postal_code}, {item.city}</div>
-                    <div>{item.country}</div>
+                  <div className="imgDiv border">
+                            {
+                              (item.media_type === 'image') ? <img className="imgDisplay" alt="image event" src={item.image_url}/>:<iframe width="100%" src={`https://www.youtube.com/embed/${item.image_url}`} frameBorder="0"  allowFullScreen/>
+                            }
                   </div>
-                  <div className="mt-5 text-center boxDescriptionSingle shadow">
-                    <p><strong>Price:</strong> € {item.price}</p>
+                  <div className='passedEvents2'>
+                    <p> {item.description} </p>
                   </div>
-                  <div className="mt-5 text-center boxDescriptionSingle shadow">
-                    <p><strong>Added By:</strong></p>
-                     <div>{item.author}</div>
+                  <div className='wholeInfos'>
+                    <div className='wholeInfos1'>
+                      <div className='info'>
+                        <img className='infoIcons' src='https://www.redfcu.org/Assets/uploads/images/Find%20a%20LocationBranch.png' />
+                        <div className='infoTxt'>
+                          <div>{item.street}</div>
+                          <div>{item.postal_code}, {item.city}</div>
+                          <div>{item.country}</div>
+                        </div>
+                      </div>
+                      <div className='info'>
+                      <img className='infoIcons' src='http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/calendar-icon.png' />
+                      <p className='infoTxt'>{item.date_event}</p>
+                      </div>
+                      <div className='info'>
+                      <img className='infoIcons' src='https://stickeroid.com/uploads/pic/full-pngimg/9d06df374b8bab48fc3ba0a7e1a6f4ccd2212d81.png' />
+                      <p className='infoTxt'>€ {item.price}</p>
+                      </div>
+                    </div>
+                    <div className='wholeInfos2'>
+                      <div className='info'>
+                        <img className='infoIcons2' src='http://pngimages.net/sites/default/files/upload-png-image-77090.png' />
+                        <p className='infoTxt'>Posted on {item.created_at}</p>
+                      </div>
+                      <div className='info'>
+                        <img className='infoIcons2' src='https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_update-512.png' />
+                        <p className='infoTxt'>Last update: {item.updated_at}</p>
+                      </div>
+                      <div className='info'>
+                        <p><strong>List of suscribers:</strong></p>
+                        {this.state.suscribersList.map(item =>
+                          <div>{item.username}</div>
+                        )}
+                      </div>                      
+                        { suscribeButton }             
+                        { shareButton }
+                      <div className='info'>
+                        { editButton }
+                      </div>
+                    </div>
                   </div>
-                  <div className="mt-5 text-center boxDescriptionSingle shadow">
-                    <p><strong>List of suscribers:</strong></p>
-                    {this.state.suscribersList.map(item =>
-                      <div>{item.username}</div>
-                    )}
-                  </div>
-                  <div className="mt-5 text-center boxDescriptionSingle shadow">
-                    <p><strong>Suscribe:</strong></p>
-                    <div>{ suscribeButton }</div>
-                  </div>
-                  <div className="mt-5 text-center boxDescriptionSingle shadow">
-                    <p><strong>Share the event with your friends:</strong></p>
-                     <Email idEvent={this.state.idEvent} nameEvent={this.state.nameEvent}/>
-                  </div>
-                  <div>
-                    { editButton }
-                  </div>
-              </div>
-            )}
-          </div>
-        </div>
+                </div>
+              </div>)}
+            </div>
     )
   }
 }
