@@ -121,29 +121,40 @@ export default class Edit extends Component {
 
   /* date conversion + submit*/
     handleSubmit() {
-      //console.log(JSON.stringify(this.state.image_url));
-      //console.log("state check: "+this.state.selectedOption);
+      //check if "data:image/jpeg;base64," is there twice (because it's added to the default preview)
+      //this.state.imagePreviewUrl.substr(this.state.imagePreviewUrl.indexOf(',') + 1)
+      let temp = this.state.image_url;
+      let count = (temp.match(/base64/g) || []).length;
+      if (count !==0){
+        this.setState({
+          image_url : this.state.image_url.substr(this.state.image_url.indexOf(',') + 1)
+        });
+      }
+      //console.log("url:"+this.state.image_url);
+      //media type & media url
       let image_url = "";
       let media_type = "";
-      if (this.state.selectedOption === 'image' && this.state.image_url !== ""){
-      console.log("image");
-          //image_url = this.state.image_url;
-          image_url = "data:image/jpeg;base64,"+this.state.image_url;
-          media_type = this.state.selectedOption;
-          console.log(image_url);
+      if (this.state.selectedOption === 'image' && this.state.image_url !== "" && count ===0){
+        image_url = "data:image/jpeg;base64,"+this.state.image_url;
+        media_type = this.state.selectedOption;
+      }
+      if (this.state.selectedOption === 'image' && this.state.image_url !== "" && count !==0){
+        image_url = this.state.image_url;
+        media_type = this.state.selectedOption;
       }
       if (this.state.selectedOption === 'video' && this.state.video_url !== ""){
-        console.log("video");
         //format: https://www.youtube.com/watch?v=fjlFRo3yW5g
           image_url = this.state.video_url.substr(this.state.video_url.indexOf('=') + 1);
           media_type = this.state.selectedOption;
       }
       if (this.state.selectedOption === 'image' && this.state.image_url == "" || this.state.selectedOption === 'video' && this.state.video_url == ""){
-        console.log("default");
         //let image_default = "https://zupimages.net/up/19/15/xpo1.png";
         image_url = "https://zupimages.net/up/19/15/xpo1.png";
         media_type = "image";
       }
+
+
+      //convert date
       let convertedDate = convertDate (this.state.date_event);
       let convertedReminder ="";
       let datetest  = new Date();
@@ -155,7 +166,7 @@ export default class Edit extends Component {
         convertedReminder = "";
       }
       let myJSON = { "name": this.state.name, "date_event": convertedDate, "street": this.state.street, "postal_code": this.state.postal_code, "city": this.state.city, "price": this.state.price, "country": this.state.country, "description": this.state.description, "reminder": convertedReminder, "image_url": image_url, "media_type": media_type}
-      console.log(myJSON);
+      //console.log(myJSON);
       event.preventDefault()
       //updateEvent(this.state.idEvent,myJSON);
     }//\end fct handleSubmit
@@ -174,10 +185,6 @@ export default class Edit extends Component {
 
   render() {
     const { eventList } = this.state;
-    //!!!set states in helpers.js / appGetContent()!!!!
-    console.log("media type:"+this.state.media_type);
-
-
     const authorArticle = this.state.eventList.map(item => item.author);
 
     return (
@@ -286,7 +293,7 @@ export default class Edit extends Component {
                         id="UploadedFile"
                         onChange={(e)=>this.onChangeImg(e)} />
                       </div>
-                      <div className="preview"><img id="output" src={this.state.image_url} className="output" alt=""/></div>
+                      <div className="preview"><img id="output" src={this.state.imagePreviewUrl} className="output" alt=""/></div>
                     </div>
                     :
                     <div className="grid-container-img-add">

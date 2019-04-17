@@ -86930,32 +86930,44 @@ function (_Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit() {
-      //console.log(JSON.stringify(this.state.image_url));
-      //console.log("state check: "+this.state.selectedOption);
+      //check if "data:image/jpeg;base64," is there twice (because it's added to the default preview)
+      //this.state.imagePreviewUrl.substr(this.state.imagePreviewUrl.indexOf(',') + 1)
+      var temp = this.state.image_url;
+      var count = (temp.match(/base64/g) || []).length;
+
+      if (count !== 0) {
+        this.setState({
+          image_url: this.state.image_url.substr(this.state.image_url.indexOf(',') + 1)
+        });
+      } //console.log("url:"+this.state.image_url);
+      //media type & media url
+
+
       var image_url = "";
       var media_type = "";
 
-      if (this.state.selectedOption === 'image' && this.state.image_url !== "") {
-        console.log("image"); //image_url = this.state.image_url;
-
+      if (this.state.selectedOption === 'image' && this.state.image_url !== "" && count === 0) {
         image_url = "data:image/jpeg;base64," + this.state.image_url;
         media_type = this.state.selectedOption;
-        console.log(image_url);
+      }
+
+      if (this.state.selectedOption === 'image' && this.state.image_url !== "" && count !== 0) {
+        image_url = this.state.image_url;
+        media_type = this.state.selectedOption;
       }
 
       if (this.state.selectedOption === 'video' && this.state.video_url !== "") {
-        console.log("video"); //format: https://www.youtube.com/watch?v=fjlFRo3yW5g
-
+        //format: https://www.youtube.com/watch?v=fjlFRo3yW5g
         image_url = this.state.video_url.substr(this.state.video_url.indexOf('=') + 1);
         media_type = this.state.selectedOption;
       }
 
       if (this.state.selectedOption === 'image' && this.state.image_url == "" || this.state.selectedOption === 'video' && this.state.video_url == "") {
-        console.log("default"); //let image_default = "https://zupimages.net/up/19/15/xpo1.png";
-
+        //let image_default = "https://zupimages.net/up/19/15/xpo1.png";
         image_url = "https://zupimages.net/up/19/15/xpo1.png";
         media_type = "image";
-      }
+      } //convert date
+
 
       var convertedDate = Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["convertDate"])(this.state.date_event);
       var convertedReminder = "";
@@ -86978,9 +86990,9 @@ function (_Component) {
         "description": this.state.description,
         "reminder": convertedReminder,
         "image_url": image_url,
-        "media_type": media_type
+        "media_type": media_type //console.log(myJSON);
+
       };
-      console.log(myJSON);
       event.preventDefault(); //updateEvent(this.state.idEvent,myJSON);
     } //\end fct handleSubmit
 
@@ -87011,9 +87023,7 @@ function (_Component) {
     value: function render() {
       var _this3 = this;
 
-      var eventList = this.state.eventList; //!!!set states in helpers.js / appGetContent()!!!!
-
-      console.log("media type:" + this.state.media_type);
+      var eventList = this.state.eventList;
       var authorArticle = this.state.eventList.map(function (item) {
         return item.author;
       });
@@ -87111,7 +87121,7 @@ function (_Component) {
           className: "preview"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           id: "output",
-          src: _this3.state.image_url,
+          src: _this3.state.imagePreviewUrl,
           className: "output",
           alt: ""
         }))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
