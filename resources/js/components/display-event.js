@@ -85,13 +85,13 @@ export default class DisplayEvent extends Component {
         )
 
         shareButton = (
-          <div className='info'>      
+          <div className='info'>
             <p><strong>Share the event with your friends:</strong></p>
             <Email idEvent={this.state.idEvent} nameEvent={this.state.nameEvent}/>
-          </div> 
+          </div>
         )
       }
-      
+
     return (
             <div>
               {this.state.eventList.map(item =>
@@ -100,7 +100,7 @@ export default class DisplayEvent extends Component {
                     <div className='eventImg'>
                       <h1 className='eventTitle'>
                         {item.name}<i>(by {item.author})</i>
-                      </h1>                  
+                      </h1>
                   </div>
                   <div className="imgDiv border">
                             {
@@ -111,17 +111,16 @@ export default class DisplayEvent extends Component {
                     <p> {item.description} </p>
                   </div>
                   <div className='wholeInfos'>
-                    <div className='wholeInfos1'>
+                    <div className="mt-5 text-center boxDescriptionSingle shadow">
+                      <OpenStreetMap address={`${item.street} ${item.postal_code} ${item.city} ${item.country}`} className="map-placeholder" mapId={`event-${this.state.idEvent}-map`}/>
+                    </div>
+                  <div className='wholeInfos1'>
                       <div className='info'>
                         <img className='infoIcons' src='https://www.redfcu.org/Assets/uploads/images/Find%20a%20LocationBranch.png' />
                         <div className='infoTxt'>
                           <div>{item.street}</div>
                           <div>{item.postal_code}, {item.city}</div>
                           <div>{item.country}</div>
-                          <div className="mt-5 text-center boxDescriptionSingle shadow">
-                            <OpenStreetMap address={`${item.street} ${item.postal_code} ${item.city} ${item.country}`} className="map-placeholder" mapId={`event-${this.state.idEvent}-map`}/>
-                            
-                          </div>
                         </div>
                       </div>
                       <div className='info'>
@@ -147,8 +146,8 @@ export default class DisplayEvent extends Component {
                         {this.state.suscribersList.map(item =>
                           <div>{item.username}</div>
                         )}
-                      </div>                      
-                        { suscribeButton }             
+                      </div>
+                        { suscribeButton }
                         { shareButton }
                       <div className='wholeInfos2'>
                           <div className='info'>

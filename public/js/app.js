@@ -87342,6 +87342,12 @@ function (_Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", item.description, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "wholeInfos"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "mt-5 text-center boxDescriptionSingle shadow"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_maps__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          address: "".concat(item.street, " ").concat(item.postal_code, " ").concat(item.city, " ").concat(item.country),
+          className: "map-placeholder",
+          mapId: "event-".concat(_this2.state.idEvent, "-map")
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "wholeInfos1"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "info"
@@ -87350,13 +87356,7 @@ function (_Component) {
           src: "https://www.redfcu.org/Assets/uploads/images/Find%20a%20LocationBranch.png"
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "infoTxt"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.street), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.postal_code, ", ", item.city), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.country), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "mt-5 text-center boxDescriptionSingle shadow"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_maps__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          address: "".concat(item.street, " ").concat(item.postal_code, " ").concat(item.city, " ").concat(item.country),
-          className: "map-placeholder",
-          mapId: "event-".concat(_this2.state.idEvent, "-map")
-        })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.street), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.postal_code, ", ", item.city), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.country))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "info"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "infoIcons",
