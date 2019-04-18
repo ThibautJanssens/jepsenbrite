@@ -87357,13 +87357,13 @@ function (_Component) {
           src: "https://www.redfcu.org/Assets/uploads/images/Find%20a%20LocationBranch.png"
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "infoTxt"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.street), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.postal_code, ", ", item.city), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.country), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.street), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.postal_code, ", ", item.city), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.country), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "mt-5 text-center boxDescriptionSingle shadow"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_maps__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          address: item.address,
+          address: "".concat(item.street, " ").concat(item.postal_code, " ").concat(item.city, " ").concat(item.country),
           className: "map-placeholder",
           mapId: "event-".concat(_this2.state.idEvent, "-map")
-        }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "info"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "infoIcons",
@@ -87398,8 +87398,10 @@ function (_Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "List of suscribers:")), _this2.state.suscribersList.map(function (item) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.username);
         })), suscribeButton, shareButton, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "wholeInfos2"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "info"
-        }, editButton)))));
+        }, editButton))))));
       }));
     }
   }]);
@@ -88940,7 +88942,7 @@ function (_Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Maps; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return OpenStreetMap; });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -88971,18 +88973,18 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var Maps =
+var OpenStreetMap =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Maps, _Component);
+  _inherits(OpenStreetMap, _Component);
 
-  function Maps() {
-    _classCallCheck(this, Maps);
+  function OpenStreetMap() {
+    _classCallCheck(this, OpenStreetMap);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Maps).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(OpenStreetMap).apply(this, arguments));
   }
 
-  _createClass(Maps, [{
+  _createClass(OpenStreetMap, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this = this;
@@ -89056,6 +89058,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      //console.log("props.address", this.props.address);
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-6 ".concat(this.props.className),
         id: this.props.mapId
@@ -89063,7 +89066,7 @@ function (_Component) {
     }
   }]);
 
-  return Maps;
+  return OpenStreetMap;
 }(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
 
 

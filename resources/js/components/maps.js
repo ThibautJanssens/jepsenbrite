@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class Maps extends Component {
+export default class OpenStreetMap extends Component {
   componentDidMount(){
     const mapDiv = document.getElementById(`${this.props.mapId}`);
     this.resize(mapDiv);
@@ -36,6 +36,7 @@ export default class Maps extends Component {
   }
 
   render() {
+      //console.log("props.address", this.props.address);
       return (
         <div className={`col-6 ${this.props.className}`} id={this.props.mapId}></div>
       )
