@@ -5,6 +5,8 @@ import { unsuscribeEvent } from './helpers';
 import Email from './email';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
+import Maps from './maps';
+
 export default class DisplayEvent extends Component {
 
   constructor(props) {
@@ -117,6 +119,11 @@ export default class DisplayEvent extends Component {
                           <div>{item.street}</div>
                           <div>{item.postal_code}, {item.city}</div>
                           <div>{item.country}</div>
+                          <div>
+                            <div className="mt-5 text-center boxDescriptionSingle shadow">
+                              <Maps address={item.address} className="map-placeholder" mapId={`event-${this.state.idEvent}-map`}/>
+                            </div>
+                          </div>
                         </div>
                       </div>
                       <div className='info'>
