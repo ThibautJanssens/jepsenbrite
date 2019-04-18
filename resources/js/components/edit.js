@@ -188,174 +188,181 @@ export default class Edit extends Component {
     const authorArticle = this.state.eventList.map(item => item.author);
 
     return (
-      <Form onSubmit={this.handleSubmit} className="m-5">
-      <h1>Update event</h1>
-      <div className="m-2 m-sm-5 p-2 p-xl-5">
-          <div>
-            {this.state.eventList.map(item =>
-              <div key={item.id} className="w-100  ">
-              <Form.Group controlId="exampleForm.ControlInput1">
-              <Form.Label>Title</Form.Label>
-                  <Form.Control
-                    name="name"
-                    type="text"
-                    value={this.state.name}
-                    placeholder="your event title"
-                    onChange={this.handleChange}
-                  />
-                </Form.Group>
-                <Form.Group controlId="exampleForm.ControlTextarea1">
-                  <Form.Label>Description</Form.Label>
-                  <Form.Control
-                    name="description"
-                    placeholder="your event description"
-                    as="textarea" rows="10"
-                    value={this.state.description}
-                    onChange={this.handleChange}
-                  />
-                  </Form.Group>
-                  <Form.Group controlId="exampleForm.ControlInput1">
-                  <Form.Label>Adress</Form.Label>
-                    <Form.Control
-                      name="street"
-                      type="text"
-                      value={this.state.street}
-                      placeholder="street"
-                      onChange={this.handleChange}
-                    />
-                    <Form.Control
-                      name="postal_code"
-                      type="number"
-                      value={this.state.postal_code}
-                      placeholder="postal code"
-                      onChange={this.handleChange}
-                    />
-                    <Form.Control
-                      name="city"
-                      type="text"
-                      value={this.state.city}
-                      placeholder="city"
-                      onChange={this.handleChange}
-                    />
-                    <Form.Control
-                      name="country"
-                      type="text"
-                      value={this.state.country}
-                      placeholder="country"
-                      onChange={this.handleChange}
-                    />
-                  </Form.Group>
-                  <Form.Group controlId="exampleForm.ControlInput1">
-                  <Form.Label>Price</Form.Label>
-                      <Form.Control
-                        name="price"
-                        type="number"
-                        value={this.state.price}
-                        placeholder="set the price of the event"
-                        onChange={this.handleChange}
-                      />
-                    </Form.Group>
-                    <div>
-                      <label>
-                        <input
-                        type="radio"
-                        name="react-tips"
-                        id="radioImage"
-                        ref="radioImage"
-                        value="image"
-                        checked={this.state.selectedOption === "image"}
-                        onChange={this.handleOptionChange}
-                        className="form-check-input"
-                        />
-                      Add an image</label>
-                    </div>
-                    <div>
-                      <label>
-                        <input
-                        type="radio"
-                        name="react-tips"
-                        id="radioVideo"
-                        ref="radioVideo"
-                        value="video"
-                        checked={this.state.selectedOption === "video"}
-                        onChange={this.handleOptionChange}
-                        className="form-check-input"
-                        />
-                      Add a video</label>
-                      </div>
-                    {this.state.selectedOption === "image" ?
-                    <div className="grid-container-img-add">
-                      <div className="file">
-                        <input
-                        className="form-control-file"
-                        type="file"
-                        name="image"
-                        id="UploadedFile"
-                        onChange={(e)=>this.onChangeImg(e)} />
-                      </div>
-                      <div className="preview"><img id="output" src={this.state.imagePreviewUrl} className="output" alt=""/></div>
-                    </div>
-                    :
-                    <div className="grid-container-img-add">
-                      <div className="file">
-                        <input
-                        className="form-control-file"
-                        name="video_url"
-                        id="video_url"
-                        type="url"
-                        placeholder="paste an url"
-                        value={this.state.video_url}
-                        onChange={this.handleChange}
+      <div className="eventsPassed">
+        <div className='passedEvents'>
+          <div className='passedEvents2'>
+            <Form onSubmit={this.handleSubmit} className="m-5">
+            <h1>Update event</h1>
+            <div className="m-2 m-sm-5 p-2 p-xl-5">
+                <div>
+                  {this.state.eventList.map(item =>
+                    <div key={item.id} className="w-100  ">
+                    <div controlId="exampleForm.ControlInput1">
+                    <Form.Label>Title</Form.Label>
+                        <Form.Control
+                          name="name"
+                          type="text"
+                          value={this.state.name}
+                          placeholder="your event title"
+                          onChange={this.handleChange}
                         />
                       </div>
-                    </div>
-                    }
-                    <div className="p-col-12 mt-3">
-                        <p>Date of event:</p>
-                        <Calendar
-                        dateFormat="yy/mm/dd"
-                        value={this.state.date_event}
-                        onChange={(e) => this.setState({ date_event: e.value })}
-                        readOnlyInput={true}
-                        minDate={new Date()}
-                        showTime={true}
-                        timeOnly={false}
-                        hourFormat="24"
-                        showIcon={true}
-                        showSeconds={true}
+                      <div controlId="exampleForm.ControlTextarea1">
+                        <Form.Label>Description</Form.Label>
+                        <Form.Control
+                          name="description"
+                          placeholder="your event description"
+                          as="textarea" rows="10"
+                          value={this.state.description}
+                          onChange={this.handleChange}
                         />
+                        </div>
+                        <div controlId="exampleForm.ControlInput1">
+                        <Form.Label>Adress</Form.Label>
+                          <Form.Control
+                            name="street"
+                            type="text"
+                            value={this.state.street}
+                            placeholder="street"
+                            onChange={this.handleChange}
+                          />
+                          <Form.Control
+                            name="postal_code"
+                            type="number"
+                            value={this.state.postal_code}
+                            placeholder="postal code"
+                            onChange={this.handleChange}
+                          />
+                          <Form.Control
+                            name="city"
+                            type="text"
+                            value={this.state.city}
+                            placeholder="city"
+                            onChange={this.handleChange}
+                          />
+                          <Form.Control
+                            name="country"
+                            type="text"
+                            value={this.state.country}
+                            placeholder="country"
+                            onChange={this.handleChange}
+                          />
+                        </div>
+                        <div controlId="exampleForm.ControlInput1">
+                        <Form.Label>Price</Form.Label>
+                            <Form.Control
+                              name="price"
+                              type="number"
+                              value={this.state.price}
+                              placeholder="set the price of the event"
+                              onChange={this.handleChange}
+                            />
+                          </div>
+                          <div>
+                            <label>
+                              <input
+                              type="radio"
+                              name="react-tips"
+                              id="radioImage"
+                              ref="radioImage"
+                              value="image"
+                              checked={this.state.selectedOption === "image"}
+                              onChange={this.handleOptionChange}
+                              className="form-check-input"
+                              />
+                            Add an image</label>
+                          </div>
+                          <div>
+                            <label>
+                              <input
+                              type="radio"
+                              name="react-tips"
+                              id="radioVideo"
+                              ref="radioVideo"
+                              value="video"
+                              checked={this.state.selectedOption === "video"}
+                              onChange={this.handleOptionChange}
+                              className="form-check-input"
+                              />
+                            Add a video</label>
+                            </div>
+                          {this.state.selectedOption === "image" ?
+                          <div className="grid-container-img-add">
+                            <div className="file">
+                              <input
+                              className="form-control-file"
+                              type="file"
+                              name="image"
+                              id="UploadedFile"
+                              onChange={(e)=>this.onChangeImg(e)} />
+                            </div>
+                            <div className="preview"><img id="output" src={this.state.imagePreviewUrl} className="output" alt=""/></div>
+                          </div>
+                          :
+                          <div className="grid-container-img-add">
+                            <div className="file">
+                              <input
+                              className="form-control-file"
+                              name="video_url"
+                              id="video_url"
+                              type="url"
+                              placeholder="paste an url"
+                              value={this.state.video_url}
+                              onChange={this.handleChange}
+                              />
+                            </div>
+                          </div>
+                          }
+                          <div className="p-col-12 mt-3">
+                              <p>Date of event:</p>
+                              <Calendar
+                              dateFormat="yy/mm/dd"
+                              value={this.state.date_event}
+                              onChange={(e) => this.setState({ date_event: e.value })}
+                              readOnlyInput={true}
+                              minDate={new Date()}
+                              showTime={true}
+                              timeOnly={false}
+                              hourFormat="24"
+                              showIcon={true}
+                              showSeconds={true}
+                              />
+                          </div>
+                          <div className="p-col-12 mt-3">
+                            <div className="form-check">
+                              <input className="form-check-input"
+                              type="checkbox"
+                              name="boxReminder"
+                              checked={this.state.boxReminder}
+                              onChange={this.handleChange} />
+                              <label className="form-check-label">
+                                Send a reminder to users who suscribed
+                              </label>
+                            </div>
+                            <div style={{display:'none'}} name="calendarDisplay">
+                              <Calendar
+                              dateFormat="yy/mm/dd"
+                              value={this.state.reminder}
+                              onChange={(e) => this.setState({ reminder: e.value })}
+                              readOnlyInput={true}
+                              showTime={true}
+                              timeOnly={false}
+                              hourFormat="24"
+                              showIcon={true}
+                              showSeconds={true}
+                              />
+                            </div>
+                          </div>
                     </div>
-                    <div className="p-col-12 mt-3">
-                      <div className="form-check">
-                        <input className="form-check-input"
-                        type="checkbox"
-                        name="boxReminder"
-                        checked={this.state.boxReminder}
-                        onChange={this.handleChange} />
-                        <label className="form-check-label">
-                          Send a reminder to users who suscribed
-                        </label>
-                      </div>
-                      <div style={{display:'none'}} name="calendarDisplay">
-                        <Calendar
-                        dateFormat="yy/mm/dd"
-                        value={this.state.reminder}
-                        onChange={(e) => this.setState({ reminder: e.value })}
-                        readOnlyInput={true}
-                        showTime={true}
-                        timeOnly={false}
-                        hourFormat="24"
-                        showIcon={true}
-                        showSeconds={true}
-                        />
-                      </div>
-                    </div>
+                  )}
+                </div>
+              <Button disabled={!this.validateForm()} className="my-3" type="submit">Submit</Button>
               </div>
-            )}
+              </Form>
+            </div>
           </div>
-        <Button disabled={!this.validateForm()} className="my-3" type="submit">Submit</Button>
         </div>
-        </Form>
+
     )
   }
 }

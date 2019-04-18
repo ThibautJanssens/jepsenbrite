@@ -87059,7 +87059,13 @@ function (_Component) {
       var authorArticle = this.state.eventList.map(function (item) {
         return item.author;
       });
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a, {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "eventsPassed"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "passedEvents"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "passedEvents2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a, {
         onSubmit: this.handleSubmit,
         className: "m-5"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Update event"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -87068,7 +87074,7 @@ function (_Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: item.id,
           className: "w-100  "
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Group, {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           controlId: "exampleForm.ControlInput1"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Label, null, "Title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Control, {
           name: "name",
@@ -87076,7 +87082,7 @@ function (_Component) {
           value: _this3.state.name,
           placeholder: "your event title",
           onChange: _this3.handleChange
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Group, {
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           controlId: "exampleForm.ControlTextarea1"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Label, null, "Description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Control, {
           name: "description",
@@ -87085,7 +87091,7 @@ function (_Component) {
           rows: "10",
           value: _this3.state.description,
           onChange: _this3.handleChange
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Group, {
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           controlId: "exampleForm.ControlInput1"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Label, null, "Adress"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Control, {
           name: "street",
@@ -87111,7 +87117,7 @@ function (_Component) {
           value: _this3.state.country,
           placeholder: "country",
           onChange: _this3.handleChange
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Group, {
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           controlId: "exampleForm.ControlInput1"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Label, null, "Price"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Control, {
           name: "price",
@@ -87221,7 +87227,7 @@ function (_Component) {
         disabled: !this.validateForm(),
         className: "my-3",
         type: "submit"
-      }, "Submit")));
+      }, "Submit"))))));
     }
   }]);
 
