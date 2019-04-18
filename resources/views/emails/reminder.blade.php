@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Reminder on EventDab</title>
+    <title>Thanks for registrating on Event-Dab !</title>
     <style>
         body {
-            background-color: #C0B283;
-            color: #040312;
+            background-color: rgba(11, 52, 99);
+            color: white;
             margin: 0px;
             padding: 0px;
             text-align: center;
@@ -13,20 +13,24 @@
 
         h2 {
             border: 1px solid #F4F4F4;
-            background-color: #B3A26A;
+            background-color: #0F3357;
             margin: 10px;
             padding: 10px;
             border-radius: 10px;
             color: #F4F4F4;
         }
 
-        article {
-            background-color: #F4F4F4;
+        table{
+            width: 100%;
+        }
+
+        td {
+            background-color: #0F3357;
             margin: 10px 10px 50px 10px;
             padding: 10px;
             border: 1px solid #F4F4F4;
             border-radius: 10px;
-            background-color: #B3A26A;
+            background-color: #0F3357;
         }
 
         a.button {
@@ -36,7 +40,7 @@
             width: 100%;
             text-decoration: none;
             color: #F4F4F4;
-            background-color: #B3A26A;
+            background-color: #0F3357;
             border: 2px solid #F4F4F4;
             border-radius: 10px;
         }
@@ -45,24 +49,37 @@
             text-align: left;
         }
 
+        .logo{
+            margin: auto;
+        }
+
     </style>
     <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
 </head>
 
 <body>
-    <h2>Hello {{$event->user}} !</h2>
+    <h2>Hello {{$user['name']}}</h2>
     <br />
-    <img src="https://zupimages.net/up/19/15/xpo1.png" alt="logo EventDab" width="100px" height="100px">
-    <article>
+    <table align="center">
+    <tr>
+    <td align="center">
+    <h3>Do</h3><img src="https://66.media.tumblr.com/ecb8e25653f3eb1db0d7a3cf5b846205/tumblr_pp2oe6jLCd1sq3etqo1_1280.png" alt="EventDab logo" width="100px" height="100px" class="logo" position="center"><h3>Events</h3>
+    </td>
+    </tr>
+    </table>
+    <table align="center">
+    <tr>
+        <td align="center">
         <p>
-         This is a reminder for an event: {{$event->event}} you're interested to.
-        </p>
-        <p>
-            We'll hope you'll find the best events around you or you'll share your events with the <i>EventDab
-                Community</i> !
-        </p>
-        <p>See you soon on <b>EventDab!</b></p>
-        <a href={{$eventUrl}} class="button">Click here to go back to Event Dab!</a>
-    </article>
+        This is a reminder for an event: {{$event->event}} you're interested to.
+                </p>
+        <p>  We'll hope you'll find the best events around you or you'll share your events with the <i>EventDab
+                Community</i> !</p>
+
+        <p>See you soon on <b>DoNutEvents!</b></p>
+        <a href="https://jepsen-brite.herokuapp.com/" class="button">Click here to go back to Do Nuts Events!</a>
+        </td>
+        </tr>
+    </table>
 </body>
 </html>
