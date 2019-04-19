@@ -4,6 +4,7 @@ import { suscribeEvent } from './helpers';
 import { unsuscribeEvent } from './helpers';
 import Email from './email';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import OpenStreetMap from './maps';
 
 export default class DisplayEvent extends Component {
 
@@ -117,6 +118,10 @@ export default class DisplayEvent extends Component {
                           <div>{item.street}</div>
                           <div>{item.postal_code}, {item.city}</div>
                           <div>{item.country}</div>
+                          <div className="mt-5 text-center boxDescriptionSingle shadow">
+                            <OpenStreetMap address={`${item.street} ${item.postal_code} ${item.city} ${item.country}`} className="map-placeholder" mapId={`event-${this.state.idEvent}-map`}/>
+                            
+                          </div>
                         </div>
                       </div>
                       <div className='info'>
@@ -145,8 +150,10 @@ export default class DisplayEvent extends Component {
                       </div>                      
                         { suscribeButton }             
                         { shareButton }
-                      <div className='info'>
-                        { editButton }
+                      <div className='wholeInfos2'>
+                          <div className='info'>
+                            { editButton }
+                          </div>
                       </div>
                     </div>
                   </div>

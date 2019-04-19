@@ -31,8 +31,8 @@
     <script src="https://unpkg.com/@babel/standalone"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.5.2/umd/react.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.5.2/umd/react-dom.production.min.js"></script>
-<script src="../dist/react-leaflet.min.js"></script>
-
+    <script src="../dist/react-leaflet.min.js"></script>
+    <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
 
     </head>
     <body>
