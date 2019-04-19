@@ -87143,7 +87143,7 @@ function (_Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "infoIcons",
           src: "https://www.redfcu.org/Assets/uploads/images/Find%20a%20LocationBranch.png"
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "infoTxt"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.street), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.postal_code, ", ", item.city), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.country))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "info"
@@ -88051,9 +88051,7 @@ function (_Component) {
     _this.state = {
       email: [{
         toMail: ""
-      }],
-      from: "",
-      eventName: ""
+      }]
     };
     return _this;
   }
@@ -88090,37 +88088,38 @@ function (_Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(event) {
-      event.preventDefault(); //console.log("To send: "+JSON.stringify(this.state.email));
-      //console.log("user-id-storage: "+JSON.parse(sessionStorage.getItem("user-id-storage")));
-      //console.log("user-name-storage: "+JSON.parse(sessionStorage.getItem("user-name-storage")));
-
+      event.preventDefault();
       var senderId = sessionStorage.getItem("user-id-storage");
-      var senderName = sessionStorage.getItem("user-name-storage"); //console.log(this.props.nameEvent);
+      var senderName = sessionStorage.getItem("user-name-storage");
+      var mailing = [];
+      var obj = this.state.email; //convert  array (email) to a 'single' array (mailList)
 
+      obj.forEach(function (item) {
+        Object.keys(item).forEach(function (key) {
+          if (item[key] !== "") {
+            mailing.push(item[key]);
+          }
+        });
+      });
       var myJSON = {
         "eventId": this.props.idEvent,
         "eventName": this.props.nameEvent,
         "senderId": senderId,
         "senderName": senderName,
-        "emailList": JSON.stringify(this.state.email)
+        "emailList": mailing
       };
-      console.log(myJSON);
+      Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["appSendMails"])(this.props.idEvent, myJSON);
     }
   }, {
     key: "render",
     value: function render() {
       var _this3 = this;
 
-      var _this$state = this.state,
-          from = _this$state.from,
-          eventName = _this$state.eventName,
-          email = _this$state.email;
+      var email = this.state.email;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit,
         onChange: this.handleChange
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.addMail
-      }, "Add new recipient"), email.map(function (val, idx) {
+      }, email.map(function (val, idx) {
         var mailId = "mail-".concat(idx);
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: idx
@@ -88135,7 +88134,10 @@ function (_Component) {
           value: email[idx].toMail,
           className: "toMail"
         }));
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        onClick: this.addMail,
+        value: "addMail"
+      }, "Add new recipient"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         value: "Submit"
       }));
@@ -88171,11 +88173,9 @@ module.exports = "/images/eventdablogo.png?039d93a80f077fcb66fb8b16ec21e750";
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return FooterContent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Footer; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap_Nav__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap/Nav */ "./node_modules/react-bootstrap/Nav.js");
-/* harmony import */ var react_bootstrap_Nav__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Nav__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -88196,30 +88196,51 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
-var FooterContent =
+var Footer =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(FooterContent, _Component);
+  _inherits(Footer, _Component);
 
-  function FooterContent() {
-    _classCallCheck(this, FooterContent);
+  function Footer() {
+    _classCallCheck(this, Footer);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(FooterContent).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(Footer).apply(this, arguments));
   }
 
-  _createClass(FooterContent, [{
+  _createClass(Footer, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Nav__WEBPACK_IMPORTED_MODULE_1___default.a, {
-        className: "footer bg-light navbar d-flex-row jusify-content-around"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "navbar-header text-center font-italic w-100"
-      }, "\xA9 2019 The Dab Fundation - Julien -  Michael - Thibaut - Vincent"));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
+        className: "footIt"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "gitTitle"
+      }, "Github accounts:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "gitList"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "gitAccount"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "https://github.com/Jucara",
+        target: "blank"
+      }, "Julien")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "gitAccount"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "https://github.com/MichaelLambrechts",
+        target: "blank"
+      }, "Michael")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "gitAccount"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "https://github.com/ThibautJanssens",
+        target: "blank"
+      }, "Thibaut")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "gitAccount"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "https://github.com/Raigyo",
+        target: "blank"
+      }, "Vincent")))));
     }
   }]);
 
-  return FooterContent;
+  return Footer;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
@@ -88640,10 +88661,12 @@ function appAddEvent(myJSON) {
 }
 /*Add Event-POST */
 
-function appSendMails(myJSON) {
+function appSendMails(eventID, myJSON) {
+  console.log("eventID" + eventID);
+  console.log("myJSON" + JSON.stringify(myJSON));
   axios__WEBPACK_IMPORTED_MODULE_0___default()({
     method: 'POST',
-    url: "/api/event",
+    url: "/event/" + eventID + "/invitations",
     headers: {
       'Content-Type': "application/json",
       'Authorization': "Bearer " + JSON.parse(sessionStorage.getItem("token-storage"))
@@ -88663,7 +88686,7 @@ function appSendMails(myJSON) {
         }
       },
       callback: function callback(result) {
-        window.location = '/';
+        window.location = '/display-event/' + eventID;
       }
     });
   })["catch"](function (error) {

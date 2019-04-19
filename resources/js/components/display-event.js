@@ -3,7 +3,7 @@ import { appGetEventByID } from './helpers';
 import { suscribeEvent } from './helpers';
 import { unsuscribeEvent } from './helpers';
 import Email from './email';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import OpenStreetMap from './maps';
 
 export default class DisplayEvent extends Component {

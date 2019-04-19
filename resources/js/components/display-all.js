@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { appGetFutureEvent } from './helpers';
 import posed from 'react-pose';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
 export default class DisplayAll extends Component {
 
@@ -40,11 +40,11 @@ export default class DisplayAll extends Component {
                 <div className='wholeInfos1'>
                   <div className='info'>
                     <img className='infoIcons' src='https://www.redfcu.org/Assets/uploads/images/Find%20a%20LocationBranch.png' />
-                    <p className='infoTxt'>
+                    <div className='infoTxt'>
                       <div>{item.street}</div>
                       <div>{item.postal_code}, {item.city}</div>
                       <div>{item.country}</div>
-                    </p>
+                    </div>
                   </div>
                   <div className='info'>
                     <img className='infoIcons' src='https://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/calendar-icon.png' />

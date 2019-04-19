@@ -336,11 +336,13 @@ export function appAddEvent(myJSON) {
 
 
 /*Add Event-POST */
-export function appSendMails(myJSON) {
+export function appSendMails(eventID, myJSON) {
+  console.log("eventID"+eventID);
+  console.log("myJSON"+JSON.stringify(myJSON));
   axios(
     {
       method: 'POST',
-      url: "/api/event",
+      url: "/event/"+eventID+"/invitations",
       headers:
       {
         'Content-Type': "application/json",
@@ -362,7 +364,7 @@ export function appSendMails(myJSON) {
           }
         },
         callback: function (result) {
-          window.location = '/';
+          window.location = '/display-event/'+eventID;
         }
       });
     })

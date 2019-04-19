@@ -1,14 +1,21 @@
-import React, { Component } from 'react'
-import Nav from 'react-bootstrap/Nav'
+import React, { Component } from 'react';
 
-export default class FooterContent extends Component {
 
+export default class Footer extends Component {
     render() {
-
         return (
-            <Nav className="footer bg-light navbar d-flex-row jusify-content-around">
-                <p className="navbar-header text-center font-italic w-100">© 2019 The Dab Fundation - Julien -  Michael - Thibaut - Vincent</p>
-            </Nav>
+              <footer className='footIt'>
+                  <div>
+                      <p className='gitTitle'>Github accounts:</p>
+                      <ul className='gitList'>
+                          <li className='gitAccount'><a href='https://github.com/Jucara' target='blank'>Julien</a></li>
+                          <li className='gitAccount'><a href='https://github.com/MichaelLambrechts' target='blank'>Michael</a></li>
+                          <li className='gitAccount'><a href='https://github.com/ThibautJanssens' target='blank'>Thibaut</a></li>
+                          <li className='gitAccount'><a href='https://github.com/Raigyo' target='blank'>Vincent</a></li>
+                      </ul>
+
+                  </div>
+              </footer>
         );
     }
 }
