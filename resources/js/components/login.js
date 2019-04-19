@@ -22,7 +22,7 @@ export default class Login extends Component {
   }//\end fct validateForm
 
   handleChange(event) {
-      this.setState({ [event.target.name]: event.target.value });
+    this.setState({ [event.target.name]: event.target.value });
   }//\end fct handleChange
 
   handleSubmit() {
@@ -36,15 +36,15 @@ export default class Login extends Component {
     return (
       <div className="Login m-5">
         <Form onSubmit={this.handleSubmit}>
-        <h1>Login</h1>
+          <h1>Login</h1>
           <Form.Group controlId="formBasicEmail">
             <Form.Label >Email address</Form.Label>
             <Form.Control
-            autoComplete="true"
-            name="email"
-            type="email"
-            value={this.state.email}
-            onChange={this.handleChange}
+              autoComplete="true"
+              name="email"
+              type="email"
+              value={this.state.email}
+              onChange={this.handleChange}
             />
             <Form.Text className="text-muted">
               We'll never share your email with anyone else.
@@ -53,17 +53,18 @@ export default class Login extends Component {
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control
-            autoComplete="false"
-            name="password"
-            value={this.state.password}
-            onChange={this.handleChange}
-            type="password"
+              autoComplete="false"
+              name="password"
+              value={this.state.password}
+              onChange={this.handleChange}
+              type="password"
             />
+
+            <Button className="w-100 mt-4 mx-auto" disabled={!this.validateForm()}
+              type="submit">
+              Submit
+            </Button>
           </Form.Group>
-          <Button  disabled={!this.validateForm()}
-            type="submit">
-            Submit
-  </Button>
         </Form>
       </div>
     );

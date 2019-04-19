@@ -86590,11 +86590,11 @@ function (_Component) {
         placeholder: "Password",
         value: this.state.password,
         onChange: this.handleChange
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4___default.a, {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4___default.a, {
+        className: "w-100 mt-4 mx-auto",
         disabled: !this.validateForm(),
-        variant: "primary",
         type: "submit"
-      }, "Submit"));
+      }, "Submit")));
     }
   }]);
 
@@ -87124,7 +87124,7 @@ function (_Component) {
           key: item.name,
           className: "eventTitle "
         }, item.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, item.author)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "container"
+          className: "container video-container mt-5"
         }, item.media_type === 'image' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "imgDisplay",
           alt: "image event",
@@ -87298,7 +87298,7 @@ function (_Component) {
 
       if (sessionStorage.getItem("token-storage") !== null) {
         suscribeButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "info"
+          className: "m-auto"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           className: "form-check-input",
           type: "checkbox",
@@ -87308,12 +87308,12 @@ function (_Component) {
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
           className: "form-check-label"
         }, "Suscribe to this event"));
-        shareButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "info"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Share the event with your friends:")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_email__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        shareButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "mt-5"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Share the event with your friends: ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_email__WEBPACK_IMPORTED_MODULE_2__["default"], {
           idEvent: this.state.idEvent,
           nameEvent: this.state.nameEvent
-        }));
+        })));
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.eventList.map(function (item) {
@@ -87327,13 +87327,12 @@ function (_Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
           className: "eventTitle"
         }, item.name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, "(by ", item.author, ")"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "imgDiv border"
+          className: "imgDiv border video-container"
         }, item.media_type === 'image' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "imgDisplay",
+          className: "imgDisplay ",
           alt: "image event",
           src: item.image_url
         }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("iframe", {
-          width: "100%",
           src: "https://www.youtube.com/embed/".concat(item.image_url),
           frameBorder: "0",
           allowFullScreen: true
@@ -87342,7 +87341,7 @@ function (_Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", item.description, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "wholeInfos"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "mt-5 text-center boxDescriptionSingle shadow"
+          className: "mt-5 w-100 boxDescriptionSingle shadow"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_maps__WEBPACK_IMPORTED_MODULE_4__["default"], {
           address: "".concat(item.street, " ").concat(item.postal_code, " ").concat(item.city, " ").concat(item.country),
           className: "map-placeholder",
@@ -87370,30 +87369,24 @@ function (_Component) {
           src: "https://stickeroid.com/uploads/pic/full-pngimg/9d06df374b8bab48fc3ba0a7e1a6f4ccd2212d81.png"
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "infoTxt"
-        }, "\u20AC ", item.price))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "wholeInfos2"
+        }, "\u20AC ", item.price)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "wholeInfos3"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "info"
+          className: "m-auto"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "infoIcons2",
           src: "http://pngimages.net/sites/default/files/upload-png-image-77090.png"
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "infoTxt"
-        }, "Posted on ", item.created_at)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "info"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Posted on ", item.created_at)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "m-auto"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "infoIcons2",
           src: "https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_update-512.png"
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "infoTxt"
-        }, "Last update: ", item.updated_at)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "info"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "List of suscribers:")), _this2.state.suscribersList.map(function (item) {
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, item.username);
-        })), suscribeButton, shareButton, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "wholeInfos2"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "info"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Last update: ", item.updated_at)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "m-auto"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "List of suscribers:\xA0 ")), _this2.state.suscribersList.map(function (item) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "  \xA0", item.username, " \xA0");
+        })), suscribeButton, shareButton, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "m-auto"
         }, editButton))))));
       }));
     }
@@ -87484,7 +87477,7 @@ function (_Component) {
           key: item.name,
           className: "eventTitle "
         }, item.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, item.author)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "container"
+          className: "container video-container mt-5"
         }, item.media_type === 'image' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "imgDisplay",
           alt: "image event",
@@ -88117,6 +88110,7 @@ function (_Component) {
 
       var email = this.state.email;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "info flex-column",
         onSubmit: this.handleSubmit,
         onChange: this.handleChange
       }, email.map(function (val, idx) {
@@ -88132,12 +88126,13 @@ function (_Component) {
           id: mailId,
           onChange: _this3.handleChange,
           value: email[idx].toMail,
-          className: "toMail"
+          className: "toMail form-control w-50 my-2 mx-auto"
         }));
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        onClick: this.addMail,
-        value: "addMail"
-      }, "Add new recipient"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "btn btn-light w-50 m-auto",
+        onClick: this.addMail
+      }, "Add new mail"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "btn btn-light w-50 m-auto",
         type: "submit",
         value: "Submit"
       }));
@@ -88371,11 +88366,12 @@ function appRegister(myJSON) {
   axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/register", myJSON).then(function (response) {
     console.log("registered!!");
     bootbox__WEBPACK_IMPORTED_MODULE_2___default.a.confirm({
-      message: "Welcome to EventDab ! You'll be redirected to the login page. Check your emails for more informations.",
+      message: "Welcome to DoNutEvents ! You'll be redirected to the login page. Check your emails for more informations.",
+      className: 'text-primary',
       buttons: {
         confirm: {
           label: 'OK',
-          className: 'btn-success w-100'
+          className: 'btn-primary w-100'
         },
         cancel: {
           label: 'No',
@@ -88391,6 +88387,7 @@ function appRegister(myJSON) {
     console.log("Email already used");
     bootbox__WEBPACK_IMPORTED_MODULE_2___default.a.alert({
       message: "Email already used, choose another one",
+      className: 'text-primary',
       backdrop: true
     });
   });
@@ -88420,10 +88417,11 @@ function appLogin(myJSON) {
     sessionStorage.setItem('token-storage', JSON.stringify(response.data.access_token));
     bootbox__WEBPACK_IMPORTED_MODULE_2___default.a.confirm({
       message: "You are now logged in !",
+      className: 'text-primary',
       buttons: {
         confirm: {
           label: 'Continue',
-          className: 'btn-success w-100'
+          className: 'btn-primary w-100'
         },
         cancel: {
           label: 'No',
@@ -88438,6 +88436,7 @@ function appLogin(myJSON) {
   })["catch"](function (error) {
     bootbox__WEBPACK_IMPORTED_MODULE_2___default.a.alert({
       message: "Problem, email and/or password is incorrect!",
+      className: 'text-primary',
       backdrop: true
     });
   });
@@ -88641,10 +88640,11 @@ function appAddEvent(myJSON) {
   }).then(function (response) {
     bootbox__WEBPACK_IMPORTED_MODULE_2___default.a.confirm({
       message: "Thanks for your contribution, your event has been successfully added",
+      className: 'text-primary',
       buttons: {
         confirm: {
           label: 'Continue',
-          className: 'btn-success w-100'
+          className: 'btn-primary w-100'
         },
         cancel: {
           label: 'No',
@@ -88675,10 +88675,11 @@ function appSendMails(eventID, myJSON) {
   }).then(function (response) {
     bootbox__WEBPACK_IMPORTED_MODULE_2___default.a.confirm({
       message: "Thanks for your contribution, your emails has been successfully sent",
+      className: 'text-primary',
       buttons: {
         confirm: {
           label: 'Continue',
-          className: 'btn-success w-100'
+          className: 'btn-primary w-100'
         },
         cancel: {
           label: 'No',
@@ -88707,10 +88708,11 @@ function updateEvent(eventID, myJSON) {
   }).then(function (response) {
     bootbox__WEBPACK_IMPORTED_MODULE_2___default.a.confirm({
       message: "Your event has been successfully updated",
+      className: 'text-primary',
       buttons: {
         confirm: {
           label: 'Continue',
-          className: 'btn-success w-100'
+          className: 'btn-primary w-100'
         },
         cancel: {
           label: 'No',
@@ -88873,10 +88875,11 @@ function (_Component) {
         value: this.state.password,
         onChange: this.handleChange,
         type: "password"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_3___default.a, {
+        className: "w-100 mt-4 mx-auto",
         disabled: !this.validateForm(),
         type: "submit"
-      }, "Submit")));
+      }, "Submit"))));
     } //\end render
 
   }]);
@@ -89076,7 +89079,7 @@ function (_Component) {
     value: function render() {
       //console.log("props.address", this.props.address);
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-6 ".concat(this.props.className),
+        className: "col-12 ".concat(this.props.className),
         id: this.props.mapId
       });
     }
@@ -89186,8 +89189,8 @@ function (_Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
           key: item.name,
           className: "eventTitle "
-        }, item.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, item.author)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "container"
+        }, item.name))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "container video-container mt-5"
         }, item.media_type === 'image' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "imgDisplay",
           alt: "image event",
@@ -89325,8 +89328,8 @@ function (_Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
           key: item.name,
           className: "eventTitle "
-        }, item.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, item.author)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "container"
+        }, item.name))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "container video-container mt-5"
         }, item.media_type === 'image' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "imgDisplay",
           alt: "image event",
