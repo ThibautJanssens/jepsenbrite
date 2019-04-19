@@ -31,7 +31,7 @@ export default class DisplayAll extends Component {
                 </Link>
                 <i>{item.author}</i>
               </div>
-              <div className="container">
+              <div className="container video-container mt-5">
                 {
                   (item.media_type === 'image') ? <img className="imgDisplay" alt="image event" src={item.image_url} /> : <iframe width="100%" src={`https://www.youtube.com/embed/${item.image_url}`} frameBorder="0" allowFullScreen />
                 }
@@ -40,11 +40,11 @@ export default class DisplayAll extends Component {
                 <div className='wholeInfos1'>
                   <div className='info'>
                     <img className='infoIcons' src='https://www.redfcu.org/Assets/uploads/images/Find%20a%20LocationBranch.png' />
-                    <p className='infoTxt'>
+                    <div className='infoTxt'>
                       <div>{item.street}</div>
                       <div>{item.postal_code}, {item.city}</div>
                       <div>{item.country}</div>
-                    </p>
+                    </div>
                   </div>
                   <div className='info'>
                     <img className='infoIcons' src='https://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/calendar-icon.png' />

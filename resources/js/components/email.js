@@ -49,8 +49,8 @@ render() {
 
     return (
 
-      <form onSubmit={this.handleSubmit} onChange={this.handleChange} >
-        <button onClick={this.addMail}>Add new recipient</button>
+      <form className="info flex-column" onSubmit={this.handleSubmit} onChange={this.handleChange} >
+        <button className="btn btn-light w-50 m-auto" onClick={this.addMail}>Add new mail</button>
         {
           email.map((val, idx)=> {
             let mailId = `mail-${idx}`
@@ -64,13 +64,13 @@ render() {
                   id={mailId}
                   onChange={this.handleChange}
                   value={email[idx].toMail}
-                  className="toMail"
+                  className="toMail form-control w-50 my-2 mx-auto"
                 />
               </div>
             )
           })
         }
-        <input type="submit" value="Submit" />
+        <input className="btn btn-light w-50 m-auto" type="submit" value="Submit" />
       </form>
     )
   }//\render

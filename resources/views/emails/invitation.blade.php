@@ -5,19 +5,19 @@
     <style>
         body {
             background-color: rgba(11, 52, 99);
-            color: white;
+            color: black;
             margin: 0px;
             padding: 0px;
             text-align: center;
         }
 
         h2 {
-            border: 1px solid #F4F4F4;
-            background-color: #0F3357;
+            border: 1px solid #0F3357;
+            background-color: #F4F4F4;
             margin: 10px;
             padding: 10px;
             border-radius: 10px;
-            color: #F4F4F4;
+            color: #0F3357;
         }
 
         table{
@@ -25,12 +25,11 @@
         }
 
         td {
-            background-color: #0F3357;
+            background-color: #F4F4F4;
             margin: 10px 10px 50px 10px;
             padding: 10px;
-            border: 1px solid #F4F4F4;
+            border: 1px solid #0F3357;
             border-radius: 10px;
-            background-color: #0F3357;
         }
 
         a.button {
@@ -39,9 +38,9 @@
             appearance: button;
             width: 100%;
             text-decoration: none;
-            color: #F4F4F4;
-            background-color: #0F3357;
-            border: 2px solid #F4F4F4;
+            color: #0F3357;
+            background-color: #F4F4F4;
+            border: 2px solid #0F3357;
             border-radius: 10px;
         }
 
