@@ -88405,7 +88405,7 @@ function appGetUser() {
   }).then(function (response) {
     sessionStorage.setItem('user-id-storage', response.data.id);
     sessionStorage.setItem('user-name-storage', response.data.name);
-    window.location = '/#/';
+    window.location = '/';
   })["catch"](function (error) {
     console.log(error);
   });
@@ -88457,13 +88457,13 @@ function appLogout() {
     sessionStorage.removeItem("token-storage");
     sessionStorage.removeItem("user-id-storage");
     sessionStorage.removeItem("user-name-storage");
-    window.location = '/#/';
+    window.location = '/';
   })["catch"](function (error) {
     console.log(error);
     sessionStorage.removeItem("token-storage");
     sessionStorage.removeItem("user-id-storage");
     sessionStorage.removeItem("user-name-storage");
-    window.location = '/#/';
+    window.location = '/';
   });
 }
 /*Get ALL events-GET */
@@ -88652,7 +88652,7 @@ function appAddEvent(myJSON) {
         }
       },
       callback: function callback(result) {
-        window.location = '/#/';
+        window.location = '/';
       }
     });
   })["catch"](function (error) {
@@ -88720,7 +88720,7 @@ function updateEvent(eventID, myJSON) {
         }
       },
       callback: function callback(result) {
-        window.location = '/#/';
+        window.location = '/';
       }
     });
   })["catch"](function (error) {

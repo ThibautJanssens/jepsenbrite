@@ -47,7 +47,7 @@ export function appRegister(myJSON) {
         message: "Email already used, choose another one",
         className: 'text-primary',
         backdrop: true,
-        
+
       });
     });
 }
@@ -67,7 +67,7 @@ export function appGetUser() {
     .then(function (response) {
       sessionStorage.setItem('user-id-storage', response.data.id);
       sessionStorage.setItem('user-name-storage', response.data.name);
-      window.location = '/#/';
+      window.location = '/';
     })
     .catch(function (error) {
       console.log(error);
@@ -123,14 +123,14 @@ export function appLogout() {
       sessionStorage.removeItem("token-storage");
       sessionStorage.removeItem("user-id-storage");
       sessionStorage.removeItem("user-name-storage");
-      window.location = '/#/';
+      window.location = '/';
     })
     .catch(function (error) {
       console.log(error);
       sessionStorage.removeItem("token-storage");
       sessionStorage.removeItem("user-id-storage");
       sessionStorage.removeItem("user-name-storage");
-      window.location = '/#/';
+      window.location = '/';
     })
 }
 
@@ -331,7 +331,7 @@ export function appAddEvent(myJSON) {
           }
         },
         callback: function (result) {
-          window.location = '/#/';
+          window.location = '/';
         }
       });
     })
@@ -408,7 +408,7 @@ export function updateEvent(eventID, myJSON) {
           }
         },
         callback: function (result) {
-          window.location = '/#/';
+          window.location = '/';
         }
       });
     })
