@@ -38,7 +38,7 @@ export default class OpenStreetMap extends Component {
   render() {
       //console.log("props.address", this.props.address);
       return (
-        <div className={`col-6 ${this.props.className}`} id={this.props.mapId}></div>
+        <div className={`col-12 ${this.props.className}`} id={this.props.mapId}></div>
       )
     }
 }

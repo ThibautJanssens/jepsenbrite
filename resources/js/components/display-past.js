@@ -26,7 +26,7 @@ export default class DisplayPast extends Component {
                   <h1 key={item.name} className="eventTitle ">{item.name}</h1>
                 <i>{item.author}</i>
               </div>
-              <div className="container">
+              <div className="container video-container mt-5">
                 {
                   (item.media_type === 'image') ? <img className="imgDisplay" alt="image event" src={item.image_url} /> : <iframe width="100%" src={`https://www.youtube.com/embed/${item.image_url}`} frameBorder="0" allowFullScreen />
                 }

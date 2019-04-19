@@ -22,11 +22,12 @@ export function appRegister(myJSON) {
     .then(function (response) {
       console.log("registered!!");
       bootbox.confirm({
-        message: "Welcome to EventDab ! You'll be redirected to the login page. Check your emails for more informations.",
+        message: "Welcome to DoNutEvents ! You'll be redirected to the login page. Check your emails for more informations.",
+        className: 'text-primary',
         buttons: {
           confirm: {
             label: 'OK',
-            className: 'btn-success w-100'
+            className: 'btn-primary w-100'
           },
           cancel: {
             label: 'No',
@@ -44,7 +45,9 @@ export function appRegister(myJSON) {
       console.log("Email already used");
       bootbox.alert({
         message: "Email already used, choose another one",
-        backdrop: true
+        className: 'text-primary',
+        backdrop: true,
+
       });
     });
 }
@@ -64,7 +67,7 @@ export function appGetUser() {
     .then(function (response) {
       sessionStorage.setItem('user-id-storage', response.data.id);
       sessionStorage.setItem('user-name-storage', response.data.name);
-      window.location = '/#/';
+      window.location = '/';
     })
     .catch(function (error) {
       console.log(error);
@@ -78,10 +81,11 @@ export function appLogin(myJSON) {
       sessionStorage.setItem('token-storage', JSON.stringify(response.data.access_token));
       bootbox.confirm({
         message: "You are now logged in !",
+        className: 'text-primary',
         buttons: {
           confirm: {
             label: 'Continue',
-            className: 'btn-success w-100'
+            className: 'btn-primary w-100'
           },
           cancel: {
             label: 'No',
@@ -99,6 +103,7 @@ export function appLogin(myJSON) {
     .catch(function (error) {
       bootbox.alert({
         message: "Problem, email and/or password is incorrect!",
+        className: 'text-primary',
         backdrop: true
       });
     });
@@ -118,14 +123,14 @@ export function appLogout() {
       sessionStorage.removeItem("token-storage");
       sessionStorage.removeItem("user-id-storage");
       sessionStorage.removeItem("user-name-storage");
-      window.location = '/#/';
+      window.location = '/';
     })
     .catch(function (error) {
       console.log(error);
       sessionStorage.removeItem("token-storage");
       sessionStorage.removeItem("user-id-storage");
       sessionStorage.removeItem("user-name-storage");
-      window.location = '/#/';
+      window.location = '/';
     })
 }
 
@@ -314,10 +319,11 @@ export function appAddEvent(myJSON) {
     .then(function (response) {
       bootbox.confirm({
         message: "Thanks for your contribution, your event has been successfully added",
+        className: 'text-primary',
         buttons: {
           confirm: {
             label: 'Continue',
-            className: 'btn-success w-100'
+            className: 'btn-primary w-100'
           },
           cancel: {
             label: 'No',
@@ -325,7 +331,7 @@ export function appAddEvent(myJSON) {
           }
         },
         callback: function (result) {
-          window.location = '/#/';
+          window.location = '/';
         }
       });
     })
@@ -353,10 +359,11 @@ export function appSendMails(eventID, myJSON) {
     .then(function (response) {
       bootbox.confirm({
         message: "Thanks for your contribution, your emails has been successfully sent",
+        className: 'text-primary',
         buttons: {
           confirm: {
             label: 'Continue',
-            className: 'btn-success w-100'
+            className: 'btn-primary w-100'
           },
           cancel: {
             label: 'No',
@@ -389,10 +396,11 @@ export function updateEvent(eventID, myJSON) {
     .then(function (response) {
       bootbox.confirm({
         message: "Your event has been successfully updated",
+        className: 'text-primary',
         buttons: {
           confirm: {
             label: 'Continue',
-            className: 'btn-success w-100'
+            className: 'btn-primary w-100'
           },
           cancel: {
             label: 'No',
@@ -400,7 +408,7 @@ export function updateEvent(eventID, myJSON) {
           }
         },
         callback: function (result) {
-          window.location = '/#/';
+          window.location = '/';
         }
       });
     })
