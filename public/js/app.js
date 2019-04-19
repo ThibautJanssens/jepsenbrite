@@ -86144,7 +86144,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_subscription_event__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/subscription-event */ "./resources/js/components/subscription-event.js");
 /* harmony import */ var _components_unsuscription_event__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/unsuscription-event */ "./resources/js/components/unsuscription-event.js");
 /* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./Home */ "./resources/js/Home.js");
-/* harmony import */ var react_pose__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-pose */ "./node_modules/react-pose/dist/react-pose.es.js");
 
 
 
@@ -86159,82 +86158,76 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-var RouteContainer = react_pose__WEBPACK_IMPORTED_MODULE_15__["default"].div({
-  enter: {
-    x: 0,
-    opacity: 1,
-    delay: 100,
-    beforeChildren: true
-  },
-  exit: {
-    y: 100,
-    opacity: 0
-  }
-});
+ // import posed, { PoseGroup } from 'react-pose';
+// const RouteContainer = posed.div({
+//   enter: { x:0, opacity: 1, delay: 100, beforeChildren: true },
+//   exit: { y:100, opacity: 0 }
+// });
 
 var Routes = function Routes() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     render: function render(_ref) {
       var location = _ref.location;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_pose__WEBPACK_IMPORTED_MODULE_15__["PoseGroup"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(RouteContainer, {
-        key: location.pathname
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], {
-        location: location
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-        exact: true,
-        path: "/",
-        component: _Home__WEBPACK_IMPORTED_MODULE_14__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-        exact: true,
-        path: "/create-account",
-        component: _components_create_account__WEBPACK_IMPORTED_MODULE_2__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-        exact: true,
-        path: "/create-event",
-        component: _components_create__WEBPACK_IMPORTED_MODULE_3__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-        exact: true,
-        path: "/display-all",
-        component: _components_display_all__WEBPACK_IMPORTED_MODULE_4__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-        exact: true,
-        path: "/display-event/:id",
-        component: _components_display_event__WEBPACK_IMPORTED_MODULE_5__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-        exact: true,
-        path: "/display-past",
-        component: _components_display_past__WEBPACK_IMPORTED_MODULE_6__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-        exact: true,
-        path: "/edit/:id",
-        component: _components_edit__WEBPACK_IMPORTED_MODULE_7__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-        exact: true,
-        path: "/login",
-        component: _components_login__WEBPACK_IMPORTED_MODULE_10__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-        exact: true,
-        path: "/logout",
-        component: _components_logout__WEBPACK_IMPORTED_MODULE_11__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-        exact: true,
-        path: "/my-events",
-        component: _components_my_events__WEBPACK_IMPORTED_MODULE_8__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-        exact: true,
-        path: "/my-participations",
-        component: _components_my_participations__WEBPACK_IMPORTED_MODULE_9__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-        exact: true,
-        path: "/subscription-event",
-        component: _components_subscription_event__WEBPACK_IMPORTED_MODULE_12__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-        exact: true,
-        path: "/unsuscription-event",
-        component: _components_unsuscription_event__WEBPACK_IMPORTED_MODULE_13__["default"]
-      }))));
+      return (// <PoseGroup>
+        // <RouteContainer key={location.pathname}>
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], {
+          location: location
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+          exact: true,
+          path: "/",
+          component: _Home__WEBPACK_IMPORTED_MODULE_14__["default"]
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+          exact: true,
+          path: "/create-account",
+          component: _components_create_account__WEBPACK_IMPORTED_MODULE_2__["default"]
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+          exact: true,
+          path: "/create-event",
+          component: _components_create__WEBPACK_IMPORTED_MODULE_3__["default"]
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+          exact: true,
+          path: "/display-all",
+          component: _components_display_all__WEBPACK_IMPORTED_MODULE_4__["default"]
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+          exact: true,
+          path: "/display-event/:id",
+          component: _components_display_event__WEBPACK_IMPORTED_MODULE_5__["default"]
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+          exact: true,
+          path: "/display-past",
+          component: _components_display_past__WEBPACK_IMPORTED_MODULE_6__["default"]
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+          exact: true,
+          path: "/edit/:id",
+          component: _components_edit__WEBPACK_IMPORTED_MODULE_7__["default"]
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+          exact: true,
+          path: "/login",
+          component: _components_login__WEBPACK_IMPORTED_MODULE_10__["default"]
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+          exact: true,
+          path: "/logout",
+          component: _components_logout__WEBPACK_IMPORTED_MODULE_11__["default"]
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+          exact: true,
+          path: "/my-events",
+          component: _components_my_events__WEBPACK_IMPORTED_MODULE_8__["default"]
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+          exact: true,
+          path: "/my-participations",
+          component: _components_my_participations__WEBPACK_IMPORTED_MODULE_9__["default"]
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+          exact: true,
+          path: "/subscription-event",
+          component: _components_subscription_event__WEBPACK_IMPORTED_MODULE_12__["default"]
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+          exact: true,
+          path: "/unsuscription-event",
+          component: _components_unsuscription_event__WEBPACK_IMPORTED_MODULE_13__["default"]
+        })) // </RouteContainer>
+        // </PoseGroup>
+
+      );
     }
   });
 };

@@ -13,19 +13,19 @@ import Logout from './components/logout';
 import SubscriptionEvent from './components/subscription-event';
 import UnsubscriptionEvent from './components/unsuscription-event';
 import Home from './Home'
-import posed, { PoseGroup } from 'react-pose';
+// import posed, { PoseGroup } from 'react-pose';
 
-const RouteContainer = posed.div({
-  enter: { x:0, opacity: 1, delay: 100, beforeChildren: true },
-  exit: { y:100, opacity: 0 }
-});
+// const RouteContainer = posed.div({
+//   enter: { x:0, opacity: 1, delay: 100, beforeChildren: true },
+//   exit: { y:100, opacity: 0 }
+// });
 
 
 const Routes = () => (
 
    <Route render={ ({ location }) => (
-        <PoseGroup>
-    <RouteContainer key={location.pathname}>
+        // <PoseGroup>
+    // <RouteContainer key={location.pathname}>
       <Switch location={location}>
         <Route exact path='/' component={Home} />
         <Route exact path='/create-account' component={CreateAccount} />
@@ -41,8 +41,8 @@ const Routes = () => (
         <Route exact path='/subscription-event' component={SubscriptionEvent} />
         <Route exact path='/unsuscription-event' component={UnsubscriptionEvent} />
       </Switch>
-    </RouteContainer>
-  </PoseGroup>
+    // </RouteContainer>
+  // </PoseGroup>
 
 )}/>
 )
