@@ -255,10 +255,10 @@ export default class Create extends Component {
                 </div>
 
               {this.state.selectedOption === "image" ?
-              <div className="grid-container-img-add">
+              <div className="grid-container-img-add form-group">
                 <div className="file">
                   <input
-                  className="form-control-file"
+                  className="form-control-file btn btn-primary"
                   type="file"
                   name="image"
                   id="UploadedFile"

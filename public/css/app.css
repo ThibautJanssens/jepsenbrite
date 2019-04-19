@@ -10658,6 +10658,7 @@ a.text-dark:focus {
 body {
   background-color: #03020D;
   color: white !important;
+  word-wrap: break-word;
 }
 
 * {
