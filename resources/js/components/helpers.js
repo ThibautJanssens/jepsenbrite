@@ -35,7 +35,7 @@ export function appRegister(myJSON) {
         },
         callback: function (result) {
           console.log('This was logged in the callback: ' + result);
-          window.location = '/login';
+          window.location = '/#/login';
         }
       });
 
@@ -64,7 +64,7 @@ export function appGetUser() {
     .then(function (response) {
       sessionStorage.setItem('user-id-storage', response.data.id);
       sessionStorage.setItem('user-name-storage', response.data.name);
-      window.location = '/';
+      window.location = '/#/';
     })
     .catch(function (error) {
       console.log(error);
@@ -118,14 +118,14 @@ export function appLogout() {
       sessionStorage.removeItem("token-storage");
       sessionStorage.removeItem("user-id-storage");
       sessionStorage.removeItem("user-name-storage");
-      window.location = '/';
+      window.location = '/#/';
     })
     .catch(function (error) {
       console.log(error);
       sessionStorage.removeItem("token-storage");
       sessionStorage.removeItem("user-id-storage");
       sessionStorage.removeItem("user-name-storage");
-      window.location = '/';
+      window.location = '/#/';
     })
 }
 
@@ -325,7 +325,7 @@ export function appAddEvent(myJSON) {
           }
         },
         callback: function (result) {
-          window.location = '/';
+          window.location = '/#/';
         }
       });
     })
@@ -342,7 +342,7 @@ export function appSendMails(eventID, myJSON) {
   axios(
     {
       method: 'POST',
-      url: "/event/"+eventID+"/invitations",
+      url: "api/event/"+eventID+"/invitations",
       headers:
       {
         'Content-Type': "application/json",
@@ -364,7 +364,7 @@ export function appSendMails(eventID, myJSON) {
           }
         },
         callback: function (result) {
-          window.location = '/display-event/'+eventID;
+          window.location = '/#/display-event/'+eventID;
         }
       });
     })
@@ -400,7 +400,7 @@ export function updateEvent(eventID, myJSON) {
           }
         },
         callback: function (result) {
-          window.location = '/';
+          window.location = '/#/';
         }
       });
     })

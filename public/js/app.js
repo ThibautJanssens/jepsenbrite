@@ -88384,7 +88384,7 @@ function appRegister(myJSON) {
       },
       callback: function callback(result) {
         console.log('This was logged in the callback: ' + result);
-        window.location = '/login';
+        window.location = '/#/login';
       }
     });
   })["catch"](function (error) {
@@ -88408,7 +88408,7 @@ function appGetUser() {
   }).then(function (response) {
     sessionStorage.setItem('user-id-storage', response.data.id);
     sessionStorage.setItem('user-name-storage', response.data.name);
-    window.location = '/';
+    window.location = '/#/';
   })["catch"](function (error) {
     console.log(error);
   });
@@ -88458,13 +88458,13 @@ function appLogout() {
     sessionStorage.removeItem("token-storage");
     sessionStorage.removeItem("user-id-storage");
     sessionStorage.removeItem("user-name-storage");
-    window.location = '/';
+    window.location = '/#/';
   })["catch"](function (error) {
     console.log(error);
     sessionStorage.removeItem("token-storage");
     sessionStorage.removeItem("user-id-storage");
     sessionStorage.removeItem("user-name-storage");
-    window.location = '/';
+    window.location = '/#/';
   });
 }
 /*Get ALL events-GET */
@@ -88652,7 +88652,7 @@ function appAddEvent(myJSON) {
         }
       },
       callback: function callback(result) {
-        window.location = '/';
+        window.location = '/#/';
       }
     });
   })["catch"](function (error) {
@@ -88666,7 +88666,7 @@ function appSendMails(eventID, myJSON) {
   console.log("myJSON" + JSON.stringify(myJSON));
   axios__WEBPACK_IMPORTED_MODULE_0___default()({
     method: 'POST',
-    url: "/event/" + eventID + "/invitations",
+    url: "api/event/" + eventID + "/invitations",
     headers: {
       'Content-Type': "application/json",
       'Authorization': "Bearer " + JSON.parse(sessionStorage.getItem("token-storage"))
@@ -88686,7 +88686,7 @@ function appSendMails(eventID, myJSON) {
         }
       },
       callback: function callback(result) {
-        window.location = '/display-event/' + eventID;
+        window.location = '/#/display-event/' + eventID;
       }
     });
   })["catch"](function (error) {
@@ -88718,7 +88718,7 @@ function updateEvent(eventID, myJSON) {
         }
       },
       callback: function callback(result) {
-        window.location = '/';
+        window.location = '/#/';
       }
     });
   })["catch"](function (error) {
