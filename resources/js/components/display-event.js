@@ -113,10 +113,8 @@ export default class DisplayEvent extends Component {
                 <p> {item.description} </p>
               </div>
               <div className='wholeInfos'>
-              <div className="mt-5 w-100 boxDescriptionSingle shadow">
-                        <OpenStreetMap address={`${item.street} ${item.postal_code} ${item.city} ${item.country}`} className="map-placeholder" mapId={`event-${this.state.idEvent}-map`} />
-              </div>
-                <div className='wholeInfos1'>
+              <OpenStreetMap address={`${item.street} ${item.postal_code} ${item.city} ${item.country}`} className="map" mapId={`event-${this.state.idEvent}-map`} />
+              <div className='wholeInfos1'>
                   <div className='info'>
                     <img className='infoIcons' src='https://www.redfcu.org/Assets/uploads/images/Find%20a%20LocationBranch.png' />
                     <div className='infoTxt'>

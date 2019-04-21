@@ -1,7 +1,7 @@
 <!DOCTYPE html>
     <html lang="{{ app()->getLocale() }}">
     <head>
-    <link rel="icon" href="./public/images/pandadab.ico" />
+    <!--link rel="icon" href="./public/images/pandadab.ico" /-->
     <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Rock+Salt" rel="stylesheet">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">

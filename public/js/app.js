@@ -87479,13 +87479,11 @@ function (_Component) {
           className: "passedEvents2"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", item.description, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "wholeInfos"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "mt-5 w-100 boxDescriptionSingle shadow"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_OpenStreetMap__WEBPACK_IMPORTED_MODULE_4__["default"], {
           address: "".concat(item.street, " ").concat(item.postal_code, " ").concat(item.city, " ").concat(item.country),
-          className: "map-placeholder",
+          className: "map",
           mapId: "event-".concat(_this2.state.idEvent, "-map")
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "wholeInfos1"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "info"
