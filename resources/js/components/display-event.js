@@ -100,7 +100,7 @@ export default class DisplayEvent extends Component {
           <div key={item.id} className="eventsPassed">
             <div className="passedEvents">
               <div className='eventImg'>
-                <h1 className='eventTitle'>
+                <h1 className='eventTitle' key={item.name}>
                   {item.name}<i>(by {item.author})</i>
                 </h1>
               </div>

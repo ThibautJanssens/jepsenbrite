@@ -87262,7 +87262,9 @@ function (_Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
           key: item.name,
           className: "eventTitle "
-        }, item.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, item.author)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, item.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          key: item.author
+        }, item.author)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "container video-container mt-5"
         }, item.media_type === 'image' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "imgDisplay",
@@ -87464,7 +87466,8 @@ function (_Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "eventImg"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-          className: "eventTitle"
+          className: "eventTitle",
+          key: item.name
         }, item.name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, "(by ", item.author, ")"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "imgDiv border video-container"
         }, item.media_type === 'image' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -88799,7 +88802,7 @@ function appAddEvent(myJSON) {
     console.log(error);
   });
 }
-/*Add Event-POST */
+/*Send invitation-POST */
 
 function appSendMails(eventID, myJSON) {
   console.log("eventID" + eventID);

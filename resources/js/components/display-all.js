@@ -29,7 +29,7 @@ export default class DisplayAll extends Component {
                 <Link to={{ pathname: "/display-event/" + item.id, state: { nameEvent: item.name } }} >
                   <h1 key={item.name} className="eventTitle ">{item.name}</h1>
                 </Link>
-                <i>{item.author}</i>
+                <i key={item.author}>{item.author}</i>
               </div>
               <div className="container video-container mt-5">
                 {
