@@ -345,6 +345,8 @@ export function appAddEvent(myJSON) {
 export function appSendMails(eventID, myJSON) {
   console.log("eventID"+eventID);
   console.log("myJSON"+JSON.stringify(myJSON));
+  // let tokenStorage = sessionStorage.getItem("token-storage");
+  // console.log(tokenStorage);
   axios(
     {
       method: 'POST',

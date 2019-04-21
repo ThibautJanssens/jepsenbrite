@@ -88185,9 +88185,7 @@ function (_Component) {
     _this.state = {
       email: [{
         toMail: ""
-      }],
-      from: "",
-      eventName: ""
+      }]
     };
     return _this;
   }
@@ -88249,10 +88247,7 @@ function (_Component) {
     value: function render() {
       var _this3 = this;
 
-      var _this$state = this.state,
-          from = _this$state.from,
-          eventName = _this$state.eventName,
-          email = _this$state.email;
+      var email = this.state.email;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "info flex-column",
         onSubmit: this.handleSubmit,
@@ -88272,7 +88267,7 @@ function (_Component) {
           value: email[idx].toMail,
           className: "toMail"
         }));
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "btn btn-light w-50 m-auto",
         onClick: this.addMail
       }, "Add new recipient"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -88807,7 +88802,9 @@ function appAddEvent(myJSON) {
 
 function appSendMails(eventID, myJSON) {
   console.log("eventID" + eventID);
-  console.log("myJSON" + JSON.stringify(myJSON));
+  console.log("myJSON" + JSON.stringify(myJSON)); // let tokenStorage = sessionStorage.getItem("token-storage");
+  // console.log(tokenStorage);
+
   axios__WEBPACK_IMPORTED_MODULE_0___default()({
     method: 'POST',
     url: "api/event/" + eventID + "/invitations",
