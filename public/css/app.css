@@ -10954,6 +10954,7 @@ html {
   background-color: rgba(0, 0, 0, 0.1);
   -webkit-filter: drop-shadow(0px 0px 3px black);
           filter: drop-shadow(0px 0px 3px black);
+  overflow-wrap: break-word;
 }
 
 .imgEvent {

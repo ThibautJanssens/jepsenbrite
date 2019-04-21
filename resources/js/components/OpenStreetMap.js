@@ -8,7 +8,7 @@ export default class OpenStreetMap extends Component {
   }
 
   async componentDidUpdate(prevProps){
-    if(this.props.address.match(/undefined/) || prevProps.address == this.props.address)
+    if(this.props.address.match(/undefined/))
       return;
     document.getElementById(`${this.props.mapId}`).innerHTML = '';
     const map = new OpenLayers.Map(this.props.mapId);
@@ -19,6 +19,7 @@ export default class OpenStreetMap extends Component {
     ]));
 
     const response = await fetch('https://nominatim.openstreetmap.org/search?format=json&q='+encodeURIComponent(this.props.address));
+
 
     const json = await response.json();
     const lonLat = new OpenLayers.LonLat(json[0].lon, json[0].lat)
@@ -39,9 +40,8 @@ export default class OpenStreetMap extends Component {
   }
 
   render() {
-      //console.log("props.address", this.props.address);
       return (
-        <div className={`col-12 ${this.props.className}`} id={this.props.mapId}></div>
+        <div className={`col-6 ${this.props.className}`} id={this.props.mapId}></div>
       )
     }
 }

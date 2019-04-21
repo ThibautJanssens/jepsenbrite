@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import { appSendMails } from './helpers';
 export default class Email extends Component {
@@ -9,6 +10,8 @@ constructor(props) {
   this.handleSubmit= this.handleSubmit.bind(this);
   this.state = {
     email: [{toMail:""}],
+    from: "",
+    eventName: "",
   }
 }
 
@@ -38,9 +41,7 @@ handleSubmit(event){
     //convert  array (email) to a 'single' array (mailList)
     obj.forEach(function(item) {
       Object.keys(item).forEach(function(key) {
-        if (item[key] !== ""){
-          mailing.push(item[key]);
-        }
+        mailing.push(item[key]);
       });
     });
     let myJSON = { "eventId": this.props.idEvent, "eventName": this.props.nameEvent,"senderId": senderId, "senderName": senderName, "emailList": mailing}
@@ -48,7 +49,7 @@ handleSubmit(event){
 }
 
 render() {
-    let {email} = this.state;
+    let {from, eventName, email} = this.state;
 
     return (
 
@@ -67,13 +68,13 @@ render() {
                   id={mailId}
                   onChange={this.handleChange}
                   value={email[idx].toMail}
-                  className="toMail form-control w-50 my-2 mx-auto"
+                  className="toMail"
                 />
               </div>
             )
           })
         }
-        <div className="btn btn-light w-50 m-auto" onClick={this.addMail}>Add new mail</div>
+        <button className="btn btn-light w-50 m-auto" onClick={this.addMail}>Add new recipient</button>
         <input className="btn btn-light w-50 m-auto" type="submit" value="Submit" />
       </form>
     )
