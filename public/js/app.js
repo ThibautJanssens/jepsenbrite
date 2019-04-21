@@ -87273,6 +87273,7 @@ function (_Component) {
         }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("iframe", {
           width: "100%",
           src: "https://www.youtube.com/embed/".concat(item.image_url),
+          enablejsapi: "1",
           frameBorder: "0",
           allowFullScreen: true
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
