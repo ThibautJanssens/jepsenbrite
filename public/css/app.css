@@ -10954,6 +10954,7 @@ html {
   background-color: rgba(0, 0, 0, 0.1);
   -webkit-filter: drop-shadow(0px 0px 3px black);
           filter: drop-shadow(0px 0px 3px black);
+  overflow-wrap: break-word;
 }
 
 .imgEvent {
@@ -11227,17 +11228,27 @@ a:hover {
   }
 }
 
+.map {
+  margin: auto;
+  width: 75%;
+  height: 500px;
+  background: white;
+}
+
+.output {
+  max-width: 100%;
+  height: auto;
+}
+
+.imgDisplay {
+  max-width: 100%;
+}
+
 #app {
   display: flex;
   height: 400px;
   align-items: center;
   justify-content: center;
   background-color: #0F3357;
-}
-
-#app .map {
-  width: 500px;
-  height: 300px;
-  background: white;
 }
 

@@ -4,7 +4,7 @@ import { suscribeEvent } from './helpers';
 import { unsuscribeEvent } from './helpers';
 import Email from './email';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import OpenStreetMap from './maps';
+import OpenStreetMap from './OpenStreetMap';
 
 export default class DisplayEvent extends Component {
 
@@ -100,7 +100,7 @@ export default class DisplayEvent extends Component {
           <div key={item.id} className="eventsPassed">
             <div className="passedEvents">
               <div className='eventImg'>
-                <h1 className='eventTitle'>
+                <h1 className='eventTitle' key={item.name}>
                   {item.name}<i>(by {item.author})</i>
                 </h1>
               </div>
@@ -113,11 +113,8 @@ export default class DisplayEvent extends Component {
                 <p> {item.description} </p>
               </div>
               <div className='wholeInfos'>
-              <div className="mt-5 w-100 boxDescriptionSingle shadow">
-                        <OpenStreetMap address={`${item.street} ${item.postal_code} ${item.city} ${item.country}`} className="map-placeholder" mapId={`event-${this.state.idEvent}-map`} />
-
-                      </div>
-                <div className='wholeInfos1'>
+              <OpenStreetMap address={`${item.street} ${item.postal_code} ${item.city} ${item.country}`} className="map" mapId={`event-${this.state.idEvent}-map`} />
+              <div className='wholeInfos1'>
                   <div className='info'>
                     <img className='infoIcons' src='https://www.redfcu.org/Assets/uploads/images/Find%20a%20LocationBranch.png' />
                     <div className='infoTxt'>
@@ -133,7 +130,7 @@ export default class DisplayEvent extends Component {
                   </div>
                   <div className='info'>
                     <img className='infoIcons' src='https://stickeroid.com/uploads/pic/full-pngimg/9d06df374b8bab48fc3ba0a7e1a6f4ccd2212d81.png' />
-                    <p className='infoTxt'>€ {item.price}</p>
+                    <p className='infoTxt'>{item.price}</p>
                   </div>
                 </div>
 

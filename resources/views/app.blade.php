@@ -1,7 +1,7 @@
 <!DOCTYPE html>
     <html lang="{{ app()->getLocale() }}">
     <head>
-    <link rel="icon" href="./public/images/pandadab.ico" />
+    <!--link rel="icon" href="./public/images/pandadab.ico" /-->
     <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Rock+Salt" rel="stylesheet">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,13 +31,12 @@
     <script src="https://unpkg.com/@babel/standalone"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.5.2/umd/react.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.5.2/umd/react-dom.production.min.js"></script>
-    <script src="../dist/react-leaflet.min.js"></script>
-    <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+    <!--script src="../dist/react-leaflet.min.js"></script-->
+    <script src="/js/OpenLayers.js"></script>
 
     </head>
     <body>
         <div id="example"></div>
-
         <script src="{{ asset('js/app.js') }}"></script>
     </body>
     </html>

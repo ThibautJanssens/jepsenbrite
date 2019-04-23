@@ -86318,6 +86318,145 @@ if (token) {
 
 /***/ }),
 
+/***/ "./resources/js/components/OpenStreetMap.js":
+/*!**************************************************!*\
+  !*** ./resources/js/components/OpenStreetMap.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return OpenStreetMap; });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var OpenStreetMap =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(OpenStreetMap, _Component);
+
+  function OpenStreetMap() {
+    _classCallCheck(this, OpenStreetMap);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(OpenStreetMap).apply(this, arguments));
+  }
+
+  _createClass(OpenStreetMap, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this = this;
+
+      var mapDiv = document.getElementById("".concat(this.props.mapId));
+      this.resize(mapDiv);
+      window.addEventListener('resize', function () {
+        return _this.resize(mapDiv);
+      });
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function () {
+      var _componentDidUpdate = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(prevProps) {
+        var map, response, json, lonLat, zoom, markers;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                if (!this.props.address.match(/undefined/)) {
+                  _context.next = 2;
+                  break;
+                }
+
+                return _context.abrupt("return");
+
+              case 2:
+                document.getElementById("".concat(this.props.mapId)).innerHTML = '';
+                map = new OpenLayers.Map(this.props.mapId);
+                map.addLayer(new OpenLayers.Layer.OSM('osmLayer', ['https://a.tile.openstreetmap.org/${z}/${x}/${y}.png', 'https://b.tile.openstreetmap.org/${z}/${x}/${y}.png', 'https://c.tile.openstreetmap.org/${z}/${x}/${y}.png']));
+                _context.next = 7;
+                return fetch('https://nominatim.openstreetmap.org/search?format=json&q=' + encodeURIComponent(this.props.address));
+
+              case 7:
+                response = _context.sent;
+                _context.next = 10;
+                return response.json();
+
+              case 10:
+                json = _context.sent;
+                lonLat = new OpenLayers.LonLat(json[0].lon, json[0].lat).transform(new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+                map.getProjectionObject() // to Spherical Mercator Projection
+                );
+                zoom = 16;
+                markers = new OpenLayers.Layer.Markers("Markers");
+                map.addLayer(markers);
+                markers.addMarker(new OpenLayers.Marker(lonLat));
+                map.setCenter(lonLat, zoom);
+
+              case 17:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function componentDidUpdate(_x) {
+        return _componentDidUpdate.apply(this, arguments);
+      }
+
+      return componentDidUpdate;
+    }()
+  }, {
+    key: "resize",
+    value: function resize(map) {
+      if (map) map.style.height = map.clientWidth * 0.71 + 'px';
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-6 ".concat(this.props.className),
+        id: this.props.mapId
+      });
+    }
+  }]);
+
+  return OpenStreetMap;
+}(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/brand.js":
 /*!******************************************!*\
   !*** ./resources/js/components/brand.js ***!
@@ -87123,7 +87262,9 @@ function (_Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
           key: item.name,
           className: "eventTitle "
-        }, item.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, item.author)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, item.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          key: item.author
+        }, item.author)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "container video-container mt-5"
         }, item.media_type === 'image' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "imgDisplay",
@@ -87132,6 +87273,7 @@ function (_Component) {
         }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("iframe", {
           width: "100%",
           src: "https://www.youtube.com/embed/".concat(item.image_url),
+          enablejsapi: "1",
           frameBorder: "0",
           allowFullScreen: true
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -87180,7 +87322,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers */ "./resources/js/components/helpers.js");
 /* harmony import */ var _email__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./email */ "./resources/js/components/email.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _maps__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./maps */ "./resources/js/components/maps.js");
+/* harmony import */ var _OpenStreetMap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./OpenStreetMap */ "./resources/js/components/OpenStreetMap.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -87325,7 +87467,8 @@ function (_Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "eventImg"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-          className: "eventTitle"
+          className: "eventTitle",
+          key: item.name
         }, item.name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, "(by ", item.author, ")"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "imgDiv border video-container"
         }, item.media_type === 'image' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -87340,13 +87483,11 @@ function (_Component) {
           className: "passedEvents2"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", item.description, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "wholeInfos"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "mt-5 w-100 boxDescriptionSingle shadow"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_maps__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_OpenStreetMap__WEBPACK_IMPORTED_MODULE_4__["default"], {
           address: "".concat(item.street, " ").concat(item.postal_code, " ").concat(item.city, " ").concat(item.country),
-          className: "map-placeholder",
+          className: "map",
           mapId: "event-".concat(_this2.state.idEvent, "-map")
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "wholeInfos1"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "info"
@@ -87369,7 +87510,7 @@ function (_Component) {
           src: "https://stickeroid.com/uploads/pic/full-pngimg/9d06df374b8bab48fc3ba0a7e1a6f4ccd2212d81.png"
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "infoTxt"
-        }, "\u20AC ", item.price)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, item.price)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "wholeInfos3"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "m-auto"
@@ -87530,13 +87671,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Edit; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers */ "./resources/js/components/helpers.js");
-/* harmony import */ var react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap/Form */ "./node_modules/react-bootstrap/Form.js");
-/* harmony import */ var react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap/Form */ "./node_modules/react-bootstrap/Form.js");
+/* harmony import */ var react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap/Button */ "./node_modules/react-bootstrap/Button.js");
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var primereact_calendar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primereact/calendar */ "./node_modules/primereact/calendar.js");
 /* harmony import */ var primereact_calendar__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(primereact_calendar__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap/Button */ "./node_modules/react-bootstrap/Button.js");
-/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./helpers */ "./resources/js/components/helpers.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -87628,7 +87769,7 @@ function (_Component) {
   _createClass(Edit, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["appGetEventByIDEdit"])(this.props.match.params.id, this);
+      Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["appGetEventByIDEdit"])(this.props.match.params.id, this);
     }
     /* form validation*/
 
@@ -87746,12 +87887,12 @@ function (_Component) {
       } //convert date
 
 
-      var convertedDate = Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["convertDate"])(this.state.date_event);
+      var convertedDate = Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["convertDate"])(this.state.date_event);
       var convertedReminder = "";
       var datetest = new Date(); //check if box reminder is checked and not empty
 
       if (this.state.boxReminder && this.state.reminder !== null) {
-        convertedReminder = Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["convertDate"])(this.state.reminder);
+        convertedReminder = Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["convertDate"])(this.state.reminder);
       } else {
         convertedReminder = "";
       }
@@ -87770,7 +87911,8 @@ function (_Component) {
         "media_type": media_type //console.log(myJSON);
 
       };
-      event.preventDefault(); //updateEvent(this.state.idEvent,myJSON);
+      event.preventDefault();
+      Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["updateEvent"])(this.state.idEvent, myJSON);
     } //\end fct handleSubmit
 
     /*used by component calendar*/
@@ -87810,7 +87952,7 @@ function (_Component) {
         className: "passedEvents"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "passedEvents2"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a, {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a, {
         onSubmit: this.handleSubmit,
         className: "m-5"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Update event"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -87821,7 +87963,7 @@ function (_Component) {
           className: "w-100  "
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           controlId: "exampleForm.ControlInput1"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Label, null, "Title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Control, {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Label, null, "Title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Control, {
           name: "name",
           type: "text",
           value: _this3.state.name,
@@ -87829,7 +87971,7 @@ function (_Component) {
           onChange: _this3.handleChange
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           controlId: "exampleForm.ControlTextarea1"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Label, null, "Description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Control, {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Label, null, "Description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Control, {
           name: "description",
           placeholder: "your event description",
           as: "textarea",
@@ -87838,25 +87980,25 @@ function (_Component) {
           onChange: _this3.handleChange
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           controlId: "exampleForm.ControlInput1"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Label, null, "Adress"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Control, {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Label, null, "Adress"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Control, {
           name: "street",
           type: "text",
           value: _this3.state.street,
           placeholder: "street",
           onChange: _this3.handleChange
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Control, {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Control, {
           name: "postal_code",
           type: "number",
           value: _this3.state.postal_code,
           placeholder: "postal code",
           onChange: _this3.handleChange
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Control, {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Control, {
           name: "city",
           type: "text",
           value: _this3.state.city,
           placeholder: "city",
           onChange: _this3.handleChange
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Control, {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Control, {
           name: "country",
           type: "text",
           value: _this3.state.country,
@@ -87864,7 +88006,7 @@ function (_Component) {
           onChange: _this3.handleChange
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           controlId: "exampleForm.ControlInput1"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Label, null, "Price"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_2___default.a.Control, {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Label, null, "Price"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Control, {
           name: "price",
           type: "number",
           value: _this3.state.price,
@@ -87968,7 +88110,7 @@ function (_Component) {
           showIcon: true,
           showSeconds: true
         }))));
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4___default.a, {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2___default.a, {
         disabled: !this.validateForm(),
         className: "my-3",
         type: "submit"
@@ -88089,9 +88231,7 @@ function (_Component) {
 
       obj.forEach(function (item) {
         Object.keys(item).forEach(function (key) {
-          if (item[key] !== "") {
-            mailing.push(item[key]);
-          }
+          mailing.push(item[key]);
         });
       });
       var myJSON = {
@@ -88126,12 +88266,12 @@ function (_Component) {
           id: mailId,
           onChange: _this3.handleChange,
           value: email[idx].toMail,
-          className: "toMail form-control w-50 my-2 mx-auto"
+          className: "toMail"
         }));
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "btn btn-light w-50 m-auto",
         onClick: this.addMail
-      }, "Add new mail"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "Add new recipient"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "btn btn-light w-50 m-auto",
         type: "submit",
         value: "Submit"
@@ -88659,11 +88799,13 @@ function appAddEvent(myJSON) {
     console.log(error);
   });
 }
-/*Add Event-POST */
+/*Send invitation-POST */
 
 function appSendMails(eventID, myJSON) {
   console.log("eventID" + eventID);
-  console.log("myJSON" + JSON.stringify(myJSON));
+  console.log("myJSON" + JSON.stringify(myJSON)); // let tokenStorage = sessionStorage.getItem("token-storage");
+  // console.log(tokenStorage);
+
   axios__WEBPACK_IMPORTED_MODULE_0___default()({
     method: 'POST',
     url: "api/event/" + eventID + "/invitations",
@@ -88947,146 +89089,6 @@ function (_Component) {
 
   return Logout;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/maps.js":
-/*!*****************************************!*\
-  !*** ./resources/js/components/maps.js ***!
-  \*****************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return OpenStreetMap; });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-var OpenStreetMap =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(OpenStreetMap, _Component);
-
-  function OpenStreetMap() {
-    _classCallCheck(this, OpenStreetMap);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(OpenStreetMap).apply(this, arguments));
-  }
-
-  _createClass(OpenStreetMap, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this = this;
-
-      var mapDiv = document.getElementById("".concat(this.props.mapId));
-      this.resize(mapDiv);
-      window.addEventListener('resize', function () {
-        return _this.resize(mapDiv);
-      });
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function () {
-      var _componentDidUpdate = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(prevProps) {
-        var map, response, json, lonLat, zoom, markers;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                if (!this.props.address.match(/undefined/)) {
-                  _context.next = 2;
-                  break;
-                }
-
-                return _context.abrupt("return");
-
-              case 2:
-                document.getElementById("".concat(this.props.mapId)).innerHTML = '';
-                map = new OpenLayers.Map(this.props.mapId);
-                map.addLayer(new OpenLayers.Layer.OSM());
-                _context.next = 7;
-                return fetch('https://nominatim.openstreetmap.org/search?format=json&q=' + encodeURIComponent(this.props.address));
-
-              case 7:
-                response = _context.sent;
-                _context.next = 10;
-                return response.json();
-
-              case 10:
-                json = _context.sent;
-                lonLat = new OpenLayers.LonLat(json[0].lon, json[0].lat).transform(new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-                map.getProjectionObject() // to Spherical Mercator Projection
-                );
-                zoom = 16;
-                markers = new OpenLayers.Layer.Markers("Markers");
-                map.addLayer(markers);
-                markers.addMarker(new OpenLayers.Marker(lonLat));
-                map.setCenter(lonLat, zoom);
-
-              case 17:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      function componentDidUpdate(_x) {
-        return _componentDidUpdate.apply(this, arguments);
-      }
-
-      return componentDidUpdate;
-    }()
-  }, {
-    key: "resize",
-    value: function resize(map) {
-      if (map) map.style.height = map.clientWidth * 0.71 + 'px';
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      //console.log("props.address", this.props.address);
-      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-12 ".concat(this.props.className),
-        id: this.props.mapId
-      });
-    }
-  }]);
-
-  return OpenStreetMap;
-}(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
 
 
 
