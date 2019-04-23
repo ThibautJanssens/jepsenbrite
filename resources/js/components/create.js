@@ -263,11 +263,11 @@ export default class Create extends Component {
                   name="image"
                   id="UploadedFile"
                   onChange={(e)=>this.onChangeImg(e)} />
-                </div>
+                </div> 
                 <div className="preview"><img id="output" className="output" alt=""/></div>
               </div>
               :
-              <div className="grid-container-img-add">
+              <div className="grid-container-img-add form-group">
                 <div className="file">
                   <input
                   className="form-control-file"

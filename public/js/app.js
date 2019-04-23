@@ -86673,7 +86673,7 @@ function (_Component) {
         className: "output",
         alt: ""
       }))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "grid-container-img-add"
+        className: "grid-container-img-add form-group"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "file"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -87600,11 +87600,11 @@ function (_Component) {
           onChange: _this3.handleOptionChange,
           className: "form-check-input"
         }), "Add a video")), _this3.state.selectedOption === "image" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "grid-container-img-add"
+          className: "grid-container-img-add form-group"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "file"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-          className: "form-control-file",
+          className: "form-control-file btn btn-primary",
           type: "file",
           name: "image",
           id: "UploadedFile",
@@ -87623,7 +87623,7 @@ function (_Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "file"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-          className: "form-control-file",
+          className: "form-control-file form-group",
           name: "video_url",
           id: "video_url",
           type: "url",
