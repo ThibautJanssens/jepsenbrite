@@ -51,7 +51,7 @@
         .logo{
             margin: auto;
         }
-        
+
     </style>
     <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
 </head>
@@ -88,7 +88,7 @@
         </div>
 
         <p>See you soon on <b>DoNutEvents!</b></p>
-        <a href="https://jepsen-brite.herokuapp.com/" class="button">Click here to go back to Do Nuts Events!</a>
+        <a href="https://jepsen-brite-v2.herokuapp.com/" class="button">Click here to go back to Do Nuts Events!</a>
         </td>
         </tr>
     </table>
