@@ -57,7 +57,7 @@
 </head>
 
 <body>
-    <h2>Hello {{$user['name']}}</h2>
+    <h2>Hello {{$user}}</h2>
     <br />
     <table align="center">
     <tr>
@@ -70,7 +70,7 @@
     <tr>
         <td align="center">
         <p>
-        A DoNutEvents member send you an invitation to an event : <b> {{$event->event}} </b> 
+        A DoNutEvents member send you an invitation to an event : <b> {{$event}} </b>
                 </p>
         <p> Go to the site to respond at this invitation and meet the <i>EventDab
                 Community</i> !</p>
