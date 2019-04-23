@@ -86155,7 +86155,7 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-6 ".concat(this.props.className),
+        className: "".concat(this.props.className),
         id: this.props.mapId
       });
     }

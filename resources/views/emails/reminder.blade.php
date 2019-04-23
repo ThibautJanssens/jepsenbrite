@@ -57,7 +57,7 @@
 </head>
 
 <body>
-    <h2>Hello {{$user['name']}}</h2>
+    <h2>Don't forget your event !</h2>
     <br />
     <table align="center">
     <tr>

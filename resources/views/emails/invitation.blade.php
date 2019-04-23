@@ -57,7 +57,7 @@
 </head>
 
 <body>
-    <h2>Hello {{$user}}</h2>
+    <h2>You've been invited by {{$user}}</h2>
     <br />
     <table align="center">
     <tr>
